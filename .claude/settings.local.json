@@ -6,7 +6,9 @@
       "Bash(rm:*)",
       "WebFetch(domain:www.spotrac.com)",
       "Bash(python:*)",
-      "WebFetch(domain:www.pro-football-reference.com)"
+      "WebFetch(domain:www.pro-football-reference.com)",
+      "Bash(for:*)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []
