@@ -66,8 +66,6 @@ class RosterTurnoverCrosstabAnalyzer:
         
         # All metrics we'll calculate for each position
         self.metrics = [
-            'Players_Year1',
-            'Players_Year2', 
             'Players_Retained',
             'Players_Departed',
             'Players_New',
@@ -254,8 +252,7 @@ class RosterTurnoverCrosstabAnalyzer:
                     row[column_name] = position_data[position][metric]
                 else:
                     # Fill missing positions with appropriate defaults
-                    if metric in ['Players_Year1', 'Players_Year2', 'Players_Retained', 
-                                'Players_Departed', 'Players_New', 'Net_Change']:
+                    if metric in ['Players_Retained', 'Players_Departed', 'Players_New', 'Net_Change']:
                         row[column_name] = 0
                     else:  # Percentage metrics
                         row[column_name] = 0.0
