@@ -366,6 +366,8 @@ class InjuryDataScraper:
         total_combinations = len(teams) * len(years)
         current = 0
         
+        actual_requests = 0  # Track actual web requests for rate limiting
+        
         for team in teams:
             for year in years:
                 current += 1
@@ -377,9 +379,11 @@ class InjuryDataScraper:
                     results['skipped'] += 1
                     continue
                 
-                # Apply rate limiting before request
-                if current > 1:  # Don't delay on first request
+                # Apply rate limiting before request (only for actual web requests)
+                if actual_requests > 0:  # Don't delay on first actual request
                     self.rate_limit()
+                
+                actual_requests += 1
                 
                 # Scrape data
                 data = self.scrape_team_year_injuries(team, year)
