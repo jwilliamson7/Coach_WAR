@@ -12,26 +12,50 @@ Coach_WAR/
 ├── data/
 │   ├── raw/                    # Raw scraped data
 │   │   ├── Coaches/           # Individual coach data (history, ranks, results)
-│   │   └── Teams/             # Team statistics and records
+│   │   ├── Teams/             # Team statistics and records
+│   │   ├── Rosters/           # Player roster data by team/year (2010-2024)
+│   │   ├── Injuries/          # Team injury data by season
+│   │   └── Spotrac/           # Salary cap and spending data
+│   │       ├── total_view/    # Total salary cap data
+│   │       └── positional_spending/ # Spending by position
 │   ├── processed/             # Cleaned and processed data
-│   │   └── League Data/       # Yearly league-wide statistics (1920-2024)
+│   │   ├── League Data/       # Yearly league-wide statistics (1920-2024)
+│   │   ├── Spotrac/           # Processed salary cap data
+│   │   ├── Injury/            # Combined injury data
+│   │   └── RosterTurnover/    # Roster turnover analysis
+│   │       ├── detailed/      # Year-to-year turnover comparisons
+│   │       └── summary/       # Position turnover averages
 │   └── final/                 # Final datasets ready for analysis
 ├── crawlers/                  # Web scraping scripts
 │   ├── PFR/                   # Pro Football Reference scrapers
 │   │   ├── coach_scraping.py  # Main coach data scraper
-│   │   └── team_data_scraping.py # Team statistics scraper
+│   │   ├── team_data_scraping.py # Team statistics scraper
+│   │   ├── roster_scraping.py # Player roster scraper
+│   │   └── injury_scraping.py # Team injury data scraper
+│   ├── Spotrac/               # Spotrac salary data scrapers
+│   │   ├── total_view_scraper.py # Total salary cap scraper
+│   │   └── positional_spending_scraper.py # Position spending scraper
 │   └── utils/                 # Shared utilities
-│       └── data_constants.py  # Constants and mappings
+│       └── data_constants.py  # Constants and mappings (corrected PFR abbreviations)
 └── scripts/                   # Data processing scripts
-    └── transform_team_data.py # Team data transformation
+    ├── transform_team_data.py # Team data transformation
+    ├── process_spotrac_data.py # Salary cap data processing
+    ├── calculate_positional_percentages.py # Position spending percentages
+    ├── process_injury_data.py # Injury data combination
+    ├── calculate_roster_turnover.py # Roster turnover analysis
+    └── combine_roster_turnover.py # Combine turnover files
 ```
 
 ## Key Components
 
 ### Data Sources
-- **Pro Football Reference (PFR)**: Primary source for coach and team data
+- **Pro Football Reference (PFR)**: Primary source for coach, team, roster, and injury data
+- **Spotrac**: Salary cap and positional spending data for financial analysis
 - **Coach Data**: Historical records, rankings, and results for individual coaches
 - **Team Data**: Yearly statistics for offensive/defensive performance
+- **Roster Data**: Player rosters by team and year (2010-2024) for turnover analysis
+- **Injury Data**: Weekly injury statuses and games missed by team
+- **Salary Data**: Team salary cap allocation and positional spending breakdowns
 
 ### Current Data Status
 - **Coaches**: Extensive collection of coach data with 3 main files per coach:
@@ -39,6 +63,10 @@ Coach_WAR/
   - `all_coaching_ranks.csv`: Team performance rankings during tenure
   - `all_coaching_results.csv`: Win-loss records and outcomes
 - **Teams**: Team statistics organized by franchise
+- **Rosters**: Player roster data for all 32 teams (2010-2024) organized by team directories
+- **Injuries**: Weekly injury status data with games missed by injury type
+- **Salary Cap**: Total salary cap and positional spending data with PFR team mappings
+- **Turnover Analysis**: Position-by-position roster turnover rates between consecutive seasons
 
 ### Analysis Features
 The project tracks 154+ features across multiple categories:
@@ -58,21 +86,61 @@ The project tracks 154+ features across multiple categories:
 
 ### Key Scripts
 
-#### `crawlers/PFR/coach_scraping.py`
+#### Data Collection Scripts
+
+##### `crawlers/PFR/coach_scraping.py`
 - **Purpose**: Scrapes comprehensive coach data from Pro Football Reference
 - **Features**: Rate limiting, error handling, progress tracking
 - **Output**: Individual coach directories with 3 CSV files each
-- **Key Classes**: `CoachDataScraper`
 
-#### `crawlers/utils/data_constants.py`
-- **Purpose**: Central configuration and constants
-- **Contains**: Team mappings, feature definitions, exclusion criteria
-- **Key Functions**: `get_all_feature_names()`, `get_feature_dict()`
+##### `crawlers/PFR/roster_scraping.py`
+- **Purpose**: Scrapes player roster data for turnover analysis
+- **Features**: Handles team abbreviation corrections, comprehensive table detection
+- **Output**: Team roster files by year (2010-2024)
 
-#### `scripts/transform_team_data.py`
+##### `crawlers/PFR/injury_scraping.py`
+- **Purpose**: Scrapes weekly injury status data
+- **Features**: Parses injury table, calculates games missed by status type
+- **Output**: Transposed injury data with team/year metrics
+
+##### `crawlers/Spotrac/total_view_scraper.py` & `positional_spending_scraper.py`
+- **Purpose**: Scrapes salary cap and positional spending data
+- **Features**: Rate limiting, team mapping, data validation
+- **Output**: Salary cap totals and position-specific spending breakdowns
+
+#### Data Processing Scripts
+
+##### `scripts/process_spotrac_data.py`
+- **Purpose**: Processes salary cap data with correct PFR team mappings
+- **Features**: Team abbreviation correction, duplicate handling
+- **Output**: Standardized salary cap data with PFR team codes
+
+##### `scripts/calculate_positional_percentages.py`
+- **Purpose**: Calculates position spending as percentage of total cap
+- **Features**: Unit conversion, data merging, percentage calculations
+- **Output**: Position spending percentages by team/year
+
+##### `scripts/calculate_roster_turnover.py`
+- **Purpose**: Analyzes roster turnover by position between consecutive years
+- **Features**: Position grouping, retention/departure rate calculations
+- **Output**: Detailed and summary turnover statistics
+
+##### `scripts/combine_roster_turnover.py`
+- **Purpose**: Combines individual team turnover files into consolidated datasets
+- **Features**: Data cleaning, duplicate removal, metadata tracking
+- **Output**: Combined turnover datasets ready for analysis
+
+##### `scripts/transform_team_data.py`
 - **Purpose**: Transforms team data into league-wide yearly datasets
 - **Features**: Data normalization, type conversion, z-score standardization
 - **Output**: Yearly league datasets with raw and normalized versions
+
+#### Utility Scripts
+
+##### `crawlers/utils/data_constants.py`
+- **Purpose**: Central configuration and constants with corrected PFR team abbreviations
+- **Contains**: Team mappings, feature definitions, exclusion criteria
+- **Key Updates**: Fixed Baltimore Ravens (rav), Houston Texans (htx), LA Chargers (sdg), Tennessee Titans (oti)
 
 ### Processed League Data Structure
 
@@ -92,21 +160,34 @@ Each dataset includes extensive offensive and defensive metrics such as:
 
 ### Data Processing Pipeline
 
-1. **Data Collection**: Web scrapers collect raw coach and team data
-2. **Data Transformation**: Team data processed into yearly league-wide datasets
-3. **Data Cleaning**: Scripts process and standardize data formats
-4. **Feature Engineering**: Extract and calculate coaching performance metrics
-5. **Normalization**: Apply statistical normalization (z-scores) for fair comparison across eras
-6. **Analysis**: Calculate WAR metrics and coaching effectiveness
+1. **Data Collection**: Web scrapers collect raw coach, team, roster, injury, and salary data
+2. **Team Abbreviation Standardization**: Ensure consistent PFR abbreviations across all data sources
+3. **Data Transformation**: Process raw data into standardized yearly datasets
+4. **Data Cleaning**: Scripts process and standardize data formats, handle duplicates
+5. **Feature Engineering**: Extract and calculate coaching performance metrics including:
+   - Roster turnover rates by position
+   - Injury impact metrics by team/season
+   - Salary cap allocation efficiency
+   - Position spending percentages
+6. **Data Combination**: Merge individual team files into consolidated datasets
+7. **Normalization**: Apply statistical normalization (z-scores) for fair comparison across eras
+8. **Analysis**: Calculate WAR metrics and coaching effectiveness incorporating all data dimensions
 
 ### Team Franchise Mappings
-The project handles historical team relocations and name changes through comprehensive mappings in `data_constants.py`, ensuring continuity across franchise moves.
+The project handles historical team relocations and name changes through comprehensive mappings in `data_constants.py`, with corrected PFR abbreviations:
+- **Baltimore Ravens**: `rav` (not `bal`)
+- **Houston Texans**: `htx` (not `hou`)
+- **Los Angeles Chargers**: `sdg` (not `lac`)
+- **Tennessee Titans**: `oti` (not `ten`)
 
 ### Current Analysis Parameters
 - **Data Coverage**: 1920-2024 (105 seasons of league data)
+- **Roster Data**: 2010-2024 (15 seasons)
+- **Injury Data**: 2010-2024 with weekly status tracking
+- **Salary Data**: 2011-2024 with positional breakdowns
 - **Cutoff Year**: 2022
 - **Current Year**: 2025
-- **Expected Features**: 154 total features
+- **Expected Features**: 154+ total features including new turnover and financial metrics
 - **Hiring Context**: 1-2 year lookback for team performance
 
 ## Development Notes
@@ -132,8 +213,24 @@ The project handles historical team relocations and name changes through compreh
 
 The project is designed as a complete pipeline from data collection to analysis. Key entry points:
 
-1. **Data Collection**: Run scrapers in `crawlers/` directory
-2. **Data Processing**: Execute transformation scripts in `scripts/`
-3. **Analysis**: Use processed data in `data/final/` for WAR calculations
+### Data Collection
+1. **Coach Data**: `python crawlers/PFR/coach_scraping.py --team all --year all`
+2. **Roster Data**: `python crawlers/PFR/roster_scraping.py --team all --year all`
+3. **Injury Data**: `python crawlers/PFR/injury_scraping.py --all-teams --year all`
+4. **Salary Data**: `python crawlers/Spotrac/total_view_scraper.py --all-teams --all-years`
 
-This structure supports both research and production use cases for coaching performance analysis.
+### Data Processing
+1. **Process Salary Data**: `python scripts/process_spotrac_data.py`
+2. **Calculate Position Percentages**: `python scripts/calculate_positional_percentages.py`
+3. **Analyze Roster Turnover**: `python scripts/calculate_roster_turnover.py --all-teams --year all`
+4. **Combine Turnover Data**: `python scripts/combine_roster_turnover.py`
+5. **Process Injury Data**: `python scripts/process_injury_data.py`
+
+### Analysis
+Use processed data in `data/final/` for comprehensive coaching WAR calculations incorporating:
+- Team performance metrics
+- Roster turnover rates by position
+- Injury impact analysis
+- Salary cap allocation efficiency
+
+This structure supports both research and production use cases for comprehensive coaching performance analysis with multiple data dimensions.
