@@ -55,19 +55,16 @@ class DraftDataFinalizer:
             # Add current year data
             for col in round_cols:
                 result_row[f'Current_{col}'] = row[col]
-            result_row['Current_Total_Picks'] = row['Total_Picks']
             
             # Calculate 1-year lookback (previous year only)
             prev_1yr = team_data[team_data['Draft_Year'] == current_year - 1]
             if not prev_1yr.empty:
                 for col in round_cols:
                     result_row[f'Prev_1Yr_{col}'] = prev_1yr.iloc[0][col]
-                result_row['Prev_1Yr_Total_Picks'] = prev_1yr.iloc[0]['Total_Picks']
             else:
                 # No data available for previous year
                 for col in round_cols:
                     result_row[f'Prev_1Yr_{col}'] = 0
-                result_row['Prev_1Yr_Total_Picks'] = 0
             
             # Calculate 4-year rolling total (including current year)
             start_year = current_year - 3  # Changed from -4 to -3
@@ -77,17 +74,17 @@ class DraftDataFinalizer:
                 (team_data['Draft_Year'] <= end_year)
             ]
             
+            years_available = len(rolling_4yr)
+            if years_available < 4:
+                print(f"Warning: {team.upper()} {current_year} only has {years_available} years of data for 4-year rolling calculation")
+            
             if not rolling_4yr.empty:
                 for col in round_cols:
                     result_row[f'Rolling_4Yr_Total_{col}'] = rolling_4yr[col].sum()
-                result_row['Rolling_4Yr_Total_Total_Picks'] = rolling_4yr['Total_Picks'].sum()
-                result_row['Rolling_4Yr_Years_Available'] = len(rolling_4yr)
             else:
                 # No data available for 4-year window
                 for col in round_cols:
                     result_row[f'Rolling_4Yr_Total_{col}'] = 0
-                result_row['Rolling_4Yr_Total_Total_Picks'] = 0
-                result_row['Rolling_4Yr_Years_Available'] = 0
             
             result_rows.append(result_row)
         
@@ -148,9 +145,9 @@ class DraftDataFinalizer:
             f.write(f"Years per team: {len(df) // len(df['Team'].unique())}\n\n")
             
             f.write("Column Categories:\n")
-            f.write("- Current_*: Draft picks in the current year\n")
-            f.write("- Prev_1Yr_*: Draft picks in the previous year\n")
-            f.write("- Rolling_4Yr_Total_*: Total draft picks over rolling 4-year window (including current year)\n\n")
+            f.write("- Current_*: Draft picks by round in the current year\n")
+            f.write("- Prev_1Yr_*: Draft picks by round in the previous year\n")
+            f.write("- Rolling_4Yr_Total_*: Total draft picks by round over rolling 4-year window (including current year)\n\n")
             
             f.write("Round Columns (1-7):\n")
             for round_num in range(1, 8):
@@ -220,8 +217,8 @@ class DraftDataFinalizer:
         print("-" * 50)
         
         # Show key columns only for readability
-        key_cols = ['Draft_Year', 'Team', 'Current_Total_Picks', 
-                   'Prev_1Yr_Total_Picks', 'Rolling_4Yr_Total_Total_Picks']
+        key_cols = ['Draft_Year', 'Team', 'Current_Round_1_Picks', 
+                   'Prev_1Yr_Round_1_Picks', 'Rolling_4Yr_Total_Round_1_Picks']
         
         available_cols = [col for col in key_cols if col in sample.columns]
         print(sample[available_cols].T)
