@@ -330,7 +330,6 @@ def get_output_column_names() -> List[str]:
 # Use this dictionary to convert salary cap data to percentages of max cap
 SALARY_CAP_MAX_BY_YEAR = {
     # Format: year: max_salary_cap_amount
-    # TODO: Fill in the actual maximum salary cap values for each year
     2011: 120375000,  # Enter max cap for 2011
     2012: 120600000,  # Enter max cap for 2012
     2013: 123600000,  # Enter max cap for 2013

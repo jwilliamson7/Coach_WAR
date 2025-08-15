@@ -221,8 +221,8 @@ class PositionalPercentageCalculator:
             # Position spending (raw values)
             pos_spending_cols = [col for col in df.columns if col in self.position_columns + self.group_columns + ['Total']]
             
-            # Position percentages
-            pos_pct_cols = [col for col in df.columns if col.endswith('_Pct')]
+            # Position percentages (exclude Total_Pct from output)
+            pos_pct_cols = [col for col in df.columns if col.endswith('_Pct') and col != 'Total_Pct']
             
             # Metadata
             metadata_cols = [col for col in df.columns if col in ['Year', 'Scraped_Date']]
@@ -233,8 +233,8 @@ class PositionalPercentageCalculator:
             # Arrange column order
             column_order = base_cols + cap_cols + pos_spending_cols + pos_pct_cols + metadata_cols + other_cols
             
-            # Only include columns that exist
-            final_columns = [col for col in column_order if col in df.columns]
+            # Only include columns that exist and exclude Total_Pct
+            final_columns = [col for col in column_order if col in df.columns and col != 'Total_Pct']
             
             return df[final_columns]
             
@@ -280,9 +280,13 @@ class PositionalPercentageCalculator:
             # Show sample statistics
             if 'QB_Pct' in final_df.columns:
                 logger.info(f"QB percentage range: {final_df['QB_Pct'].min():.1f}% - {final_df['QB_Pct'].max():.1f}%")
-            if 'Total_Pct' in final_df.columns:
-                avg_total_pct = final_df['Total_Pct'].mean()
+            if 'Total_Pct' in df_with_percentages.columns:
+                avg_total_pct = df_with_percentages['Total_Pct'].mean()
                 logger.info(f"Average total cap utilization: {avg_total_pct:.1f}%")
+            if 'Off_Pct' in final_df.columns and 'Def_Pct' in final_df.columns:
+                avg_off_pct = final_df['Off_Pct'].mean()
+                avg_def_pct = final_df['Def_Pct'].mean()
+                logger.info(f"Average offense allocation: {avg_off_pct:.1f}%, defense: {avg_def_pct:.1f}%")
             
             return True
             
