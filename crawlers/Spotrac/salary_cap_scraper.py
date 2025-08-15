@@ -15,7 +15,7 @@ class SalaryCapScraper:
     
     BASE_URL = 'https://www.spotrac.com/nfl/cap/_/year'
     
-    def __init__(self, output_dir: str = "../../data/raw/Spotrac"):
+    def __init__(self, output_dir: str = "../../data/raw/Spotrac/total_view"):
         """Initialize the scraper with output directory"""
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)

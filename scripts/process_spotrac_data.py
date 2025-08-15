@@ -58,8 +58,8 @@ SPOTRAC_TO_PFR_MAPPINGS = {
 class SpotracDataProcessor:
     """Processes Spotrac salary cap data and adds PFR team abbreviations"""
     
-    def __init__(self, raw_dir: str = "../data/raw/Spotrac", 
-                 output_dir: str = "../data/processed/Spotrac"):
+    def __init__(self, raw_dir: str = "../data/raw/Spotrac/total_view", 
+                 output_dir: str = "../data/processed/Spotrac/total_view"):
         """Initialize processor with input and output directories"""
         self.raw_dir = Path(raw_dir)
         self.output_dir = Path(output_dir)
