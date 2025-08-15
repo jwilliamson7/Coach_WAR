@@ -73,21 +73,21 @@ SPOTRAC_TO_PFR_MAPPINGS = {
     "NYJNYJ": "nyj",  # New York Jets
     
     # AFC North
-    "BALBAL": "bal",  # Baltimore Ravens
+    "BALBAL": "rav",  # Baltimore Ravens (PFR uses 'rav')
     "CINCIN": "cin",  # Cincinnati Bengals
     "CLECLE": "cle",  # Cleveland Browns
     "PITPIT": "pit",  # Pittsburgh Steelers
     
     # AFC South
-    "HOUHOU": "hou",  # Houston Texans
+    "HOUHOU": "htx",  # Houston Texans (PFR uses 'htx')
     "INDIND": "clt",  # Indianapolis Colts (PFR uses 'clt')
     "JAXJAX": "jax",  # Jacksonville Jaguars
-    "TENTEN": "ten",  # Tennessee Titans
+    "TENTEN": "oti",  # Tennessee Titans (PFR uses 'oti')
     
     # AFC West
     "DENDEN": "den",  # Denver Broncos
     "KCKC": "kan",    # Kansas City Chiefs (PFR uses 'kan')
-    "LACLAC": "lac",  # Los Angeles Chargers
+    "LACLAC": "sdg",  # Los Angeles Chargers (PFR uses 'sdg')
     "LVLV": "rai",    # Las Vegas Raiders (PFR uses 'rai')
     "OAKOAK": "rai",  # Oakland Raiders (historical, maps to 'rai')
     
