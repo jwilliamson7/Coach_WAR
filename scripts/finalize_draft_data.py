@@ -9,8 +9,8 @@ from typing import Dict, List, Optional
 class DraftDataFinalizer:
     """Creates final draft dataset with rolling averages for coaching analysis"""
     
-    def __init__(self, processed_dir: str = "../data/processed/Draft", 
-                 output_dir: str = "../data/final"):
+    def __init__(self, processed_dir: str = "data/processed/Draft", 
+                 output_dir: str = "data/final"):
         """Initialize finalizer with input and output directories"""
         self.processed_dir = Path(processed_dir)
         self.output_dir = Path(output_dir)
@@ -52,39 +52,30 @@ class DraftDataFinalizer:
                 'Team': team
             }
             
-            # Add current year data
+            # Add current year data (all rounds)
             for col in round_cols:
                 result_row[f'Current_{col}'] = row[col]
             
-            # Calculate 1-year lookback (previous year only)
-            prev_1yr = team_data[team_data['Draft_Year'] == current_year - 1]
-            if not prev_1yr.empty:
-                for col in round_cols:
-                    result_row[f'Prev_1Yr_{col}'] = prev_1yr.iloc[0][col]
-            else:
-                # No data available for previous year
-                for col in round_cols:
-                    result_row[f'Prev_1Yr_{col}'] = 0
-            
-            # Calculate 4-year rolling total (including current year)
-            start_year = current_year - 3  # Changed from -4 to -3
-            end_year = current_year        # Changed from -1 to current_year
-            rolling_4yr = team_data[
-                (team_data['Draft_Year'] >= start_year) & 
-                (team_data['Draft_Year'] <= end_year)
-            ]
-            
-            years_available = len(rolling_4yr)
-            if years_available < 4:
-                print(f"Warning: {team.upper()} {current_year} only has {years_available} years of data for 4-year rolling calculation")
-            
-            if not rolling_4yr.empty:
-                for col in round_cols:
-                    result_row[f'Rolling_4Yr_Total_{col}'] = rolling_4yr[col].sum()
-            else:
-                # No data available for 4-year window
-                for col in round_cols:
-                    result_row[f'Rolling_4Yr_Total_{col}'] = 0
+            # Add individual year lookbacks
+            for years_back in range(1, 5):  # 1, 2, 3, 4 years ago
+                target_year = current_year - years_back
+                year_data = team_data[team_data['Draft_Year'] == target_year]
+                
+                if not year_data.empty:
+                    if years_back == 4:
+                        # Only Round 1 for 4 years ago
+                        result_row[f'Prev_{years_back}Yr_Round_1_Picks'] = year_data.iloc[0]['Round_1_Picks']
+                    else:
+                        # All rounds for 1, 2, 3 years ago
+                        for col in round_cols:
+                            result_row[f'Prev_{years_back}Yr_{col}'] = year_data.iloc[0][col]
+                else:
+                    # No data available for this year
+                    if years_back == 4:
+                        result_row[f'Prev_{years_back}Yr_Round_1_Picks'] = 0
+                    else:
+                        for col in round_cols:
+                            result_row[f'Prev_{years_back}Yr_{col}'] = 0
             
             result_rows.append(result_row)
         
@@ -146,8 +137,10 @@ class DraftDataFinalizer:
             
             f.write("Column Categories:\n")
             f.write("- Current_*: Draft picks by round in the current year\n")
-            f.write("- Prev_1Yr_*: Draft picks by round in the previous year\n")
-            f.write("- Rolling_4Yr_Total_*: Total draft picks by round over rolling 4-year window (including current year)\n\n")
+            f.write("- Prev_1Yr_*: Draft picks by round 1 year ago\n")
+            f.write("- Prev_2Yr_*: Draft picks by round 2 years ago\n")
+            f.write("- Prev_3Yr_*: Draft picks by round 3 years ago\n")
+            f.write("- Prev_4Yr_Round_1_Picks: Round 1 draft picks 4 years ago only\n\n")
             
             f.write("Round Columns (1-7):\n")
             for round_num in range(1, 8):

@@ -8,8 +8,10 @@ Years per team: 22
 
 Column Categories:
 - Current_*: Draft picks by round in the current year
-- Prev_1Yr_*: Draft picks by round in the previous year
-- Rolling_4Yr_Total_*: Total draft picks by round over rolling 4-year window (including current year)
+- Prev_1Yr_*: Draft picks by round 1 year ago
+- Prev_2Yr_*: Draft picks by round 2 years ago
+- Prev_3Yr_*: Draft picks by round 3 years ago
+- Prev_4Yr_Round_1_Picks: Round 1 draft picks 4 years ago only
 
 Round Columns (1-7):
 - Round 1: Average 1.00 picks per team per year
@@ -20,7 +22,7 @@ Round Columns (1-7):
 - Round 6: Average 1.24 picks per team per year
 - Round 7: Average 1.33 picks per team per year
 
-Total columns in dataset: 23
+Total columns in dataset: 31
 
 Data availability by year:
 - 2003: 32 teams
