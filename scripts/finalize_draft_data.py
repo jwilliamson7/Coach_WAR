@@ -69,25 +69,25 @@ class DraftDataFinalizer:
                     result_row[f'Prev_1Yr_{col}'] = 0
                 result_row['Prev_1Yr_Total_Picks'] = 0
             
-            # Calculate 4-year lookback average (previous 4 years)
-            start_year = current_year - 4
-            end_year = current_year - 1
-            prev_4yr = team_data[
+            # Calculate 4-year rolling total (including current year)
+            start_year = current_year - 3  # Changed from -4 to -3
+            end_year = current_year        # Changed from -1 to current_year
+            rolling_4yr = team_data[
                 (team_data['Draft_Year'] >= start_year) & 
                 (team_data['Draft_Year'] <= end_year)
             ]
             
-            if not prev_4yr.empty:
+            if not rolling_4yr.empty:
                 for col in round_cols:
-                    result_row[f'Prev_4Yr_Avg_{col}'] = prev_4yr[col].mean()
-                result_row['Prev_4Yr_Avg_Total_Picks'] = prev_4yr['Total_Picks'].mean()
-                result_row['Prev_4Yr_Years_Available'] = len(prev_4yr)
+                    result_row[f'Rolling_4Yr_Total_{col}'] = rolling_4yr[col].sum()
+                result_row['Rolling_4Yr_Total_Total_Picks'] = rolling_4yr['Total_Picks'].sum()
+                result_row['Rolling_4Yr_Years_Available'] = len(rolling_4yr)
             else:
-                # No data available for previous 4 years
+                # No data available for 4-year window
                 for col in round_cols:
-                    result_row[f'Prev_4Yr_Avg_{col}'] = 0
-                result_row['Prev_4Yr_Avg_Total_Picks'] = 0
-                result_row['Prev_4Yr_Years_Available'] = 0
+                    result_row[f'Rolling_4Yr_Total_{col}'] = 0
+                result_row['Rolling_4Yr_Total_Total_Picks'] = 0
+                result_row['Rolling_4Yr_Years_Available'] = 0
             
             result_rows.append(result_row)
         
@@ -117,37 +117,8 @@ class DraftDataFinalizer:
     
     def _add_summary_statistics(self, df: pd.DataFrame) -> pd.DataFrame:
         """Add summary statistics to the final dataset"""
-        df_with_stats = df.copy()
-        
-        # Calculate differences between current and historical averages
-        round_nums = [1, 2, 3, 4, 5, 6, 7]
-        
-        for round_num in round_nums:
-            current_col = f'Current_Round_{round_num}_Picks'
-            prev_1yr_col = f'Prev_1Yr_Round_{round_num}_Picks'
-            prev_4yr_col = f'Prev_4Yr_Avg_Round_{round_num}_Picks'
-            
-            if all(col in df_with_stats.columns for col in [current_col, prev_1yr_col, prev_4yr_col]):
-                # Difference from previous year
-                df_with_stats[f'Round_{round_num}_Diff_From_Prev1Yr'] = (
-                    df_with_stats[current_col] - df_with_stats[prev_1yr_col]
-                )
-                
-                # Difference from 4-year average
-                df_with_stats[f'Round_{round_num}_Diff_From_Prev4Yr'] = (
-                    df_with_stats[current_col] - df_with_stats[prev_4yr_col]
-                )
-        
-        # Total picks differences
-        if all(col in df_with_stats.columns for col in ['Current_Total_Picks', 'Prev_1Yr_Total_Picks', 'Prev_4Yr_Avg_Total_Picks']):
-            df_with_stats['Total_Picks_Diff_From_Prev1Yr'] = (
-                df_with_stats['Current_Total_Picks'] - df_with_stats['Prev_1Yr_Total_Picks']
-            )
-            df_with_stats['Total_Picks_Diff_From_Prev4Yr'] = (
-                df_with_stats['Current_Total_Picks'] - df_with_stats['Prev_4Yr_Avg_Total_Picks']
-            )
-        
-        return df_with_stats
+        # No additional statistics needed - return dataframe as-is
+        return df
     
     def _save_final_dataset(self, df: pd.DataFrame, filename: str = "draft_picks_final_2003_2024.csv"):
         """Save the final dataset"""
@@ -179,8 +150,7 @@ class DraftDataFinalizer:
             f.write("Column Categories:\n")
             f.write("- Current_*: Draft picks in the current year\n")
             f.write("- Prev_1Yr_*: Draft picks in the previous year\n")
-            f.write("- Prev_4Yr_Avg_*: Average draft picks over previous 4 years\n")
-            f.write("- *_Diff_From_*: Differences between current and historical averages\n\n")
+            f.write("- Rolling_4Yr_Total_*: Total draft picks over rolling 4-year window (including current year)\n\n")
             
             f.write("Round Columns (1-7):\n")
             for round_num in range(1, 8):
@@ -203,19 +173,24 @@ class DraftDataFinalizer:
         """Main function to create final draft dataset"""
         print(f"Creating final draft dataset for {start_year}-{end_year}")
         
-        # Load comprehensive data
+        # Load comprehensive data (all available years for lookback calculations)
         print("Loading comprehensive draft data...")
-        df = self._load_comprehensive_data()
+        df_all = self._load_comprehensive_data()
         
-        # Filter to specified years
-        print(f"Filtering to years {start_year}-{end_year}...")
-        df_filtered = self._filter_years(df, start_year, end_year)
+        print(f"All data loaded: {len(df_all)} records covering {len(df_all['Draft_Year'].unique())} years ({df_all['Draft_Year'].min()}-{df_all['Draft_Year'].max()})")
         
-        print(f"Data filtered: {len(df_filtered)} records covering {len(df_filtered['Draft_Year'].unique())} years")
+        # Create final dataset with rolling averages using all data
+        print("Calculating rolling averages using all available data...")
+        final_df_all = self._create_final_dataset(df_all)
         
-        # Create final dataset with rolling averages
-        print("Calculating rolling averages...")
-        final_df = self._create_final_dataset(df_filtered)
+        # Filter final results to specified output years
+        print(f"Filtering output to years {start_year}-{end_year}...")
+        final_df = final_df_all[
+            (final_df_all['Draft_Year'] >= start_year) & 
+            (final_df_all['Draft_Year'] <= end_year)
+        ].copy()
+        
+        print(f"Final data: {len(final_df)} records covering {len(final_df['Draft_Year'].unique())} years")
         
         # Add summary statistics
         print("Adding summary statistics...")
@@ -246,8 +221,7 @@ class DraftDataFinalizer:
         
         # Show key columns only for readability
         key_cols = ['Draft_Year', 'Team', 'Current_Total_Picks', 
-                   'Prev_1Yr_Total_Picks', 'Prev_4Yr_Avg_Total_Picks',
-                   'Total_Picks_Diff_From_Prev1Yr', 'Total_Picks_Diff_From_Prev4Yr']
+                   'Prev_1Yr_Total_Picks', 'Rolling_4Yr_Total_Total_Picks']
         
         available_cols = [col for col in key_cols if col in sample.columns]
         print(sample[available_cols].T)
