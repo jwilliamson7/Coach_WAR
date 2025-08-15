@@ -17,11 +17,11 @@ class TeamDataTransformer:
         'RZPct': lambda x: float(x.rstrip('%')) / 100.0 if isinstance(x, str) else x
     }
     
-    def __init__(self, teams_dir: str = "Teams", output_dir: str = "League Data"):
+    def __init__(self, teams_dir: str = "../data/raw/Teams", output_dir: str = "../data/processed/League Data"):
         """Initialize transformer with input and output directories"""
         self.teams_dir = Path(teams_dir)
         self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
         
     def _discover_team_directories(self) -> List[Path]:
         """Find all team directories"""

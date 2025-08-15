@@ -25,10 +25,10 @@ class TeamDataScraper:
         '4DConv', '4D%', 'RZAtt', 'RZTD', 'RZPct'
     ]
     
-    def __init__(self, output_dir: str = "Teams"):
+    def __init__(self, output_dir: str = "../../data/raw/Teams"):
         """Initialize the scraper with output directory"""
         self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
         
     def _create_team_directory(self, team_abbrev: str) -> Path:
         """Create directory for team data"""

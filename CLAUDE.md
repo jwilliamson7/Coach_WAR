@@ -14,6 +14,7 @@ Coach_WAR/
 │   │   ├── Coaches/           # Individual coach data (history, ranks, results)
 │   │   └── Teams/             # Team statistics and records
 │   ├── processed/             # Cleaned and processed data
+│   │   └── League Data/       # Yearly league-wide statistics (1920-2024)
 │   └── final/                 # Final datasets ready for analysis
 ├── crawlers/                  # Web scraping scripts
 │   ├── PFR/                   # Pro Football Reference scrapers
@@ -73,18 +74,36 @@ The project tracks 154+ features across multiple categories:
 - **Features**: Data normalization, type conversion, z-score standardization
 - **Output**: Yearly league datasets with raw and normalized versions
 
+### Processed League Data Structure
+
+The **League Data** directory contains comprehensive yearly statistics from 1920-2024, with each year containing:
+
+- **`league_team_data.csv`**: Raw team performance statistics for all NFL teams
+- **`league_team_data_normalized.csv`**: Z-score normalized team statistics for fair comparison
+- **`league_opponent_data.csv`**: Raw opponent statistics faced by each team
+- **`league_opponent_data_normalized.csv`**: Z-score normalized opponent statistics
+
+Each dataset includes extensive offensive and defensive metrics such as:
+- Scoring and yardage statistics (PF, Yds, offensive plays, Y/P)
+- Turnover metrics (TO, FL+, INT)
+- Efficiency measures (3rd/4th down conversions, red zone performance)
+- Drive statistics (average drive time, plays, yards, points)
+- Penalty data and first down conversions
+
 ### Data Processing Pipeline
 
 1. **Data Collection**: Web scrapers collect raw coach and team data
-2. **Data Cleaning**: Scripts process and standardize data formats
-3. **Feature Engineering**: Extract and calculate coaching performance metrics
-4. **Normalization**: Apply statistical normalization for fair comparison
-5. **Analysis**: Calculate WAR metrics and coaching effectiveness
+2. **Data Transformation**: Team data processed into yearly league-wide datasets
+3. **Data Cleaning**: Scripts process and standardize data formats
+4. **Feature Engineering**: Extract and calculate coaching performance metrics
+5. **Normalization**: Apply statistical normalization (z-scores) for fair comparison across eras
+6. **Analysis**: Calculate WAR metrics and coaching effectiveness
 
 ### Team Franchise Mappings
 The project handles historical team relocations and name changes through comprehensive mappings in `data_constants.py`, ensuring continuity across franchise moves.
 
 ### Current Analysis Parameters
+- **Data Coverage**: 1920-2024 (105 seasons of league data)
 - **Cutoff Year**: 2022
 - **Current Year**: 2025
 - **Expected Features**: 154 total features
