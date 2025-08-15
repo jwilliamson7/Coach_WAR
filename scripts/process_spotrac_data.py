@@ -2,6 +2,10 @@ import pandas as pd
 import sys
 from pathlib import Path
 
+# Add parent directory to path to import constants
+sys.path.append(str(Path(__file__).parent.parent))
+from crawlers.utils.data_constants import SALARY_CAP_MAX_BY_YEAR
+
 # Spotrac to Pro Football Reference team abbreviation mappings
 SPOTRAC_TO_PFR_MAPPINGS = {
     # AFC East
@@ -80,8 +84,33 @@ class SpotracDataProcessor:
                 print(f"Warning: 'Team' column not found in {file_path.name}")
                 return None
             
+            # Extract year from filename
+            year = int(self._extract_year_from_filename(file_path.name))
+            
             # Add PFR team abbreviation column
             df['PFR_Team'] = df['Team'].apply(self._get_pfr_abbreviation)
+            
+            # Convert salary cap data to percentages if max cap is available
+            if year in SALARY_CAP_MAX_BY_YEAR and SALARY_CAP_MAX_BY_YEAR[year] > 0:
+                max_cap = SALARY_CAP_MAX_BY_YEAR[year]
+                
+                # Define salary cap columns to convert to percentages
+                salary_columns = [
+                    'Total CapAllocations', 'Cap SpaceAll', 'Active53-Man', 
+                    'ReservesIR/PUP/NFI/SUSP', 'DeadCap'
+                ]
+                
+                # Convert each salary column to percentage of max cap
+                for col in salary_columns:
+                    if col in df.columns:
+                        # Handle non-numeric values (like '-') by converting to 0
+                        df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+                        # Convert to percentage of max cap
+                        df[f'{col}_Pct'] = (df[col] / max_cap * 100).round(2)
+                
+                print(f"  * Converted salary data to percentages of max cap (${max_cap:,})")
+            else:
+                print(f"  * Warning: Max cap value not set for year {year} - keeping raw values")
             
             # Reorder columns to put PFR_Team right after Team
             cols = df.columns.tolist()

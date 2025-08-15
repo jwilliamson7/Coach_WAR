@@ -324,3 +324,25 @@ def get_output_column_names() -> List[str]:
     
     columns.extend(['Avg 2Y Win Pct', 'Coach Tenure Class'])
     return columns
+
+
+# NFL Salary Cap Maximum Values by Year
+# Use this dictionary to convert salary cap data to percentages of max cap
+SALARY_CAP_MAX_BY_YEAR = {
+    # Format: year: max_salary_cap_amount
+    # TODO: Fill in the actual maximum salary cap values for each year
+    2011: 120375000,  # Enter max cap for 2011
+    2012: 120600000,  # Enter max cap for 2012
+    2013: 123600000,  # Enter max cap for 2013
+    2014: 133000000,  # Enter max cap for 2014
+    2015: 143280000,  # Enter max cap for 2015
+    2016: 155270000,  # Enter max cap for 2016
+    2017: 167000000,  # Enter max cap for 2017
+    2018: 177200000,  # Enter max cap for 2018
+    2019: 188200000,  # Enter max cap for 2019
+    2020: 198200000,  # Enter max cap for 2020
+    2021: 182500000,  # Enter max cap for 2021
+    2022: 208200000,  # Enter max cap for 2022
+    2023: 224800000,  # Enter max cap for 2023
+    2024: 255400000,  # Enter max cap for 2024
+}
