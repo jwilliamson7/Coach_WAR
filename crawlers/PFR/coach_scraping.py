@@ -29,10 +29,10 @@ class CoachDataScraper:
         }
     }
     
-    def __init__(self, output_dir: str = "Coaches"):
+    def __init__(self, output_dir: str = "../../data/raw/Coaches"):
         """Initialize the scraper with output directory"""
         self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
         
     def _create_coach_directory(self, coach_name: str) -> Path:
         """Create directory for coach data"""

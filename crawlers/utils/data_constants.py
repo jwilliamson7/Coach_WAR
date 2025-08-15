@@ -64,6 +64,58 @@ CURRENT_TEAM_ABBREVIATIONS = {
     "Los Angeles Rams": "ram"
 }
 
+# Spotrac to Pro Football Reference team abbreviation mappings
+SPOTRAC_TO_PFR_MAPPINGS = {
+    # AFC East
+    "BUFBUF": "buf",  # Buffalo Bills
+    "MIAMIA": "mia",  # Miami Dolphins  
+    "NENE": "nwe",    # New England Patriots
+    "NYJNYJ": "nyj",  # New York Jets
+    
+    # AFC North
+    "BALBAL": "bal",  # Baltimore Ravens
+    "CINCIN": "cin",  # Cincinnati Bengals
+    "CLECLE": "cle",  # Cleveland Browns
+    "PITPIT": "pit",  # Pittsburgh Steelers
+    
+    # AFC South
+    "HOUHOU": "hou",  # Houston Texans
+    "INDIND": "clt",  # Indianapolis Colts (PFR uses 'clt')
+    "JAXJAX": "jax",  # Jacksonville Jaguars
+    "TENTEN": "ten",  # Tennessee Titans
+    
+    # AFC West
+    "DENDEN": "den",  # Denver Broncos
+    "KCKC": "kan",    # Kansas City Chiefs (PFR uses 'kan')
+    "LACLAC": "lac",  # Los Angeles Chargers
+    "LVLV": "rai",    # Las Vegas Raiders (PFR uses 'rai')
+    "OAKOAK": "rai",  # Oakland Raiders (historical, maps to 'rai')
+    
+    # NFC East
+    "DALDAL": "dal",  # Dallas Cowboys
+    "NYGNYG": "nyg",  # New York Giants
+    "PHIPHI": "phi",  # Philadelphia Eagles
+    "WASWAS": "was",  # Washington (PFR uses 'was')
+    
+    # NFC North
+    "CHICHI": "chi",  # Chicago Bears
+    "DETDET": "det",  # Detroit Lions
+    "GBGB": "gnb",    # Green Bay Packers (PFR uses 'gnb')
+    "MINMIN": "min",  # Minnesota Vikings
+    
+    # NFC South
+    "ATLATL": "atl",  # Atlanta Falcons
+    "CARCAR": "car",  # Carolina Panthers
+    "NONO": "nor",    # New Orleans Saints (PFR uses 'nor')
+    "TBTB": "tam",    # Tampa Bay Buccaneers (PFR uses 'tam')
+    
+    # NFC West
+    "ARIARI": "crd",  # Arizona Cardinals (PFR uses 'crd')
+    "LARLAR": "ram",  # Los Angeles Rams
+    "SFSF": "sfo",    # San Francisco 49ers (PFR uses 'sfo')
+    "SEASEA": "sea"   # Seattle Seahawks
+}
+
 # Core coaching experience features
 CORE_COACHING_FEATURES = [
     "age",
