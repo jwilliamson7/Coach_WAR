@@ -45,7 +45,7 @@ class InjuryDataProcessor:
     
     def find_injury_files(self) -> List[Path]:
         """
-        Find all injury CSV files in the input directory
+        Find all injury CSV files in the input directory and team subfolders
         
         Returns:
             List of Path objects for injury CSV files
@@ -54,9 +54,19 @@ class InjuryDataProcessor:
             self.logger.error(f"Input directory does not exist: {self.input_dir}")
             return []
         
-        # Look for files matching pattern: {team}_{year}_injuries.csv
+        injury_files = []
+        
+        # Look for files in team subfolders: {TEAM}/{team}_{year}_injuries.csv
+        for team_dir in self.input_dir.iterdir():
+            if team_dir.is_dir():
+                pattern = str(team_dir / "*_*_injuries.csv")
+                team_files = [Path(f) for f in glob.glob(pattern)]
+                injury_files.extend(team_files)
+        
+        # Also look for files in root directory (for backward compatibility)
         pattern = str(self.input_dir / "*_*_injuries.csv")
-        injury_files = [Path(f) for f in glob.glob(pattern)]
+        root_files = [Path(f) for f in glob.glob(pattern)]
+        injury_files.extend(root_files)
         
         self.logger.info(f"Found {len(injury_files)} injury files in {self.input_dir}")
         return injury_files
