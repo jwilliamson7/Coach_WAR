@@ -71,8 +71,9 @@ class InjuryDataScraper:
     
     def file_exists(self, team: str, year: int) -> bool:
         """Check if injury data file already exists"""
+        team_dir = self.output_dir / team.upper()
         filename = f"{team}_{year}_injuries.csv"
-        filepath = self.output_dir / filename
+        filepath = team_dir / filename
         return filepath.exists()
     
     def scrape_team_year_injuries(self, team: str, year: int) -> Optional[pd.DataFrame]:
@@ -328,7 +329,7 @@ class InjuryDataScraper:
     
     def save_data(self, data: pd.DataFrame, team: str, year: int) -> bool:
         """
-        Save injury data to CSV file
+        Save injury data to CSV file in team subfolder
         
         Args:
             data: DataFrame to save
@@ -339,8 +340,12 @@ class InjuryDataScraper:
             True if saved successfully, False otherwise
         """
         try:
+            # Create team subdirectory
+            team_dir = self.output_dir / team.upper()
+            team_dir.mkdir(parents=True, exist_ok=True)
+            
             filename = f"{team}_{year}_injuries.csv"
-            filepath = self.output_dir / filename
+            filepath = team_dir / filename
             
             data.to_csv(filepath, index=False)
             self.logger.info(f"Saved injury data to {filepath}")
