@@ -65,14 +65,23 @@ class PositionalPercentageCombiner:
             df: DataFrame with all columns
             
         Returns:
-            DataFrame with only team, year, and percentage columns
+            DataFrame with only team, year, and positional percentage columns
         """
-        # Define columns to keep: PFR_Team, Year, and all percentage columns
+        # Define columns to keep: PFR_Team, Year, and positional percentage columns
         columns_to_keep = ['PFR_Team', 'Year']
         
-        # Add all percentage columns (end with '_Pct')
+        # Define salary cap percentage columns to exclude
+        salary_cap_pct_columns = [
+            'Total CapAllocations_Pct',
+            'Cap SpaceAll_Pct', 
+            'DeadCap_Pct',
+            'Active53-Man_Pct',
+            'ReservesIR/PUP/NFI/SUSP_Pct'
+        ]
+        
+        # Add percentage columns (end with '_Pct') but exclude salary cap percentages
         for col in df.columns:
-            if col.endswith('_Pct'):
+            if col.endswith('_Pct') and col not in salary_cap_pct_columns:
                 columns_to_keep.append(col)
         
         # Filter to only the columns we want
@@ -80,6 +89,7 @@ class PositionalPercentageCombiner:
         df_filtered = df[existing_columns]
         
         self.logger.debug(f"Kept {len(existing_columns)} columns: {existing_columns}")
+        self.logger.debug(f"Excluded salary cap percentage columns: {salary_cap_pct_columns}")
         
         return df_filtered
     
