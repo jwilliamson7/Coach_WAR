@@ -132,35 +132,29 @@ class PositionalPercentageCalculator:
             logger.error(f"Error merging datasets for {year}: {e}")
             return None
     
-    def _calculate_effective_cap(self, merged_df: pd.DataFrame) -> pd.DataFrame:
-        """Calculate effective cap space (total cap - dead cap)"""
+    def _prepare_total_cap(self, merged_df: pd.DataFrame) -> pd.DataFrame:
+        """Prepare total cap allocation data for percentage calculations"""
         try:
             df = merged_df.copy()
             
-            # Look for total cap and dead cap columns
+            # Look for total cap columns
             total_cap_cols = [col for col in df.columns if 'total' in col.lower() and 'cap' in col.lower()]
-            dead_cap_cols = [col for col in df.columns if 'dead' in col.lower()]
             
             logger.info(f"Found total cap columns: {total_cap_cols}")
-            logger.info(f"Found dead cap columns: {dead_cap_cols}")
             
-            # Try to identify the correct columns
+            # Try to identify the correct total cap column
             total_cap_col = None
-            dead_cap_col = None
             
             # Look for common column names
             for col in df.columns:
                 col_lower = col.lower()
-                if col_lower in ['total cap', 'total_cap', 'cap total', 'cap_total']:
+                if col_lower in ['total cap', 'total_cap', 'cap total', 'cap_total', 'total capallocations']:
                     total_cap_col = col
-                elif col_lower in ['dead cap', 'dead_cap', 'dead money', 'dead_money']:
-                    dead_cap_col = col
+                    break
             
-            # If not found, use first matches
+            # If not found, use first match
             if not total_cap_col and total_cap_cols:
                 total_cap_col = total_cap_cols[0]
-            if not dead_cap_col and dead_cap_cols:
-                dead_cap_col = dead_cap_cols[0]
             
             if not total_cap_col:
                 logger.error("Could not find total cap column")
@@ -173,51 +167,42 @@ class PositionalPercentageCalculator:
                 errors='coerce'
             )
             
-            if dead_cap_col:
-                df[dead_cap_col] = pd.to_numeric(
-                    df[dead_cap_col].astype(str).str.replace('$', '').str.replace('M', '').str.replace(',', ''), 
-                    errors='coerce'
-                )
-                # Calculate effective cap
-                df['Effective_Cap'] = df[total_cap_col] - df[dead_cap_col]
-                logger.info(f"Calculated effective cap = {total_cap_col} - {dead_cap_col}")
-            else:
-                # If no dead cap column, use total cap as effective cap
-                df['Effective_Cap'] = df[total_cap_col]
-                logger.warning(f"No dead cap column found, using total cap as effective cap")
+            # Use total cap allocations (which includes dead cap) for percentage calculations
+            df['Total_Cap_For_Calc'] = df[total_cap_col]
+            logger.info(f"Using {total_cap_col} for percentage calculations (includes dead cap)")
             
-            logger.info(f"Effective cap range: ${df['Effective_Cap'].min():.1f}M - ${df['Effective_Cap'].max():.1f}M")
+            logger.info(f"Total cap range: ${df['Total_Cap_For_Calc'].min():.1f}M - ${df['Total_Cap_For_Calc'].max():.1f}M")
             return df
             
         except Exception as e:
-            logger.error(f"Error calculating effective cap: {e}")
+            logger.error(f"Error preparing total cap data: {e}")
             return merged_df
     
     def _calculate_percentages(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Calculate percentage of effective cap for each position"""
+        """Calculate percentage of total cap for each position"""
         try:
             result_df = df.copy()
             
-            # Convert effective cap from dollars to millions for consistent units
-            effective_cap_millions = df['Effective_Cap'] / 1_000_000
+            # Convert total cap from dollars to millions for consistent units
+            total_cap_millions = df['Total_Cap_For_Calc'] / 1_000_000
             
             # Calculate percentages for individual positions (spending is already in millions)
             for pos in self.position_columns:
                 if pos in df.columns:
                     pct_col = f"{pos}_Pct"
-                    result_df[pct_col] = (df[pos] / effective_cap_millions * 100).round(2)
+                    result_df[pct_col] = (df[pos] / total_cap_millions * 100).round(2)
             
             # Calculate percentages for position groups
             for group in self.group_columns:
                 if group in df.columns:
                     pct_col = f"{group}_Pct"
-                    result_df[pct_col] = (df[group] / effective_cap_millions * 100).round(2)
+                    result_df[pct_col] = (df[group] / total_cap_millions * 100).round(2)
             
-            # Calculate total spending percentage (should be close to 100% if cap is well-utilized)
+            # Calculate total spending percentage (should be close to 100% since positional data includes dead cap)
             if 'Total' in df.columns:
-                result_df['Total_Pct'] = (df['Total'] / effective_cap_millions * 100).round(2)
+                result_df['Total_Pct'] = (df['Total'] / total_cap_millions * 100).round(2)
             
-            logger.info("Calculated position percentages with proper unit conversion")
+            logger.info("Calculated position percentages relative to total cap allocations")
             return result_df
             
         except Exception as e:
@@ -231,7 +216,7 @@ class PositionalPercentageCalculator:
             base_cols = ['Team', 'PFR_Team']
             
             # Cap information  
-            cap_cols = [col for col in df.columns if any(term in col.lower() for term in ['cap', 'effective'])]
+            cap_cols = [col for col in df.columns if any(term in col.lower() for term in ['cap', 'total_cap_for_calc'])]
             
             # Position spending (raw values)
             pos_spending_cols = [col for col in df.columns if col in self.position_columns + self.group_columns + ['Total']]
@@ -276,8 +261,8 @@ class PositionalPercentageCalculator:
             if merged_df is None:
                 return False
             
-            # Calculate effective cap
-            df_with_cap = self._calculate_effective_cap(merged_df)
+            # Prepare total cap data
+            df_with_cap = self._prepare_total_cap(merged_df)
             
             # Calculate percentages
             df_with_percentages = self._calculate_percentages(df_with_cap)
@@ -349,7 +334,7 @@ class PositionalPercentageCalculator:
         logger.info(f"Shape: {df.shape}")
         
         # Show key columns for sample teams
-        display_cols = ['PFR_Team', 'Effective_Cap', 'QB_Pct', 'Off_Pct', 'Def_Pct', 'SPT_Pct', 'Total_Pct']
+        display_cols = ['PFR_Team', 'Total_Cap_For_Calc', 'QB_Pct', 'Off_Pct', 'Def_Pct', 'SPT_Pct', 'Total_Pct']
         display_cols = [col for col in display_cols if col in df.columns]
         
         sample = df[display_cols].head(num_teams)
@@ -358,8 +343,8 @@ class PositionalPercentageCalculator:
             logger.info(f"Team {i}: {team_info}")
             for col in display_cols[1:]:  # Skip PFR_Team column
                 if col in row:
-                    if col == 'Effective_Cap':
-                        logger.info(f"  {col}: ${row[col]/1_000_000:.1f}M")
+                    if col == 'Total_Cap_For_Calc':
+                        logger.info(f"  Total_Cap: ${row[col]/1_000_000:.1f}M")
                     else:
                         logger.info(f"  {col}: {row[col]}%")
 
