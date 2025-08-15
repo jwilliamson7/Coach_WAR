@@ -1,10 +1,10 @@
 Draft Picks Final Dataset Summary
 ========================================
 
-Years covered: 2003-2024
-Total records: 704
+Years covered: 2004-2024
+Total records: 672
 Teams: 32
-Years per team: 22
+Years per team: 21
 
 Column Categories:
 - Current_*: Draft picks by round in the current year
@@ -16,16 +16,15 @@ Column Categories:
 Round Columns (1-7):
 - Round 1: Average 1.00 picks per team per year
 - Round 2: Average 0.99 picks per team per year
-- Round 3: Average 1.13 picks per team per year
+- Round 3: Average 1.14 picks per team per year
 - Round 4: Average 1.15 picks per team per year
 - Round 5: Average 1.15 picks per team per year
-- Round 6: Average 1.24 picks per team per year
-- Round 7: Average 1.33 picks per team per year
+- Round 6: Average 1.23 picks per team per year
+- Round 7: Average 1.32 picks per team per year
 
 Total columns in dataset: 31
 
 Data availability by year:
-- 2003: 32 teams
 - 2004: 32 teams
 - 2005: 32 teams
 - 2006: 32 teams
