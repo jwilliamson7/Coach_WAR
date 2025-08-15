@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Roster Turnover Analysis Script
+Roster Turnover Crosstab Analysis Script
 
-This script calculates roster turnover percentages by position for NFL teams by comparing
-player names between consecutive years. It uses roster data scraped from Pro Football Reference.
+This script calculates roster turnover percentages by position for NFL teams and outputs
+them in a crosstab format where each row is one team-year and columns contain all 
+position-specific metrics.
 
 Usage:
-    python scripts/calculate_roster_turnover.py --team den --year 2024  # Compares 2023->2024
-    python scripts/calculate_roster_turnover.py --all-teams --year all --minyear 2015 --maxyear 2024
-    python scripts/calculate_roster_turnover.py --team buf --year all
-    python scripts/calculate_roster_turnover.py --all-teams --year 2024  # All teams for 2024
+    python scripts/calculate_roster_turnover_crosstab.py --team den --year 2024
+    python scripts/calculate_roster_turnover_crosstab.py --all-teams --year all --minyear 2015 --maxyear 2024
+    python scripts/calculate_roster_turnover_crosstab.py --all-teams --year 2024
 """
 
 import pandas as pd
@@ -29,10 +29,10 @@ from crawlers.utils.data_constants import SPOTRAC_TO_PFR_MAPPINGS
 # Create PFR team abbreviations list from the corrected mappings
 PFR_TEAM_ABBREVIATIONS = list(set(SPOTRAC_TO_PFR_MAPPINGS.values()))
 
-class RosterTurnoverAnalyzer:
-    """Analyzes roster turnover by comparing consecutive years"""
+class RosterTurnoverCrosstabAnalyzer:
+    """Analyzes roster turnover in crosstab format"""
     
-    def __init__(self, roster_dir: str = "data/raw/Rosters", output_dir: str = "data/processed/RosterTurnover"):
+    def __init__(self, roster_dir: str = "data/raw/Rosters", output_dir: str = "data/final"):
         """
         Initialize the analyzer
         
@@ -44,12 +44,6 @@ class RosterTurnoverAnalyzer:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
-        # Create subfolders for different types of output
-        self.detailed_dir = self.output_dir / "detailed"
-        self.summary_dir = self.output_dir / "summary"
-        self.detailed_dir.mkdir(parents=True, exist_ok=True)
-        self.summary_dir.mkdir(parents=True, exist_ok=True)
-        
         # Set up logging
         logging.basicConfig(
             level=logging.INFO,
@@ -57,7 +51,7 @@ class RosterTurnoverAnalyzer:
         )
         self.logger = logging.getLogger(__name__)
         
-        # Position groupings for analysis
+        # Position groupings for analysis (ordered to match salary data: QB, RB, WR, TE, OL, DL, LB, CB, S)
         self.position_groups = {
             'QB': ['QB'],
             'RB': ['RB', 'FB'],
@@ -66,9 +60,22 @@ class RosterTurnoverAnalyzer:
             'OL': ['C', 'G', 'T', 'OL', 'OG', 'OT'],
             'DL': ['DE', 'DT', 'NT', 'DL'],
             'LB': ['LB', 'ILB', 'OLB', 'MLB'],
-            'DB': ['CB', 'S', 'SS', 'FS', 'DB', 'SAF'],
-            'ST': ['K', 'P', 'LS']
+            'CB': ['CB', 'DB'],
+            'S': ['S', 'SS', 'FS', 'SAF']
         }
+        
+        # All metrics we'll calculate for each position
+        self.metrics = [
+            'Players_Year1',
+            'Players_Year2', 
+            'Players_Retained',
+            'Players_Departed',
+            'Players_New',
+            'Retention_Rate_Pct',
+            'Departure_Rate_Pct',
+            'New_Player_Rate_Pct',
+            'Net_Change'
+        ]
     
     def normalize_position(self, position: str) -> str:
         """
@@ -153,7 +160,7 @@ class RosterTurnoverAnalyzer:
             return None
     
     def calculate_position_turnover(self, roster_year1: pd.DataFrame, roster_year2: pd.DataFrame, 
-                                  team: str, year1: int, year2: int) -> pd.DataFrame:
+                                  team: str, year1: int, year2: int) -> Dict[str, Dict[str, float]]:
         """
         Calculate turnover by position between two consecutive years
         
@@ -165,9 +172,9 @@ class RosterTurnoverAnalyzer:
             year2: Second year (year1 + 1)
             
         Returns:
-            DataFrame with turnover statistics by position
+            Dictionary with position as key and metrics as nested dict
         """
-        turnover_results = []
+        turnover_results = {}
         
         # Get all position groups that appear in either year
         positions_year1 = set(roster_year1['Position_Group'].dropna())
@@ -200,11 +207,7 @@ class RosterTurnoverAnalyzer:
             else:
                 new_player_rate = 0
             
-            turnover_results.append({
-                'Team': team.upper(),
-                'Year_From': year1,
-                'Year_To': year2,
-                'Position_Group': position,
+            turnover_results[position] = {
                 'Players_Year1': total_year1,
                 'Players_Year2': total_year2,
                 'Players_Retained': len(retained_players),
@@ -214,22 +217,63 @@ class RosterTurnoverAnalyzer:
                 'Departure_Rate_Pct': round(departure_rate, 2),
                 'New_Player_Rate_Pct': round(new_player_rate, 2),
                 'Net_Change': total_year2 - total_year1
-            })
+            }
         
-        return pd.DataFrame(turnover_results)
+        return turnover_results
     
-    def calculate_team_turnover(self, team: str, years: List[int]) -> pd.DataFrame:
+    def create_crosstab_row(self, team: str, year1: int, year2: int, 
+                           position_data: Dict[str, Dict[str, float]]) -> Dict[str, any]:
         """
-        Calculate turnover for a team across multiple years
+        Create a single row for the crosstab format
+        
+        Args:
+            team: Team abbreviation
+            year1: First year
+            year2: Second year (comparison year)
+            position_data: Position turnover data
+            
+        Returns:
+            Dictionary representing one row of crosstab data
+        """
+        row = {
+            'Team': team.upper(),
+            'Year_From': year1,
+            'Year_To': year2,
+            'Analysis_Date': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        }
+        
+        # Position order to match salary data: QB, RB, WR, TE, OL, DL, LB, CB, S
+        position_order = ['QB', 'RB', 'WR', 'TE', 'OL', 'DL', 'LB', 'CB', 'S']
+        
+        # Add columns for each position and metric combination
+        for position in position_order:
+            for metric in self.metrics:
+                column_name = f"{position}_{metric}"
+                
+                if position in position_data:
+                    row[column_name] = position_data[position][metric]
+                else:
+                    # Fill missing positions with appropriate defaults
+                    if metric in ['Players_Year1', 'Players_Year2', 'Players_Retained', 
+                                'Players_Departed', 'Players_New', 'Net_Change']:
+                        row[column_name] = 0
+                    else:  # Percentage metrics
+                        row[column_name] = 0.0
+        
+        return row
+    
+    def calculate_team_turnover_crosstab(self, team: str, years: List[int]) -> List[Dict]:
+        """
+        Calculate turnover for a team across multiple years in crosstab format
         
         Args:
             team: Team abbreviation
             years: List of years to analyze
             
         Returns:
-            DataFrame with all turnover comparisons for the team
+            List of dictionaries, each representing a team-year row
         """
-        all_turnover_data = []
+        crosstab_rows = []
         
         # Sort years to ensure consecutive comparisons
         years = sorted(years)
@@ -247,96 +291,96 @@ class RosterTurnoverAnalyzer:
                 continue
             
             # Calculate turnover
-            turnover_df = self.calculate_position_turnover(roster1, roster2, team, year1, year2)
+            position_data = self.calculate_position_turnover(roster1, roster2, team, year1, year2)
             
-            if not turnover_df.empty:
-                all_turnover_data.append(turnover_df)
-                self.logger.info(f"Calculated turnover for {team} {year1}-{year2}: "
-                               f"{len(turnover_df)} position groups")
+            # Create crosstab row
+            crosstab_row = self.create_crosstab_row(team, year1, year2, position_data)
+            crosstab_rows.append(crosstab_row)
+            
+            self.logger.info(f"Calculated turnover for {team} {year1}-{year2}: "
+                           f"{len(position_data)} position groups")
         
-        if all_turnover_data:
-            combined_df = pd.concat(all_turnover_data, ignore_index=True)
-            combined_df['Analysis_Date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            return combined_df
-        else:
-            return pd.DataFrame()
+        return crosstab_rows
     
-    def generate_team_summary(self, turnover_df: pd.DataFrame) -> pd.DataFrame:
+    def get_column_order(self) -> List[str]:
         """
-        Generate summary statistics for team turnover
+        Get the proper column order for the crosstab output (matching salary data order)
         
-        Args:
-            turnover_df: DataFrame with detailed turnover data
-            
         Returns:
-            DataFrame with summary statistics
+            List of column names in desired order
         """
-        if turnover_df.empty:
-            return pd.DataFrame()
+        columns = ['Team', 'Year_From', 'Year_To']
         
-        # Calculate averages by team and position
-        summary = turnover_df.groupby(['Team', 'Position_Group']).agg({
-            'Year_From': ['min', 'max', 'count'],
-            'Players_Year1': 'mean',
-            'Players_Year2': 'mean', 
-            'Retention_Rate_Pct': 'mean',
-            'Departure_Rate_Pct': 'mean',
-            'New_Player_Rate_Pct': 'mean',
-            'Net_Change': 'mean'
-        }).round(2)
+        # Position order to match salary data: QB, RB, WR, TE, OL, DL, LB, CB, S
+        position_order = ['QB', 'RB', 'WR', 'TE', 'OL', 'DL', 'LB', 'CB', 'S']
         
-        # Flatten column names
-        summary.columns = ['_'.join(col).strip() for col in summary.columns]
-        summary = summary.rename(columns={
-            'Year_From_min': 'First_Year',
-            'Year_From_max': 'Last_Year',
-            'Year_From_count': 'Years_Analyzed',
-            'Players_Year1_mean': 'Avg_Players_Year1',
-            'Players_Year2_mean': 'Avg_Players_Year2',
-            'Retention_Rate_Pct_mean': 'Avg_Retention_Rate_Pct',
-            'Departure_Rate_Pct_mean': 'Avg_Departure_Rate_Pct',
-            'New_Player_Rate_Pct_mean': 'Avg_New_Player_Rate_Pct',
-            'Net_Change_mean': 'Avg_Net_Change'
-        })
+        # Add position-metric columns in salary data order
+        for position in position_order:
+            for metric in self.metrics:
+                columns.append(f"{position}_{metric}")
         
-        summary = summary.reset_index()
-        return summary
+        columns.append('Analysis_Date')
+        return columns
     
-    def save_turnover_data(self, turnover_df: pd.DataFrame, summary_df: pd.DataFrame, 
-                          team: str) -> bool:
+    def save_crosstab_data(self, crosstab_data: List[Dict], teams: List[str]) -> bool:
         """
-        Save turnover analysis results to separate subfolders
+        Save crosstab turnover analysis results
         
         Args:
-            turnover_df: Detailed turnover DataFrame
-            summary_df: Summary statistics DataFrame
-            team: Team abbreviation
+            crosstab_data: List of crosstab row dictionaries
+            teams: List of teams processed
             
         Returns:
             True if saved successfully, False otherwise
         """
         try:
-            if not turnover_df.empty:
-                # Save detailed turnover data to detailed subfolder
-                detail_file = self.detailed_dir / f"{team}_roster_turnover_detailed.csv"
-                turnover_df.to_csv(detail_file, index=False)
-                self.logger.info(f"Saved detailed turnover data to {detail_file}")
+            if not crosstab_data:
+                self.logger.warning("No crosstab data to save")
+                return False
             
-            if not summary_df.empty:
-                # Save summary data to summary subfolder
-                summary_file = self.summary_dir / f"{team}_roster_turnover_summary.csv"
-                summary_df.to_csv(summary_file, index=False)
-                self.logger.info(f"Saved turnover summary to {summary_file}")
+            # Convert to DataFrame
+            df = pd.DataFrame(crosstab_data)
+            
+            # Reorder columns for better organization
+            column_order = self.get_column_order()
+            # Only include columns that actually exist in the data
+            existing_columns = [col for col in column_order if col in df.columns]
+            df = df[existing_columns]
+            
+            # Sort by team and year
+            df = df.sort_values(['Team', 'Year_From'], ignore_index=True)
+            
+            # Save main crosstab file
+            output_file = self.output_dir / "roster_turnover_crosstab.csv"
+            df.to_csv(output_file, index=False)
+            self.logger.info(f"Saved crosstab turnover data to {output_file}")
+            
+            # Save metadata
+            metadata = {
+                'Creation_Date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'Teams_Processed': len(teams),
+                'Team_List': ', '.join(sorted(teams)),
+                'Total_Rows': len(df),
+                'Year_Range': f"{df['Year_From'].min()}-{df['Year_To'].max()}" if not df.empty else "N/A",
+                'Position_Groups': ', '.join(sorted(self.position_groups.keys())),
+                'Metrics_Per_Position': len(self.metrics),
+                'Total_Columns': len(df.columns)
+            }
+            
+            metadata_df = pd.DataFrame([metadata])
+            metadata_file = self.output_dir / "roster_turnover_crosstab_metadata.csv"
+            metadata_df.to_csv(metadata_file, index=False)
+            self.logger.info(f"Saved crosstab metadata to {metadata_file}")
             
             return True
             
         except Exception as e:
-            self.logger.error(f"Error saving turnover data for {team}: {e}")
+            self.logger.error(f"Error saving crosstab data: {e}")
             return False
     
-    def analyze_roster_turnover(self, teams: List[str], years: List[int]) -> Dict[str, int]:
+    def analyze_roster_turnover_crosstab(self, teams: List[str], years: List[int]) -> Dict[str, int]:
         """
-        Analyze roster turnover for specified teams and years
+        Analyze roster turnover for specified teams and years in crosstab format
         
         Args:
             teams: List of team abbreviations
@@ -346,41 +390,48 @@ class RosterTurnoverAnalyzer:
             Dictionary with analysis results
         """
         results = {'success': 0, 'failed': 0, 'no_data': 0}
+        all_crosstab_data = []
+        successful_teams = []
         
         for team in teams:
             self.logger.info(f"Analyzing roster turnover for {team}")
             
             try:
-                # Calculate turnover
-                turnover_df = self.calculate_team_turnover(team, years)
+                # Calculate turnover crosstab
+                team_crosstab_data = self.calculate_team_turnover_crosstab(team, years)
                 
-                if turnover_df.empty:
+                if not team_crosstab_data:
                     self.logger.warning(f"No turnover data calculated for {team}")
                     results['no_data'] += 1
                     continue
                 
-                # Generate summary
-                summary_df = self.generate_team_summary(turnover_df)
+                all_crosstab_data.extend(team_crosstab_data)
+                successful_teams.append(team)
+                results['success'] += 1
                 
-                # Save results
-                if self.save_turnover_data(turnover_df, summary_df, team):
-                    results['success'] += 1
-                    self.logger.info(f"Successfully analyzed {team}: "
-                                   f"{len(turnover_df)} year-to-year comparisons")
-                else:
-                    results['failed'] += 1
+                self.logger.info(f"Successfully analyzed {team}: "
+                               f"{len(team_crosstab_data)} year-to-year comparisons")
                     
             except Exception as e:
                 self.logger.error(f"Error analyzing {team}: {e}")
                 results['failed'] += 1
         
+        # Save all crosstab data
+        if all_crosstab_data:
+            if self.save_crosstab_data(all_crosstab_data, successful_teams):
+                self.logger.info(f"Saved crosstab data for {len(successful_teams)} teams, "
+                               f"{len(all_crosstab_data)} total comparisons")
+            else:
+                results['failed'] += len(successful_teams)
+                results['success'] = 0
+        
         return results
 
 
 def main():
-    """Main function to run roster turnover analysis"""
+    """Main function to run roster turnover crosstab analysis"""
     parser = argparse.ArgumentParser(
-        description='Analyze NFL roster turnover by position'
+        description='Analyze NFL roster turnover by position in crosstab format'
     )
     parser.add_argument(
         '--team',
@@ -418,14 +469,14 @@ def main():
     parser.add_argument(
         '--output-dir',
         type=str,
-        default='data/processed/RosterTurnover',
-        help='Output directory for turnover analysis (default: data/processed/RosterTurnover)'
+        default='data/final',
+        help='Output directory for crosstab analysis (default: data/final)'
     )
     
     args = parser.parse_args()
     
     # Initialize analyzer
-    analyzer = RosterTurnoverAnalyzer(
+    analyzer = RosterTurnoverCrosstabAnalyzer(
         roster_dir=args.roster_dir,
         output_dir=args.output_dir
     )
@@ -458,17 +509,17 @@ def main():
         years = list(range(args.minyear, args.maxyear + 1))
     
     # Run analysis
-    print(f"Starting roster turnover analysis for {len(teams)} team(s)")
+    print(f"Starting roster turnover crosstab analysis for {len(teams)} team(s)")
     print(f"Teams: {', '.join(teams)}")
     print(f"Years: {years[0]}-{years[-1]}" if len(years) > 1 else f"Year: {years[0]}")
     print(f"Roster directory: {args.roster_dir}")
     print(f"Output directory: {args.output_dir}")
     print()
     
-    results = analyzer.analyze_roster_turnover(teams=teams, years=years)
+    results = analyzer.analyze_roster_turnover_crosstab(teams=teams, years=years)
     
     # Print results
-    print("\nRoster turnover analysis completed!")
+    print("\nRoster turnover crosstab analysis completed!")
     print(f"Successful: {results['success']}")
     print(f"Failed: {results['failed']}")
     print(f"No data: {results['no_data']}")
@@ -476,9 +527,18 @@ def main():
     
     if results['success'] > 0:
         print(f"\nResults saved to: {args.output_dir}")
-        print("Generated files per team:")
-        print("  - detailed/{team}_roster_turnover_detailed.csv (year-to-year comparisons)")
-        print("  - summary/{team}_roster_turnover_summary.csv (position averages)")
+        print("Generated files:")
+        print("  - roster_turnover_crosstab.csv (main crosstab dataset)")
+        print("  - roster_turnover_crosstab_metadata.csv (processing metadata)")
+        
+        # Show column structure  
+        position_order = ['QB', 'RB', 'WR', 'TE', 'OL', 'DL', 'LB', 'CB', 'S']
+        metrics = analyzer.metrics
+        print(f"\nCrosstab structure:")
+        print(f"  - Base columns: Team, Year_From, Year_To")
+        print(f"  - Position groups (salary data order): {', '.join(position_order)}")
+        print(f"  - Metrics per position: {', '.join(metrics)}")
+        print(f"  - Total position columns: {len(position_order) * len(metrics)}")
 
 
 if __name__ == "__main__":
