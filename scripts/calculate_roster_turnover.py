@@ -6,9 +6,10 @@ This script calculates roster turnover percentages by position for NFL teams by 
 player names between consecutive years. It uses roster data scraped from Pro Football Reference.
 
 Usage:
-    python scripts/calculate_roster_turnover.py --team den --year 2024
-    python scripts/calculate_roster_turnover.py --team all --minyear 2015 --maxyear 2024
+    python scripts/calculate_roster_turnover.py --team den --year 2024  # Compares 2023->2024
+    python scripts/calculate_roster_turnover.py --all-teams --year all --minyear 2015 --maxyear 2024
     python scripts/calculate_roster_turnover.py --team buf --year all
+    python scripts/calculate_roster_turnover.py --all-teams --year 2024  # All teams for 2024
 """
 
 import pandas as pd
@@ -25,7 +26,7 @@ import glob
 sys.path.append(str(Path(__file__).parent.parent))
 from crawlers.utils.data_constants import SPOTRAC_TO_PFR_MAPPINGS
 
-# Create PFR team abbreviations list from the mappings
+# Create PFR team abbreviations list from the corrected mappings
 PFR_TEAM_ABBREVIATIONS = list(set(SPOTRAC_TO_PFR_MAPPINGS.values()))
 
 class RosterTurnoverAnalyzer:
@@ -42,6 +43,12 @@ class RosterTurnoverAnalyzer:
         self.roster_dir = Path(roster_dir)
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create subfolders for different types of output
+        self.detailed_dir = self.output_dir / "detailed"
+        self.summary_dir = self.output_dir / "summary"
+        self.detailed_dir.mkdir(parents=True, exist_ok=True)
+        self.summary_dir.mkdir(parents=True, exist_ok=True)
         
         # Set up logging
         logging.basicConfig(
@@ -102,8 +109,9 @@ class RosterTurnoverAnalyzer:
         Returns:
             DataFrame with roster data or None if file doesn't exist
         """
-        # Look for roster file pattern: {team}_{year}_roster.csv
-        roster_file = self.roster_dir / f"{team}_{year}_roster.csv"
+        # Look for roster file pattern: {TEAM}/{team}_{year}_roster.csv
+        team_upper = team.upper()
+        roster_file = self.roster_dir / team_upper / f"{team}_{year}_roster.csv"
         
         if not roster_file.exists():
             self.logger.debug(f"Roster file not found: {roster_file}")
@@ -297,7 +305,7 @@ class RosterTurnoverAnalyzer:
     def save_turnover_data(self, turnover_df: pd.DataFrame, summary_df: pd.DataFrame, 
                           team: str) -> bool:
         """
-        Save turnover analysis results
+        Save turnover analysis results to separate subfolders
         
         Args:
             turnover_df: Detailed turnover DataFrame
@@ -309,14 +317,14 @@ class RosterTurnoverAnalyzer:
         """
         try:
             if not turnover_df.empty:
-                # Save detailed turnover data
-                detail_file = self.output_dir / f"{team}_roster_turnover_detailed.csv"
+                # Save detailed turnover data to detailed subfolder
+                detail_file = self.detailed_dir / f"{team}_roster_turnover_detailed.csv"
                 turnover_df.to_csv(detail_file, index=False)
                 self.logger.info(f"Saved detailed turnover data to {detail_file}")
             
             if not summary_df.empty:
-                # Save summary data
-                summary_file = self.output_dir / f"{team}_roster_turnover_summary.csv"
+                # Save summary data to summary subfolder
+                summary_file = self.summary_dir / f"{team}_roster_turnover_summary.csv"
                 summary_df.to_csv(summary_file, index=False)
                 self.logger.info(f"Saved turnover summary to {summary_file}")
             
@@ -377,19 +385,23 @@ def main():
     parser.add_argument(
         '--team',
         type=str,
-        required=True,
-        help='Team abbreviation (e.g., "den") or "all" for all teams'
+        help='Team abbreviation (e.g., "den")'
+    )
+    parser.add_argument(
+        '--all-teams',
+        action='store_true',
+        help='Process all available teams'
     )
     parser.add_argument(
         '--year',
         type=str,
-        help='Specific year to analyze (compares to year+1) or "all" for all available years'
+        help='Specific end year to analyze (compares year-1 to year) or "all" for all available years'
     )
     parser.add_argument(
         '--minyear',
         type=int,
-        default=2010,
-        help='Minimum year when using --year all (default: 2010)'
+        default=2011,
+        help='Minimum year when using --year all (default: 2011)'
     )
     parser.add_argument(
         '--maxyear',
@@ -419,24 +431,28 @@ def main():
     )
     
     # Determine teams to analyze
-    if args.team.lower() == 'all':
+    if args.all_teams:
         teams = PFR_TEAM_ABBREVIATIONS
-    else:
+    elif args.team:
         if args.team.lower() not in PFR_TEAM_ABBREVIATIONS:
             print(f"Error: Unknown team abbreviation '{args.team}'")
             print(f"Available teams: {', '.join(sorted(PFR_TEAM_ABBREVIATIONS))}")
             sys.exit(1)
         teams = [args.team.lower()]
+    else:
+        print("Error: Must specify either --team or --all-teams")
+        print(f"Available teams: {', '.join(sorted(PFR_TEAM_ABBREVIATIONS))}")
+        sys.exit(1)
     
     # Determine years to analyze
     if args.year and args.year.lower() != 'all':
         try:
             year = int(args.year)
-            if year < 1990 or year > 2030:
-                raise ValueError("Year out of reasonable range")
-            years = [year, year + 1]  # Compare to next year
+            if year < 2011 or year > 2030:  # Need at least 2011 to compare to 2010
+                raise ValueError("Year out of reasonable range (minimum 2011)")
+            years = [year - 1, year]  # Compare previous year to specified year
         except ValueError:
-            print(f"Error: Invalid year '{args.year}'. Must be a valid year or 'all'")
+            print(f"Error: Invalid year '{args.year}'. Must be a valid year (2011+) or 'all'")
             sys.exit(1)
     else:
         years = list(range(args.minyear, args.maxyear + 1))
@@ -459,10 +475,10 @@ def main():
     print(f"Total teams processed: {sum(results.values())}")
     
     if results['success'] > 0:
-        print(f"\n📁 Results saved to: {args.output_dir}")
+        print(f"\nResults saved to: {args.output_dir}")
         print("Generated files per team:")
-        print("  - {team}_roster_turnover_detailed.csv (year-to-year comparisons)")
-        print("  - {team}_roster_turnover_summary.csv (position averages)")
+        print("  - detailed/{team}_roster_turnover_detailed.csv (year-to-year comparisons)")
+        print("  - summary/{team}_roster_turnover_summary.csv (position averages)")
 
 
 if __name__ == "__main__":
