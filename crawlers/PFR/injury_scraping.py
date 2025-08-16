@@ -85,13 +85,19 @@ class InjuryDataScraper:
             year: Season year
             
         Returns:
-            DataFrame with injury data or None if scraping failed
+            DataFrame with injury data, None if scraping failed, or 'SKIP_TEAM' if should skip team
         """
         url = f"https://www.pro-football-reference.com/teams/{team}/{year}_injuries.htm"
         
         try:
             self.logger.info(f"Scraping {team} {year} injury data from {url}")
             response = self.session.get(url, timeout=30)
+            
+            # Handle 404/403 errors - skip to next team
+            if response.status_code in [404, 403]:
+                self.logger.warning(f"Got {response.status_code} error for {team} {year} - skipping team")
+                return 'SKIP_TEAM'
+            
             response.raise_for_status()
             
             soup = BeautifulSoup(response.content, 'html.parser')
@@ -127,6 +133,11 @@ class InjuryDataScraper:
                 return None
                 
         except requests.RequestException as e:
+            # Check if it's a 404/403 specifically
+            if hasattr(e, 'response') and e.response is not None:
+                if e.response.status_code in [404, 403]:
+                    self.logger.warning(f"Got {e.response.status_code} error for {team} {year} - skipping team")
+                    return 'SKIP_TEAM'
             self.logger.error(f"Request failed for {team} {year}: {e}")
             return None
         except Exception as e:
@@ -361,7 +372,7 @@ class InjuryDataScraper:
         
         Args:
             teams: List of team abbreviations
-            years: List of years
+            years: List of years (will be processed in reverse order)
             skip_existing: Whether to skip existing files
             
         Returns:
@@ -374,7 +385,8 @@ class InjuryDataScraper:
         actual_requests = 0  # Track actual web requests for rate limiting
         
         for team in teams:
-            for year in years:
+            # Process years in reverse order (count down from end-year)
+            for year in reversed(years):
                 current += 1
                 self.logger.info(f"Processing {team} {year} ({current}/{total_combinations})")
                 
@@ -392,6 +404,12 @@ class InjuryDataScraper:
                 
                 # Scrape data
                 data = self.scrape_team_year_injuries(team, year)
+                
+                # Handle SKIP_TEAM signal - move to next team
+                if data == 'SKIP_TEAM':
+                    self.logger.warning(f"Skipping remaining years for team {team} due to access error")
+                    results['failed'] += len([y for y in years if not (skip_existing and self.file_exists(team, y))])
+                    break  # Exit year loop for this team
                 
                 if data is not None and not data.empty:
                     if self.save_data(data, team, year):

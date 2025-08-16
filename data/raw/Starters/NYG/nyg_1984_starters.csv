@@ -1,0 +1,23 @@
+Team,Year,Pos,Player,Age,Yrs,GS,Summary of Player Stats,Drafted (tm/rnd/yr),Table_Type
+NYG,1984,QB,Phil Simms,29,5,16,"286 for 533, 4,044 yards, 22 td, 18 int, & 42 rushes for 162 yards and 0 td",,Starters_1
+NYG,1984,RB,Joe Morris,24,2,8,"133 rushes for 510 yards, 4 td, & 12 catches for 124 yards and 0 td",,Starters_1
+NYG,1984,FB,Rob Carpenter,29,7,16,"250 rushes for 795 yards, 7 td, & 26 catches for 209 yards and 1 td",,Starters_1
+NYG,1984,WR,Earnest Gray,27,5,11,"38 catches for 529 yards, 2 td",,Starters_1
+NYG,1984,WR,Bobby Johnson,23,Rook,16,"48 catches for 795 yards, 7 td",,Starters_1
+NYG,1984,TE,Zeke Mowatt,23,1,16,"48 catches for 698 yards, 6 td",,Starters_1
+NYG,1984,LT,William Roberts,22,Rook,8,1 fumble recovered,,Starters_1
+NYG,1984,LG,Billy Ard,25,3,15,,,Starters_1
+NYG,1984,C,Kevin Belcher,23,1,16,,,Starters_1
+NYG,1984,RG,Brad Benson,29,6,16,,,Starters_1
+NYG,1984,RT,Karl Nelson,24,Rook,16,,,Starters_1
+NYG,1984,LDE,Curtis McGriff,26,4,14,,,Starters_1
+NYG,1984,NT,Jim Burt,25,3,15,"7.0 sacks, 0 interceptions, 2 fumbles recovered",,Starters_1
+NYG,1984,RDE,Leonard Marshall,23,1,11,"6.5 sacks, 0 interceptions, 0 fumbles recovered",,Starters_1
+NYG,1984,LOLB,Byron Hunt,26,3,6,"1.0 sacks, 1 interception, 2 fumbles recovered",,Starters_1
+NYG,1984,LILB,Gary Reasons,22,Rook,11,"1.0 sacks, 2 interceptions, 3 fumbles recovered",,Starters_1
+NYG,1984,RILB,Harry Carson*,31,8,16,"0.0 sacks, 1 interception, 1 fumble recovered",,Starters_1
+NYG,1984,ROLB,Lawrence Taylor*+,25,3,16,"11.5 sacks, 1 interception, 0 fumbles recovered",,Starters_1
+NYG,1984,LCB,Mark Haynes*+,26,4,15,"0.0 sacks, 7 interceptions, 2 fumbles recovered",,Starters_1
+NYG,1984,RCB,Perry Williams,23,Rook,16,"0.0 sacks, 3 interceptions, 1 fumble recovered",,Starters_1
+NYG,1984,SS,Bill Currier,29,7,8,"0.0 sacks, 1 interception, 0 fumbles recovered",,Starters_1
+NYG,1984,FS,Terry Kinard,25,1,15,"0.0 sacks, 2 interceptions, 1 fumble recovered",,Starters_1
