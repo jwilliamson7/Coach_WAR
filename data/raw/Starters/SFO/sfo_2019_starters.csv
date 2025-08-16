@@ -1,0 +1,23 @@
+Pos,Player,Age,Yrs,GS,Summary of Player Stats,Drafted (tm/rnd/yr),Table_Type,Team,Year,Scraped_Date
+QB,Jimmy Garoppolo,28,5,16,"329 for 476, 3,978 yards, 27 td, 13 int, & 46 rushes for 62 yards and 1 td",,Starters_1,SFO,2019,2025-08-15 19:45:35
+RB,Tevin Coleman,26,4,11,"137 rushes for 544 yards, 6 td, & 21 catches for 180 yards and 1 td",,Starters_1,SFO,2019,2025-08-15 19:45:35
+FB,Kyle Juszczyk*,28,6,12,"3 rushes for 7 yards, 0 td, & 20 catches for 239 yards and 1 td",,Starters_1,SFO,2019,2025-08-15 19:45:35
+WR,Deebo Samuel,23,Rook,11,"57 catches for 802 yards, 3 td, & 14 rushes for 159 yards and 3 td",,Starters_1,SFO,2019,2025-08-15 19:45:35
+WR,Emmanuel Sanders,32,9,9,"36 catches for 502 yards, 3 td",,Starters_1,SFO,2019,2025-08-15 19:45:35
+TE,George Kittle*+,26,2,14,"85 catches for 1,053 yards, 5 td, & 5 rushes for 22 yards and 0 td",,Starters_1,SFO,2019,2025-08-15 19:45:35
+LT,Justin Skule,23,Rook,8,,,Starters_1,SFO,2019,2025-08-15 19:45:35
+LG,Laken Tomlinson,27,4,16,,,Starters_1,SFO,2019,2025-08-15 19:45:35
+C,Weston Richburg,28,5,13,,,Starters_1,SFO,2019,2025-08-15 19:45:35
+RG,Michael Person,31,6,14,,,Starters_1,SFO,2019,2025-08-15 19:45:35
+RT,Mike McGlinchey,25,1,12,,,Starters_1,SFO,2019,2025-08-15 19:45:35
+LDE,Nick Bosa*,22,Rook,14,"9.0 sacks, 1 interception, 2 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+LDT,D.J. Jones,24,2,11,"2.0 sacks, 0 interceptions, 0 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+RDT,DeForest Buckner,25,3,16,"7.5 sacks, 0 interceptions, 4 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+RDE,Arik Armstead,26,4,16,"10.0 sacks, 0 interceptions, 1 fumble recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+LLB,Kwon Alexander,25,4,8,"0.5 sacks, 1 interception, 0 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+MLB,Fred Warner,23,1,16,"3.0 sacks, 1 interception, 0 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+RLB,Dre Greenlaw,22,Rook,11,"1.0 sacks, 1 interception, 0 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+LCB,Richard Sherman*,31,8,15,"0.0 sacks, 3 interceptions, 0 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+RCB,Emmanuel Moseley,23,1,9,"0.0 sacks, 1 interception, 0 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+SS,Jaquiski Tartt,27,4,12,"0.5 sacks, 0 interceptions, 2 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
+FS,Jimmie Ward,28,5,13,"1.0 sacks, 0 interceptions, 0 fumbles recovered",,Starters_1,SFO,2019,2025-08-15 19:45:35
