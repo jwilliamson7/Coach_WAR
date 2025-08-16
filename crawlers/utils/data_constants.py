@@ -345,3 +345,19 @@ SALARY_CAP_MAX_BY_YEAR = {
     2023: 224800000,  # Enter max cap for 2023
     2024: 255400000,  # Enter max cap for 2024
 }
+
+
+def get_games_in_season(year: int) -> int:
+    """
+    Get the number of regular season games for a given NFL season year.
+    
+    Args:
+        year: The NFL season year
+        
+    Returns:
+        Number of regular season games (16 for 2022 and earlier, 17 for 2023 and later)
+    """
+    if year >= 2023:
+        return 17
+    else:
+        return 16
