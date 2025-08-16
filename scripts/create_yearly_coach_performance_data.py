@@ -103,8 +103,8 @@ class YearlyCoachPerformanceProcessor:
         if any(keyword in role.upper() for keyword in ['INTERIM', 'TEMP', 'ACTING']):
             return "None"
         
-        # Head Coach
-        if "Head Coach" in role and "Assistant" not in role:
+        # Head Coach (only if it's actual head coach, not assistant head coach)
+        if "Head Coach" in role and "Assistant" not in role and "Asst." not in role:
             return "HC"
         
         # Coordinators
@@ -116,8 +116,15 @@ class YearlyCoachPerformanceProcessor:
             elif "Special" in role:
                 return "STC"
         
-        # Assistant/Position coaches
-        if "Assistant" in role or "Coach" in role:
+        # Position coaches (including specific positions)
+        position_keywords = [
+            "Quarterbacks", "Running Backs", "Wide Receivers", "Tight Ends", "Offensive Line",
+            "Defensive Line", "Linebackers", "Defensive Backs", "Secondary", "Cornerbacks", "Safeties",
+            "Special Teams", "Kickers", "Punters", "Long Snappers",
+            "Assistant", "Coach"
+        ]
+        
+        if any(keyword in role for keyword in position_keywords):
             return "Position"
         
         return "None"
@@ -209,56 +216,6 @@ class YearlyCoachPerformanceProcessor:
         
         return 0
 
-    def load_league_performance_data(self, year: int, team: str) -> Optional[Dict]:
-        """Load league performance data for a specific team and year"""
-        year_dir = self.league_dir / str(year)
-        
-        if not year_dir.exists():
-            return None
-        
-        try:
-            # Load team and opponent data files (use regular data for current year performance)
-            team_file = year_dir / "league_team_data.csv"
-            opponent_file = year_dir / "league_opponent_data.csv"
-            
-            if not team_file.exists() or not opponent_file.exists():
-                return None
-            
-            team_df = pd.read_csv(team_file)
-            opponent_df = pd.read_csv(opponent_file)
-            
-            # Find team data using Team Abbreviation column
-            team_row = team_df[team_df['Team Abbreviation'] == team]
-            opponent_row = opponent_df[opponent_df['Team Abbreviation'] == team]
-            
-            if team_row.empty or opponent_row.empty:
-                return None
-            
-            # Extract key performance metrics
-            performance_data = {
-                'team_points_scored': team_row['PF (Points For)'].iloc[0] if 'PF (Points For)' in team_row.columns else np.nan,
-                'team_points_allowed': opponent_row['PF (Points For)'].iloc[0] if 'PF (Points For)' in opponent_row.columns else np.nan,
-                'team_yards_offense': team_row['Yds'].iloc[0] if 'Yds' in team_row.columns else np.nan,
-                'team_yards_defense': opponent_row['Yds'].iloc[0] if 'Yds' in opponent_row.columns else np.nan,
-                'team_turnovers_forced': opponent_row['TO'].iloc[0] if 'TO' in opponent_row.columns else np.nan,
-                'team_turnovers_committed': team_row['TO'].iloc[0] if 'TO' in team_row.columns else np.nan,
-                'team_wins': team_row['W'].iloc[0] if 'W' in team_row.columns else np.nan,
-                'team_losses': team_row['L'].iloc[0] if 'L' in team_row.columns else np.nan,
-                'team_ties': team_row['T'].iloc[0] if 'T' in team_row.columns else 0,
-            }
-            
-            # Calculate win percentage
-            total_games = performance_data['team_wins'] + performance_data['team_losses'] + performance_data['team_ties']
-            if total_games > 0:
-                performance_data['team_win_pct'] = (performance_data['team_wins'] + 0.5 * performance_data['team_ties']) / total_games
-            else:
-                performance_data['team_win_pct'] = np.nan
-                
-            return performance_data
-            
-        except Exception as e:
-            self.logger.warning(f"Error loading league data for {team} {year}: {e}")
-            return None
     
     def calculate_career_metrics(self, coach_history: pd.DataFrame, coach_ranks: pd.DataFrame, current_year: int) -> Dict:
         """Calculate cumulative career metrics up to (but not including) current year using full feature set"""
@@ -316,7 +273,7 @@ class YearlyCoachPerformanceProcessor:
             classified_role = self.classify_coaching_role(role)
             
             # Count experience by level and role
-            if level == "College":
+            if level == "College" or "College" in str(level):
                 if classified_role == "Position":
                     core_metrics["num_yr_col_pos"] += 1
                 elif classified_role in ["OC", "DC", "STC"]:
@@ -439,12 +396,7 @@ class YearlyCoachPerformanceProcessor:
             # Calculate career metrics up to this year (from all prior experience)
             career_metrics = self.calculate_career_metrics(history_df, ranks_df, year)
             
-            # Get current year performance for this HC year
-            current_performance = {}
-            if team:
-                perf_data = self.load_league_performance_data(year, team)
-                if perf_data:
-                    current_performance = perf_data
+            # Note: Raw team performance metrics removed - only normalized features included
             
             # Create yearly record
             yearly_record = {
@@ -453,8 +405,7 @@ class YearlyCoachPerformanceProcessor:
                 'Team': team,
                 'Role': classified_role,
                 'Age': age,
-                **career_metrics,
-                **current_performance
+                **career_metrics
             }
             
             yearly_records.append(yearly_record)
