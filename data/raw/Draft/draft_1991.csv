@@ -1,0 +1,335 @@
+Draft_Year,Round,Pick_Number,Team,Player,Position,Age,Last_Season,All_Pro_Selections,Pro_Bowl_Selections,Games_Started,Weighted_AV,Draft_Rookie_AV,G,Cmp,Att,Yds,TD,Int,Att,Yds,TD,Rec,Yds,TD,Int,Sk,College/Univ,Column_27
+1991,1,1,DAL,Russell Maryland,DT,22,2000,0,1,10,60,31,154,0,0,0,0,0,0,0,0,0,0,0,1,24.5,Miami (FL),College Stats
+1991,1,2,CLE,Eric Turner,DB,22,1999,1,2,7,49,33,109,0,0,0,0,0,0,0,0,0,0,0,30,3.0,UCLA,College Stats
+1991,1,3,ATL,Bruce Pickens,DB,23,1995,0,0,0,4,3,48,0,0,0,0,0,0,0,0,0,0,0,2,1.0,Nebraska,College Stats
+1991,1,4,DEN,Mike Croel,LB,22,1998,0,0,6,34,24,102,0,0,0,0,0,0,0,0,0,0,0,2,24.0,Nebraska,
+1991,1,5,RAM,Todd Lyght,DB,22,2002,0,1,11,60,52,175,0,0,0,0,0,0,0,0,0,0,0,37,6.0,Notre Dame,College Stats
+1991,1,6,PHO,Eric Swann,DT,21,2000,0,2,6,44,42,126,0,0,0,0,0,1,0,0,0,0,0,2,46.5,Wake Technical CC,
+1991,1,7,TAM,Charles McRae,T,22,1996,0,0,2,18,17,84,0,0,0,0,0,0,0,0,0,0,0,,,Tennessee,
+1991,1,8,PHI,Antone Davis,T,24,1997,0,0,6,35,31,97,0,0,0,0,0,0,0,0,0,0,0,,,Tennessee,College Stats
+1991,1,9,SDG,Stanley Richard,DB,23,1998,0,0,8,40,17,124,0,0,0,0,0,0,0,0,0,0,0,21,2.0,Texas,College Stats
+1991,1,10,DET,Herman Moore,WR,21,2002,3,4,8,78,78,146,0,0,0,0,0,0,0,0,670,9174,62,,,Virginia,College Stats
+1991,1,11,NWE,Pat Harlow,T,22,1998,0,0,6,34,22,105,0,0,0,0,0,0,0,0,0,0,0,,,USC,
+1991,1,12,DAL,Alvin Harper,WR,23,1999,0,0,4,37,30,102,1,1,46,0,0,1,15,0,191,3473,21,1,,Tennessee,College Stats
+1991,1,13,ATL,Mike Pritchard,WR,21,1999,0,0,6,43,20,127,0,0,0,0,0,17,102,0,422,5187,26,,,Colorado,College Stats
+1991,1,14,NWE,Leonard Russell,RB,21,1996,0,0,5,26,14,85,0,0,0,0,0,1164,3973,29,122,846,0,,,Arizona St.,College Stats
+1991,1,15,PIT,Huey Richardson,LB,23,1992,0,0,0,1,0,16,0,0,0,0,0,0,0,0,0,0,0,,,Florida,
+1991,1,16,SEA,Dan McGwire,QB,23,1995,0,0,0,2,2,13,74,148,745,2,6,14,6,0,0,0,0,,,San Diego St.,College Stats
+1991,1,17,WAS,Bobby Wilson,DT,23,1994,0,0,2,12,12,42,0,0,0,0,0,0,0,0,0,0,0,,11.0,Michigan St.,
+1991,1,18,CIN,Alfred Williams,DE,22,1999,1,1,5,48,19,128,0,0,0,0,0,0,0,0,0,0,0,,59.5,Colorado,College Stats
+1991,1,19,GNB,Vinnie Clark,DB,22,1996,0,0,3,21,7,83,0,0,0,0,0,0,0,0,0,0,0,13,,Ohio St.,College Stats
+1991,1,20,DAL,Kelvin Pritchett,DT,21,2004,0,0,4,34,,208,0,0,0,0,0,0,0,0,0,0,0,1,31.5,Mississippi,College Stats
+1991,1,21,KAN,Harvey Williams,RB,24,1998,0,0,2,35,8,110,3,5,58,2,0,1021,3952,20,193,1442,7,,,LSU,College Stats
+1991,1,22,CHI,Stan Thomas,T,22,1994,0,0,0,7,5,56,0,0,0,0,0,0,0,0,0,0,0,,,Texas,
+1991,1,23,MIA,Randal Hill,WR,21,1997,0,0,3,27,4,103,0,0,0,0,0,2,15,0,262,3849,14,,,Miami (FL),College Stats
+1991,1,24,RAI,Todd Marinovich,QB,22,1992,0,0,0,3,3,8,104,205,1345,8,9,12,44,0,0,0,0,,,USC,College Stats
+1991,1,25,SFO,Ted Washington,NT,23,2007,1,4,13,89,4,236,0,0,0,0,0,0,0,0,0,0,0,2,34.5,Louisville,
+1991,1,26,BUF,Henry Jones,DB,23,2002,1,1,8,55,53,158,0,0,0,0,0,0,0,0,0,0,0,18,5.0,Illinois,College Stats
+1991,1,27,NYG,Jarrod Bunch,FB,23,1994,0,0,2,7,7,48,0,0,0,0,0,138,629,5,26,156,2,,,Michigan,College Stats
+1991,2,28,HOU,Mike Dumas,DB,22,2000,0,0,4,20,3,102,0,0,0,0,0,0,0,0,0,0,0,7,5.0,Indiana,College Stats
+1991,2,29,CLE,Ed King,G,21,1997,0,0,3,21,16,57,0,0,0,0,0,0,0,0,0,0,0,,,Auburn,College Stats
+1991,2,30,DEN,Reggie Johnson,TE,23,1997,0,0,1,8,5,77,0,0,0,0,0,2,7,0,66,791,6,,,Florida St.,College Stats
+1991,2,31,RAM,Roman Phifer,LB,23,2005,0,0,12,64,38,212,0,0,0,0,0,0,0,0,0,0,0,11,29.0,UCLA,College Stats
+1991,2,32,PHO,Mike Jones,DE,22,1999,0,0,4,36,7,135,0,0,0,0,0,0,0,0,0,0,0,,27.5,North Carolina St.,
+1991,2,33,ATL,Brett FavreHOF,QB,21,2010,3,11,19,158,0,302,6300,10169,71838,508,336,602,1844,14,2,-7,0,,,Southern Miss,College Stats
+1991,2,34,NYJ,Browning Nagle,QB,23,1996,0,0,1,5,5,24,213,437,2489,8,20,26,68,0,0,0,0,,,Louisville,College Stats
+1991,2,35,GNB,Esera Tuaolo,NT,23,1999,0,0,3,24,8,111,0,0,0,0,0,0,0,0,0,0,0,1,12.0,Oregon St.,
+1991,2,36,SDG,George Thornton,DT,23,1993,0,0,1,9,9,37,0,0,0,0,0,0,0,0,0,0,0,,2.0,Alabama,
+1991,2,37,DAL,Dixon Edwards,LB,23,1998,0,0,6,38,22,119,0,0,0,0,0,0,0,0,0,0,0,2,7.5,Michigan St.,
+1991,2,38,HOU,Darryll Lewis,DB,22,2000,0,1,6,47,41,141,0,0,0,0,0,0,0,0,0,0,0,32,5.0,Arizona,College Stats
+1991,2,39,SDG,Eric Bieniemy,RB,22,1999,0,0,0,23,6,142,0,2,0,0,0,387,1589,11,146,1223,0,,,Colorado,College Stats
+1991,2,40,IND,Shane Curry,DE,23,1991,0,0,0,1,1,9,0,0,0,0,0,0,0,0,0,0,0,,1.0,Miami (FL),
+1991,2,41,NWE,Jerome Henderson,DB,22,1998,0,0,2,18,7,98,0,0,0,0,0,0,0,0,0,0,0,9,1.0,Clemson,College Stats
+1991,2,42,NOR,Wesley Carroll,WR,24,1993,0,0,0,6,5,40,0,0,0,0,0,0,0,0,42,557,3,,,Miami (FL),College Stats
+1991,2,43,RAI,Nick Bell,RB,23,1993,0,0,0,8,8,35,0,0,0,0,0,226,853,7,21,213,0,,,Iowa,College Stats
+1991,2,44,HOU,John Flannery,G,22,1998,0,0,2,21,12,80,0,0,0,0,0,0,0,0,1,2,0,,,Syracuse,College Stats
+1991,2,45,SFO,Ricky Watters,RB,22,2001,0,5,9,100,43,144,1,2,1,1,0,2622,10643,78,467,4248,13,,,Notre Dame,College Stats
+1991,2,46,PIT,Jeff Graham,WR,22,2001,0,0,9,59,10,160,0,0,0,0,0,0,0,0,542,8172,30,,,Ohio St.,College Stats
+1991,2,47,SDG,Eric Moten,G,23,1996,0,0,4,27,27,67,0,0,0,0,0,0,0,0,0,0,0,,,Michigan St.,
+1991,2,48,PHI,Jesse Campbell,DB,22,1998,0,0,4,28,,92,0,0,0,0,0,0,0,0,0,0,0,7,,North Carolina St.,
+1991,2,49,CHI,Chris Zorich,DT,22,1997,0,0,3,28,27,84,0,0,0,0,0,0,0,0,0,0,0,,16.5,Notre Dame,College Stats
+1991,2,50,KAN,Joe Valerio,C,22,1996,0,0,0,7,7,62,0,0,0,0,0,0,0,0,4,7,4,,,Pennsylvania,
+1991,2,51,SEA,Doug Thomas,WR,21,1993,0,0,0,1,1,39,0,0,0,0,0,4,11,0,22,207,0,,,Clemson,College Stats
+1991,2,52,CIN,Lamar Rogers,DE,23,1992,0,0,1,6,6,26,0,0,0,0,0,0,0,0,0,0,0,,4.0,Auburn,
+1991,2,53,SFO,John Johnson,LB,23,1995,0,0,1,10,10,46,0,0,0,0,0,0,0,0,0,0,0,2,3.0,Clemson,College Stats
+1991,2,54,BUF,Phil Hansen,DE,23,2001,0,0,11,65,65,156,0,0,0,0,0,0,0,0,0,0,0,1,61.5,North Dakota St.,
+1991,2,55,NYG,Kanavis McGhee,LB,22,1995,0,0,0,4,3,50,0,0,0,0,0,0,0,0,0,0,0,,3.0,Colorado,
+1991,3,56,NWE,Calvin Stephens,G,23,1992,0,0,0,1,1,13,0,0,0,0,0,0,0,0,0,0,0,,,South Carolina,
+1991,3,57,CLE,James Jones,DT,22,2000,0,0,9,56,23,160,0,0,0,0,0,3,2,1,3,4,2,1,37.0,Northern Iowa,
+1991,3,58,DET,Reggie Barrett,WR,22,1992,0,0,0,1,1,10,0,0,0,0,0,0,0,0,4,67,1,,,Texas-El Paso,College Stats
+1991,3,59,PHO,Aeneas WilliamsHOF,DB,23,2004,3,8,13,110,81,211,0,0,0,0,0,0,0,0,0,0,0,55,3.0,Southern,
+1991,3,60,MIA,Aaron Craver,RB,22,1999,0,0,4,18,4,103,0,2,0,0,0,243,966,10,170,1364,4,,,Fresno St.,College Stats
+1991,3,61,DEN,Keith Traylor,DT,22,2007,0,0,11,60,29,229,0,0,0,0,0,0,0,0,0,0,0,2,20.0,Central Oklahoma,
+1991,3,62,DAL,Godfrey Myles,LB,22,1996,0,0,1,9,9,76,0,0,0,0,0,0,0,0,0,0,0,2,,Florida,College Stats
+1991,3,63,NYJ,Mo Lewis,LB,21,2003,1,3,13,90,90,200,0,0,0,0,0,1,3,0,0,0,0,14,52.5,Georgia,College Stats
+1991,3,64,DAL,James Richards,G,,,0,0,0,,,,,,,,,,,,,,,,,California,
+1991,3,65,MIN,Carlos Jenkins,LB,23,1996,0,0,5,32,22,80,0,0,0,0,0,0,0,0,0,0,0,4,9.0,Michigan St.,College Stats
+1991,3,66,TAM,Lawrence Dawsey,WR,23,1999,0,0,3,23,21,83,0,0,0,0,0,1,9,1,240,3271,6,,,Florida St.,College Stats
+1991,3,67,GNB,Don Davey,DT,23,1997,0,0,3,19,4,92,0,0,0,0,0,0,0,0,0,0,0,,8.0,Wisconsin,
+1991,3,68,MIN,Jake Reed,WR,23,2002,0,0,6,53,49,155,0,0,0,0,0,0,0,0,450,6999,36,,,Grambling St.,
+1991,3,69,IND,Dave McCloughan,DB,24,1994,0,0,0,4,1,48,0,0,0,0,0,0,0,0,0,0,0,,,Colorado,College Stats
+1991,3,70,DAL,Erik Williams,T,22,2001,2,4,8,69,69,146,0,0,0,0,0,0,0,0,0,0,0,,,Central State (OH),
+1991,3,71,HOU,Steve Jackson,DB,22,1999,0,0,1,19,19,118,0,0,0,0,0,0,0,0,0,0,0,13,9.0,Purdue,College Stats
+1991,3,72,CIN,Bob Dahl,G,23,1997,0,0,5,35,,82,0,0,0,0,0,0,0,0,0,0,0,,,Notre Dame,
+1991,3,73,PIT,Ernie Mills,WR,22,1999,0,0,1,25,17,118,0,0,0,0,0,18,121,0,196,2934,20,,,Florida,College Stats
+1991,3,74,SEA,David Daniels,WR,21,1992,0,0,0,1,1,29,0,0,0,0,0,0,0,0,9,137,0,,,Penn St.,College Stats
+1991,3,75,PHI,Rob Selby,G,23,1997,0,0,1,9,3,62,0,0,0,0,0,0,0,0,0,0,0,,,Auburn,
+1991,3,76,WAS,Ricky Ervins,RB,22,1995,0,0,1,23,22,76,0,0,0,0,0,554,2114,8,117,870,2,,,USC,College Stats
+1991,3,77,KAN,Tim Barnett,WR,23,1993,0,0,1,13,13,44,0,0,0,0,0,1,3,0,82,1188,10,,,Jackson St.,
+1991,3,78,CHI,Chris Gardocki,P,21,2006,1,1,0,29,4,244,1,7,43,0,0,0,0,0,0,0,0,,,Clemson,College Stats
+1991,3,79,HOU,Kevin Donnalley,G,23,2003,0,0,10,52,28,193,0,0,0,0,0,0,0,0,0,0,0,,,North Carolina,
+1991,3,80,TAM,Robert Wilson,RB,22,1996,0,0,1,2,2,51,0,0,0,0,0,45,183,0,23,129,3,,,Texas A&M,College Stats
+1991,3,81,GNB,Chuck Webb,FB,21,1991,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,,,Tennessee,College Stats
+1991,3,82,BUF,Darryl Wren,DB,24,1994,0,0,0,5,,20,0,0,0,0,0,0,0,0,0,0,0,3,,Pittsburg St.,
+1991,3,83,NYG,Ed McCaffrey,WR,23,2003,0,1,6,67,9,185,0,0,0,0,0,3,21,0,565,7422,55,,,Stanford,College Stats
+1991,4,84,NWE,Scott Zolak,QB,23,1999,0,0,0,4,4,55,124,248,1314,8,7,38,81,0,0,0,0,,,Maryland,College Stats
+1991,4,85,CLE,Pio Sagapolutele,DT,21,1997,0,0,2,19,8,92,0,0,0,0,0,0,0,0,0,0,0,,7.0,San Diego St.,
+1991,4,86,PHO,Dexter Davis,DB,21,1995,0,0,0,6,4,59,0,0,0,0,0,0,0,0,0,0,0,2,1.0,Clemson,College Stats
+1991,4,87,ATL,Moe Gardner,DT,23,1996,0,0,6,27,27,90,0,0,0,0,0,0,0,0,0,0,0,,10.0,Illinois,College Stats
+1991,4,88,PIT,Sammy Walker,DB,22,1993,0,0,0,4,3,26,0,0,0,0,0,0,0,0,0,0,0,,,Texas Tech,College Stats
+1991,4,89,DEN,Derek Russell,WR,22,1997,0,0,2,22,14,88,0,0,0,0,0,1,6,0,172,2401,8,,,Arkansas,College Stats
+1991,4,90,SDG,Yancey Thigpen,WR,22,2000,0,2,4,48,0,112,0,0,0,0,0,2,4,0,313,5081,30,,,Winston-Salem St.,
+1991,4,91,DET,Kevin Scott,DB,22,1993,0,0,1,8,8,44,0,0,0,0,0,0,0,0,0,0,0,4,,Stanford,
+1991,4,92,MIN,Randy Baldwin,RB,24,1996,0,0,0,3,0,65,0,0,0,0,0,74,231,0,6,50,1,,,Mississippi,College Stats
+1991,4,93,TAM,Tony Covington,DB,23,1995,0,0,1,8,7,42,0,0,0,0,0,0,0,0,0,0,0,4,1.0,Virginia,College Stats
+1991,4,94,NYJ,Mark Gunn,DT,23,1996,0,0,1,12,9,70,0,0,0,0,0,0,0,0,0,0,0,,4.5,Pittsburgh,
+1991,4,95,SFO,Mitch Donahue,LB,23,1994,0,0,0,2,1,31,0,0,0,0,0,0,0,0,0,0,0,,,Wyoming,College Stats
+1991,4,96,IND,Mark Vander Poel,T,23,1992,0,0,0,2,2,23,0,0,0,0,0,0,0,0,0,0,0,,,Colorado,
+1991,4,97,DAL,Curvin Richards,RB,22,1993,0,0,0,2,2,12,0,0,0,0,0,55,181,1,3,8,0,,,Pittsburgh,College Stats
+1991,4,98,SEA,John Kasay,K,21,2011,0,1,0,41,10,301,0,0,0,0,0,0,0,0,0,0,0,,,Georgia,College Stats
+1991,4,99,CIN,Donald Hollas,QB,23,1998,0,0,0,5,3,32,202,375,2399,13,21,61,295,1,0,0,0,,,Rice,College Stats
+1991,4,100,RAI,Rocket Ismail,WR,21,2001,0,0,5,44,9,126,0,0,0,0,0,58,423,2,363,5295,28,,,Notre Dame,College Stats
+1991,4,101,HOU,David Rocker,DT,22,1994,0,0,0,3,,34,0,0,0,0,0,0,0,0,0,0,0,,1.5,Auburn,College Stats
+1991,4,102,HOU,Marcus Robertson,DB,21,2002,1,0,10,60,53,162,0,0,0,0,0,0,0,0,0,0,0,24,1.5,Iowa St.,College Stats
+1991,4,103,PIT,Adrian Cooper,TE,23,1996,0,0,3,8,4,77,0,0,0,0,0,0,0,0,87,1037,5,,,Oklahoma,College Stats
+1991,4,104,PHI,William Thomas,LB,23,2001,0,2,10,73,59,172,0,0,0,0,0,0,0,0,0,0,0,27,37.0,Texas A&M,
+1991,4,105,CHI,Joe Johnson,DB,,,0,0,0,,,,,,,,,,,,,,,,,North Carolina St.,College Stats
+1991,4,106,DAL,Bill Musgrave,QB,23,1996,0,0,0,1,,12,43,69,402,1,2,19,-11,0,0,0,0,,,Oregon,College Stats
+1991,4,107,RAM,Robert Bailey,DB,23,2001,0,0,1,17,7,146,0,0,0,0,0,0,0,0,0,0,0,10,5.0,Miami (FL),College Stats
+1991,4,108,DAL,Tony Hill,DE,22,1992,0,0,0,1,1,13,0,0,0,0,0,0,0,0,0,0,0,,,Chattanooga,
+1991,4,109,CIN,Rob Carpenter,WR,23,1995,0,0,0,5,,60,0,1,0,0,0,1,2,0,51,607,1,,,Syracuse,College Stats
+1991,4,110,DAL,Kevin Harris,DE,,,0,0,0,,,,,,,,,,,,,,,,,Texas Southern,
+1991,4,111,NYG,Clarence Jones,T,23,2000,0,0,6,36,0,111,0,0,0,0,0,0,0,0,0,0,0,,,Maryland,
+1991,5,112,NWE,Jon Vaughn,RB,21,1994,0,0,0,9,6,61,1,2,13,1,0,207,846,4,23,178,1,,,Michigan,College Stats
+1991,5,113,MIA,Bryan Cox,LB,23,2002,0,3,10,67,41,165,0,0,0,0,0,0,0,0,1,7,0,4,51.5,Western Illinois,
+1991,5,114,ATL,James Goode,LB,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma,
+1991,5,115,DEN,Greg Lewis,RB,22,1992,0,0,0,5,5,32,0,1,0,0,0,172,644,8,6,39,0,,,Washington,College Stats
+1991,5,116,RAM,Robert Young,DE,22,1996,0,0,3,20,15,78,0,0,0,0,0,0,0,0,0,0,0,,20.5,Mississippi St.,College Stats
+1991,5,117,PHO,Vance Hammond,DT,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,
+1991,5,118,DET,Scott Conover,T,22,1996,0,0,1,16,16,67,0,0,0,0,0,0,0,0,1,1,1,,,Purdue,
+1991,5,119,MIN,Chris Thome,C,22,1992,0,0,0,1,,11,0,0,0,0,0,0,0,0,0,0,0,,,Minnesota,
+1991,5,120,TAM,Terry Bagsby,LB,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M-Commerce,
+1991,5,121,MIA,Gene Williams,G,22,1999,0,0,4,31,1,114,0,0,0,0,0,0,0,0,0,0,0,,,Iowa St.,
+1991,5,122,SFO,Merton Hanks,DB,23,1999,1,4,7,64,63,137,0,0,0,0,0,0,0,0,0,0,0,33,3.0,Iowa,College Stats
+1991,5,123,SDG,Duane Young,TE,23,1998,0,0,4,3,3,73,0,0,0,0,0,0,0,0,38,405,3,,,Michigan St.,College Stats
+1991,5,124,NWE,Ben Coates,TE,22,2000,2,5,7,43,43,158,0,0,0,0,0,3,-4,0,499,5555,50,,,Livingstone,
+1991,5,125,IND,Kerry Cash,TE,22,1996,0,0,4,9,8,71,0,0,0,0,0,0,0,0,132,1427,9,,,Texas,College Stats
+1991,5,126,NOR,Reggie Jones,DB,22,1994,0,0,1,10,10,41,0,0,0,0,0,0,0,0,0,0,0,6,1.0,Memphis,College Stats
+1991,5,127,SDG,Floyd Fields,DB,22,1993,0,0,1,6,6,30,0,0,0,0,0,0,0,0,0,0,0,1,,Arizona St.,
+1991,5,128,SEA,Harlan Davis,DB,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee,College Stats
+1991,5,129,HOU,Gary Wellman,WR,24,1994,0,0,0,5,5,28,0,0,0,0,0,3,3,0,41,542,1,,,USC,College Stats
+1991,5,130,CIN,Mike Arthur,C,23,1996,0,0,3,19,8,64,0,0,0,0,0,0,0,0,0,0,0,,,Texas A&M,
+1991,5,131,PHI,Craig Erickson,QB,22,1997,0,0,2,21,,52,591,1092,7625,41,38,77,201,1,0,0,0,,,Miami (FL),College Stats
+1991,5,132,DAL,Darrick Brownlow,LB,22,1996,0,0,1,6,2,95,0,0,0,0,0,0,0,0,0,0,0,,,Illinois,College Stats
+1991,5,133,KAN,Charles Mincy,DB,21,1999,0,0,3,30,12,114,0,0,0,0,0,0,0,0,0,0,0,23,,Washington,College Stats
+1991,5,134,CHI,Anthony Morgan,WR,23,1996,0,0,0,13,6,64,0,0,0,0,0,6,86,0,87,1283,12,,,Tennessee,College Stats
+1991,5,135,GNB,Jeff Fite,P,,,0,0,0,,,,,,,,,,,,,,,,,Memphis,College Stats
+1991,5,136,TAM,Tim Ryan,G,23,1993,0,0,0,3,3,37,0,0,0,0,0,0,0,0,0,0,0,,,Notre Dame,
+1991,5,137,SFO,Harry Boatswain,G,22,1996,0,0,0,15,10,74,0,0,0,0,0,0,0,0,0,0,0,,,New Haven,
+1991,5,138,BUF,Shawn Wilbourn,DB,,,0,0,0,,,,,,,,,,,,,,,,,Long Beach St.,College Stats
+1991,5,139,NYG,Anthony Moss,LB,,,0,0,0,,,,,,,,,,,,,,,,,Florida St.,
+1991,6,140,NWE,David Key,DB,23,1991,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,,,Michigan,
+1991,6,141,CLE,Michael Jackson,WR,22,1998,0,0,7,43,23,114,1,4,25,0,1,2,22,0,353,5393,46,,,Southern Miss,College Stats
+1991,6,142,DEN,Nick Subis,T,23,1991,0,0,0,1,1,16,0,0,0,0,0,0,0,0,0,0,0,,,San Diego St.,
+1991,6,143,RAM,Neal Fort,T,,,0,0,0,,,,,,,,,,,,,,,,,BYU,College Stats
+1991,6,144,PHO,Eduardo Vega,T,,,0,0,0,,,,,,,,,,,,,,,,,Memphis,
+1991,6,145,ATL,Erric Pegram,RB,22,1997,0,0,3,30,17,103,0,0,0,0,0,855,3398,13,116,833,1,,,North Texas,
+1991,6,146,RAI,Nolan Harrison,DE,22,2000,0,0,4,35,25,128,0,0,0,0,0,0,0,0,0,0,0,,22.0,Indiana,
+1991,6,147,TAM,Rhett Hall,DT,22,1998,0,0,2,19,1,68,0,0,0,0,0,0,0,0,0,0,0,1,18.5,California,
+1991,6,148,NYJ,Blaise Bryant,RB,,,0,0,0,,,,,,,,,,,,,,,,,Iowa St.,College Stats
+1991,6,149,GNB,Walter Dean,RB,23,1991,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,,,Grambling St.,
+1991,6,150,SDG,Jimmy Laister,T,,,0,0,0,,,,,,,,,,,,,,,,,Oregon Tech,
+1991,6,151,DET,Richie Andrews,K,,,0,0,0,,,,,,,,,,,,,,,,,Florida St.,College Stats
+1991,6,152,IND,Mel Agee,DE,22,1995,0,0,0,8,1,54,0,0,0,0,0,0,0,0,0,0,0,,2.5,Illinois,
+1991,6,153,DAL,Mike Sullivan,G,23,1995,0,0,0,6,,48,0,0,0,0,0,0,0,0,0,0,0,,,Miami (FL),
+1991,6,154,NOR,Fred McAfee,RB,23,2006,0,1,0,9,6,194,0,0,0,0,0,304,1273,8,35,211,0,,,Mississippi Col.,
+1991,6,155,SEA,Michael Sinclair,DE,23,2002,0,3,7,57,57,148,0,0,0,0,0,0,0,0,0,0,0,,73.5,Eastern New Mexico,
+1991,6,156,PHI,Andy Harmon,DT,22,1997,0,0,4,37,37,86,0,0,0,0,0,0,0,0,0,0,0,1,39.5,Kent St.,
+1991,6,157,CIN,Richard Fain,DB,23,1992,0,0,0,4,1,24,0,0,0,0,0,0,0,0,0,0,0,1,,Florida,College Stats
+1991,6,158,PIT,Leroy Thompson,RB,22,1996,0,0,0,18,11,80,0,0,0,0,0,404,1390,6,153,1193,5,,,Penn St.,College Stats
+1991,6,159,WAS,Dennis Ransom,TE,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M,College Stats
+1991,6,160,NYJ,Mike Riley,DB,,,0,0,0,,,,,,,,,,,,,,,,,Tulane,College Stats
+1991,6,161,CHI,Darren Lewis,RB,22,1993,0,0,0,5,5,33,0,0,0,0,0,112,431,4,22,201,0,,,Texas A&M,College Stats
+1991,6,162,KAN,Darrell Malone,DB,23,1994,0,0,0,2,0,29,0,0,0,0,0,0,0,0,0,0,0,1,,Jacksonville St.,
+1991,6,163,MIN,Todd Scott,DB,23,1997,0,1,4,25,19,83,0,0,0,0,0,0,0,0,0,0,0,7,1.0,Louisiana,
+1991,6,164,GNB,Joe Garten,C,,,0,0,0,,,,,,,,,,,,,,,,,Colorado,College Stats
+1991,6,165,SFO,Scott Bowles,T,,,0,0,0,,,,,,,,,,,,,,,,,North Texas,
+1991,6,166,BUF,Millard Hamilton,WR,,,0,0,0,,,,,,,,,,,,,,,,,,
+1991,6,167,NYG,Corey Miller,LB,22,1999,0,0,5,36,35,110,0,0,0,0,0,0,0,0,0,0,0,7,14.0,South Carolina,
+1991,7,168,NWE,Blake Miller,C,23,1992,0,0,0,3,,14,0,0,0,0,0,0,0,0,0,0,0,,,LSU,
+1991,7,169,GNB,Frank Blevins,LB,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma,College Stats
+1991,7,170,RAM,Tyrone Shelton,RB,,,0,0,0,,,,,,,,,,,,,,,,,William & Mary,
+1991,7,171,PHO,Ivory Lee Brown,RB,22,1992,0,0,0,2,2,7,0,0,0,0,0,68,194,2,7,54,0,,,Ark-Pine Bluff,
+1991,7,172,ATL,Brian Mitchell,DB,22,1993,0,0,0,2,2,36,0,0,0,0,0,0,0,0,0,0,0,1,2.0,BYU,College Stats
+1991,7,173,DAL,Leon Lett,DT,22,2001,0,2,5,38,37,121,0,0,0,0,0,0,0,0,0,0,0,,22.5,Emporia St.,
+1991,7,174,TAM,Calvin Tiggle,LB,22,1992,0,0,0,3,3,24,0,0,0,0,0,0,0,0,0,0,0,,1.0,Georgia Tech,College Stats
+1991,7,175,NYJ,Doug Parrish,DB,,,0,0,0,,,,,,,,,,,,,,,,,San Francisco St.,
+1991,7,176,GNB,Reggie Burnette,LB,22,1993,0,0,0,3,0,23,0,0,0,0,0,0,0,0,0,0,0,,,Houston,College Stats
+1991,7,177,SDG,David Jones,TE,22,1992,0,0,0,0,,16,0,0,0,0,0,0,0,0,2,29,0,,,Delaware St.,
+1991,7,178,DET,Franklin Thomas,TE,,,0,0,0,,,,,,,,,,,,,,,,,Grambling St.,
+1991,7,179,MIN,Scotty Reagan,DT,,,0,0,0,,,,,,,,,,,,,,,,,Humboldt St.,
+1991,7,180,MIN,Tripp Welborne,DB,22,1992,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,,,Michigan,College Stats
+1991,7,181,IND,James Bradley,WR,,,0,0,0,,,,,,,,,,,,,,,,,Michigan St.,College Stats
+1991,7,182,NOR,Hayward Haynes,G,,,0,0,0,,,,,,,,,,,,,,,,,Florida St.,
+1991,7,183,HOU,Kyle Freeman,LB,,,0,0,0,,,,,,,,,,,,,,,,,Angelo State (TX),
+1991,7,184,CIN,Fernandus Vinson,DB,22,1994,0,0,0,9,9,58,0,0,0,0,0,0,0,0,0,0,0,,1.0,North Carolina St.,
+1991,7,185,PIT,Andre Jones,LB,22,1992,0,0,0,0,,6,0,0,0,0,0,0,0,0,0,0,0,,,Notre Dame,
+1991,7,186,ATL,Mark Tucker,G,23,1994,0,0,0,2,,16,0,0,0,0,0,0,0,0,0,0,0,,,USC,
+1991,7,187,PHI,James Joseph,RB,23,1995,0,0,0,10,10,78,0,0,0,0,0,250,823,4,102,817,3,,,Auburn,College Stats
+1991,7,188,WAS,Keith Cash,TE,22,1996,0,0,1,11,,64,0,0,0,0,0,1,0,0,118,1136,10,,,Texas,College Stats
+1991,7,189,KAN,Bernard Ellison,DB,,,0,0,0,,,,,,,,,,,,,,,,,Nevada,
+1991,7,190,CHI,Paul Justin,QB,23,1999,0,0,0,8,,34,220,380,2614,8,10,17,11,0,0,0,0,,,Arizona St.,College Stats
+1991,7,191,MIA,Chris Green,DB,23,1995,0,0,0,5,4,66,0,0,0,0,0,0,0,0,0,0,0,2,,Illinois,
+1991,7,192,SDG,Terry Beauford,G,,,0,0,0,,,,,,,,,,,,,,,,,Florida A&M,
+1991,7,193,SFO,Sheldon Canley,RB,23,1992,0,0,0,0,,1,0,0,0,0,0,4,9,0,0,0,0,,,San Jose St.,College Stats
+1991,7,194,BUF,Amir Rasul,RB,,,0,0,0,,,,,,,,,,,,,,,,,Florida A&M,
+1991,7,195,NYG,Simmie Carter,DB,,,0,0,0,,,,,,,,,,,,,,,,,Southern Miss,College Stats
+1991,8,196,NWE,Harry Colon,DB,22,1997,0,0,3,19,6,87,0,0,0,0,0,0,0,0,0,0,0,6,1.0,Missouri,College Stats
+1991,8,197,CLE,Frank Conover,DT,23,1991,0,0,0,1,1,4,0,0,0,0,0,0,0,0,0,0,0,,1.0,Syracuse,
+1991,8,198,PHO,Greg Amsler,RB,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee,College Stats
+1991,8,199,ATL,Randy Austin,TE,,,0,0,0,,,,,,,,,,,,,,,,,UCLA,College Stats
+1991,8,200,DEN,Kenny Walker,DE,24,1992,0,0,1,9,9,31,0,0,0,0,0,0,0,0,0,0,0,,4.5,Nebraska,
+1991,8,201,RAM,Pat Tyrance,LB,,,0,0,0,,,,,,,,,,,,,,,,,Nebraska,
+1991,8,202,NYJ,Tim James,DB,,,0,0,0,,,,,,,,,,,,,,,,,Colorado,College Stats
+1991,8,203,GNB,Johnny Walker,WR,,,0,0,0,,,,,,,,,,,,,,,,,Texas,College Stats
+1991,8,204,PHO,Jerry Evans,TE,22,1995,0,0,1,2,,43,0,0,0,0,0,0,0,0,25,251,3,,,Toledo,College Stats
+1991,8,205,DET,Cedric Jackson,RB,23,1991,0,0,0,0,0,8,0,0,0,0,0,17,55,0,1,-2,0,,,TCU,College Stats
+1991,8,206,MIN,Reggie Johnson,DE,,,0,0,0,,,,,,,,,,,,,,,,,Arizona,
+1991,8,207,TAM,Marty Carter,DB,21,2001,0,0,10,42,14,161,0,0,0,0,0,0,0,0,1,21,0,13,6.0,Middle Tenn. St.,
+1991,8,208,IND,Tim Bruton,TE,,,0,0,0,,,,,,,,,,,,,,,,,Missouri,College Stats
+1991,8,209,PHO,Scott Evans,DE,23,1991,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,,,Oklahoma,
+1991,8,210,NOR,Frank Wainright,TE,23,2000,0,0,0,2,2,121,0,0,0,0,0,0,0,0,11,148,1,,,Northern Colorado,
+1991,8,211,CIN,Mike Dingle,RB,22,1991,0,0,0,1,1,8,0,0,0,0,0,21,91,0,5,23,1,,,South Carolina,College Stats
+1991,8,212,PIT,Dean Dingman,G,,,0,0,0,,,,,,,,,,,,,,,,,Michigan,
+1991,8,213,RAI,Brian Jones,LB,23,1998,0,0,1,7,,44,0,0,0,0,0,0,0,0,0,0,0,,1.0,Texas,
+1991,8,214,HOU,Gary Brown,RB,22,1999,0,0,3,27,15,99,0,0,0,0,0,1032,4300,21,84,631,3,,,Penn St.,College Stats
+1991,8,215,WAS,Jimmy Spencer,DB,22,2003,0,0,4,33,,177,0,0,0,0,0,0,0,0,0,0,0,26,1.0,Florida,College Stats
+1991,8,216,PHI,Scott Kowalkowski,LB,23,2001,0,0,0,12,3,158,0,0,0,0,0,0,0,0,0,0,0,1,1.0,Notre Dame,
+1991,8,217,CHI,Larry Horton,DB,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M,College Stats
+1991,8,218,KAN,Tom Dohring,T,23,1992,0,0,0,1,1,3,0,0,0,0,0,0,0,0,0,0,0,,,Michigan,
+1991,8,219,RAI,Todd Woulard,LB,,,0,0,0,,,,,,,,,,,,,,,,,Alabama A&M,
+1991,8,220,MIA,Roland Smith,DB,,,0,0,0,,,,,,,,,,,,,,,,,Miami (FL),College Stats
+1991,8,221,SFO,Tony Hargain,WR,23,1992,0,0,0,2,,12,0,0,0,0,0,0,0,0,17,205,0,,,Oregon,College Stats
+1991,8,222,BUF,Brad Lamb,WR,23,1993,0,0,0,2,2,8,0,0,0,0,0,0,0,0,7,139,0,,,Anderson (IN),
+1991,8,223,NYG,Lamar McGriggs,DB,23,1994,0,0,1,9,5,57,0,0,0,0,0,0,0,0,0,0,0,2,,Western Illinois,
+1991,9,224,NWE,O'Neil Glenn,G,,,0,0,0,,,,,,,,,,,,,,,,,Maryland,College Stats
+1991,9,225,CLE,Raymond Irvin,DB,,,0,0,0,,,,,,,,,,,,,,,,,Central Florida,
+1991,9,226,ATL,Ernie Logan,NT,23,2000,0,0,2,24,1,119,0,0,0,0,0,0,0,0,0,0,0,,11.0,East Carolina,
+1991,9,227,DEN,Don Gibson,DT,,,0,0,0,,,,,,,,,,,,,,,,,USC,
+1991,9,228,RAM,Jeff Fields,DT,24,1995,0,0,0,0,,2,0,0,0,0,0,0,0,0,0,0,0,,,Arkansas St.,
+1991,9,229,GNB,Dean Witkowski,LB,,,0,0,0,,,,,,,,,,,,,,,,,North Dakota,
+1991,9,230,SDG,Andy Katoa,LB,,,0,0,0,,,,,,,,,,,,,,,,,Southern Oregon,
+1991,9,231,DET,Darryl Milburn,DE,22,1991,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,,,Grambling St.,
+1991,9,232,MIN,Gerald Hudson,RB,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma St.,College Stats
+1991,9,233,TAM,Treamelle Taylor,WR,,,0,0,0,,,,,,,,,,,,,,,,,Nevada,
+1991,9,234,NYJ,Paul Glonek,DT,,,0,0,0,,,,,,,,,,,,,,,,,Arizona,
+1991,9,235,DAL,Damon Mays,WR,23,1993,0,0,0,0,,2,0,0,0,0,0,0,0,0,0,0,0,,,Missouri,College Stats
+1991,9,236,IND,Howard Griffith,RB,23,2000,0,0,6,9,,121,0,0,0,0,0,121,351,3,122,844,9,,,Illinois,College Stats
+1991,9,237,NOR,Anthony Wallace,RB,,,0,0,0,,,,,,,,,,,,,,,,,California,College Stats
+1991,9,238,PIT,Bruce McGonnigal,TE,23,1991,0,0,0,0,,2,0,0,0,0,0,0,0,0,0,0,0,,,Virginia,College Stats
+1991,9,239,CLE,Shawn Wiggins,WR,,,0,0,0,,,,,,,,,,,,,,,,,Wyoming,College Stats
+1991,9,240,HOU,Shawn Jefferson,WR,22,2003,0,0,7,54,,195,0,0,0,0,0,15,146,0,470,7023,29,,,Central Florida,
+1991,9,241,CIN,Shane Garrett,WR,23,1991,0,0,0,0,0,4,0,0,0,0,0,0,0,0,3,32,0,,,Texas A&M,College Stats
+1991,9,242,PHI,Chuck Weatherspoon,RB,23,1991,0,0,0,0,,4,0,0,0,0,0,0,0,0,0,0,0,,,Houston,College Stats
+1991,9,243,WAS,Charles Bell,DB,,,0,0,0,,,,,,,,,,,,,,,,,Baylor,College Stats
+1991,9,244,KAN,Robbie Keen,K,,,0,0,0,,,,,,,,,,,,,,,,,California,College Stats
+1991,9,245,CHI,Mike Stonebreaker,LB,24,1994,0,0,0,1,1,18,0,0,0,0,0,0,0,0,0,0,0,,,Notre Dame,
+1991,9,246,MIA,Scott Miller,WR,22,1996,0,0,0,3,3,55,0,0,0,0,0,0,0,0,21,274,1,,,UCLA,College Stats
+1991,9,247,RAI,Tahaun Lewis,DB,22,1992,0,0,0,1,,9,0,0,0,0,0,0,0,0,0,0,0,,,Nebraska,College Stats
+1991,9,248,SFO,Louis Riddick,DB,22,1998,0,0,0,7,,94,0,0,0,0,0,0,0,0,1,25,0,,2.0,Pittsburgh,College Stats
+1991,9,249,BUF,Mark Maddox,LB,23,2000,0,0,3,25,21,111,0,0,0,0,0,0,0,0,0,0,0,2,2.5,Northern Michigan,
+1991,9,250,NYG,Jerry Bouldin,WR,,,0,0,0,,,,,,,,,,,,,,,,,Mississippi St.,College Stats
+1991,10,251,NWE,Randy Bethel,TE,,,0,0,0,,,,,,,,,,,,,,,,,Miami (FL),College Stats
+1991,10,252,CLE,Brian Greenfield,P,,,0,0,0,,,,,,,,,,,,,,,,,Pittsburgh,College Stats
+1991,10,253,DEN,Curtis Mayfield,WR,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma St.,College Stats
+1991,10,254,SDG,Ronald Poles,RB,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee,College Stats
+1991,10,255,PHO,Herbie Anderson,DB,22,1991,0,0,0,0,,1,0,0,0,0,0,0,0,0,0,0,0,,,Texas A&M-Kingsville,
+1991,10,256,ATL,Walter Sutton,WR,,,0,0,0,,,,,,,,,,,,,,,,,Southwest Minnesota,
+1991,10,257,SDG,Mike Heldt,C,,,0,0,0,,,,,,,,,,,,,,,,,Notre Dame,
+1991,10,258,ATL,Pete Lucas,T,,,0,0,0,,,,,,,,,,,,,,,,,Wisconsin–Stevens Point,
+1991,10,259,MIN,Brady Pierce,T,,,0,0,0,,,,,,,,,,,,,,,,,Wisconsin,
+1991,10,260,TAM,Pat O'Hara,QB,,,0,0,0,,,,,,,,,,,,,,,,,USC,College Stats
+1991,10,261,NYJ,Al Baker,RB,,,0,0,0,,,,,,,,,,,,,,,,,Kentucky,College Stats
+1991,10,262,GNB,Rapier Porter,TE,,,0,0,0,,,,,,,,,,,,,,,,,Ark-Pine Bluff,
+1991,10,263,IND,Frank Giannetti,NT,23,1991,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,,,Penn St.,College Stats
+1991,10,264,DAL,Sean Love,G,23,1995,0,0,0,1,,19,0,0,0,0,0,0,0,0,0,0,0,,,Penn St.,
+1991,10,265,TAM,Hyland Hickson,RB,,,0,0,0,,,,,,,,,,,,,,,,,Michigan St.,College Stats
+1991,10,266,SEA,Erik Ringoen,LB,,,0,0,0,,,,,,,,,,,,,,,,,Hofstra,
+1991,10,267,HOU,Curtis Moore,LB,,,0,0,0,,,,,,,,,,,,,,,,,Kansas,College Stats
+1991,10,268,CIN,Jim Lavin,G,,,0,0,0,,,,,,,,,,,,,,,,,Georgia Tech,
+1991,10,269,PIT,Ariel Solomon,C,23,1996,0,0,0,4,3,61,0,0,0,0,0,0,0,0,0,0,0,,,Colorado,
+1991,10,270,WAS,Cris Shale,P,,,0,0,0,,,,,,,,,,,,,,,,,Bowling Green,College Stats
+1991,10,271,PHI,Eric Harmon,G,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,
+1991,10,272,CHI,Tom Backes,DE,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma,
+1991,10,273,KAN,Eric Ramsey,DB,,,0,0,0,,,,,,,,,,,,,,,,,Auburn,College Stats
+1991,10,274,RAI,Andrew Glover,TE,24,2000,0,0,5,22,6,154,0,0,0,0,0,0,0,0,208,2478,24,,,Grambling St.,
+1991,10,275,MIA,Michael Titley,TE,,,0,0,0,,,,,,,,,,,,,,,,,Iowa,College Stats
+1991,10,276,SFO,Byron Holdbrooks,DT,,,0,0,0,,,,,,,,,,,,,,,,,Alabama,
+1991,10,277,BUF,Tony De Lorenzo,G,,,0,0,0,,,,,,,,,,,,,,,,,New Mexico St.,
+1991,10,278,NYG,Luis Cristobal,G,,,0,0,0,,,,,,,,,,,,,,,,,Miami (FL),
+1991,11,279,NWE,Vince Moore,WR,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee,College Stats
+1991,11,280,CLE,Todd Jones,T,24,1993,0,0,0,0,,4,0,0,0,0,0,0,0,0,0,0,0,,,Henderson St.,
+1991,11,281,RAM,Terry Crews,LB,23,1995,0,0,0,2,0,32,0,0,0,0,0,0,0,0,0,0,0,,,Western Michigan,
+1991,11,282,PHO,Nathan LaDuke,DB,,,0,0,0,,,,,,,,,,,,,,,,,Arizona St.,College Stats
+1991,11,283,ATL,Joe Sims,T,22,1995,0,0,1,14,0,53,0,0,0,0,0,0,0,0,0,0,0,,,Nebraska,College Stats
+1991,11,284,DEN,Shawn Moore,QB,23,1992,0,0,0,1,1,3,17,34,232,0,3,8,39,0,0,0,0,,,Virginia,College Stats
+1991,11,285,DET,Slip Watkins,KR,,,0,0,0,,,,,,,,,,,,,,,,,LSU,College Stats
+1991,11,286,MIN,Ivan Caesar,LB,24,1991,0,0,0,2,2,14,0,0,0,0,0,0,0,0,0,0,0,,,Boston Col.,College Stats
+1991,11,287,TAM,Mike Sunvold,DT,,,0,0,0,,,,,,,,,,,,,,,,,Minnesota,
+1991,11,288,NYJ,Rocen Keeton,LB,,,0,0,0,,,,,,,,,,,,,,,,,UCLA,
+1991,11,289,GNB,J.J. Wierenga,DE,,,0,0,0,,,,,,,,,,,,,,,,,Central Michigan,
+1991,11,290,SDG,Joachim Weinberg,WR,,,0,0,0,,,,,,,,,,,,,,,,,Johnson C. Smith,
+1991,11,291,DAL,Tony Boles,RB,,,0,0,0,,,,,,,,,,,,,,,,,Michigan,
+1991,11,292,IND,Jerry Crafts,T,23,1998,0,0,0,10,,54,0,0,0,0,0,0,0,0,0,0,0,,,Louisville,
+1991,11,293,NOR,Scott Ross,LB,22,1991,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,,,USC,College Stats
+1991,11,294,HOU,James Smith,DB,,,0,0,0,,,,,,,,,,,,,,,,,Richmond,
+1991,11,295,CIN,Chris Smith,TE,,,0,0,0,,,,,,,,,,,,,,,,,BYU,College Stats
+1991,11,296,PIT,Efrum Thomas,DB,,,0,0,0,,,,,,,,,,,,,,,,,Alabama,College Stats
+1991,11,297,SEA,Tony Stewart,RB,,,0,0,0,,,,,,,,,,,,,,,,,Iowa,College Stats
+1991,11,298,PHI,Mike Flores,DE,24,1995,0,0,1,9,8,61,0,0,0,0,0,0,0,0,0,0,0,,7.0,Louisville,
+1991,11,299,WAS,David Gulledge,DB,23,1992,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,,,Jacksonville St.,
+1991,11,300,KAN,Bobby Olive,WR,22,1996,0,0,0,0,,2,0,0,0,0,0,0,0,0,0,0,0,,,Ohio St.,College Stats
+1991,11,301,CHI,Stacy Long,G,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,College Stats
+1991,11,302,MIA,Ernie Rogers,G,,,0,0,0,,,,,,,,,,,,,,,,,California,
+1991,11,303,NWE,Paul Alsbury,P,,,0,0,0,,,,,,,,,,,,,,,,,Texas St.,
+1991,11,304,SFO,Bobby Slaughter,WR,,,0,0,0,,,,,,,,,,,,,,,,,Louisiana Tech,College Stats
+1991,11,305,BUF,Dean Kirkland,G,,,0,0,0,,,,,,,,,,,,,,,,,Washington,
+1991,11,306,NYG,Ted Popson,TE,24,1998,0,0,1,9,,68,0,0,0,0,0,0,0,0,103,980,8,,,Portland St.,
+1991,12,307,NWE,Tim Edwards,DT,23,1992,0,0,0,1,1,14,0,0,0,0,0,0,0,0,0,0,0,,1.0,Delta St.,
+1991,12,308,CLE,Elijah Austin,DT,,,0,0,0,,,,,,,,,,,,,,,,,North Carolina St.,
+1991,12,309,PHO,Jeff Bridewell,QB,,,0,0,0,,,,,,,,,,,,,,,,,UC Davis,
+1991,12,310,ATL,Bob Christian,RB,22,2002,0,0,6,22,18,135,0,0,0,0,0,193,831,12,230,2048,7,,,Northwestern,College Stats
+1991,12,311,RAM,Jeff Pahukoa,G,22,1996,0,0,0,7,4,59,0,0,0,0,0,0,0,0,0,0,0,,,Washington,
+1991,12,312,RAM,Ernie Thompson,RB,21,1993,0,0,0,1,0,20,0,0,0,0,0,13,37,0,6,68,1,,,Indiana,College Stats
+1991,12,313,MIN,Darren Hughes,WR,,,0,0,0,,,,,,,,,,,,,,,,,Carson-Newman,
+1991,12,314,TAM,Al Chamblee,LB,22,1992,0,0,0,3,3,22,0,0,0,0,0,0,0,0,0,0,0,,2.0,Virginia Tech,
+1991,12,315,NYJ,Mark Hayes,T,,,0,0,0,,,,,,,,,,,,,,,,,Arizona St.,
+1991,12,316,GNB,Linzy Collins,WR,,,0,0,0,,,,,,,,,,,,,,,,,Missouri,College Stats
+1991,12,317,SDG,Chris Samuels,RB,22,1991,0,0,0,0,0,3,0,0,0,0,0,2,10,0,2,33,0,,,Texas,College Stats
+1991,12,318,DET,Zeno Alexander,LB,,,0,0,0,,,,,,,,,,,,,,,,,Arizona,College Stats
+1991,12,319,IND,Rob Luedeke,C,,,0,0,0,,,,,,,,,,,,,,,,,Penn St.,
+1991,12,320,DAL,Larry Brown,DB,21,1998,0,0,5,31,30,95,0,0,0,0,0,0,0,0,0,0,0,14,,TCU,College Stats
+1991,12,321,NOR,Mark Drabczak,G,,,0,0,0,,,,,,,,,,,,,,,,,Minnesota,
+1991,12,322,CIN,Antoine Bennett,DB,23,1992,0,0,0,1,1,14,0,0,0,0,0,0,0,0,0,0,0,,,Florida A&M,
+1991,12,323,PIT,Jeff Brady,LB,22,1999,0,0,3,28,1,115,0,0,0,0,0,0,0,0,0,0,0,9,8.5,Kentucky,College Stats
+1991,12,324,SEA,Ike Harris,G,,,0,0,0,,,,,,,,,,,,,,,,,South Carolina,
+1991,12,325,HOU,Alex Johnson,WR,23,1991,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,,,Miami (FL),College Stats
+1991,12,326,WAS,Keenan McCardell,WR,21,2007,0,2,10,83,1,209,0,1,0,0,0,5,20,0,883,11373,63,,,UNLV,College Stats
+1991,12,327,PHI,Darrell Beavers,DB,,,0,0,0,,,,,,,,,,,,,,,,,Morehead St.,
+1991,12,328,CHI,John Cook,DT,,,0,0,0,,,,,,,,,,,,,,,,,Washington,
+1991,12,329,KAN,Ron Shipley,G,,,0,0,0,,,,,,,,,,,,,,,,,New Mexico,
+1991,12,330,RAI,Dennis Johnson,WR,,,0,0,0,,,,,,,,,,,,,,,,,Winston-Salem St.,
+1991,12,331,MIA,Joe Brunson,DT,,,0,0,0,,,,,,,,,,,,,,,,,Chattanooga,
+1991,12,332,SFO,Cliff Confer,DE,,,0,0,0,,,,,,,,,,,,,,,,,Michigan St.,
+1991,12,333,BUF,Stephen Clark,TE,,,0,0,0,,,,,,,,,,,,,,,,,Texas,College Stats
+1991,12,334,NYG,Larry Wanke,QB,,,0,0,0,,,,,,,,,,,,,,,,,John Carroll,
