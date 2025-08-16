@@ -177,16 +177,13 @@ class SoSWinPctExtractor:
             # Calculate winning percentage
             win_pct = self.calculate_winning_percentage(wins, losses, ties)
             
-            # Create result row
+            # Create result row with only required columns in specified order
             result = {
                 'Team': team.upper(),
                 'Year': int(year),
-                'W': int(wins),
-                'L': int(losses),
-                'T': int(ties),
-                'Games': int(wins + losses + ties),
+                'SoS': round(sos, 2) if pd.notna(sos) else np.nan,
                 'Win_Pct': win_pct,
-                'SoS': round(sos, 2) if pd.notna(sos) else np.nan
+                'Extraction_Date': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             }
             
             results.append(result)
@@ -244,9 +241,6 @@ class SoSWinPctExtractor:
         # Sort by team and year
         combined_df = combined_df.sort_values(['Team', 'Year'], ignore_index=True)
         
-        # Add metadata column
-        combined_df['Extraction_Date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        
         self.logger.info(f"Successfully extracted data for {len(successful_teams)} teams")
         
         return combined_df
@@ -278,8 +272,8 @@ class SoSWinPctExtractor:
             
             # Calculate averages
             avg_win_pct = df['Win_Pct'].mean()
-            avg_sos = df['SoS'].mean() if 'SoS' in df.columns else np.nan
-            sos_coverage = df['SoS'].notna().sum() / len(df) * 100 if 'SoS' in df.columns else 0
+            avg_sos = df['SoS'].mean()
+            sos_coverage = df['SoS'].notna().sum() / len(df) * 100
             
             # Save metadata
             metadata = {
@@ -322,9 +316,8 @@ class SoSWinPctExtractor:
             'unique_teams': df['Team'].nunique(),
             'unique_years': df['Year'].nunique(),
             'year_range': f"{df['Year'].min()}-{df['Year'].max()}",
-            'avg_games': df['Games'].mean(),
             'avg_win_pct': df['Win_Pct'].mean(),
-            'sos_coverage': df['SoS'].notna().sum() / len(df) * 100 if 'SoS' in df.columns else 0
+            'sos_coverage': df['SoS'].notna().sum() / len(df) * 100
         }
         
         if 'SoS' in df.columns:
