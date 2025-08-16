@@ -6,6 +6,8 @@ This script combines all non-metadata CSV files from data/final/ into a single d
 using a full outer join approach. All team-year combinations from any dataset will be
 included in the final output, with missing values handled through imputation.
 
+Coaching data is left-joined only (adds features only for existing team-years).
+
 Usage:
     python scripts/combine_final_datasets.py
     python scripts/combine_final_datasets.py --output-dir data/analysis
@@ -61,7 +63,7 @@ class FinalDatasetCombiner:
         
         # Additional files from other directories
         self.additional_files = {
-            "../processed/Coaching/team_year_head_coaches.csv": "head_coaches"
+            "../processed/Coaching/yearly_coach_performance.csv": "coaching"
         }
         
         # Columns to exclude from joins (date/metadata columns)
@@ -109,8 +111,13 @@ class FinalDatasetCombiner:
                 for _, row in df.iterrows():
                     all_team_years.add((row['Team'], row['Year']))
         
-        # Process additional files from other directories
+        # Process additional files from other directories (except coaching which is left-joined)
         for file_path, file_label in self.additional_files.items():
+            # Skip coaching data in collection phase - it's left-joined later
+            if file_label == "coaching":
+                self.logger.info(f"Skipping {file_label} in team-year collection (left-join only)")
+                continue
+                
             full_path = self.final_dir / file_path
             df = self.load_additional_dataset(full_path, file_label)
             if df is not None:
@@ -234,10 +241,45 @@ class FinalDatasetCombiner:
                 self.logger.warning(f"Empty additional file: {file_path} ({file_label})")
                 return None
             
-            # Check for required columns
-            if 'Team' not in df.columns or 'Year' not in df.columns:
-                self.logger.warning(f"Missing Team/Year columns in {file_path} ({file_label})")
-                return None
+            # Special handling for coaching data
+            if file_label == "coaching":
+                # Check for required columns - coaching data uses Team column
+                if 'Team' not in df.columns or 'Year' not in df.columns:
+                    self.logger.warning(f"Missing Team/Year columns in {file_path} ({file_label})")
+                    return None
+                
+                # Drop non-feature columns (keep only coaching metrics)
+                coaching_exclude = ['Coach', 'Role', 'Age']
+                cols_to_drop = [col for col in coaching_exclude if col in df.columns]
+                if cols_to_drop:
+                    df = df.drop(columns=cols_to_drop)
+                    self.logger.info(f"Dropped coaching metadata columns: {cols_to_drop}")
+                
+                # Add _Norm suffix to normalized coaching features
+                normalized_patterns = ['PF (Points For)', 'Yds__', 'Y/P__', 'TO__', '1stD__', 'Cmp Passing__', 
+                                     'Att Passing__', 'Yds Passing__', 'TD Passing__', 'Int Passing__', 
+                                     'NY/A Passing__', '1stD Passing__', 'Att Rushing__', 'Yds Rushing__', 
+                                     'TD Rushing__', 'Y/A Rushing__', '1stD Rushing__', 'Pen__', 
+                                     'Yds Penalties__', '1stPy__', '#Dr__', 'Sc%__', 'TO%__', 
+                                     'Time Average Drive__', 'Plays Average Drive__', 'Yds Average Drive__', 
+                                     'Pts Average Drive__', '3DAtt__', '3D%__', '4DAtt__', '4D%__', 
+                                     'RZAtt__', 'RZPct__']
+                
+                rename_dict = {}
+                for col in df.columns:
+                    if any(pattern in col for pattern in normalized_patterns):
+                        if not col.endswith('_Norm'):  # Don't double-suffix
+                            rename_dict[col] = col + '_Norm'
+                
+                if rename_dict:
+                    df = df.rename(columns=rename_dict)
+                    self.logger.info(f"Added _Norm suffix to {len(rename_dict)} normalized coaching features")
+            
+            else:
+                # Check for required columns for other additional files
+                if 'Team' not in df.columns or 'Year' not in df.columns:
+                    self.logger.warning(f"Missing Team/Year columns in {file_path} ({file_label})")
+                    return None
             
             # Standardize data types
             df['Team'] = df['Team'].str.upper()
@@ -374,19 +416,31 @@ class FinalDatasetCombiner:
                 df_to_join = df_to_join.rename(columns=rename_dict)
                 self.logger.info(f"Renamed columns: {rename_dict}")
             
-            # Perform outer join to keep all team-year combinations
+            # Determine join type based on file label
+            if file_label == "coaching":
+                # Use left join for coaching data - only add features where team-year exists
+                join_type = 'left'
+                self.logger.info(f"Using LEFT JOIN for {file_label} (only existing team-years)")
+            else:
+                # Use outer join for other additional files
+                join_type = 'outer'
+                self.logger.info(f"Using OUTER JOIN for {file_label}")
+            
+            # Perform join
             before_cols = len(combined_df.columns)
+            before_rows = len(combined_df)
             combined_df = combined_df.merge(
                 df_to_join, 
                 on='team_year_key', 
-                how='outer'
+                how=join_type
             )
             after_cols = len(combined_df.columns)
+            after_rows = len(combined_df)
             
             added_cols = after_cols - before_cols
             overlap = len(df)
             
-            self.logger.info(f"Joined {file_label}: +{added_cols} columns, {overlap} total rows in dataset")
+            self.logger.info(f"Joined {file_label}: +{added_cols} columns, {overlap} source rows, {before_rows}→{after_rows} result rows")
             successful_joins.append(file_label)
         
         # Remove team_year_key helper column
@@ -395,6 +449,13 @@ class FinalDatasetCombiner:
         # Final filter: ensure Year is integer and >= 1970
         combined_df['Year'] = combined_df['Year'].astype(int)
         combined_df = combined_df[combined_df['Year'] >= 1970]
+        
+        # Move Win_Pct to last column if it exists
+        if 'Win_Pct' in combined_df.columns:
+            win_pct_col = combined_df['Win_Pct']
+            combined_df = combined_df.drop(columns=['Win_Pct'])
+            combined_df['Win_Pct'] = win_pct_col
+            self.logger.info("Moved Win_Pct to last column")
         
         # Sort by Team and Year
         combined_df = combined_df.sort_values(['Team', 'Year'], ignore_index=True)
@@ -508,7 +569,8 @@ class FinalDatasetCombiner:
             'age_experience': [col for col in df.columns if 'Age' in col or 'Experience' in col or 'Exp' in col],
             'av_metrics': [col for col in df.columns if 'AV' in col],
             'performance': [col for col in df.columns if col in ['Win_Pct', 'SoS', 'W', 'L', 'T']],
-            'penalties': [col for col in df.columns if 'Pen' in col or 'Int_Passing' in col]
+            'penalties': [col for col in df.columns if 'Pen' in col or 'Int_Passing' in col],
+            'coaching': [col for col in df.columns if any(metric in col for metric in ['num_times_hc', 'num_yr_col', 'num_yr_nfl', 'PF (Points For)', 'Yds__']) or col.startswith('num_')]
         }
         
         for category, cols in categories.items():

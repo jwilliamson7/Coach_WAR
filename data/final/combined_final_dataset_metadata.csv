@@ -1,2 +1,2 @@
 Creation_Date,Total_Rows,Total_Columns,Teams_Count,Year_Range,Join_Type,Files_Combined,Description,Salary_Cap_Complete,Position_Metrics_Complete,Win_Pct_Complete
-2025-08-16 13:38:38,1696,225,32,1970-2024,full_outer_join,9,Combined dataset from all final data sources with team-year as key,445,445,1655
+2025-08-16 18:14:24,1683,361,32,1970-2024,full_outer_join,9,Combined dataset from all final data sources with team-year as key,0,445,1683

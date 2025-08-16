@@ -28,6 +28,8 @@ from crawlers.utils.data_constants import (
     BASE_TEAM_STATISTICS,
     ROLE_SUFFIXES,
     CORE_COACHING_FEATURES,
+    EXCLUDED_ROLE_KEYWORDS,
+    TENURE_CLASSIFICATIONS,
     get_all_feature_names,
     get_feature_dict
 )
@@ -93,40 +95,47 @@ class YearlyCoachPerformanceProcessor:
         return team.lower()
     
     def classify_coaching_role(self, role: str) -> str:
-        """Classify coaching role into main categories"""
+        """Classify coaching role, excluding interim, suspended, and non-coaching positions"""
         if not role or not isinstance(role, str):
             return "None"
         
-        role = role.strip()
+        # Check for excluded keywords
+        for keyword in EXCLUDED_ROLE_KEYWORDS:
+            if keyword in role:
+                return "None"
         
-        # Exclude interim and temporary roles
-        if any(keyword in role.upper() for keyword in ['INTERIM', 'TEMP', 'ACTING']):
+        # Exclude suspended seasons - these don't count toward experience
+        if "Suspended" in role or "suspended" in role:
             return "None"
         
-        # Head Coach (only if it's actual head coach, not assistant head coach)
-        if "Head Coach" in role and "Assistant" not in role and "Asst." not in role:
+        # Exclude generic assistant roles
+        if ("Assistant" in role or "Asst" in role) and "/" not in role and "\\" not in role:
+            return "None"
+        
+        # Classify specific roles
+        if "Head Coach" in role and "Ass" not in role and "Interim" not in role and "Suspended" not in role and "suspended" not in role:
             return "HC"
         
-        # Coordinators
         if "Coordinator" in role:
-            if "Offensive" in role or "Off" in role:
+            if "Offensive Coordinator" in role and "Interim O" not in role:
                 return "OC"
-            elif "Defensive" in role or "Def" in role:
+            elif "Defensive Coordinator" in role and "Interim D" not in role:
                 return "DC"
-            elif "Special" in role:
+            elif "Special" in role and "Interim S" not in role:
                 return "STC"
+            else:
+                return "Position"
         
-        # Position coaches (including specific positions)
-        position_keywords = [
-            "Quarterbacks", "Running Backs", "Wide Receivers", "Tight Ends", "Offensive Line",
-            "Defensive Line", "Linebackers", "Defensive Backs", "Secondary", "Cornerbacks", "Safeties",
-            "Special Teams", "Kickers", "Punters", "Long Snappers",
-            "Assistant", "Coach"
-        ]
-        
-        if any(keyword in role for keyword in position_keywords):
-            return "Position"
-        
+        return "Position"
+    
+    def _classify_coaching_level(self, level: str) -> str:
+        """Classify coaching level (College, NFL, or None)"""
+        if not level:
+            return "None"
+        if "College" in level:
+            return "College"
+        if "NFL" in level and level != "NFL Europe":
+            return "NFL"
         return "None"
     
     def _resolve_team_franchise(self, team_abbrev: str) -> List[str]:
@@ -225,7 +234,6 @@ class YearlyCoachPerformanceProcessor:
         
         # Core experience metrics
         core_metrics = {
-            'age': 0,
             'num_times_hc': 0,
             'num_yr_col_pos': 0,
             'num_yr_col_coor': 0,
@@ -246,6 +254,10 @@ class YearlyCoachPerformanceProcessor:
             result_metrics = {}
             feature_names = get_all_feature_names()
             for feature_name in feature_names:
+                # Skip 'age' since we use 'Age' from the actual row data
+                if feature_name == 'age':
+                    continue
+                    
                 if feature_name in core_metrics:
                     result_metrics[feature_name] = core_metrics[feature_name]
                 else:
@@ -254,6 +266,7 @@ class YearlyCoachPerformanceProcessor:
         
         # Track HC hiring instances for num_times_hc
         hc_years = []
+        hc_hires = []  # Track actual hiring events
         prev_franchise = None
         last_hc_year = None
         
@@ -272,8 +285,10 @@ class YearlyCoachPerformanceProcessor:
             
             classified_role = self.classify_coaching_role(role)
             
-            # Count experience by level and role
-            if level == "College" or "College" in str(level):
+            # Count experience by level and role using improved level classification
+            classified_level = self._classify_coaching_level(level)
+            
+            if classified_level == "College":
                 if classified_role == "Position":
                     core_metrics["num_yr_col_pos"] += 1
                 elif classified_role in ["OC", "DC", "STC"]:
@@ -281,7 +296,7 @@ class YearlyCoachPerformanceProcessor:
                 elif classified_role == "HC":
                     core_metrics["num_yr_col_hc"] += 1
                     
-            elif level == "NFL":
+            elif classified_level == "NFL":
                 if classified_role == "Position":
                     core_metrics["num_yr_nfl_pos"] += 1
                 elif classified_role in ["OC", "DC", "STC"]:
@@ -306,20 +321,27 @@ class YearlyCoachPerformanceProcessor:
                         
                         # Check if this is a new HC hire
                         is_new_hire = (len(hc_years) == 1 or  # First HC job
-                                     franchise_list != prev_franchise or  # Team change
-                                     (last_hc_year is not None and year - last_hc_year > 1))  # Gap
+                                     franchise_list != prev_franchise)  # Team change only
+                        # Note: Removed gap detection to avoid counting returns from suspension as new hires
                         
                         if is_new_hire:
-                            core_metrics["num_times_hc"] += 1
+                            hc_hires.append(year)
                             prev_franchise = franchise_list
                         
                         last_hc_year = year
+        
+        # Set num_times_hc to the number of prior HC hires
+        core_metrics["num_times_hc"] = len(hc_hires)
         
         # Convert feature lists to averages
         result_metrics = {}
         feature_names = get_all_feature_names()
         
         for feature_name in feature_names:
+            # Skip 'age' since we use 'Age' from the actual row data
+            if feature_name == 'age':
+                continue
+                
             if feature_name in core_metrics:
                 result_metrics[feature_name] = core_metrics[feature_name]
             elif feature_name in feature_dict:
@@ -366,7 +388,7 @@ class YearlyCoachPerformanceProcessor:
         # Filter for 1970 onwards and NFL only
         nfl_history = history_df[
             (history_df['Year'] >= 1970) & 
-            (history_df['Level'] == 'NFL')
+            (history_df['Level'].apply(lambda x: self._classify_coaching_level(x) == 'NFL'))
         ].copy()
         
         if nfl_history.empty:

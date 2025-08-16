@@ -5,9 +5,12 @@ Pro Football Reference Combined Roster & Starters Scraper
 Efficiently scrapes both roster and starters information from Pro Football Reference 
 with a single web request per team/year. Includes rate limiting and command line interface.
 
+IMPORTANT: When using year ranges, the scraper counts DOWN from max-year to min-year.
+If a 404 or 403 error is encountered, the scraper skips to the next team.
+
 Usage (run from project root directory):
     python crawlers/PFR/combined_roster_starters_scraping.py --team den --year 2024
-    python crawlers/PFR/combined_roster_starters_scraping.py --all-teams --start-year 1970 --end-year 2009
+    python crawlers/PFR/combined_roster_starters_scraping.py --all-teams --min-year 1970 --max-year 2009
     python crawlers/PFR/combined_roster_starters_scraping.py --teams den,buf,dal --year 2024
 """
 
@@ -149,6 +152,14 @@ class CombinedRosterStartersScraper:
             
             return soup
             
+        except requests.exceptions.HTTPError as e:
+            # Check for 404 or 403 errors specifically
+            if hasattr(e, 'response') and e.response is not None and e.response.status_code in [404, 403]:
+                logger.warning(f"Received {e.response.status_code} error for {team.upper()} {year}: {e}")
+                return "skip_team"  # Special return value to signal skipping to next team
+            else:
+                logger.error(f"HTTP error fetching {team.upper()} {year}: {e}")
+                return None
         except requests.exceptions.RequestException as e:
             logger.error(f"Error fetching {team.upper()} {year}: {e}")
             return None
@@ -449,7 +460,7 @@ class CombinedRosterStartersScraper:
         
         return roster_saved, starters_saved
     
-    def scrape_team_year(self, team: str, year: int, force: bool = False) -> Tuple[bool, bool, bool]:
+    def scrape_team_year(self, team: str, year: int, force: bool = False) -> Tuple[bool, bool, Any]:
         """
         Scrape both roster and starters data for a specific team and year
         
@@ -460,6 +471,7 @@ class CombinedRosterStartersScraper:
             
         Returns:
             Tuple of (roster_success, starters_success, made_request)
+            made_request can be True, False, or "skip_team"
         """
         if not self._validate_team(team):
             logger.error(f"Invalid team abbreviation: {team}")
@@ -476,6 +488,8 @@ class CombinedRosterStartersScraper:
         
         # Fetch the page once
         soup = self._fetch_page(team, year)
+        if soup == "skip_team":
+            return False, False, "skip_team"  # Signal to skip remaining years for this team
         if not soup:
             return False, False, True
         
@@ -536,16 +550,26 @@ class CombinedRosterStartersScraper:
             for team_idx, team in enumerate(teams):
                 logger.info(f"Processing team {team_idx + 1}/{len(teams)}: {team.upper()}")
                 
-                for year_idx, year in enumerate(years):
+                # Process years in reverse order (countdown from max to min)
+                for year_idx, year in enumerate(reversed(years)):
                     try:
                         roster_success, starters_success, made_request = self.scrape_team_year(team, year, force)
+                        
+                        # Check if we got a signal to skip to next team
+                        if made_request == "skip_team":
+                            logger.info(f"Skipping remaining years for {team.upper()} due to 404/403 error")
+                            # Mark remaining years as skipped
+                            remaining_years = len(years) - year_idx - 1
+                            completed_requests += remaining_years
+                            skipped_requests += remaining_years
+                            break  # Move to next team
                         
                         if roster_success:
                             roster_successes += 1
                         if starters_success:
                             starters_successes += 1
                         
-                        if made_request:
+                        if made_request and made_request != "skip_team":
                             web_requests_made += 1
                             if not roster_success and not starters_success:
                                 failed_requests.append((team, year))
@@ -555,7 +579,7 @@ class CombinedRosterStartersScraper:
                         completed_requests += 1
                         
                         # Only rate limit if we made a web request and it's not the last request
-                        if made_request and completed_requests < total_requests:
+                        if made_request and made_request != "skip_team" and completed_requests < total_requests:
                             self._rate_limit()
                             
                     except KeyboardInterrupt:
@@ -609,8 +633,8 @@ def main():
     
     # Year arguments
     parser.add_argument('--year', type=int, help='Single year to scrape')
-    parser.add_argument('--start-year', type=int, help='Starting year (inclusive)')
-    parser.add_argument('--end-year', type=int, help='Ending year (inclusive)')
+    parser.add_argument('--min-year', type=int, help='Minimum year (inclusive) - will count down from max-year to this')
+    parser.add_argument('--max-year', type=int, help='Maximum year (inclusive) - will start from this year and count down')
     
     # Output directories
     parser.add_argument('--roster-output-dir', type=str, default='data/raw/Rosters',
@@ -662,10 +686,10 @@ def main():
     # Determine years
     if args.year:
         years = [args.year]
-    elif args.start_year and args.end_year:
-        years = list(range(args.start_year, args.end_year + 1))
+    elif args.min_year and args.max_year:
+        years = list(range(args.min_year, args.max_year + 1))  # Still create ascending range for processing
     else:
-        logger.error("Must specify --year or both --start-year and --end-year")
+        logger.error("Must specify --year or both --min-year and --max-year")
         sys.exit(1)
     
     # Run the scraper
