@@ -71,7 +71,11 @@ SPOTRAC_TO_PFR_MAPPINGS = {
     "ARI": "crd",  # Arizona Cardinals (PFR uses 'crd')
     "LAR": "ram",  # Los Angeles Rams
     "SF": "sfo",   # San Francisco 49ers (PFR uses 'sfo')
-    "SEA": "sea"   # Seattle Seahawks
+    "SEA": "sea",  # Seattle Seahawks
+    
+    # Historical team names (before relocations)
+    "STL": "ram",  # St. Louis Rams (2011-2015) → Los Angeles Rams
+    "SD": "sdg"    # San Diego Chargers (2011-2016) → Los Angeles Chargers
 }
 
 

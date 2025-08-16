@@ -1,0 +1,2 @@
+Creation_Date,Total_Rows,Total_Columns,Teams_Count,Year_Range,Base_File,Files_Combined,Description,Salary_Cap_Complete,Position_Metrics_Complete,Win_Pct_Complete
+2025-08-16 10:05:24,448,226,32,2011-2024,salary_cap_totals_combined.csv,8,Combined dataset from all final data sources with team-year as key,445,445,448
