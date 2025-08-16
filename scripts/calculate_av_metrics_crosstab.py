@@ -55,16 +55,35 @@ class AVMetricsCrosstabAnalyzer:
         )
         self.logger = logging.getLogger(__name__)
         
-        # Metrics we'll calculate
-        self.metrics = [
+        # Position groups for analysis
+        self.position_groups = {
+            'QB': ['QB'],
+            'RB': ['RB', 'FB', 'HB'],
+            'WR': ['WR'],
+            'TE': ['TE'],
+            'OL': ['LT', 'LG', 'C', 'RG', 'RT', 'G', 'T', 'OL', 'OG', 'OT'],
+            'DL': ['LDE', 'RDE', 'DE', 'NT', 'DT', 'LDT', 'RDT', 'DL'],
+            'LB': ['LOLB', 'LILB', 'RILB', 'ROLB', 'LB', 'ILB', 'OLB', 'MLB'],
+            'CB': ['LCB', 'RCB', 'CB', 'DB'],  # DB often means cornerback in roster
+            'S': ['SS', 'FS', 'S', 'SAF']
+        }
+        
+        # Base metrics we'll calculate
+        self.base_metrics = [
             'Avg_Starter_AV',
             'StdDev_Starter_AV',
             'Avg_Roster_AV',
-            'StdDev_Roster_AV',
-            'Starter_Count',
-            'Roster_Count',
-            'Matched_Starters'
+            'StdDev_Roster_AV'
         ]
+        
+        # Position group metrics for both starters and roster
+        self.position_metrics = []
+        for pos_group in self.position_groups.keys():
+            self.position_metrics.append(f'Avg_Starter_AV_{pos_group}')
+            self.position_metrics.append(f'Avg_Roster_AV_{pos_group}')
+        
+        # Combined metrics list
+        self.metrics = self.base_metrics + self.position_metrics
     
     def normalize_player_name(self, name: str) -> str:
         """
@@ -90,6 +109,27 @@ class AVMetricsCrosstabAnalyzer:
         
         return name
     
+    def map_position_to_group(self, position: str) -> Optional[str]:
+        """
+        Map a position to its position group
+        
+        Args:
+            position: Position abbreviation from starters data
+            
+        Returns:
+            Position group name or None if not found
+        """
+        if pd.isna(position):
+            return None
+        
+        position = str(position).strip().upper()
+        
+        for group, positions in self.position_groups.items():
+            if position in positions:
+                return group
+        
+        return None
+    
     def load_starters_file(self, team: str, year: int) -> Optional[pd.DataFrame]:
         """
         Load starters file for a specific team and year
@@ -112,7 +152,7 @@ class AVMetricsCrosstabAnalyzer:
             df = pd.read_csv(starters_file)
             
             # Ensure required columns exist
-            required_columns = ['Player']
+            required_columns = ['Player', 'Pos']
             missing_columns = [col for col in required_columns if col not in df.columns]
             if missing_columns:
                 self.logger.warning(f"Missing required columns {missing_columns} in {starters_file}")
@@ -157,7 +197,7 @@ class AVMetricsCrosstabAnalyzer:
             df = pd.read_csv(roster_file)
             
             # Ensure required columns exist
-            required_columns = ['Player', 'AV']
+            required_columns = ['Player', 'AV', 'Pos']
             missing_columns = [col for col in required_columns if col not in df.columns]
             if missing_columns:
                 self.logger.warning(f"Missing required columns {missing_columns} in {roster_file}")
@@ -214,7 +254,7 @@ class AVMetricsCrosstabAnalyzer:
                             roster_df: pd.DataFrame, 
                             team: str, year: int) -> Dict[str, float]:
         """
-        Calculate AV metrics for starters vs roster
+        Calculate AV metrics for starters vs roster with position group breakdown
         
         Args:
             starters_df: Starters DataFrame
@@ -227,25 +267,38 @@ class AVMetricsCrosstabAnalyzer:
         """
         metrics = {}
         
+        # Initialize all metrics to 0.0
+        for metric in self.metrics:
+            metrics[metric] = 0.0
+        
         # Match starters to roster to get AV values
         if not starters_df.empty and not roster_df.empty:
             matched_starters = self.match_starters_to_roster(starters_df, roster_df)
-            starter_av_values = matched_starters['AV'].dropna()
-            matched_count = len(starter_av_values)
-        else:
-            starter_av_values = pd.Series(dtype=float)
-            matched_count = 0
-        
-        # Calculate starter metrics
-        if len(starter_av_values) > 0:
-            metrics['Avg_Starter_AV'] = round(starter_av_values.mean(), 2)
-            metrics['StdDev_Starter_AV'] = round(starter_av_values.std(), 2) if len(starter_av_values) > 1 else 0.0
-        else:
-            metrics['Avg_Starter_AV'] = 0.0
-            metrics['StdDev_Starter_AV'] = 0.0
-        
-        metrics['Starter_Count'] = len(starters_df) if not starters_df.empty else 0
-        metrics['Matched_Starters'] = matched_count
+            
+            # Check for unmatched starters and warn
+            unmatched_starters = matched_starters[matched_starters['AV'].isna()]
+            if not unmatched_starters.empty:
+                unmatched_names = unmatched_starters['Player'].tolist()
+                print(f"WARNING: {team} {year} - Could not match {len(unmatched_names)} starters to roster AV: {', '.join(unmatched_names)}")
+            
+            # Get successfully matched starters with AV values
+            successfully_matched = matched_starters.dropna(subset=['AV'])
+            starter_av_values = successfully_matched['AV']
+            
+            # Calculate overall starter metrics
+            if len(starter_av_values) > 0:
+                metrics['Avg_Starter_AV'] = round(starter_av_values.mean(), 2)
+                metrics['StdDev_Starter_AV'] = round(starter_av_values.std(), 2) if len(starter_av_values) > 1 else 0.0
+            
+            # Calculate position group metrics for starters
+            successfully_matched['Position_Group'] = successfully_matched['Pos'].apply(self.map_position_to_group)
+            
+            for pos_group in self.position_groups.keys():
+                group_starters = successfully_matched[successfully_matched['Position_Group'] == pos_group]
+                if not group_starters.empty:
+                    group_av_values = group_starters['AV']
+                    if len(group_av_values) > 0:
+                        metrics[f'Avg_Starter_AV_{pos_group}'] = round(group_av_values.mean(), 2)
         
         # Calculate roster metrics
         if not roster_df.empty:
@@ -254,21 +307,16 @@ class AVMetricsCrosstabAnalyzer:
             if len(roster_av_values) > 0:
                 metrics['Avg_Roster_AV'] = round(roster_av_values.mean(), 2)
                 metrics['StdDev_Roster_AV'] = round(roster_av_values.std(), 2) if len(roster_av_values) > 1 else 0.0
-            else:
-                metrics['Avg_Roster_AV'] = 0.0
-                metrics['StdDev_Roster_AV'] = 0.0
             
-            metrics['Roster_Count'] = len(roster_df)
-        else:
-            metrics.update({
-                'Avg_Roster_AV': 0.0,
-                'StdDev_Roster_AV': 0.0,
-                'Roster_Count': 0
-            })
-        
-        self.logger.debug(f"{team} {year}: Starters avg AV {metrics['Avg_Starter_AV']}, "
-                         f"Roster avg AV {metrics['Avg_Roster_AV']}, "
-                         f"Matched {matched_count}/{metrics['Starter_Count']} starters")
+            # Calculate position group metrics for roster
+            roster_df['Position_Group'] = roster_df['Pos'].apply(self.map_position_to_group)
+            
+            for pos_group in self.position_groups.keys():
+                group_roster = roster_df[roster_df['Position_Group'] == pos_group]
+                if not group_roster.empty:
+                    group_av_values = group_roster['AV'].dropna()
+                    if len(group_av_values) > 0:
+                        metrics[f'Avg_Roster_AV_{pos_group}'] = round(group_av_values.mean(), 2)
         
         return metrics
     
@@ -321,9 +369,9 @@ class AVMetricsCrosstabAnalyzer:
             
             # Use empty DataFrame if one is missing
             if starters_df is None:
-                starters_df = pd.DataFrame(columns=['Player', 'Player_Normalized'])
+                starters_df = pd.DataFrame(columns=['Player', 'Player_Normalized', 'Pos'])
             if roster_df is None:
-                roster_df = pd.DataFrame(columns=['Player', 'Player_Normalized', 'AV'])
+                roster_df = pd.DataFrame(columns=['Player', 'Player_Normalized', 'AV', 'Pos'])
             
             # Calculate metrics
             metrics_data = self.calculate_av_metrics(starters_df, roster_df, team, year)
@@ -333,8 +381,8 @@ class AVMetricsCrosstabAnalyzer:
             crosstab_rows.append(crosstab_row)
             
             self.logger.info(f"Calculated AV metrics for {team} {year}: "
-                           f"{metrics_data['Matched_Starters']}/{metrics_data['Starter_Count']} starters matched, "
-                           f"{metrics_data['Roster_Count']} roster")
+                           f"Starters avg AV {metrics_data['Avg_Starter_AV']}, "
+                           f"Roster avg AV {metrics_data['Avg_Roster_AV']}")
         
         return crosstab_rows
     
@@ -392,7 +440,7 @@ class AVMetricsCrosstabAnalyzer:
                 'Year_Range': f"{df['Year'].min()}-{df['Year'].max()}" if not df.empty else "N/A",
                 'Metrics_Calculated': ', '.join(self.metrics),
                 'Total_Columns': len(df.columns),
-                'Description': 'AV (Approximate Value) metrics comparing starters vs full roster'
+                'Description': 'AV (Approximate Value) metrics comparing starters vs full roster with position group breakdown'
             }
             
             metadata_df = pd.DataFrame([metadata])
@@ -568,11 +616,15 @@ def main():
         print("  - av_metrics_crosstab_metadata.csv (processing metadata)")
         
         # Show column structure  
-        metrics = analyzer.metrics
+        base_metrics = analyzer.base_metrics
+        starter_pos_metrics = [m for m in analyzer.position_metrics if 'Starter' in m]
+        roster_pos_metrics = [m for m in analyzer.position_metrics if 'Roster' in m]
         print(f"\nCrosstab structure:")
         print(f"  - Base columns: Team, Year")
-        print(f"  - Metrics: {', '.join(metrics)}")
-        print(f"  - Total columns: {len(metrics) + 3}")  # +3 for Team, Year, Analysis_Date
+        print(f"  - Overall metrics: {', '.join(base_metrics)}")
+        print(f"  - Starter position metrics: {', '.join(starter_pos_metrics[:3])}...")
+        print(f"  - Roster position metrics: {', '.join(roster_pos_metrics[:3])}...")
+        print(f"  - Total columns: {len(analyzer.metrics) + 3}")  # +3 for Team, Year, Analysis_Date
 
 
 if __name__ == "__main__":
