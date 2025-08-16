@@ -1,0 +1,23 @@
+Team,Year,Pos,Player,Age,Yrs,GS,Summary of Player Stats,Drafted (tm/rnd/yr),Table_Type
+DEN,1985,QB,John Elway,25,2,16,"327 for 605, 3,891 yards, 22 td, 23 int, & 51 rushes for 253 yards and 0 td",,Starters_1
+DEN,1985,RB,Sammy Winder,26,3,12,"199 rushes for 714 yards, 8 td, & 31 catches for 197 yards and 0 td",,Starters_1
+DEN,1985,WR,Butch Johnson,31,9,8,"19 catches for 380 yards, 3 td",,Starters_1
+DEN,1985,WR,Steve Watson,28,6,15,"61 catches for 915 yards, 5 td",,Starters_1
+DEN,1985,TE,Clarence Kay,24,1,16,"29 catches for 339 yards, 3 td",,Starters_1
+DEN,1985,TE,James Wright,29,7,12,"28 catches for 246 yards, 1 td",,Starters_1
+DEN,1985,LT,Dave Studdard,30,6,15,2 fumbles recovered,,Starters_1
+DEN,1985,LG,Keith Bishop,28,5,14,,,Starters_1
+DEN,1985,C,Bill Bryan,30,8,16,1 fumble recovered,,Starters_1
+DEN,1985,RG,Paul Howard,35,12,15,,,Starters_1
+DEN,1985,RT,Ken Lanier,26,4,16,,,Starters_1
+DEN,1985,LDE,Barney Chavous,34,12,15,"6.0 sacks, 0 interceptions, 1 fumble recovered",,Starters_1
+DEN,1985,NT,Rubin Carter,33,10,16,"1.0 sacks, 0 interceptions, 1 fumble recovered",,Starters_1
+DEN,1985,RDE,Rulon Jones*,27,5,16,"10.0 sacks, 0 interceptions, 3 fumbles recovered",,Starters_1
+DEN,1985,LOLB,Jim Ryan,28,6,14,"1.0 sacks, 0 interceptions, 1 fumble recovered",,Starters_1
+DEN,1985,LILB,Karl Mecklenburg*+,25,2,9,"13.0 sacks, 0 interceptions, 1 fumble recovered",,Starters_1
+DEN,1985,RILB,Steve Busick,27,4,16,"0.0 sacks, 0 interceptions, 1 fumble recovered",,Starters_1
+DEN,1985,ROLB,Ken Woodard,25,3,9,"3.0 sacks, 1 interception, 0 fumbles recovered",,Starters_1
+DEN,1985,LCB,Louis Wright*,32,10,15,"0.0 sacks, 5 interceptions, 0 fumbles recovered",,Starters_1
+DEN,1985,RCB,Mike Harden,26,5,16,"1.0 sacks, 5 interceptions, 2 fumbles recovered",,Starters_1
+DEN,1985,SS,Dennis Smith*,26,4,12,"4.0 sacks, 3 interceptions, 0 fumbles recovered",,Starters_1
+DEN,1985,FS,Steve Foley,32,9,11,"0.0 sacks, 3 interceptions, 0 fumbles recovered",,Starters_1
