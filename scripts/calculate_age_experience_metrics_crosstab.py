@@ -55,8 +55,21 @@ class AgeExperienceMetricsCrosstabAnalyzer:
         )
         self.logger = logging.getLogger(__name__)
         
-        # Metrics we'll calculate
-        self.metrics = [
+        # Position groups for analysis
+        self.position_groups = {
+            'QB': ['QB'],
+            'RB': ['RB', 'FB', 'HB'],
+            'WR': ['WR'],
+            'TE': ['TE'],
+            'OL': ['LT', 'LG', 'C', 'RG', 'RT', 'G', 'T', 'OL', 'OG', 'OT'],
+            'DL': ['LDE', 'RDE', 'DE', 'NT', 'DT', 'LDT', 'RDT', 'DL'],
+            'LB': ['LOLB', 'LILB', 'RILB', 'ROLB', 'LB', 'ILB', 'OLB', 'MLB'],
+            'CB': ['LCB', 'RCB', 'CB', 'DB'],  # DB often means cornerback in roster
+            'S': ['SS', 'FS', 'S', 'SAF']
+        }
+        
+        # Base metrics we'll calculate
+        self.base_metrics = [
             'Avg_Starter_Age',
             'StdDev_Starter_Age',
             'Avg_Starter_Experience',
@@ -64,10 +77,40 @@ class AgeExperienceMetricsCrosstabAnalyzer:
             'Avg_Roster_Age',
             'StdDev_Roster_Age',
             'Avg_Roster_Experience',
-            'StdDev_Roster_Experience',
-            'Starter_Count',
-            'Roster_Count'
+            'StdDev_Roster_Experience'
         ]
+        
+        # Position group metrics for both starters and roster
+        self.position_metrics = []
+        for pos_group in self.position_groups.keys():
+            self.position_metrics.append(f'Avg_Starter_Age_{pos_group}')
+            self.position_metrics.append(f'Avg_Starter_Exp_{pos_group}')
+            self.position_metrics.append(f'Avg_Roster_Age_{pos_group}')
+            self.position_metrics.append(f'Avg_Roster_Exp_{pos_group}')
+        
+        # Combined metrics list
+        self.metrics = self.base_metrics + self.position_metrics
+    
+    def map_position_to_group(self, position: str) -> Optional[str]:
+        """
+        Map a position to its position group
+        
+        Args:
+            position: Position abbreviation from data
+            
+        Returns:
+            Position group name or None if not found
+        """
+        if pd.isna(position):
+            return None
+        
+        position = str(position).strip().upper()
+        
+        for group, positions in self.position_groups.items():
+            if position in positions:
+                return group
+        
+        return None
     
     def convert_experience_to_numeric(self, experience_value) -> float:
         """
@@ -116,7 +159,7 @@ class AgeExperienceMetricsCrosstabAnalyzer:
             df = pd.read_csv(starters_file)
             
             # Ensure required columns exist
-            required_columns = ['Player', 'Age', 'Yrs']
+            required_columns = ['Player', 'Age', 'Yrs', 'Pos']
             missing_columns = [col for col in required_columns if col not in df.columns]
             if missing_columns:
                 self.logger.warning(f"Missing required columns {missing_columns} in {starters_file}")
@@ -162,7 +205,7 @@ class AgeExperienceMetricsCrosstabAnalyzer:
             df = pd.read_csv(roster_file)
             
             # Ensure required columns exist
-            required_columns = ['Player', 'Age', 'Yrs']
+            required_columns = ['Player', 'Age', 'Yrs', 'Pos']
             missing_columns = [col for col in required_columns if col not in df.columns]
             if missing_columns:
                 self.logger.warning(f"Missing required columns {missing_columns} in {roster_file}")
@@ -190,7 +233,7 @@ class AgeExperienceMetricsCrosstabAnalyzer:
                                        roster_df: pd.DataFrame, 
                                        team: str, year: int) -> Dict[str, float]:
         """
-        Calculate age and experience metrics for starters vs roster
+        Calculate age and experience metrics for starters vs roster with position group breakdown
         
         Args:
             starters_df: Starters DataFrame
@@ -203,46 +246,61 @@ class AgeExperienceMetricsCrosstabAnalyzer:
         """
         metrics = {}
         
-        # Calculate starter metrics
+        # Initialize all metrics to 0.0
+        for metric in self.metrics:
+            metrics[metric] = 0.0
+        
+        # Calculate overall starter metrics
         if not starters_df.empty:
             starter_ages = starters_df['Age'].dropna()
             starter_experience = starters_df['Experience'].dropna()
             
-            metrics['Avg_Starter_Age'] = round(starter_ages.mean(), 2) if len(starter_ages) > 0 else 0.0
-            metrics['StdDev_Starter_Age'] = round(starter_ages.std(), 2) if len(starter_ages) > 1 else 0.0
-            metrics['Avg_Starter_Experience'] = round(starter_experience.mean(), 2) if len(starter_experience) > 0 else 0.0
-            metrics['StdDev_Starter_Experience'] = round(starter_experience.std(), 2) if len(starter_experience) > 1 else 0.0
-            metrics['Starter_Count'] = len(starters_df)
-        else:
-            metrics.update({
-                'Avg_Starter_Age': 0.0,
-                'StdDev_Starter_Age': 0.0,
-                'Avg_Starter_Experience': 0.0,
-                'StdDev_Starter_Experience': 0.0,
-                'Starter_Count': 0
-            })
+            if len(starter_ages) > 0:
+                metrics['Avg_Starter_Age'] = round(starter_ages.mean(), 2)
+                metrics['StdDev_Starter_Age'] = round(starter_ages.std(), 2) if len(starter_ages) > 1 else 0.0
+            if len(starter_experience) > 0:
+                metrics['Avg_Starter_Experience'] = round(starter_experience.mean(), 2)
+                metrics['StdDev_Starter_Experience'] = round(starter_experience.std(), 2) if len(starter_experience) > 1 else 0.0
+            
+            # Calculate position group metrics for starters
+            starters_df['Position_Group'] = starters_df['Pos'].apply(self.map_position_to_group)
+            
+            for pos_group in self.position_groups.keys():
+                group_starters = starters_df[starters_df['Position_Group'] == pos_group]
+                if not group_starters.empty:
+                    group_ages = group_starters['Age'].dropna()
+                    group_exp = group_starters['Experience'].dropna()
+                    
+                    if len(group_ages) > 0:
+                        metrics[f'Avg_Starter_Age_{pos_group}'] = round(group_ages.mean(), 2)
+                    if len(group_exp) > 0:
+                        metrics[f'Avg_Starter_Exp_{pos_group}'] = round(group_exp.mean(), 2)
         
-        # Calculate roster metrics
+        # Calculate overall roster metrics
         if not roster_df.empty:
             roster_ages = roster_df['Age'].dropna()
             roster_experience = roster_df['Experience'].dropna()
             
-            metrics['Avg_Roster_Age'] = round(roster_ages.mean(), 2) if len(roster_ages) > 0 else 0.0
-            metrics['StdDev_Roster_Age'] = round(roster_ages.std(), 2) if len(roster_ages) > 1 else 0.0
-            metrics['Avg_Roster_Experience'] = round(roster_experience.mean(), 2) if len(roster_experience) > 0 else 0.0
-            metrics['StdDev_Roster_Experience'] = round(roster_experience.std(), 2) if len(roster_experience) > 1 else 0.0
-            metrics['Roster_Count'] = len(roster_df)
-        else:
-            metrics.update({
-                'Avg_Roster_Age': 0.0,
-                'StdDev_Roster_Age': 0.0,
-                'Avg_Roster_Experience': 0.0,
-                'StdDev_Roster_Experience': 0.0,
-                'Roster_Count': 0
-            })
-        
-        self.logger.debug(f"{team} {year}: Starters avg age {metrics['Avg_Starter_Age']}, "
-                         f"Roster avg age {metrics['Avg_Roster_Age']}")
+            if len(roster_ages) > 0:
+                metrics['Avg_Roster_Age'] = round(roster_ages.mean(), 2)
+                metrics['StdDev_Roster_Age'] = round(roster_ages.std(), 2) if len(roster_ages) > 1 else 0.0
+            if len(roster_experience) > 0:
+                metrics['Avg_Roster_Experience'] = round(roster_experience.mean(), 2)
+                metrics['StdDev_Roster_Experience'] = round(roster_experience.std(), 2) if len(roster_experience) > 1 else 0.0
+            
+            # Calculate position group metrics for roster
+            roster_df['Position_Group'] = roster_df['Pos'].apply(self.map_position_to_group)
+            
+            for pos_group in self.position_groups.keys():
+                group_roster = roster_df[roster_df['Position_Group'] == pos_group]
+                if not group_roster.empty:
+                    group_ages = group_roster['Age'].dropna()
+                    group_exp = group_roster['Experience'].dropna()
+                    
+                    if len(group_ages) > 0:
+                        metrics[f'Avg_Roster_Age_{pos_group}'] = round(group_ages.mean(), 2)
+                    if len(group_exp) > 0:
+                        metrics[f'Avg_Roster_Exp_{pos_group}'] = round(group_exp.mean(), 2)
         
         return metrics
     
@@ -307,7 +365,8 @@ class AgeExperienceMetricsCrosstabAnalyzer:
             crosstab_rows.append(crosstab_row)
             
             self.logger.info(f"Calculated age/experience metrics for {team} {year}: "
-                           f"{metrics_data['Starter_Count']} starters, {metrics_data['Roster_Count']} roster")
+                           f"Starter avg age {metrics_data['Avg_Starter_Age']}, "
+                           f"Roster avg age {metrics_data['Avg_Roster_Age']}")
         
         return crosstab_rows
     
@@ -541,11 +600,13 @@ def main():
         print("  - age_experience_metrics_crosstab_metadata.csv (processing metadata)")
         
         # Show column structure  
-        metrics = analyzer.metrics
+        base_metrics = analyzer.base_metrics
+        position_metrics = analyzer.position_metrics
         print(f"\nCrosstab structure:")
         print(f"  - Base columns: Team, Year")
-        print(f"  - Metrics: {', '.join(metrics)}")
-        print(f"  - Total columns: {len(metrics) + 3}")  # +3 for Team, Year, Analysis_Date
+        print(f"  - Overall metrics: {', '.join(base_metrics[:4])}...")
+        print(f"  - Position group metrics: {len(position_metrics)} columns for age/exp by position")
+        print(f"  - Total columns: {len(analyzer.metrics) + 3}")  # +3 for Team, Year, Analysis_Date
 
 
 if __name__ == "__main__":
