@@ -3,8 +3,8 @@
 Combine All Final Datasets into Single Team-Year Table
 
 This script combines all non-metadata CSV files from data/final/ into a single dataset
-using salary_cap_totals_combined.csv as the base table. Only team-year combinations
-that exist in the base table will be included in the final output.
+using a full outer join approach. All team-year combinations from any dataset will be
+included in the final output, with missing values handled through imputation.
 
 Usage:
     python scripts/combine_final_datasets.py
@@ -45,11 +45,10 @@ class FinalDatasetCombiner:
         )
         self.logger = logging.getLogger(__name__)
         
-        # Base table file
-        self.base_file = "salary_cap_totals_combined.csv"
-        
-        # Files to combine (excluding metadata and specific files)
+        # All data files to combine (no base table concept)
+        # Note: Head coach data comes from data/processed/, others from data/final/
         self.files_to_combine = [
+            "salary_cap_totals_combined.csv",
             "positional_percentages_combined.csv",
             "roster_turnover_crosstab.csv", 
             "starters_turnover_crosstab.csv",
@@ -60,49 +59,83 @@ class FinalDatasetCombiner:
             "sos_winning_percentage.csv"
         ]
         
+        # Additional files from other directories
+        self.additional_files = {
+            "../processed/Coaching/team_year_head_coaches.csv": "head_coaches"
+        }
+        
         # Columns to exclude from joins (date/metadata columns)
         self.exclude_columns = [
             'Analysis_Date', 'Extraction_Date', 'Creation_Date',
             'Last_Updated', 'Generated_Date', 'Processed_Date'
         ]
+        
+        # Historical team mappings to current team abbreviations
+        self.team_mappings = {
+            'BOS': 'NWE',  # Boston Patriots → New England Patriots
+            'LAR': 'RAM',  # Los Angeles Rams → Rams (consolidate)
+            'LVR': 'RAI',  # Las Vegas Raiders → Raiders (consolidate)
+            'PHO': 'CRD',  # Phoenix Cardinals → Arizona Cardinals
+            'STL': 'RAM',  # St. Louis Rams → Los Angeles Rams
+        }
     
-    def load_base_table(self) -> Optional[pd.DataFrame]:
+    def standardize_team_names(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Load the base salary cap table
+        Apply historical team mappings to standardize team names
+        
+        Args:
+            df: DataFrame with Team column
+            
+        Returns:
+            DataFrame with standardized team names
+        """
+        if 'Team' in df.columns:
+            df['Team'] = df['Team'].replace(self.team_mappings)
+        return df
+    
+    def collect_all_team_years(self) -> Optional[pd.DataFrame]:
+        """
+        Collect all unique team-year combinations from all datasets
         
         Returns:
-            Base DataFrame or None if failed
+            DataFrame with all unique team-year combinations
         """
-        base_path = self.final_dir / self.base_file
+        all_team_years = set()
         
-        if not base_path.exists():
-            self.logger.error(f"Base file not found: {base_path}")
+        # Process main files from final directory
+        for filename in self.files_to_combine:
+            df = self.load_dataset(filename)
+            if df is not None:
+                for _, row in df.iterrows():
+                    all_team_years.add((row['Team'], row['Year']))
+        
+        # Process additional files from other directories
+        for file_path, file_label in self.additional_files.items():
+            full_path = self.final_dir / file_path
+            df = self.load_additional_dataset(full_path, file_label)
+            if df is not None:
+                for _, row in df.iterrows():
+                    all_team_years.add((row['Team'], row['Year']))
+        
+        if not all_team_years:
+            self.logger.error("No team-year combinations found in any dataset")
             return None
         
-        try:
-            df = pd.read_csv(base_path)
-            
-            # Check for required columns
-            if 'PFR_Team' not in df.columns or 'Year' not in df.columns:
-                self.logger.error("Base table missing required columns: PFR_Team, Year")
-                return None
-            
-            # Standardize team column name
-            df = df.rename(columns={'PFR_Team': 'Team'})
-            
-            # Ensure Team and Year are properly formatted
-            df['Team'] = df['Team'].str.upper()
-            df['Year'] = df['Year'].astype(int)
-            
-            self.logger.info(f"Loaded base table: {len(df)} rows, {len(df.columns)} columns")
-            self.logger.info(f"Team-Year range: {df['Year'].min()}-{df['Year'].max()}")
-            self.logger.info(f"Teams: {df['Team'].nunique()}")
-            
-            return df
-            
-        except Exception as e:
-            self.logger.error(f"Error loading base table: {e}")
-            return None
+        # Create master team-year DataFrame and filter for 1970 onwards
+        team_years_df = pd.DataFrame(
+            list(all_team_years), 
+            columns=['Team', 'Year']
+        )
+        
+        # Filter for 1970 onwards to match coaching data availability
+        team_years_df = team_years_df[team_years_df['Year'] >= 1970]
+        team_years_df = team_years_df.sort_values(['Team', 'Year'], ignore_index=True)
+        
+        self.logger.info(f"Found {len(team_years_df)} unique team-year combinations")
+        self.logger.info(f"Team-Year range: {team_years_df['Year'].min()}-{team_years_df['Year'].max()}")
+        self.logger.info(f"Teams: {team_years_df['Team'].nunique()}")
+        
+        return team_years_df
     
     def load_dataset(self, filename: str) -> Optional[pd.DataFrame]:
         """
@@ -159,6 +192,12 @@ class FinalDatasetCombiner:
             df['Team'] = df['Team'].str.upper()
             df['Year'] = df['Year'].astype(int)
             
+            # Apply historical team mappings
+            df = self.standardize_team_names(df)
+            
+            # Filter for 1970 onwards to match coaching data availability
+            df = df[df['Year'] >= 1970]
+            
             # Remove excluded columns
             cols_to_drop = [col for col in self.exclude_columns if col in df.columns]
             if cols_to_drop:
@@ -171,6 +210,57 @@ class FinalDatasetCombiner:
             
         except Exception as e:
             self.logger.error(f"Error loading {filename}: {e}")
+            return None
+    
+    def load_additional_dataset(self, file_path: Path, file_label: str) -> Optional[pd.DataFrame]:
+        """
+        Load an additional dataset file from another directory
+        
+        Args:
+            file_path: Full path to the file
+            file_label: Label for logging purposes
+            
+        Returns:
+            Prepared DataFrame or None if failed
+        """
+        if not file_path.exists():
+            self.logger.warning(f"Additional file not found: {file_path} ({file_label})")
+            return None
+        
+        try:
+            df = pd.read_csv(file_path)
+            
+            if df.empty:
+                self.logger.warning(f"Empty additional file: {file_path} ({file_label})")
+                return None
+            
+            # Check for required columns
+            if 'Team' not in df.columns or 'Year' not in df.columns:
+                self.logger.warning(f"Missing Team/Year columns in {file_path} ({file_label})")
+                return None
+            
+            # Standardize data types
+            df['Team'] = df['Team'].str.upper()
+            df['Year'] = df['Year'].astype(int)
+            
+            # Apply historical team mappings
+            df = self.standardize_team_names(df)
+            
+            # Filter for 1970 onwards to match coaching data availability
+            df = df[df['Year'] >= 1970]
+            
+            # Remove excluded columns
+            cols_to_drop = [col for col in self.exclude_columns if col in df.columns]
+            if cols_to_drop:
+                df = df.drop(columns=cols_to_drop)
+                self.logger.info(f"Dropped columns from {file_label}: {cols_to_drop}")
+            
+            self.logger.info(f"Loaded {file_label}: {len(df)} rows, {len(df.columns)} columns")
+            
+            return df
+            
+        except Exception as e:
+            self.logger.error(f"Error loading additional file {file_path} ({file_label}): {e}")
             return None
     
     def create_team_year_key(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -189,26 +279,24 @@ class FinalDatasetCombiner:
     
     def combine_datasets(self) -> Optional[pd.DataFrame]:
         """
-        Combine all datasets using the base table as foundation
+        Combine all datasets using full outer join approach
         
         Returns:
             Combined DataFrame or None if failed
         """
-        # Load base table
-        combined_df = self.load_base_table()
+        # Get all unique team-year combinations
+        combined_df = self.collect_all_team_years()
         if combined_df is None:
             return None
         
-        # Create team-year key for base table
+        # Create team-year key
         combined_df = self.create_team_year_key(combined_df)
-        base_keys = set(combined_df['team_year_key'])
-        
-        self.logger.info(f"Base table has {len(base_keys)} unique team-year combinations")
         
         # Join each dataset
         successful_joins = []
         failed_joins = []
         
+        # Process main files from final directory
         for filename in self.files_to_combine:
             self.logger.info(f"Processing {filename}")
             
@@ -221,18 +309,10 @@ class FinalDatasetCombiner:
             # Create team-year key
             df = self.create_team_year_key(df)
             
-            # Filter to only include team-year combinations in base table
-            df_filtered = df[df['team_year_key'].isin(base_keys)]
-            
-            if len(df_filtered) == 0:
-                self.logger.warning(f"No matching team-year combinations for {filename}")
-                failed_joins.append(filename)
-                continue
-            
             # Drop duplicate team_year_key, Team, Year columns for joining
-            join_cols = [col for col in df_filtered.columns 
+            join_cols = [col for col in df.columns 
                         if col not in ['team_year_key', 'Team', 'Year']]
-            df_to_join = df_filtered[['team_year_key'] + join_cols]
+            df_to_join = df[['team_year_key'] + join_cols]
             
             # Check for column name conflicts
             existing_cols = set(combined_df.columns)
@@ -247,23 +327,74 @@ class FinalDatasetCombiner:
                 df_to_join = df_to_join.rename(columns=rename_dict)
                 self.logger.info(f"Renamed columns: {rename_dict}")
             
-            # Perform left join
+            # Perform outer join to keep all team-year combinations
             before_cols = len(combined_df.columns)
             combined_df = combined_df.merge(
                 df_to_join, 
                 on='team_year_key', 
-                how='left'
+                how='outer'
             )
             after_cols = len(combined_df.columns)
             
             added_cols = after_cols - before_cols
-            overlap = len(df_filtered)
+            overlap = len(df)
             
-            self.logger.info(f"Joined {filename}: +{added_cols} columns, {overlap} matching rows")
+            self.logger.info(f"Joined {filename}: +{added_cols} columns, {overlap} total rows in dataset")
             successful_joins.append(filename)
+        
+        # Process additional files from other directories
+        for file_path, file_label in self.additional_files.items():
+            self.logger.info(f"Processing additional file: {file_label}")
+            
+            # Load additional dataset
+            full_path = self.final_dir / file_path
+            df = self.load_additional_dataset(full_path, file_label)
+            if df is None:
+                failed_joins.append(file_label)
+                continue
+            
+            # Create team-year key
+            df = self.create_team_year_key(df)
+            
+            # Drop duplicate team_year_key, Team, Year columns for joining
+            join_cols = [col for col in df.columns 
+                        if col not in ['team_year_key', 'Team', 'Year']]
+            df_to_join = df[['team_year_key'] + join_cols]
+            
+            # Check for column name conflicts
+            existing_cols = set(combined_df.columns)
+            new_cols = set(join_cols)
+            conflicts = existing_cols.intersection(new_cols)
+            
+            if conflicts:
+                self.logger.warning(f"Column conflicts in {file_label}: {conflicts}")
+                # Add suffix to conflicting columns
+                suffix = f"_{file_label}"
+                rename_dict = {col: col + suffix for col in conflicts}
+                df_to_join = df_to_join.rename(columns=rename_dict)
+                self.logger.info(f"Renamed columns: {rename_dict}")
+            
+            # Perform outer join to keep all team-year combinations
+            before_cols = len(combined_df.columns)
+            combined_df = combined_df.merge(
+                df_to_join, 
+                on='team_year_key', 
+                how='outer'
+            )
+            after_cols = len(combined_df.columns)
+            
+            added_cols = after_cols - before_cols
+            overlap = len(df)
+            
+            self.logger.info(f"Joined {file_label}: +{added_cols} columns, {overlap} total rows in dataset")
+            successful_joins.append(file_label)
         
         # Remove team_year_key helper column
         combined_df = combined_df.drop(columns=['team_year_key'])
+        
+        # Final filter: ensure Year is integer and >= 1970
+        combined_df['Year'] = combined_df['Year'].astype(int)
+        combined_df = combined_df[combined_df['Year'] >= 1970]
         
         # Sort by Team and Year
         combined_df = combined_df.sort_values(['Team', 'Year'], ignore_index=True)
@@ -327,7 +458,7 @@ class FinalDatasetCombiner:
                 'Total_Columns': total_columns,
                 'Teams_Count': teams_count,
                 'Year_Range': year_range,
-                'Base_File': self.base_file,
+                'Join_Type': 'full_outer_join',
                 'Files_Combined': len(self.files_to_combine),
                 'Description': 'Combined dataset from all final data sources with team-year as key'
             }
@@ -421,7 +552,7 @@ def main():
     )
     
     print("Combining all final datasets...")
-    print(f"Base table: {combiner.base_file}")
+    print(f"Join strategy: Full outer join (all team-year combinations)")
     print(f"Files to combine: {len(combiner.files_to_combine)}")
     
     # Combine datasets

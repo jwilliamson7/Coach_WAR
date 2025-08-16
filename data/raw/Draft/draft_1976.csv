@@ -1,0 +1,488 @@
+Draft_Year,Round,Pick_Number,Team,Player,Position,Age,Last_Season,All_Pro_Selections,Pro_Bowl_Selections,Games_Started,Weighted_AV,Draft_Rookie_AV,G,Cmp,Att,Yds,TD,Int,Att,Yds,TD,Rec,Yds,TD,Int,Sk,College/Univ,Column_27
+1976,1,1,TAM,Lee Roy SelmonHOF,DE,21,1984,1,6,9,78,78,121,0,0,0,0,0,0,0,0,0,0,0,,78.5,Oklahoma,College Stats
+1976,1,2,SEA,Steve Niehaus,DT,21,1979,0,0,1,9,8,39,0,0,0,0,0,0,0,0,0,0,0,,10.5,Notre Dame,College Stats
+1976,1,3,NOR,Chuck Muncie,RB,23,1984,0,3,7,72,34,110,4,7,126,4,0,1561,6702,71,263,2323,3,,,California,College Stats
+1976,1,4,SDG,Joe Washington,RB,22,1985,0,1,4,58,4,119,5,11,179,3,1,1195,4839,12,395,3413,18,,,Oklahoma,College Stats
+1976,1,5,NWE,Mike HaynesHOF,DB,23,1989,2,9,12,109,65,177,0,0,0,0,0,0,0,0,0,0,0,46,2.0,Arizona St.,
+1976,1,6,NYJ,Richard Todd,QB,22,1985,0,0,7,61,56,119,1610,2967,20610,124,161,259,932,14,1,1,0,,,Alabama,College Stats
+1976,1,7,CLE,Mike Pruitt,RB,22,1986,0,2,8,59,55,152,0,0,0,0,0,1844,7378,51,270,1860,5,,,Purdue,College Stats
+1976,1,8,CHI,Dennis Lick,T,22,1981,0,0,4,27,27,79,0,0,0,0,0,0,0,0,0,0,0,,,Wisconsin,College Stats
+1976,1,9,ATL,Bubba Bean,RB,22,1979,0,0,3,13,13,40,1,2,49,1,1,405,1528,6,59,494,2,,,Texas A&M,College Stats
+1976,1,10,DET,James Hunter,DB,22,1982,0,0,6,41,41,86,0,0,0,0,0,0,0,0,0,0,0,27,4.0,Grambling St.,
+1976,1,11,CIN,Billy Brooks,WR,23,1981,0,0,3,17,17,55,0,0,0,0,0,3,-17,0,96,1720,7,,,Oklahoma,College Stats
+1976,1,12,NWE,Pete Brock,C,22,1987,0,0,6,42,42,154,0,0,0,0,0,0,0,0,1,6,1,,,Colorado,
+1976,1,13,NYG,Troy Archer,DT,21,1978,0,0,2,16,16,38,0,0,0,0,0,0,0,0,0,0,0,,16.5,Colorado,
+1976,1,14,KAN,Rod Walters,G,22,1980,0,0,0,7,7,55,0,0,0,0,0,0,0,0,0,0,0,,,Iowa,
+1976,1,15,DEN,Tom Glassic,G,22,1983,0,0,7,36,36,105,0,0,0,0,0,0,0,0,0,0,0,,,Virginia,
+1976,1,16,DET,Lawrence Gaines,RB,22,1979,0,0,0,9,9,43,0,0,0,0,0,232,892,5,25,146,1,,,Wyoming,College Stats
+1976,1,17,MIA,Larry Gordon,LB,22,1982,0,0,7,48,48,100,0,0,0,0,0,0,0,0,0,0,0,8,17.0,Arizona St.,
+1976,1,18,BUF,Mario Clark,DB,22,1984,0,0,8,48,46,126,0,0,0,0,0,0,0,0,0,0,0,26,3.0,Oregon,
+1976,1,19,MIA,Kim Bokamper,DE,21,1985,0,1,8,50,50,127,0,0,0,0,0,0,0,0,0,0,0,6,40.0,San Jose St.,
+1976,1,20,BAL,Ken Novak,DT,22,1977,0,0,0,5,5,23,0,0,0,0,0,0,0,0,0,0,0,,1.0,Purdue,
+1976,1,21,NWE,Tim Fox,DB,22,1986,0,1,8,50,36,141,0,0,0,0,0,0,0,0,0,0,0,26,4.0,Ohio St.,College Stats
+1976,1,22,STL,Mike Dawson,DT,22,1984,0,0,7,36,33,113,0,0,0,0,0,0,0,0,0,0,0,1,33.0,Arizona,
+1976,1,23,GNB,Mark Koncar,T,23,1982,0,0,4,19,19,58,0,0,0,0,0,0,0,0,0,0,0,,,Colorado,College Stats
+1976,1,24,CIN,Archie Griffin,RB,22,1982,0,0,4,37,37,98,3,4,39,2,0,691,2808,7,192,1607,6,,,Ohio St.,College Stats
+1976,1,25,MIN,James White,DT,22,1983,0,0,4,36,36,117,0,0,0,0,0,0,0,0,0,0,0,1,26.0,Oklahoma St.,
+1976,1,26,RAM,Kevin McLain,LB,21,1979,0,0,0,14,14,48,0,0,0,0,0,0,0,0,0,0,0,,,Colorado St.,
+1976,1,27,DAL,Aaron Kyle,DB,22,1982,0,0,6,37,19,95,0,0,0,0,0,0,0,0,0,0,0,11,4.0,Wyoming,
+1976,1,28,PIT,Bennie Cunningham,TE,21,1985,0,0,6,30,30,118,0,0,0,0,0,0,0,0,202,2879,20,,,Clemson,College Stats
+1976,2,29,SEA,Sammy Green,LB,21,1980,0,0,3,14,14,62,0,0,0,0,0,0,0,0,0,0,0,3,2.0,Florida,College Stats
+1976,2,30,TAM,Jimmy DuBose,RB,21,1978,0,0,1,6,6,33,0,0,0,0,0,184,704,4,17,118,0,,,Florida,College Stats
+1976,2,31,SDG,Don Macek,C,22,1989,0,0,11,64,64,162,0,0,0,0,0,0,0,0,0,0,0,,,Boston Col.,
+1976,2,32,NOR,Tony Galbreath,RB,22,1987,0,0,4,58,43,170,3,7,83,0,1,1031,4072,34,490,4066,9,,,Missouri,College Stats
+1976,2,33,NYJ,Shafer Suggs,DB,23,1980,0,0,4,17,17,60,0,0,0,0,0,0,0,0,0,0,0,7,1.0,Ball St.,College Stats
+1976,2,34,OAK,Charles Philyaw,DE,22,1979,0,0,0,10,10,44,0,0,0,0,0,0,0,0,0,0,0,,4.0,Texas Southern,
+1976,2,35,NWE,Ike Forte,RB,22,1981,0,0,0,8,4,64,0,0,0,0,0,165,511,5,39,387,2,,,Arkansas,College Stats
+1976,2,36,ATL,Sonny Collins,RB,23,1976,0,0,0,3,3,11,0,0,0,0,0,91,319,0,4,37,0,,,Kentucky,College Stats
+1976,2,37,PIT,Ray Pinney,T,22,1987,0,0,7,43,43,125,0,0,0,0,0,0,0,0,2,4,2,,,Washington,
+1976,2,38,CIN,Glenn Bujnoch,G,22,1984,0,0,4,30,28,103,0,0,0,0,0,1,4,1,0,0,0,,,Texas A&M,
+1976,2,39,RAM,Pat Thomas,DB,22,1982,1,2,5,40,40,87,0,0,0,0,0,0,0,0,0,0,0,26,1.0,Texas A&M,College Stats
+1976,2,40,DAL,Jim Jensen,RB,22,1982,0,0,1,14,0,78,0,0,0,0,0,283,1126,4,80,651,3,,,Iowa,College Stats
+1976,2,41,KAN,Cliff Frazier,DT,23,1977,0,0,0,4,4,14,0,0,0,0,0,0,0,0,0,0,0,,1.0,UCLA,
+1976,2,42,SFO,Randy Cross,G,22,1988,0,3,13,86,86,185,0,0,0,0,0,0,0,0,0,0,0,,,UCLA,
+1976,2,43,DEN,Kurt Knoff,DB,22,1982,0,0,2,21,,70,0,0,0,0,0,0,0,0,0,0,0,10,1.0,Kansas,
+1976,2,44,DET,Ken Long,G,23,1976,0,0,0,3,3,13,0,0,0,0,0,0,0,0,0,0,0,,,Purdue,
+1976,2,45,BUF,Ken Jones,T,23,1987,0,0,10,48,47,163,0,0,0,0,0,0,0,0,0,0,0,,1.5,Arkansas St.,
+1976,2,46,DET,David Hill,TE,22,1987,0,2,10,34,28,176,0,2,0,0,1,8,37,0,358,4212,28,,,Texas A&M-Kingsville,
+1976,2,47,PIT,Mike Kruczek,QB,23,1980,0,0,0,7,6,36,93,154,1185,0,8,37,138,2,0,0,0,,,Boston Col.,College Stats
+1976,2,48,HOU,Mike Barber,TE,23,1985,0,0,6,27,19,129,0,0,0,0,0,5,19,0,222,2788,17,,,Louisiana Tech,College Stats
+1976,2,49,MIA,Loaird McCreary,TE,23,1979,0,0,0,1,1,55,0,0,0,0,0,0,0,0,8,95,3,,,Tennessee St.,
+1976,2,50,OAK,Jeb Blount,QB,22,1977,0,0,0,1,,5,37,89,522,0,7,5,26,0,0,0,0,,,Tulsa,College Stats
+1976,2,51,CIN,Chris Bahr,K,23,1989,0,0,0,28,11,210,0,0,0,0,0,0,0,0,0,0,0,,,Penn St.,
+1976,2,52,BUF,Joe Devlin,T,22,1989,0,0,12,59,59,191,0,0,0,0,0,0,0,0,0,0,0,,,Iowa,
+1976,2,53,RAM,Ron McCartney,LB,22,1979,0,0,0,12,,45,0,0,0,0,0,0,0,0,0,0,0,,,Tennessee,
+1976,2,54,MIN,Sammy White,WR,22,1985,0,2,9,53,53,128,0,0,0,0,0,18,97,0,393,6400,50,,,Grambling St.,
+1976,2,55,DAL,Jim Eidson,G,22,1976,0,0,0,3,3,9,0,0,0,0,0,0,0,0,0,0,0,,,Mississippi St.,
+1976,2,56,PIT,James Files,C,,,0,0,0,,,,,,,,,,,,,,,,,McNeese St.,
+1976,2,57,SFO,Eddie Lewis,DB,22,1980,0,0,1,15,11,73,0,0,0,0,0,0,0,0,0,0,0,3,1.0,Kansas,
+1976,2,58,SEA,Sherman Smith,RB,21,1983,0,0,6,51,51,95,1,6,11,0,0,834,3520,28,217,2393,10,,,Miami (OH),College Stats
+1976,2,59,SEA,Steve Raible,WR,22,1981,0,0,0,10,10,84,0,0,0,0,0,3,15,0,68,1017,3,,,Georgia Tech,College Stats
+1976,2,60,TAM,Dewey Selmon,LB,22,1982,0,0,4,35,34,80,0,0,0,0,0,0,0,0,0,0,0,3,2.0,Oklahoma,College Stats
+1976,3,61,TAM,Steve Young,T,23,1977,0,0,1,8,3,27,0,0,0,0,0,0,0,0,0,0,0,,,Colorado,
+1976,3,62,SEA,Jeff Lloyd,DE,22,1978,0,0,0,4,,25,0,0,0,0,0,0,0,0,0,0,0,,2.0,West Texas A&M,College Stats
+1976,3,63,KAN,Keith Simons,DT,22,1979,0,0,1,9,4,49,0,0,0,0,0,0,0,0,0,0,0,,1.5,Minnesota,
+1976,3,64,SDG,Larry Dorsey,WR,23,1978,0,0,0,5,3,42,0,0,0,0,0,1,-12,0,27,475,4,,,Tennessee St.,
+1976,3,65,CLE,Dave Logan,WR,22,1984,0,0,7,37,37,119,0,2,0,0,0,0,0,0,263,4250,24,1,,Colorado,College Stats
+1976,3,66,CHI,Brian Baschnagel,WR,22,1984,0,0,5,19,19,129,2,6,25,0,0,8,0,0,134,2024,9,,,Ohio St.,College Stats
+1976,3,67,NYJ,Greg Buttle,LB,22,1984,0,0,8,42,42,110,0,0,0,0,0,1,26,0,0,0,0,15,9.5,Penn St.,College Stats
+1976,3,68,DET,Russ Bolinger,G,21,1985,0,0,5,32,30,121,0,0,0,0,0,0,0,0,1,-1,0,,,Long Beach St.,
+1976,3,69,CIN,Danny Reece,DB,21,1980,0,0,1,8,,72,0,0,0,0,0,0,0,0,3,84,0,1,1.0,USC,
+1976,3,70,PIT,Ron Coder,G,22,1980,0,0,1,15,,53,0,0,0,0,0,0,0,0,0,0,0,,,Penn St.,
+1976,3,71,ATL,Dave Scott,G,22,1982,0,0,5,30,30,98,0,0,0,0,0,0,0,0,0,0,0,,,Kansas,
+1976,3,72,GNB,Mike McCoy,DB,23,1983,0,0,7,37,37,110,0,0,0,0,0,0,0,0,0,0,0,13,,Colorado,
+1976,3,73,DAL,Duke Fergerson,WR,22,1980,0,0,1,7,,42,0,0,0,0,0,0,0,0,35,543,2,,,San Diego St.,College Stats
+1976,3,74,KAN,Gary Barbaro,DB,22,1982,0,3,7,50,50,101,0,0,0,0,0,0,0,0,0,0,0,39,1.0,Nicholls St.,
+1976,3,75,DAL,John Smith,RB,,,0,0,0,,,,,,,,,,,,,,,,,Boise St.,
+1976,3,76,DET,John Woodcock,DT,22,1982,0,0,2,25,17,70,0,0,0,0,0,0,0,0,0,0,0,,27.0,Hawaii,
+1976,3,77,NOR,Bob Simmons,G,22,1983,0,0,4,28,,88,0,0,0,0,0,0,0,0,0,0,0,,,Texas,College Stats
+1976,3,78,BUF,Ben Williams,DE,22,1985,0,1,9,57,57,147,0,0,0,0,0,0,0,0,0,0,0,2,52.0,Mississippi,
+1976,3,79,KAN,Henry Marshall,WR,22,1987,0,0,10,54,54,165,0,3,0,0,1,24,257,2,416,6545,33,,,Missouri,College Stats
+1976,3,80,MIA,Duriel Harris,WR,21,1985,0,0,5,53,50,127,0,0,0,0,0,3,33,0,302,5055,20,,,New Mexico St.,College Stats
+1976,3,81,BAL,Ed Simonini,LB,22,1982,0,0,4,27,26,83,0,0,0,0,0,0,0,0,0,0,0,3,1.0,Texas A&M,College Stats
+1976,3,82,CIN,Reggie Williams,LB,21,1989,0,0,14,69,69,206,0,0,0,0,0,0,0,0,0,0,0,16,63.5,Dartmouth,
+1976,3,83,STL,Brad Oates,T,22,1981,0,0,1,14,9,67,0,0,0,0,0,0,0,0,0,0,0,,,BYU,College Stats
+1976,3,84,OAK,Rik Bonness,LB,22,1979,0,0,0,11,3,59,0,0,0,0,0,0,0,0,0,0,0,,1.0,Nebraska,College Stats
+1976,3,85,MIN,Wes Hamilton,G,23,1984,0,0,6,40,40,116,0,0,0,0,0,0,0,0,0,0,0,,,Tulsa,
+1976,3,86,RAM,Jackie SlaterHOF,T,22,1995,0,7,13,88,88,259,0,0,0,0,0,0,0,0,0,0,0,,,Jackson St.,
+1976,3,87,DAL,Butch Johnson,WR,22,1985,0,0,2,28,22,144,0,0,0,0,0,5,22,0,193,3091,28,,,UC Riverside,
+1976,3,88,PIT,Ernest Pough,WR,24,1978,0,0,0,3,3,40,0,0,0,0,0,5,41,0,10,166,1,,,Texas Southern,
+1976,3,89,SEA,Rick Engles,P,22,1978,0,0,0,3,2,22,2,2,6,0,0,4,53,0,0,0,0,,,Tulsa,
+1976,3,90,BAL,Ron Lee,RB,22,1978,0,0,0,9,9,42,0,0,0,0,0,206,940,5,24,160,1,,,West Virginia,College Stats
+1976,3,91,TAM,Steve Maughan,LB,,,0,0,0,,,,,,,,,,,,,,,,,Utah St.,
+1976,3,92,SEA,Don Bitterlich,K,22,1976,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,,,Temple,
+1976,4,93,SEA,Steve Myer,QB,22,1979,0,0,0,4,4,12,83,160,851,6,14,9,11,0,0,0,0,,,New Mexico,College Stats
+1976,4,94,SDG,Bob Horn,LB,22,1983,0,0,5,37,32,109,0,0,0,0,0,0,0,0,0,0,0,7,1.0,Oregon St.,
+1976,4,95,NOR,Tinker Owens,WR,21,1980,0,0,1,7,7,48,0,0,0,0,0,0,0,0,60,785,4,,,Oklahoma,College Stats
+1976,4,96,RAM,Gerald Taylor,WR,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M-Kingsville,
+1976,4,97,CLE,Gene Swick,QB,,,0,0,0,,,,,,,,,,,,,,,,,Toledo,College Stats
+1976,4,98,MIA,Melvin Mitchell,G,23,1980,0,0,0,10,8,34,0,0,0,0,0,0,0,0,0,0,0,,,Tennessee St.,
+1976,4,99,CLE,Mike St. Clair,DE,23,1982,0,0,2,16,13,91,0,0,0,0,0,0,0,0,0,0,0,,21.0,Grambling St.,
+1976,4,100,SFO,Steve Rivera,WR,22,1977,0,0,0,0,0,15,0,0,0,0,0,0,0,0,2,14,0,,,California,College Stats
+1976,4,101,GNB,Tom Perko,LB,22,1976,0,0,0,3,3,14,0,0,0,0,0,0,0,0,0,0,0,,,Pittsburgh,
+1976,4,102,ATL,Walt Brett,G,,,0,0,0,,,,,,,,,,,,,,,,,Montana,
+1976,4,103,CHI,John Sciarra,DB,22,1983,0,0,0,8,,76,0,1,0,0,0,12,22,2,0,0,0,4,,UCLA,College Stats
+1976,4,104,NYG,Gordon Bell,RB,22,1978,0,0,0,4,4,30,0,0,0,0,0,90,319,2,32,259,0,,,Michigan,College Stats
+1976,4,105,NYG,Harry CarsonHOF,LB,22,1988,0,9,13,95,95,173,0,0,0,0,0,0,0,0,1,13,1,11,19.0,South Carolina St.,
+1976,4,106,CIN,Tony Davis,RB,23,1981,0,0,0,5,4,89,0,0,0,0,0,91,345,5,27,250,1,,,Nebraska,College Stats
+1976,4,107,DEN,Craig Penrose,QB,23,1979,0,0,0,3,3,18,55,117,711,5,12,7,21,0,0,0,0,,,San Diego St.,College Stats
+1976,4,108,CHI,Wayne Rhodes,DB,,,0,0,0,,,,,,,,,,,,,,,,,Alabama,
+1976,4,109,BUF,Dan Jilek,LB,22,1979,0,0,2,14,14,58,0,0,0,0,0,0,0,0,0,0,0,2,2.0,Michigan,
+1976,4,110,OAK,Herb McMath,DT,22,1977,0,0,0,7,4,22,0,0,0,0,0,0,0,0,0,0,0,,2.0,Morningside,
+1976,4,111,PHI,Mike Smith,DE,,,0,0,0,,,,,,,,,,,,,,,,,Florida,
+1976,4,112,PIT,Wonder Monds,DB,24,1978,0,0,0,3,,16,0,0,0,0,0,0,0,0,0,0,0,,,Nebraska,
+1976,4,113,SDG,Ron Singleton,T,24,1980,0,0,2,23,4,59,0,0,0,0,0,0,0,0,0,0,0,,,Grambling St.,
+1976,4,114,STL,Pat Tilley,WR,23,1986,0,1,8,53,53,147,0,0,0,0,0,1,32,0,468,7005,37,,,Louisiana Tech,College Stats
+1976,4,115,SDG,Artie Owens,WR,23,1980,0,0,0,6,6,64,0,0,0,0,0,41,154,1,27,418,2,,,West Virginia,College Stats
+1976,4,116,CIN,Greg Fairchild,G,22,1978,0,0,0,7,6,27,0,0,0,0,0,0,0,0,0,0,0,,,Tulsa,
+1976,4,117,HOU,Steve LargentHOF,WR,21,1989,1,7,14,103,,200,2,7,29,0,0,17,83,1,819,13089,100,,,Tulsa,College Stats
+1976,4,118,MIN,Leonard Willis,WR,23,1979,0,0,0,1,0,36,0,0,0,0,0,0,0,0,2,41,0,,,Ohio St.,College Stats
+1976,4,119,DAL,Tom Rafferty,C,22,1989,0,0,13,71,71,203,0,0,0,0,0,0,0,0,1,8,0,,,Penn St.,
+1976,4,120,PIT,Theo Bell,WR,22,1985,0,0,1,21,9,127,0,0,0,0,0,2,12,0,136,2375,8,,,Arizona,College Stats
+1976,4,121,TAM,Richard Appleby,WR,,,0,0,0,,,,,,,,,,,,,,,,,Georgia,College Stats
+1976,4,122,SEA,Randy Johnson,G,23,1978,0,0,0,2,,22,0,0,0,0,0,0,0,0,0,0,0,,,Georgia,College Stats
+1976,4,123,SEA,Andy Bolton,RB,22,1978,0,0,0,0,0,32,0,0,0,0,0,20,80,0,1,6,0,,,Fisk,
+1976,4,124,TAM,Everett Little,G,22,1976,0,0,0,1,1,10,0,0,0,0,0,0,0,0,0,0,0,,,Houston,
+1976,5,125,TAM,Mishael Kelson,DB,,,0,0,0,,,,,,,,,,,,,,,,,West Texas A&M,
+1976,5,126,SEA,Don Dufek,DB,22,1984,0,0,0,11,11,95,0,0,0,0,0,0,0,0,0,0,0,3,2.0,Michigan,
+1976,5,127,NOR,Scott Parrish,T,,,0,0,0,,,,,,,,,,,,,,,,,Utah St.,
+1976,5,128,RAM,Carl Ekern,LB,22,1988,0,1,8,55,55,166,0,0,0,0,0,0,0,0,0,0,0,5,2.0,San Jose St.,
+1976,5,129,NYJ,Steve King,T,,,0,0,0,,,,,,,,,,,,,,,,,Michigan,
+1976,5,130,CLE,Henry Sheppard,G,23,1981,0,0,4,30,30,82,0,0,0,0,0,0,0,0,0,0,0,,,SMU,
+1976,5,131,SDG,Woodrow Lowe,LB,22,1986,0,0,11,58,58,164,0,0,0,0,0,0,0,0,0,0,0,21,26.0,Alabama,College Stats
+1976,5,132,GNB,Aundra Thompson,WR,23,1982,0,0,3,15,12,83,0,0,0,0,0,13,16,0,109,1792,8,,,Texas A&M-Commerce,
+1976,5,133,MIN,Steve Wagner,DB,22,1980,0,0,0,11,,61,0,0,0,0,0,1,16,0,0,0,0,,,Wisconsin,
+1976,5,134,BAL,Sanders Shiver,LB,22,1985,0,0,4,28,27,132,0,0,0,0,0,0,0,0,0,0,0,5,5.0,Carson-Newman,
+1976,5,135,PHI,Greg Johnson,DT,22,1977,0,0,0,4,,7,0,0,0,0,0,0,0,0,0,0,0,1,,Florida St.,
+1976,5,136,NYG,Melvin Wilson,DB,,,0,0,0,,,,,,,,,,,,,,,,,Cal State-Northridge,
+1976,5,137,KAN,Willie Lee,DT,26,1977,0,0,1,6,6,28,0,0,0,0,0,0,0,0,0,0,0,,6.0,Bethune-Cookman,
+1976,5,138,CIN,Willie Shelby,RB,23,1978,0,0,0,1,1,30,0,0,0,0,0,7,14,0,2,14,0,,,Alabama,College Stats
+1976,5,139,DEN,Lonnie Perrin,RB,24,1979,0,0,0,12,12,58,0,0,0,0,0,262,1047,9,21,222,2,,,Illinois,College Stats
+1976,5,140,SFO,Tony Leonard,DB,23,1979,0,0,2,14,13,43,0,0,0,0,0,0,0,0,0,0,0,5,,Virginia Union,
+1976,5,141,STL,Wayne Morris,RB,22,1984,0,0,7,30,30,120,0,0,0,0,0,899,3387,38,156,1190,5,,,SMU,College Stats
+1976,5,142,BUF,Fred Coleman,TE,23,1976,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,,,La-Monroe,College Stats
+1976,5,143,BAL,Mike Kirkland,QB,22,1978,0,0,0,1,1,16,19,41,211,1,8,8,35,0,0,0,0,,,Arkansas,College Stats
+1976,5,144,KAN,Jimbo Elrod,LB,22,1979,0,0,0,5,4,40,0,0,0,0,0,0,0,0,0,0,0,1,3.0,Oklahoma,College Stats
+1976,5,145,DET,Steadman Scavella,LB,,,0,0,0,,,,,,,,,,,,,,,,,Miami (FL),
+1976,5,146,OAK,Fred Steinfort,K,23,1983,0,0,0,9,1,64,0,0,0,0,0,0,0,0,0,0,0,,,Boston Col.,
+1976,5,147,CIN,Scott Perry,DB,22,1980,0,0,1,15,14,63,0,0,0,0,0,0,0,0,0,0,0,4,,Williams,
+1976,5,148,WAS,Mike Hughes,G,,,0,0,0,,,,,,,,,,,,,,,,,Baylor,
+1976,5,149,RAM,Ken Bordelon,LB,22,1982,0,0,2,16,,82,0,0,0,0,0,0,0,0,0,0,0,3,2.0,LSU,
+1976,5,150,MIN,Keith Barnette,RB,,,0,0,0,,,,,,,,,,,,,,,,,Boston Col.,College Stats
+1976,5,151,DAL,Wally Pesuit,G,22,1980,0,0,0,11,,48,0,0,0,0,0,0,0,0,0,0,0,,,Kentucky,
+1976,5,152,PIT,Rodney Norton,LB,,,0,0,0,,,,,,,,,,,,,,,,,Rice,
+1976,5,153,SEA,Ernie Jones,DB,23,1979,0,0,1,13,1,44,0,0,0,0,0,0,0,0,0,0,0,6,,Miami (FL),
+1976,5,154,TAM,Steve Wilson,C,22,1985,0,0,7,36,36,125,0,0,0,0,0,0,0,0,0,0,0,,,Georgia,
+1976,5,155,RAM,Dwight Scales,WR,23,1984,0,0,0,12,3,90,0,0,0,0,0,0,0,0,56,1120,4,,,Grambling St.,
+1976,5,156,SEA,Larry Bates,RB,,,0,0,0,,,,,,,,,,,,,,,,,Miami (FL),College Stats
+1976,6,157,SEA,Al Darby,TE,21,1978,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,,,Florida,College Stats
+1976,6,158,TAM,Curtis Jordan,DB,22,1986,0,0,6,37,13,145,0,0,0,0,0,0,0,0,0,0,0,17,3.0,Texas Tech,
+1976,6,159,PIT,Gary Dunn,NT,23,1987,0,0,8,51,51,146,0,0,0,0,0,0,0,0,0,0,0,,35.0,Miami (FL),
+1976,6,160,NOR,Terry Stieve,G,22,1984,0,0,7,41,5,113,0,0,0,0,0,0,0,0,0,0,0,,,Wisconsin,
+1976,6,161,CHI,Dan Jiggetts,T,22,1982,0,0,0,14,14,98,0,0,0,0,0,0,0,0,0,0,0,,,Harvard,
+1976,6,162,NYG,Dan Lloyd,LB,22,1979,0,0,1,11,11,57,0,0,0,0,0,0,0,0,0,0,0,2,1.5,Washington,
+1976,6,163,NYJ,Bob Martin,LB,22,1979,0,0,2,13,12,49,0,0,0,0,0,0,0,0,0,0,0,5,2.5,Nebraska,
+1976,6,164,BUF,Leslie Benson,DE,,,0,0,0,,,,,,,,,,,,,,,,,Baylor,
+1976,6,165,PHI,Kirk Johnson,T,,,0,0,0,,,,,,,,,,,,,,,,,Howard Payne,
+1976,6,166,KAN,Steve Taylor,DB,22,1976,0,0,0,1,1,14,0,0,0,0,0,0,0,0,0,0,0,,,Kansas,
+1976,6,167,KAN,Bob Gregolunas,LB,,,0,0,0,,,,,,,,,,,,,,,,,Northern Illinois,
+1976,6,168,SFO,Robert Pennywell,LB,21,1980,0,0,3,23,,61,0,0,0,0,0,0,0,0,0,0,0,3,9.0,Grambling St.,
+1976,6,169,ATL,Stan Varner,DT,,,0,0,0,,,,,,,,,,,,,,,,,BYU,
+1976,6,170,NWE,Greg Boyd,DE,23,1984,0,0,0,10,6,82,0,0,0,0,0,0,0,0,0,0,0,,14.0,San Diego St.,
+1976,6,171,BUF,Scott Piper,WR,22,1976,0,0,0,0,,13,0,0,0,0,0,0,0,0,0,0,0,,,Arizona,College Stats
+1976,6,172,KAN,Calvin Harper,T,,,0,0,0,,,,,,,,,,,,,,,,,Illinois St.,
+1976,6,173,HOU,Todd Simonsen,T,,,0,0,0,,,,,,,,,,,,,,,,,South Dakota St.,
+1976,6,174,MIA,Gary Davis,RB,22,1981,0,0,0,23,22,80,0,0,0,0,0,324,1410,7,83,671,1,,,Cal Poly-San Luis Obispo,
+1976,6,175,BUF,Darnell Powell,RB,22,1978,0,0,0,1,0,25,0,0,0,0,0,31,117,1,1,6,0,,,Chattanooga,
+1976,6,176,CIN,Orlando Nelson,TE,,,0,0,0,,,,,,,,,,,,,,,,,Utah St.,College Stats
+1976,6,177,SFO,Scott Bull,QB,23,1978,0,0,0,5,5,36,76,193,992,3,17,49,186,3,0,0,0,,,Arkansas,College Stats
+1976,6,178,SDG,Calvin Lane,DB,,,0,0,0,,,,,,,,,,,,,,,,,Fresno St.,
+1976,6,179,WAS,Tommy Marvaso,DB,22,1977,0,0,0,3,,14,0,0,0,0,0,0,0,0,0,0,0,,,Cincinnati,
+1976,6,180,MIN,Terry Egerdahl,DB,,,0,0,0,,,,,,,,,,,,,,,,,Minnesota-Duluth,
+1976,6,181,DAL,Greg McGuire,T,,,0,0,0,,,,,,,,,,,,,,,,,Indiana,
+1976,6,182,PIT,Jack Deloplaine,RB,22,1979,0,0,0,1,1,40,0,0,0,0,0,37,165,2,3,16,0,,,Salem,
+1976,7,183,TAM,Parnell Dickinson,QB,23,1976,0,0,0,1,1,8,15,39,210,1,5,13,103,0,0,0,0,,,Miss. Valley St.,
+1976,7,184,SEA,Lodie Dixon,DT,,,0,0,0,,,,,,,,,,,,,,,,,Arkansas St.,
+1976,7,185,MIA,Joe Ingersoll,G,,,0,0,0,,,,,,,,,,,,,,,,,UNLV,
+1976,7,186,DAL,Greg Schaum,DE,22,1978,0,0,0,6,3,26,0,0,0,0,0,0,0,0,0,0,0,,,Michigan St.,
+1976,7,187,CIN,Bob Bateman,QB,,,0,0,0,,,,,,,,,,,,,,,,,Brown,College Stats
+1976,7,188,NYJ,Abdul Salaam,DT,23,1983,0,0,6,36,36,97,0,0,0,0,0,0,0,0,0,0,0,,21.0,Kent St.,
+1976,7,189,CLE,Steve Cassidy,DT,,,0,0,0,,,,,,,,,,,,,,,,,LSU,
+1976,7,190,CHI,Jerry Muckensturm,LB,22,1983,0,0,2,27,27,81,0,0,0,0,0,0,0,0,0,0,0,3,7.0,Arkansas St.,
+1976,7,191,PHI,Carl Hairston,DE,23,1990,0,0,13,76,48,224,0,0,0,0,0,0,0,0,0,0,0,1,96.0,MD-Eastern Shore,
+1976,7,192,CIN,Pete Rome,DB,,,0,0,0,,,,,,,,,,,,,,,,,Miami (OH),
+1976,7,193,ATL,Karl Farmer,WR,22,1978,0,0,0,0,0,17,0,0,0,0,0,1,4,0,2,39,0,,,Pittsburgh,College Stats
+1976,7,194,SFO,Jay Chesley,DB,,,0,0,0,,,,,,,,,,,,,,,,,Vanderbilt,
+1976,7,195,BUF,Jackie Williams,DB,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M,
+1976,7,196,KAN,Rod Wellington,RB,,,0,0,0,,,,,,,,,,,,,,,,,Iowa,College Stats
+1976,7,197,HOU,Larry Harris,DT,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma St.,
+1976,7,198,DET,Garth Ten Napel,LB,22,1978,0,0,0,7,7,29,0,0,0,0,0,0,0,0,0,0,0,,2.0,Texas A&M,
+1976,7,199,NYJ,James Richards,RB,,,0,0,0,,,,,,,,,,,,,,,,,Florida,College Stats
+1976,7,200,MIA,John Owens,DE,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee St.,
+1976,7,201,NOR,Ed Bauer,G,,,0,0,0,,,,,,,,,,,,,,,,,Notre Dame,
+1976,7,202,NWE,Perry Brooks,DT,21,1984,0,0,3,21,,92,0,0,0,0,0,0,0,0,0,0,0,,27.0,Southern,
+1976,7,203,STL,Phil Rogers,RB,,,0,0,0,,,,,,,,,,,,,,,,,Virginia Tech,College Stats
+1976,7,204,OAK,Clarence Chapman,DB,22,1985,0,0,4,20,,65,0,0,0,0,0,0,0,0,0,0,0,5,,Eastern Michigan,College Stats
+1976,7,205,CIN,Ken Kuhn,LB,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,
+1976,7,206,MIN,Larry Brune,DB,23,1980,0,0,0,1,1,16,0,0,0,0,0,0,0,0,0,0,0,2,,Rice,
+1976,7,207,RAM,Larry Buie,DB,,,0,0,0,,,,,,,,,,,,,,,,,Mississippi St.,
+1976,7,208,DAL,Dave Williams,RB,22,1981,0,0,1,13,,66,0,0,0,0,0,172,501,1,92,675,7,,,Colorado,College Stats
+1976,7,209,PIT,Barry Burton,TE,,,0,0,0,,,,,,,,,,,,,,,,,Vanderbilt,College Stats
+1976,8,210,SEA,Larry Shipp,WR,,,0,0,0,,,,,,,,,,,,,,,,,LSU,
+1976,8,211,NYJ,Joe Davis,G,,,0,0,0,,,,,,,,,,,,,,,,,USC,
+1976,8,212,SDG,Tony DiRienzo,K,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma,
+1976,8,213,NOR,Craig Cassady,DB,22,1977,0,0,0,2,2,12,0,0,0,0,0,0,0,0,0,0,0,,,Ohio St.,
+1976,8,214,NYJ,Louie Giammona,RB,23,1982,0,0,0,10,2,69,3,4,55,1,1,201,682,7,46,444,2,,,Utah St.,College Stats
+1976,8,215,BUF,Scott Gardner,QB,,,0,0,0,,,,,,,,,,,,,,,,,Virginia,College Stats
+1976,8,216,PHI,Richard La Fargue,C,,,0,0,0,,,,,,,,,,,,,,,,,Arkansas,
+1976,8,217,DET,Rich Sorenson,K,,,0,0,0,,,,,,,,,,,,,,,,,Cal State-Chico,
+1976,8,218,GNB,Jim Burrow,DB,22,1976,0,0,0,1,1,3,0,0,0,0,0,0,0,0,0,0,0,,,Nebraska,
+1976,8,219,ATL,Frank Reed,DB,22,1980,0,0,3,23,23,71,0,0,0,0,0,0,0,0,0,0,0,6,5.0,Washington,
+1976,8,220,OAK,Jerome Dove,DB,22,1980,0,0,0,13,,60,0,0,0,0,0,0,0,0,0,0,0,2,,Colorado St.,
+1976,8,221,NYG,John Jordan,DT,,,0,0,0,,,,,,,,,,,,,,,,,Indiana,
+1976,8,222,KAN,Orrin Olsen,C,23,1976,0,0,0,4,4,14,0,0,0,0,0,0,0,0,0,0,0,,,BYU,
+1976,8,223,SFO,John Ayers,G,23,1987,0,0,9,60,58,157,0,0,0,0,0,0,0,0,0,0,0,,,West Texas A&M,
+1976,8,224,DEN,James Betterson,RB,22,1978,0,0,0,3,,23,0,0,0,0,0,73,265,1,6,49,0,,,North Carolina,College Stats
+1976,8,225,DET,Charles Braswell,DB,,,0,0,0,,,,,,,,,,,,,,,,,West Virginia,
+1976,8,226,BUF,Bobby Joe Easter,RB,,,0,0,0,,,,,,,,,,,,,,,,,Middle Tenn. St.,
+1976,8,227,BUF,Art Meadowcroft,G,,,0,0,0,,,,,,,,,,,,,,,,,Minnesota,
+1976,8,228,BAL,Ricky Thompson,WR,22,1982,0,0,2,12,0,80,0,0,0,0,0,0,0,0,97,1480,14,,,Baylor,College Stats
+1976,8,229,HOU,Bobby Simon,T,,,0,0,0,,,,,,,,,,,,,,,,,Grambling St.,
+1976,8,230,MIA,Bob Simpson,DE,22,1978,0,0,0,2,2,5,0,0,0,0,0,0,0,0,0,0,0,,1.0,Colorado,
+1976,8,231,OAK,Terry Kunz,RB,23,1976,0,0,0,0,0,7,0,0,0,0,0,4,33,0,0,0,0,,,Colorado,College Stats
+1976,8,232,CIN,Ron Hunt,T,21,1978,0,0,0,8,8,28,0,0,0,0,0,0,0,0,0,0,0,,,Oregon,
+1976,8,233,STL,Randy Burks,WR,23,1976,0,0,0,1,,1,0,0,0,0,0,0,0,0,1,55,1,,,Oklahoma St.,
+1976,8,234,WAS,Brian Fryer,WR,23,1976,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,,,University of Alberta,
+1976,8,235,NWE,Stu Betts,RB,,,0,0,0,,,,,,,,,,,,,,,,,Northern Michigan,
+1976,8,236,DAL,Henry Laws,DB,,,0,0,0,,,,,,,,,,,,,,,,,South Carolina,
+1976,8,237,PIT,Ed McAleney,DE,22,1976,0,0,0,1,,2,0,0,0,0,0,0,0,0,0,0,0,,,Massachusetts,
+1976,9,238,TAM,Bruce Welch,G,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M,
+1976,9,239,SEA,Bob Bos,T,,,0,0,0,,,,,,,,,,,,,,,,,Iowa St.,
+1976,9,240,NOR,Warren Peiffer,DT,,,0,0,0,,,,,,,,,,,,,,,,,Iowa,
+1976,9,241,BUF,Jeff Turner,LB,,,0,0,0,,,,,,,,,,,,,,,,,Kansas,
+1976,9,242,CLE,James Reed,RB,,,0,0,0,,,,,,,,,,,,,,,,,Mississippi,College Stats
+1976,9,243,NWE,Doug Beaudoin,DB,22,1981,0,0,2,15,14,59,0,0,0,0,0,0,0,0,0,0,0,4,,Minnesota,College Stats
+1976,9,244,NYJ,Ronnie Moore,WR,,,0,0,0,,,,,,,,,,,,,,,,,VMI,
+1976,9,245,GNB,Jim Gueno,LB,22,1980,0,0,0,15,15,75,0,0,0,0,0,0,0,0,1,23,0,,1.0,Tulane,
+1976,9,246,ATL,Phil McKinnely,T,22,1982,0,0,1,14,9,77,0,0,0,0,0,0,0,0,0,0,0,,,UCLA,
+1976,9,247,PHI,Mike Hogan,RB,21,1980,0,0,3,18,16,49,0,0,0,0,0,466,1835,6,79,482,2,,,Chattanooga,
+1976,9,248,PHI,Richard Osborne,TE,22,1979,0,0,0,2,2,50,0,0,0,0,0,0,0,0,23,197,1,,,Texas A&M,College Stats
+1976,9,249,KAN,Tim Collier,DB,22,1983,0,0,1,20,10,94,0,0,0,0,0,0,0,0,0,0,0,15,,Texas A&M-Commerce,
+1976,9,250,SFO,Kenny Harrison,WR,22,1980,0,0,2,8,8,42,0,1,0,0,0,8,4,0,42,668,1,,,SMU,College Stats
+1976,9,251,SDG,Glynn Harrison,RB,22,1976,0,0,0,0,,8,0,0,0,0,0,16,41,0,1,12,0,,,Georgia,College Stats
+1976,9,252,DEN,Jim Czirr,C,,,0,0,0,,,,,,,,,,,,,,,,,Michigan,
+1976,9,253,DET,Leanell Jones,TE,,,0,0,0,,,,,,,,,,,,,,,,,Long Beach St.,College Stats
+1976,9,254,WAS,Curtis Akins,G,,,0,0,0,,,,,,,,,,,,,,,,,Hawaii,
+1976,9,255,BUF,Bob Kotzur,DT,,,0,0,0,,,,,,,,,,,,,,,,,Texas St.,
+1976,9,256,HOU,Art Stringer,LB,22,1981,0,0,2,14,14,41,0,0,0,0,0,0,0,0,0,0,0,4,2.0,Ball St.,
+1976,9,257,MIA,Norris Thomas,DB,22,1984,0,0,5,32,19,112,0,0,0,0,0,0,0,0,0,0,0,9,1.0,Southern Miss,
+1976,9,258,BAL,Stu Levenick,T,,,0,0,0,,,,,,,,,,,,,,,,,Illinois,
+1976,9,259,CIN,Lonnie Allgood,WR,,,0,0,0,,,,,,,,,,,,,,,,,Syracuse,College Stats
+1976,9,260,DEN,Jim Lisko,LB,,,0,0,0,,,,,,,,,,,,,,,,,Arkansas St.,
+1976,9,261,CLE,Craig Nagel,QB,,,0,0,0,,,,,,,,,,,,,,,,,Purdue,College Stats
+1976,9,262,MIN,Isaac Hagins,WR,22,1980,0,0,2,11,,50,0,0,0,0,0,4,26,0,83,1317,5,,,Southern,
+1976,9,263,RAM,Geb Church,DB,,,0,0,0,,,,,,,,,,,,,,,,,Stanford,
+1976,9,264,DAL,Beasley Reece,DB,22,1984,0,0,7,40,2,117,0,0,0,0,0,0,0,0,1,6,0,18,2.0,North Texas,
+1976,9,265,PIT,Wentford Gaines,DB,23,1980,0,0,0,8,0,36,0,0,0,0,0,0,0,0,0,0,0,2,1.0,Cincinnati,
+1976,10,266,SEA,Randy Coffield,LB,22,1979,0,0,0,4,2,24,0,0,0,0,0,0,0,0,0,0,0,,,Florida St.,
+1976,10,267,TAM,Sid Smith,LB,,,0,0,0,,,,,,,,,,,,,,,,,BYU,
+1976,10,268,SDG,Jeff Perlinger,DE,,,0,0,0,,,,,,,,,,,,,,,,,Michigan,
+1976,10,269,NOR,Junior Hardin,LB,,,0,0,0,,,,,,,,,,,,,,,,,Eastern Kentucky,
+1976,10,270,NWE,Ricky Feacher,WR,22,1984,0,0,1,17,1,125,0,0,0,0,0,2,-2,0,115,2122,15,,,Miss. Valley St.,
+1976,10,271,CLE,Doug Kleber,T,,,0,0,0,,,,,,,,,,,,,,,,,Illinois,
+1976,10,272,WAS,Paul Strohmeier,LB,,,0,0,0,,,,,,,,,,,,,,,,,Washington,
+1976,10,273,PHI,Herb Lusk II,RB,23,1978,0,0,0,6,6,28,0,0,0,0,0,113,483,2,18,221,1,,,Long Beach St.,College Stats
+1976,10,274,GNB,Jessie Green,WR,22,1980,0,0,0,0,0,24,0,0,0,0,0,0,0,0,5,56,0,,,Tulsa,College Stats
+1976,10,275,SFO,Robin Ross,T,,,0,0,0,,,,,,,,,,,,,,,,,Washington St.,
+1976,10,276,NYG,John Thomas,RB,,,0,0,0,,,,,,,,,,,,,,,,,Valley City,
+1976,10,277,KAN,Whitney Paul,LB,22,1986,0,0,9,47,27,155,0,0,0,0,0,0,0,0,0,0,0,11,47.0,Colorado,
+1976,10,278,DEN,Art Gilliam,DE,,,0,0,0,,,,,,,,,,,,,,,,,Grambling St.,
+1976,10,279,DET,Bill Bowerman,QB,,,0,0,0,,,,,,,,,,,,,,,,,New Mexico St.,College Stats
+1976,10,280,BUF,Keith Moody,DB,23,1980,0,0,0,7,7,63,0,0,0,0,0,0,0,0,0,0,0,3,,Syracuse,
+1976,10,281,MIA,Gary Fencik,DB,22,1987,1,2,10,78,,164,0,0,0,0,0,0,0,0,0,0,0,38,4.0,Yale,College Stats
+1976,10,282,MIA,Don Testerman,RB,23,1980,0,0,2,15,0,49,0,0,0,0,0,230,865,2,73,594,5,,,Clemson,College Stats
+1976,10,283,BAL,Tim Baylor,DB,22,1979,0,0,0,9,8,59,0,0,0,0,0,0,0,0,0,0,0,,,Morgan St.,
+1976,10,284,HOU,Steve Kincannon,QB,,,0,0,0,,,,,,,,,,,,,,,,,Humboldt St.,
+1976,10,285,STL,Randy Walker,RB,,,0,0,0,,,,,,,,,,,,,,,,,Bethune-Cookman,
+1976,10,286,OAK,Dwight Lewis,DB,,,0,0,0,,,,,,,,,,,,,,,,,Purdue,
+1976,10,287,CIN,Tom Klaban,K,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,
+1976,10,288,RAM,Freeman Johns,WR,22,1977,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,,,SMU,College Stats
+1976,10,289,MIN,Bill Salmon,QB,,,0,0,0,,,,,,,,,,,,,,,,,Northern Iowa,
+1976,10,290,DAL,Leroy Cook,DE,,,0,0,0,,,,,,,,,,,,,,,,,Alabama,College Stats
+1976,10,291,PIT,Gary Campbell,LB,24,1983,0,0,5,41,,93,0,0,0,0,0,0,0,0,0,0,0,4,12.0,Colorado,College Stats
+1976,11,292,TAM,Melvin Washington,DB,,,0,0,0,,,,,,,,,,,,,,,,,Colorado St.,
+1976,11,293,SEA,Keith Muehr,P,,,0,0,0,,,,,,,,,,,,,,,,,Louisiana,
+1976,11,294,NOR,Greg Kokal,QB,,,0,0,0,,,,,,,,,,,,,,,,,Kent St.,College Stats
+1976,11,295,SDG,Ray Preston,LB,22,1984,0,0,2,27,27,122,0,0,0,0,0,0,0,0,0,0,0,6,2.0,Syracuse,
+1976,11,296,NYJ,Lawrence Pillers,DE,23,1985,0,0,7,36,18,139,0,0,0,0,0,0,0,0,0,0,0,1,36.0,Alcorn St.,
+1976,11,297,CLE,Doug Celek,DE,,,0,0,0,,,,,,,,,,,,,,,,,Kent St.,
+1976,11,298,NWE,Donnie Thomas,LB,23,1976,0,0,0,1,1,3,0,0,0,0,0,0,0,0,0,0,0,,,Indiana,
+1976,11,299,CHI,Norm Andersen,WR,,,0,0,0,,,,,,,,,,,,,,,,,UCLA,College Stats
+1976,11,300,PHI,Mike Gilbert,DT,,,0,0,0,,,,,,,,,,,,,,,,,San Diego St.,
+1976,11,301,GNB,Curtis Leak,WR,,,0,0,0,,,,,,,,,,,,,,,,,Johnson C. Smith,
+1976,11,302,ATL,Chuck Brislin,T,,,0,0,0,,,,,,,,,,,,,,,,,Mississippi St.,
+1976,11,303,NYG,Craig Brantley,WR,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,College Stats
+1976,11,304,KAN,Bob Squires,TE,,,0,0,0,,,,,,,,,,,,,,,,,Hastings,
+1976,11,305,SFO,Paul Hofer,RB,24,1981,0,0,1,24,24,77,0,0,0,0,0,416,1746,16,147,1634,5,,,Mississippi,College Stats
+1976,11,306,DEN,Greg Pittman,LB,,,0,0,0,,,,,,,,,,,,,,,,,Iowa St.,
+1976,11,307,DET,Gary Shugrue,DE,,,0,0,0,,,,,,,,,,,,,,,,,Villanova,
+1976,11,308,WAS,Dean Gissler,DE,,,0,0,0,,,,,,,,,,,,,,,,,Nebraska,
+1976,11,309,BUF,Forry Smith,WR,,,0,0,0,,,,,,,,,,,,,,,,,Iowa St.,College Stats
+1976,11,310,BAL,Rick Gibney,DT,,,0,0,0,,,,,,,,,,,,,,,,,Georgia Tech,
+1976,11,311,HOU,Skip Walker,RB,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M,College Stats
+1976,11,312,MIA,Dexter Pride,RB,,,0,0,0,,,,,,,,,,,,,,,,,Minnesota,College Stats
+1976,11,313,OAK,Rick Jennings,RB,23,1977,0,0,0,0,0,16,0,0,0,0,0,10,22,0,1,10,0,,,Maryland,College Stats
+1976,11,314,CIN,Melvin Morgan,DB,23,1980,0,0,0,13,10,55,0,0,0,0,0,0,0,0,0,0,0,3,,Miss. Valley St.,
+1976,11,315,STL,Marty Akins,DB,,,0,0,0,,,,,,,,,,,,,,,,,Texas,College Stats
+1976,11,316,RAM,Brian Nemeth,TE,,,0,0,0,,,,,,,,,,,,,,,,,South Carolina,College Stats
+1976,11,317,DAL,Cornelius Greene,QB,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,College Stats
+1976,11,318,MIN,Steve Kracher,RB,,,0,0,0,,,,,,,,,,,,,,,,,Montana St.,
+1976,11,319,PIT,Rolland Fuchs,RB,,,0,0,0,,,,,,,,,,,,,,,,,Arkansas,College Stats
+1976,12,320,SEA,Ronnie Barnett,WR,,,0,0,0,,,,,,,,,,,,,,,,,Texas-Arlington,College Stats
+1976,12,321,TAM,George Ragsdale,RB,23,1979,0,0,0,1,1,39,0,0,0,0,0,34,147,1,8,86,1,,,North Carolina A&T,
+1976,12,322,SDG,Ron Lee,DB,,,0,0,0,,,,,,,,,,,,,,,,,Oregon,
+1976,12,323,NOR,Milton Butts,T,,,0,0,0,,,,,,,,,,,,,,,,,North Carolina,
+1976,12,324,HOU,Larry Bell,DT,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M-Commerce,
+1976,12,325,NWE,Nathaniel Bell,DT,,,0,0,0,,,,,,,,,,,,,,,,,Tulane,
+1976,12,326,NYJ,Don Buckey,WR,22,1976,0,0,0,0,0,4,0,0,0,0,0,0,0,0,5,36,0,,,North Carolina St.,College Stats
+1976,12,327,NYJ,Dave Buckey,QB,,,0,0,0,,,,,,,,,,,,,,,,,North Carolina St.,
+1976,12,328,GNB,Melvin Jackson,G,22,1980,0,0,2,14,14,64,0,0,0,0,0,0,0,0,1,8,0,,,USC,
+1976,12,329,ATL,Pat Bolton,K,,,0,0,0,,,,,,,,,,,,,,,,,Montana St.,
+1976,12,330,CHI,John O'Leary,RB,,,0,0,0,,,,,,,,,,,,,,,,,Nebraska,College Stats
+1976,12,331,KAN,Harold Porter,WR,,,0,0,0,,,,,,,,,,,,,,,,,Louisiana,
+1976,12,332,SFO,Gerald Loper,G,,,0,0,0,,,,,,,,,,,,,,,,,Florida,
+1976,12,333,NYG,Jerry Golsteyn,QB,22,1983,0,0,0,2,1,21,92,217,1077,2,13,10,-4,0,0,0,0,,,Northern Illinois,College Stats
+1976,12,334,DEN,Randy Moore,DT,22,1976,0,0,0,4,4,8,0,0,0,0,0,0,0,0,0,0,0,,1.0,Arizona St.,
+1976,12,335,DET,Mike McCabe,C,,,0,0,0,,,,,,,,,,,,,,,,,South Carolina,
+1976,12,336,BUF,Joe Lowery,RB,,,0,0,0,,,,,,,,,,,,,,,,,Jackson St.,
+1976,12,337,SDG,Herman Harris,DB,,,0,0,0,,,,,,,,,,,,,,,,,Miss. Valley St.,
+1976,12,338,MIA,Randy Young,T,22,1976,0,0,0,2,,9,0,0,0,0,0,0,0,0,0,0,0,,,Iowa St.,
+1976,12,339,BAL,Frank Stavroff,K,,,0,0,0,,,,,,,,,,,,,,,,,Indiana,
+1976,12,340,CIN,Joe Dale Harris,WR,,,0,0,0,,,,,,,,,,,,,,,,,Alabama,
+1976,12,341,MIA,Darryl Brandford,DT,,,0,0,0,,,,,,,,,,,,,,,,,Northwestern,
+1976,12,342,WAS,Walter Tullis,WR,23,1979,0,0,0,2,,32,0,0,0,0,0,0,0,0,10,173,1,,,Delaware St.,
+1976,12,343,OAK,Cedric Brown,DB,22,1984,0,0,6,44,,100,0,0,0,0,0,0,0,0,0,0,0,29,,Kent St.,
+1976,12,344,RAM,Jim Jodat,RB,22,1983,0,0,1,8,1,87,0,0,0,0,0,226,866,7,35,265,2,,,Carthage,
+1976,12,345,MIN,Robert Sparks,DB,,,0,0,0,,,,,,,,,,,,,,,,,San Francisco St.,
+1976,12,346,DAL,Charles McShane,LB,22,1979,0,0,0,4,,29,0,0,0,0,0,0,0,0,0,0,0,,,California Lutheran,
+1976,12,347,PIT,Bill Carroll,WR,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M-Commerce,
+1976,13,348,TAM,Brad Jenkins,TE,,,0,0,0,,,,,,,,,,,,,,,,,Nebraska,College Stats
+1976,13,349,SEA,Andy Reid,RB,22,1976,0,0,0,0,,1,0,0,0,0,0,0,0,0,0,0,0,,,Georgia,College Stats
+1976,13,350,NOR,Kenny Downing,DB,,,0,0,0,,,,,,,,,,,,,,,,,Missouri,
+1976,13,351,SDG,John Lee,DE,23,1981,0,0,0,9,8,52,0,0,0,0,0,0,0,0,0,0,0,,7.5,Nebraska,
+1976,13,352,NWE,James Jones,DB,,,0,0,0,,,,,,,,,,,,,,,,,Central Michigan,
+1976,13,353,PHI,Terry Tautolo,LB,22,1984,0,0,1,16,12,104,0,0,0,0,0,0,0,0,0,0,0,1,2.0,UCLA,
+1976,13,354,CLE,Brian Murray,T,,,0,0,0,,,,,,,,,,,,,,,,,Arizona,
+1976,13,355,GNB,Bradley Bowman,DB,,,0,0,0,,,,,,,,,,,,,,,,,Southern Miss,
+1976,13,356,ATL,Mike Williams,T,,,0,0,0,,,,,,,,,,,,,,,,,Florida,
+1976,13,357,CHI,Dale Kasowski,RB,,,0,0,0,,,,,,,,,,,,,,,,,North Dakota,
+1976,13,358,PHI,Steve Ebbecke,DB,,,0,0,0,,,,,,,,,,,,,,,,,Villanova,
+1976,13,359,SFO,Larry Brumfield,DB,,,0,0,0,,,,,,,,,,,,,,,,,Indiana St.,
+1976,13,360,NYG,Rick Caswell,KR,,,0,0,0,,,,,,,,,,,,,,,,,Western Kentucky,
+1976,13,361,KAN,Joe Bruner,QB,,,0,0,0,,,,,,,,,,,,,,,,,La-Monroe,College Stats
+1976,13,362,DEN,Donnie McGraw,RB,,,0,0,0,,,,,,,,,,,,,,,,,Houston,College Stats
+1976,13,363,DET,Mel Jacobs,WR,,,0,0,0,,,,,,,,,,,,,,,,,San Diego St.,College Stats
+1976,13,364,WAS,Waymon Britt,DB,,,0,0,0,,,,,,,,,,,,,,,,,Michigan,
+1976,13,365,BUF,Will Wilcox,G,,,0,0,0,,,,,,,,,,,,,,,,,Texas,
+1976,13,366,MIA,Bernie Head,C,,,0,0,0,,,,,,,,,,,,,,,,,Tulsa,
+1976,13,367,OAK,Craig Crnick,DE,,,0,0,0,,,,,,,,,,,,,,,,,Idaho,
+1976,13,368,HOU,Dan O'Rourke,WR,,,0,0,0,,,,,,,,,,,,,,,,,Colorado,
+1976,13,369,STL,Greg Brewton,DT,,,0,0,0,,,,,,,,,,,,,,,,,Michigan St.,
+1976,13,370,OAK,Mark Young,T,,,0,0,0,,,,,,,,,,,,,,,,,Washington St.,
+1976,13,371,CIN,Randy Walker,RB,,,0,0,0,,,,,,,,,,,,,,,,,Miami (OH),College Stats
+1976,13,372,MIN,Gary Paulson,DE,,,0,0,0,,,,,,,,,,,,,,,,,Colorado St.,
+1976,13,373,RAM,Steve Hamilton,QB,,,0,0,0,,,,,,,,,,,,,,,,,Emporia St.,
+1976,13,374,DAL,Mark Driscoll,QB,,,0,0,0,,,,,,,,,,,,,,,,,Colorado St.,College Stats
+1976,13,375,PIT,Larry Kain,TE,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,College Stats
+1976,14,376,SEA,Jarvis Blinks,DB,,,0,0,0,,,,,,,,,,,,,,,,,,
+1976,14,377,TAM,Carl Roaches,WR,22,1985,0,1,0,2,,76,0,0,0,0,0,0,0,0,4,69,0,,,Texas A&M,College Stats
+1976,14,378,SDG,Ed Jones,G,,,0,0,0,,,,,,,,,,,,,,,,,Cincinnati,
+1976,14,379,NOR,Rich Hucke,DE,,,0,0,0,,,,,,,,,,,,,,,,,Western Montana,
+1976,14,380,NYJ,Al Gluchoski,C,,,0,0,0,,,,,,,,,,,,,,,,,West Virginia,
+1976,14,381,CLE,Joe Smalzer,TE,,,0,0,0,,,,,,,,,,,,,,,,,Illinois,College Stats
+1976,14,382,NWE,Dave Quehl,WR,,,0,0,0,,,,,,,,,,,,,,,,,Holy Cross,College Stats
+1976,14,383,ATL,Mark Husfloen,DE,,,0,0,0,,,,,,,,,,,,,,,,,Washington St.,
+1976,14,384,CHI,Ron Cuie,RB,,,0,0,0,,,,,,,,,,,,,,,,,Oregon St.,College Stats
+1976,14,385,PHI,Melvin Shy,DB,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee St.,
+1976,14,386,GNB,John Henson,RB,,,0,0,0,,,,,,,,,,,,,,,,,Cal Poly-San Luis Obispo,
+1976,14,387,NYG,Jerry Mullane,LB,,,0,0,0,,,,,,,,,,,,,,,,,Lehigh,
+1976,14,388,KAN,Rick Thurman,T,,,0,0,0,,,,,,,,,,,,,,,,,Texas,
+1976,14,389,SFO,Johnny Miller,G,22,1977,0,0,0,3,3,6,0,0,0,0,0,0,0,0,0,0,0,,,Livingstone,
+1976,14,390,DEN,Larry Evans,LB,23,1983,0,0,3,33,33,104,0,0,0,0,0,0,0,0,0,0,0,3,4.5,Mississippi Col.,
+1976,14,391,DET,Leonard Elston,WR,,,0,0,0,,,,,,,,,,,,,,,,,Kentucky St.,
+1976,14,392,BUF,Tony Williams,WR,,,0,0,0,,,,,,,,,,,,,,,,,Middle Tenn. St.,
+1976,14,393,WAS,Quinn Buckner,DB,,,0,0,0,,,,,,,,,,,,,,,,,Indiana,
+1976,14,394,BAL,Jeremiah Cummings,DE,,,0,0,0,,,,,,,,,,,,,,,,,Albany State (GA),
+1976,14,395,HOU,John Reimer,T,,,0,0,0,,,,,,,,,,,,,,,,,Wisconsin,
+1976,14,396,MIA,Bob Gissler,LB,,,0,0,0,,,,,,,,,,,,,,,,,South Dakota St.,
+1976,14,397,OAK,Calvin Young,RB,,,0,0,0,,,,,,,,,,,,,,,,,Fresno St.,College Stats
+1976,14,398,CIN,Greg Coleman,P,21,1988,0,0,0,20,,162,0,2,0,0,0,13,69,0,0,0,0,,,Florida A&M,
+1976,14,399,STL,Raymond Crosier,DE,,,0,0,0,,,,,,,,,,,,,,,,,Abilene Christian,
+1976,14,400,RAM,Al Burleson,DB,,,0,0,0,,,,,,,,,,,,,,,,,Washington,
+1976,14,401,MIN,Jeff Stapleton,T,,,0,0,0,,,,,,,,,,,,,,,,,Purdue,
+1976,14,402,DAL,Larry Mushinskie,TE,,,0,0,0,,,,,,,,,,,,,,,,,Nebraska,College Stats
+1976,14,403,PIT,Wayne Fields,DB,,,0,0,0,,,,,,,,,,,,,,,,,Florida,
+1976,15,404,TAM,Bob Dzierzak,DT,,,0,0,0,,,,,,,,,,,,,,,,,Utah St.,
+1976,15,405,SEA,Dan Smith,T,,,0,0,0,,,,,,,,,,,,,,,,,Washington St.,
+1976,15,406,NOR,Steve Seminoff,DT,,,0,0,0,,,,,,,,,,,,,,,,,Wichita St.,
+1976,15,407,SDG,Jack Hoffman,DT,,,0,0,0,,,,,,,,,,,,,,,,,Indiana,
+1976,15,408,CLE,Luther Philyaw,DB,,,0,0,0,,,,,,,,,,,,,,,,,Loyola Marymount,
+1976,15,409,NWE,Bernard Coleman,WR,,,0,0,0,,,,,,,,,,,,,,,,,Bethune-Cookman,
+1976,15,410,NYJ,Rick Faulk,P,,,0,0,0,,,,,,,,,,,,,,,,,San Francisco St.,
+1976,15,411,CHI,Jerry Meyers,DE,22,1980,0,0,0,13,13,49,0,0,0,0,0,0,0,0,0,0,0,,5.5,Northern Illinois,
+1976,15,412,PHI,Brett White,P,,,0,0,0,,,,,,,,,,,,,,,,,UCLA,College Stats
+1976,15,413,GNB,Jerry Dandridge,LB,,,0,0,0,,,,,,,,,,,,,,,,,Memphis,
+1976,15,414,ATL,Ron Olson,DB,,,0,0,0,,,,,,,,,,,,,,,,,Washington,
+1976,15,415,KAN,Dave Rozumek,LB,22,1979,0,0,1,12,12,45,0,0,0,0,0,0,0,0,0,0,0,2,1.5,New Hampshire,
+1976,15,416,SFO,Howard Stidham,LB,21,1977,0,0,0,1,1,4,0,0,0,0,0,0,0,0,0,0,0,,,Tennessee Tech,
+1976,15,417,NYG,Eddie Morgan,DT,,,0,0,0,,,,,,,,,,,,,,,,,Arkansas St.,
+1976,15,418,DEN,Wilbur Summers,P,22,1977,0,0,0,1,,13,1,1,5,0,0,1,0,0,0,0,0,,,Louisville,
+1976,15,419,DET,Trent Smock,WR,,,0,0,0,,,,,,,,,,,,,,,,,Indiana,College Stats
+1976,15,420,STL,Lee Nelson,DB,22,1985,0,0,5,30,30,135,0,0,0,0,0,0,0,0,0,0,0,7,9.0,Florida St.,
+1976,15,421,BUF,Arnold Robinson,LB,,,0,0,0,,,,,,,,,,,,,,,,,Bethune-Cookman,
+1976,15,422,HOU,Bobby Byars,DB,,,0,0,0,,,,,,,,,,,,,,,,,Cheyney,
+1976,15,423,MIA,Ron Holmes,RB,,,0,0,0,,,,,,,,,,,,,,,,,Utah St.,
+1976,15,424,BAL,Gary Alexander,T,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,
+1976,15,425,CIN,Lynn Hieber,QB,,,0,0,0,,,,,,,,,,,,,,,,,,
+1976,15,426,WAS,John Monroe,RB,,,0,0,0,,,,,,,,,,,,,,,,,Bluefield,
+1976,15,427,OAK,Carl Hargrave,DB,,,0,0,0,,,,,,,,,,,,,,,,,Upper Iowa,
+1976,15,428,MIN,Ron Groce,RB,22,1976,0,0,0,0,0,4,0,0,0,0,0,3,18,0,0,0,0,,,Macalester,
+1976,15,429,RAM,Malcolm Campbell,WR,,,0,0,0,,,,,,,,,,,,,,,,,Los Angeles St.,
+1976,15,430,DAL,Dale Curry,LB,,,0,0,0,,,,,,,,,,,,,,,,,UCLA,
+1976,15,431,PIT,Mel Davis,DE,,,0,0,0,,,,,,,,,,,,,,,,,North Texas,
+1976,16,432,SEA,Jeff Urczyk,G,,,0,0,0,,,,,,,,,,,,,,,,,Georgia Tech,
+1976,16,433,TAM,Tommy West,LB,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee,College Stats
+1976,16,434,SDG,Jack Harrison,G,,,0,0,0,,,,,,,,,,,,,,,,,California,
+1976,16,435,NOR,Gene Jones,T,,,0,0,0,,,,,,,,,,,,,,,,,Bowling Green,
+1976,16,436,NWE,Clifford Brown,DT,,,0,0,0,,,,,,,,,,,,,,,,,Tuskegee,
+1976,16,437,NYJ,James Godwin,RB,,,0,0,0,,,,,,,,,,,,,,,,,Fayetteville St.,
+1976,16,438,CLE,Chris Lorenzen,DT,,,0,0,0,,,,,,,,,,,,,,,,,Arizona St.,
+1976,16,439,PHI,Steve Campassi,RB,,,0,0,0,,,,,,,,,,,,,,,,,Kentucky,College Stats
+1976,16,440,GNB,Mike Timmermans,G,,,0,0,0,,,,,,,,,,,,,,,,,Northern Iowa,
+1976,16,441,ATL,Pat Curto,LB,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,
+1976,16,442,CHI,Ronald Parker,TE,,,0,0,0,,,,,,,,,,,,,,,,,TCU,College Stats
+1976,16,443,SFO,Reggie Lewis,DE,22,1984,0,0,0,5,,34,0,0,0,0,0,0,0,0,0,0,0,1,11.5,San Diego St.,
+1976,16,444,NYG,Dave Lawson,K,,,0,0,0,,,,,,,,,,,,,,,,,Air Force,
+1976,16,445,KAN,Dennis Anderson,DB,,,0,0,0,,,,,,,,,,,,,,,,,Arizona,College Stats
+1976,16,446,DEN,John Huddleston,LB,22,1979,0,0,0,6,,27,0,0,0,0,0,0,0,0,0,0,0,,,Utah,
+1976,16,447,DET,Craig McCurdy,LB,,,0,0,0,,,,,,,,,,,,,,,,,William & Mary,
+1976,16,448,BUF,Gary Gorrell,LB,,,0,0,0,,,,,,,,,,,,,,,,,Boise St.,
+1976,16,449,BAL,Mike Fuhrman,TE,,,0,0,0,,,,,,,,,,,,,,,,,Memphis,College Stats
+1976,16,450,MIA,Mike Green,K,,,0,0,0,,,,,,,,,,,,,,,,,Ohio,College Stats
+1976,16,451,BAL,Steve Ludwig,C,,,0,0,0,,,,,,,,,,,,,,,,,Miami (FL),
+1976,16,452,HOU,Claude Johnson,LB,,,0,0,0,,,,,,,,,,,,,,,,,Florida A&M,
+1976,16,453,STL,Cecil Beaird,WR,,,0,0,0,,,,,,,,,,,,,,,,,Fisk,
+1976,16,454,OAK,Doug Hogan,DB,,,0,0,0,,,,,,,,,,,,,,,,,USC,
+1976,16,455,CIN,George Demopoulos,C,,,0,0,0,,,,,,,,,,,,,,,,,Miami (FL),
+1976,16,456,RAM,Rick Gage,WR,,,0,0,0,,,,,,,,,,,,,,,,,Arkansas Tech,
+1976,16,457,MIN,Randy Hickel,DB,,,0,0,0,,,,,,,,,,,,,,,,,Montana St.,
+1976,16,458,DAL,Rick Costanzo,T,,,0,0,0,,,,,,,,,,,,,,,,,Nebraska,
+1976,16,459,PIT,Randy Butts,RB,,,0,0,0,,,,,,,,,,,,,,,,,Nebraska-Kearney,
+1976,17,460,TAM,Jack Berry,QB,,,0,0,0,,,,,,,,,,,,,,,,,Washington & Lee,
+1976,17,461,SEA,Chris Rowland,QB,,,0,0,0,,,,,,,,,,,,,,,,,Washington,College Stats
+1976,17,462,NOR,Scott MacDonald,TE,,,0,0,0,,,,,,,,,,,,,,,,,West Virginia,College Stats
+1976,17,463,SDG,Clarence Sanders,LB,23,1980,0,0,0,1,,17,0,0,0,0,0,0,0,0,0,0,0,,,Cincinnati,
+1976,17,464,CLE,Tom Fleming,WR,,,0,0,0,,,,,,,,,,,,,,,,,Dartmouth,College Stats
+1976,17,465,NWE,Todd Anderson,C,,,0,0,0,,,,,,,,,,,,,,,,,Stanford,
+1976,17,466,NYJ,Darwin Willie,TE,,,0,0,0,,,,,,,,,,,,,,,,,Tulane,College Stats
+1976,17,467,GNB,Ray Hall,TE,,,0,0,0,,,,,,,,,,,,,,,,,Cal Poly-San Luis Obispo,
+1976,17,468,ATL,Tony Green,DB,,,0,0,0,,,,,,,,,,,,,,,,,Texas Tech,
+1976,17,469,CHI,Mike Malham,LB,,,0,0,0,,,,,,,,,,,,,,,,,Arkansas St.,
+1976,17,470,PHI,Anthony Terry,DB,,,0,0,0,,,,,,,,,,,,,,,,,UC Davis,
+1976,17,471,NYG,Steve Curnutte,DB,,,0,0,0,,,,,,,,,,,,,,,,,Vanderbilt,
+1976,17,472,KAN,Pat McNeil,RB,22,1977,0,0,0,1,1,13,0,0,0,0,0,8,26,0,2,33,0,,,Baylor,College Stats
+1976,17,473,SFO,Darryl Jenkins,RB,,,0,0,0,,,,,,,,,,,,,,,,,San Jose St.,College Stats
+1976,17,474,DEN,Randy Cozens,DE,,,0,0,0,,,,,,,,,,,,,,,,,Pittsburgh,
+1976,17,475,DET,Jim Meeks,DB,,,0,0,0,,,,,,,,,,,,,,,,,Boise St.,
+1976,17,476,WAS,Chuck Wills,DB,,,0,0,0,,,,,,,,,,,,,,,,,Oregon,
+1976,17,477,BUF,Bob Berg,K,,,0,0,0,,,,,,,,,,,,,,,,,New Mexico,
+1976,17,478,OAK,Buddy Tate,DB,,,0,0,0,,,,,,,,,,,,,,,,,Tulsa,
+1976,17,479,HOU,Allen Misher,WR,,,0,0,0,,,,,,,,,,,,,,,,,LSU,
+1976,17,480,MIA,Jeff Grantz,QB,,,0,0,0,,,,,,,,,,,,,,,,,South Carolina,College Stats
+1976,17,481,OAK,Nate Beasley,RB,,,0,0,0,,,,,,,,,,,,,,,,,Delaware,
+1976,17,482,CIN,Scott Dannelley,G,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,
+1976,17,483,STL,Dan Myers,DB,,,0,0,0,,,,,,,,,,,,,,,,,Georgia Tech,College Stats
+1976,17,484,MIN,Rich Lukowski,DT,,,0,0,0,,,,,,,,,,,,,,,,,West Virginia,
+1976,17,485,RAM,Gary Shaw,DB,,,0,0,0,,,,,,,,,,,,,,,,,BYU,
+1976,17,486,DAL,Stan Woodfill,K,,,0,0,0,,,,,,,,,,,,,,,,,Oregon,
+1976,17,487,PIT,Kelvin Kirk,WR,,,0,0,0,,,,,,,,,,,,,,,,,Dayton,College Stats

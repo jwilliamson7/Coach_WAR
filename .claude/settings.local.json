@@ -9,7 +9,8 @@
       "WebFetch(domain:www.pro-football-reference.com)",
       "Bash(for:*)",
       "Bash(done)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

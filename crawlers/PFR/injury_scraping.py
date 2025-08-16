@@ -6,11 +6,11 @@ This script scrapes injury data from Pro Football Reference, extracting total ga
 by injury type for each team and year. It includes rate limiting, command line arguments,
 and checks for existing files before making web requests.
 
-Usage:
-    python injury_scraping.py --team den --year 2024
-    python injury_scraping.py --team all --year 2024
-    python injury_scraping.py --team den --year all
-    python injury_scraping.py --team all --year all --start-year 2010 --end-year 2024
+Usage (run from project root directory):
+    python crawlers/PFR/injury_scraping.py --team den --year 2024
+    python crawlers/PFR/injury_scraping.py --team all --year 2024
+    python crawlers/PFR/injury_scraping.py --team den --year all
+    python crawlers/PFR/injury_scraping.py --team all --year all --start-year 2010 --end-year 2024
 """
 
 import requests

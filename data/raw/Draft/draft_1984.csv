@@ -1,0 +1,337 @@
+Draft_Year,Round,Pick_Number,Team,Player,Position,Age,Last_Season,All_Pro_Selections,Pro_Bowl_Selections,Games_Started,Weighted_AV,Draft_Rookie_AV,G,Cmp,Att,Yds,TD,Int,Att,Yds,TD,Rec,Yds,TD,Int,Sk,College/Univ,Column_27
+1984,1,1,NWE,Irving Fryar,WR,21,2000,0,5,13,80,31,255,0,1,0,0,0,44,242,1,851,12785,84,,,Nebraska,College Stats
+1984,1,2,HOU,Dean Steinkuhler,T,23,1991,0,0,5,36,36,100,0,0,0,0,0,0,0,0,0,0,0,,,Nebraska,College Stats
+1984,1,3,NYG,Carl Banks,LB,22,1995,1,1,10,68,52,173,0,0,0,0,0,0,0,0,1,22,1,3,39.5,Michigan St.,
+1984,1,4,PHI,Kenny Jackson,WR,22,1991,0,0,4,15,15,102,0,0,0,0,0,8,51,0,126,2170,11,,,Penn St.,College Stats
+1984,1,5,KAN,Bill Maas,NT,22,1993,0,2,8,52,51,130,0,0,0,0,0,0,0,0,0,0,0,,40.0,Pittsburgh,
+1984,1,6,SDG,Mossy Cade,DB,22,1986,0,0,1,8,,30,0,0,0,0,0,0,0,0,0,0,0,5,1.0,Texas,College Stats
+1984,1,7,CIN,Ricky Hunley,LB,22,1990,0,0,2,18,,91,0,0,0,0,0,0,0,0,0,0,0,3,2.5,Arizona,College Stats
+1984,1,8,IND,Leonard Coleman,DB,22,1989,0,0,1,9,7,49,0,0,0,0,0,0,0,0,0,0,0,6,,Vanderbilt,College Stats
+1984,1,9,ATL,Rick Bryan,DE,22,1993,0,0,6,37,37,109,0,0,0,0,0,0,0,0,0,0,0,,29.0,Oklahoma,College Stats
+1984,1,10,NYJ,Russell Carter,DB,22,1989,0,0,3,16,12,64,0,0,0,0,0,0,0,0,0,0,0,4,6.0,SMU,College Stats
+1984,1,11,CHI,Wilber Marshall,LB,22,1995,2,3,10,99,37,179,0,0,0,0,0,1,1,0,0,0,0,23,45.0,Florida,College Stats
+1984,1,12,GNB,Alphonso Carreker,DE,22,1991,0,0,6,36,27,94,0,0,0,0,0,0,0,0,0,0,0,1,24.0,Florida St.,
+1984,1,13,MIN,Keith Millard,DT,22,1993,2,2,4,59,55,93,0,0,0,0,0,0,0,0,0,0,0,2,58.0,Washington St.,
+1984,1,14,MIA,Jackie Shipp,LB,22,1989,0,0,3,18,17,74,0,0,0,0,0,0,0,0,0,0,0,1,1.0,Oklahoma,
+1984,1,15,NYJ,Ron Faurot,DE,22,1985,0,0,1,6,6,20,0,0,0,0,0,0,0,0,0,0,0,,2.0,Arkansas,
+1984,1,16,CIN,Pete Koch,NT,22,1989,0,0,1,11,1,58,0,0,0,0,0,0,0,0,0,0,0,,8.0,Maryland,
+1984,1,17,STL,Clyde Duncan,WR,23,1985,0,0,0,0,0,19,0,0,0,0,0,0,0,0,4,39,1,,,Tennessee,College Stats
+1984,1,18,CLE,Don Rogers,DB,21,1985,0,0,2,13,13,31,0,0,0,0,0,0,0,0,0,0,0,2,,UCLA,College Stats
+1984,1,19,IND,Ron Solt,G,22,1992,0,1,8,43,27,116,0,0,0,0,0,0,0,0,0,0,0,,,Maryland,
+1984,1,20,DET,David Lewis,TE,23,1987,0,0,1,7,6,47,0,0,0,0,0,0,0,0,60,731,8,,,California,College Stats
+1984,1,21,KAN,John Alt,T,22,1996,0,2,10,68,68,179,0,0,0,0,0,0,0,0,0,0,0,,,Iowa,College Stats
+1984,1,22,SEA,Terry Taylor,DB,23,1995,0,0,7,40,23,149,0,0,0,0,0,0,0,0,0,0,0,25,,Southern Illinois,
+1984,1,23,PIT,Louis Lipps,WR,22,1992,0,2,7,54,54,110,1,2,13,1,1,29,388,4,359,6019,39,,,Southern Miss,College Stats
+1984,1,24,SFO,Todd Shell,LB,22,1987,0,0,1,12,12,38,0,0,0,0,0,0,0,0,0,0,0,5,7.0,BYU,College Stats
+1984,1,25,DAL,Billy Cannon,LB,22,1984,0,0,0,1,1,8,0,0,0,0,0,0,0,0,0,0,0,,,Texas A&M,College Stats
+1984,1,26,BUF,Greg Bell,RB,22,1990,0,1,4,38,18,80,0,1,0,0,0,1204,4959,51,157,1307,7,,,Notre Dame,College Stats
+1984,1,27,NYG,William Roberts,G,22,1997,0,1,11,65,55,195,0,0,0,0,0,0,0,0,0,0,0,,,Ohio St.,
+1984,1,28,CIN,Brian Blados,T,22,1992,0,0,4,35,34,107,0,0,0,0,0,0,0,0,1,4,0,,,North Carolina,
+1984,2,29,HOU,Doug Smith,NT,24,1992,0,0,5,31,31,101,0,0,0,0,0,0,0,0,0,0,0,1,14.0,Auburn,
+1984,2,30,TAM,Keith Browner,LB,22,1988,0,0,3,18,10,65,0,0,0,0,0,0,0,0,0,0,0,4,10.5,USC,College Stats
+1984,2,31,WAS,Bob Slater,DT,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma,
+1984,2,32,ATL,Scott Case,DB,22,1995,0,1,8,50,50,178,0,0,0,0,0,0,0,0,0,0,0,30,7.5,Oklahoma,College Stats
+1984,2,33,SDG,Mike Guendling,LB,22,1985,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,,,Northwestern,College Stats
+1984,2,34,KAN,Scott Radecic,LB,22,1995,0,0,6,36,15,182,0,0,0,0,0,0,0,0,0,0,0,8,7.0,Penn St.,College Stats
+1984,2,35,IND,Blaise Winter,DE,22,1994,0,0,5,32,5,102,0,0,0,0,0,0,0,0,0,0,0,,21.0,Syracuse,
+1984,2,36,ATL,Thomas Benson,LB,23,1992,0,0,5,37,1,120,0,0,0,0,0,0,0,0,0,0,0,3,12.5,Oklahoma,College Stats
+1984,2,37,NYJ,Jim Sweeney,C,22,1999,0,0,11,67,59,228,0,0,0,0,0,0,0,0,0,0,0,,,Pittsburgh,
+1984,2,38,CIN,Boomer Esiason,QB,23,1997,1,4,12,106,88,187,2969,5205,37920,247,184,447,1598,7,1,-8,0,,,Maryland,College Stats
+1984,2,39,NYJ,Glenn Dennison,TE,22,1987,0,0,0,1,1,18,0,0,0,0,0,1,4,0,18,149,1,,,Miami (FL),College Stats
+1984,2,40,DAL,Victor Scott,DB,22,1988,0,0,0,7,7,45,0,0,0,0,0,0,0,0,0,0,0,5,3.0,Colorado,College Stats
+1984,2,41,BUF,Eric Richardson,WR,22,1986,0,0,0,1,1,30,0,0,0,0,0,0,0,0,15,250,0,,,San Jose St.,College Stats
+1984,2,42,NOR,Jumpy Geathers,DE,24,1996,0,0,1,26,17,183,0,0,0,0,0,0,0,0,0,0,0,,62.0,Wichita St.,
+1984,2,43,NWE,Ed Williams,LB,22,1990,0,0,1,9,9,62,0,0,0,0,0,0,0,0,0,0,0,1,2.0,Texas,
+1984,2,44,CHI,Ron Rivera,LB,22,1992,0,0,3,33,33,137,0,0,0,0,0,0,0,0,0,0,0,9,7.5,California,College Stats
+1984,2,45,STL,Doug Dawson,G,22,1994,0,0,5,32,8,106,0,0,0,0,0,0,0,0,0,0,0,,,Texas,College Stats
+1984,2,46,DEN,Andre Townsend,DE,21,1990,0,0,4,28,28,104,0,0,0,0,0,0,0,0,0,0,0,,22.0,Mississippi,
+1984,2,47,DET,Pete Mandley,WR,23,1990,0,0,3,21,16,92,0,0,0,0,0,9,48,1,172,2370,12,,,Northern Arizona,
+1984,2,48,CLE,Chris Rockins,DB,22,1987,0,0,1,11,11,60,0,0,0,0,0,0,0,0,0,0,0,6,0.5,Oklahoma St.,College Stats
+1984,2,49,SEA,Daryl Turner,WR,22,1987,0,0,4,17,17,59,0,0,0,0,0,0,0,0,101,1872,36,,,Michigan St.,College Stats
+1984,2,50,CLE,Bruce Davis,WR,21,1987,0,0,0,1,1,15,0,0,0,0,0,1,6,0,7,119,2,,,Baylor,College Stats
+1984,2,51,RAI,Sean Jones,DE,21,1996,0,1,9,68,13,201,0,0,0,0,0,0,0,0,0,0,0,1,113.0,Northeastern,
+1984,2,52,PIT,Chris Kolodziejski,TE,23,1984,0,0,0,1,1,7,0,0,0,0,0,0,0,0,5,59,0,,,Wyoming,College Stats
+1984,2,53,MIA,Jay Brophy,LB,24,1987,0,0,0,8,7,34,0,0,0,0,0,0,0,0,0,0,0,1,2.0,Miami (FL),College Stats
+1984,2,54,HOU,Bo Eason,DB,23,1987,0,0,2,11,11,38,0,0,0,0,0,0,0,0,0,0,0,6,3.5,UC Davis,
+1984,2,55,WAS,Steve Hamilton,DE,22,1988,0,0,0,5,5,46,0,0,0,0,0,0,0,0,0,0,0,,6.5,East Carolina,
+1984,2,56,SFO,John Frank,TE,22,1988,0,0,0,8,8,66,0,0,0,0,0,2,-1,0,65,662,10,,,Ohio St.,College Stats
+1984,3,57,TAM,Fred Acorn,DB,23,1984,0,0,0,1,1,16,0,0,0,0,0,0,0,0,0,0,0,1,,Texas,
+1984,3,58,HOU,Johnny Meads,LB,23,1992,0,0,6,38,38,119,0,0,0,0,0,0,0,0,0,0,0,1,23.5,Nicholls St.,
+1984,3,59,NYG,Jeff Hostetler,QB,23,1997,0,1,6,56,19,152,1357,2338,16430,94,71,316,1391,17,1,10,0,,,West Virginia,College Stats
+1984,3,60,PHI,Rusty Russell,T,21,1984,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,,,South Carolina,
+1984,3,61,KAN,Herman Heard,RB,22,1989,0,0,5,24,24,87,0,0,0,0,0,651,2694,13,132,1125,3,,,Colorado State-Pueblo,
+1984,3,62,DET,Eric Williams,DE,22,1993,0,0,8,42,28,121,0,0,0,0,0,0,0,0,0,0,0,1,30.0,Washington St.,College Stats
+1984,3,63,ATL,Rod McSwain,DB,22,1990,0,0,1,11,,90,0,0,0,0,0,0,0,0,0,0,0,6,2.0,Clemson,College Stats
+1984,3,64,NYJ,Kyle Clifton,LB,22,1996,0,0,10,59,59,204,0,0,0,0,0,0,0,0,0,0,0,12,5.5,TCU,College Stats
+1984,3,65,CIN,Stanford Jennings,RB,22,1992,0,0,0,17,16,123,0,0,0,0,0,313,1250,9,116,1096,10,,,Furman,College Stats
+1984,3,66,IND,Chris Scott,DE,22,1987,0,0,1,8,8,33,0,0,0,0,0,0,0,0,0,0,0,,5.0,Purdue,
+1984,3,67,MIN,Alfred Anderson,RB,23,1991,0,0,6,22,22,108,4,9,112,2,1,626,2374,22,114,1042,5,,,Baylor,College Stats
+1984,3,68,NOR,Terry Hoage,DB,22,1996,0,0,4,29,4,141,0,0,0,0,0,1,38,1,0,0,0,21,7.0,Georgia,College Stats
+1984,3,69,NOR,Tyrone Anthony,RB,22,1985,0,0,0,4,4,31,0,0,0,0,0,37,170,1,40,298,0,,,North Carolina,College Stats
+1984,3,70,NWE,Jon Williams,RB,23,1984,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,,,Penn St.,College Stats
+1984,3,71,CHI,Stefan Humphries,G,22,1988,0,0,1,7,2,33,0,0,0,0,0,0,0,0,0,0,0,,,Michigan,
+1984,3,72,GNB,Donnie Humphrey,NT,23,1986,0,0,1,14,14,48,0,0,0,0,0,0,0,0,0,0,0,,3.0,Auburn,
+1984,3,73,SFO,Guy McIntyre,G,23,1996,0,5,8,76,67,186,0,0,0,0,0,0,0,0,2,21,1,,,Georgia,
+1984,3,74,DET,Ernest Anderson,RB,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma St.,College Stats
+1984,3,75,DET,Steve Baack,NT,23,1987,0,0,0,4,4,55,0,0,0,0,0,0,0,0,0,0,0,,2.0,Oregon,
+1984,3,76,SEA,Fredd Young,LB,22,1990,1,4,6,52,36,101,0,0,0,0,0,0,0,0,0,0,0,3,21.0,New Mexico St.,College Stats
+1984,3,77,BUF,Rodney Bellinger,DB,22,1986,0,0,1,8,8,42,0,0,0,0,0,0,0,0,0,0,0,4,,Miami (FL),College Stats
+1984,3,78,DEN,Tony Lilly,DB,22,1987,0,0,1,11,11,58,0,0,0,0,0,0,0,0,0,0,0,9,1.0,Florida,College Stats
+1984,3,79,BUF,Sean McNanie,DE,22,1990,0,0,2,15,14,72,0,0,0,0,0,0,0,0,0,0,0,,15.0,San Diego St.,
+1984,3,80,STL,Rick McIvor,QB,23,1985,0,0,0,0,0,6,0,4,0,0,0,3,5,0,0,0,0,,,Texas,College Stats
+1984,3,81,DAL,Fred Cornwell,TE,23,1985,0,0,0,1,1,30,0,0,0,0,0,0,0,0,8,100,2,,,USC,College Stats
+1984,3,82,BUF,Speedy Neal,RB,22,1984,0,0,0,2,2,12,0,0,0,0,0,49,175,1,9,76,0,,,Miami (FL),College Stats
+1984,3,83,WAS,Jay Schroeder,QB,23,1994,0,1,8,61,24,118,1426,2808,20063,114,108,242,761,5,0,0,0,,,UCLA,College Stats
+1984,3,84,RAI,Joe McCall,RB,22,1984,0,0,0,0,0,3,0,0,0,0,0,1,3,0,0,0,0,,,Pittsburgh,College Stats
+1984,4,85,HOU,Mark Studaway,DE,23,1987,0,0,0,1,0,14,0,0,0,0,0,0,0,0,0,0,0,,0.5,Tennessee,
+1984,4,86,SEA,Rickey Hagood,NT,23,1984,0,0,0,0,,2,0,0,0,0,0,0,0,0,0,0,0,,,South Carolina,
+1984,4,87,NYG,Conrad Goode,T,22,1987,0,0,0,6,4,35,0,0,0,0,0,0,0,0,0,0,0,,,Missouri,
+1984,4,88,PHI,Evan Cooper,DB,22,1989,0,0,2,11,7,85,0,0,0,0,0,0,0,0,0,0,0,11,2.0,Michigan,College Stats
+1984,4,89,DEN,Randy Robbins,DB,21,1992,0,0,2,24,18,131,0,0,0,0,0,0,0,0,0,0,0,13,8.0,Arizona,College Stats
+1984,4,90,KAN,Mark Robinson,DB,21,1990,0,0,3,22,5,88,0,0,0,0,0,0,0,0,0,0,0,15,4.5,Penn St.,College Stats
+1984,4,91,NYJ,Bobby Bell,LB,22,1987,0,0,0,4,2,18,0,0,0,0,0,0,0,0,0,0,0,,3.5,Missouri,College Stats
+1984,4,92,CIN,John Farley,RB,23,1984,0,0,0,0,0,13,0,0,0,0,0,7,11,0,2,11,0,,,Sacramento St.,
+1984,4,93,IND,Craig Curry,DB,23,1987,0,0,1,7,1,40,0,0,0,0,0,0,0,0,0,0,0,3,1.0,Texas,College Stats
+1984,4,94,ATL,Rydell Malancon,LB,22,1987,0,0,0,2,0,10,0,0,0,0,0,0,0,0,0,0,0,,,LSU,College Stats
+1984,4,95,BUF,Mitchell Brookins,WR,23,1985,0,0,0,2,2,21,0,0,0,0,0,2,27,0,21,389,1,,,Illinois,College Stats
+1984,4,96,CLE,Rickey Bolden,T,22,1989,0,0,1,14,14,62,0,0,0,0,0,0,0,0,2,22,1,,,SMU,College Stats
+1984,4,97,NOR,Joel Hilgenberg,C,22,1993,0,1,7,51,51,142,0,0,0,0,0,0,0,0,1,9,0,,,Iowa,
+1984,4,98,CHI,Tom Andrews,T,22,1987,0,0,0,4,2,23,0,0,0,0,0,0,0,0,0,0,0,,,Louisville,
+1984,4,99,GNB,John Dorsey,LB,24,1988,0,0,1,11,11,76,0,0,0,0,0,0,0,0,0,0,0,,,Connecticut,
+1984,4,100,HOU,Patrick Allen,DB,23,1990,0,0,5,24,24,106,0,0,0,0,0,0,0,0,0,0,0,7,,Utah St.,College Stats
+1984,4,101,STL,Martin Bayless,DB,21,1996,0,0,10,45,0,192,0,0,0,0,0,0,0,0,0,0,0,12,11.5,Bowling Green,College Stats
+1984,4,102,WAS,Jimmy Smith,RB,23,1987,0,0,0,0,0,9,0,0,0,0,0,7,13,0,0,0,0,,,Elon,College Stats
+1984,4,103,IND,George Wonsley,RB,23,1989,0,0,1,11,11,78,0,0,0,0,0,281,1158,9,60,527,0,,,Mississippi St.,College Stats
+1984,4,104,CLE,Brian Brennan,WR,22,1992,0,0,1,35,34,132,2,2,68,1,0,0,0,0,334,4336,20,,,Boston Col.,College Stats
+1984,4,105,NYG,Gary Reasons,LB,22,1992,0,0,6,42,40,134,0,0,0,0,0,1,2,0,0,0,0,10,3.5,Northwestern St. (LA),
+1984,4,106,DET,Dave D'Addio,RB,23,1984,0,0,0,0,0,16,0,0,0,0,0,7,46,0,1,12,0,,,Maryland,College Stats
+1984,4,107,TAM,Michael Gunter,RB,23,1984,0,0,0,0,,4,0,0,0,0,0,15,12,0,0,0,0,,,Tulsa,College Stats
+1984,4,108,PIT,Weegie Thompson,WR,23,1989,0,0,1,12,12,92,0,0,0,0,0,0,0,0,79,1377,11,,,Florida St.,College Stats
+1984,4,109,MIA,Joe Carter,RB,22,1986,0,0,0,6,6,30,0,0,0,0,0,118,589,1,11,66,0,,,Alabama,College Stats
+1984,4,110,DAL,Steve DeOssie,LB,21,1995,0,0,2,23,4,175,0,0,0,0,0,0,0,0,0,0,0,1,,Boston Col.,College Stats
+1984,4,111,PIT,Terry Long,G,25,1991,0,0,6,38,38,105,0,0,0,0,0,0,0,0,0,0,0,,,East Carolina,College Stats
+1984,4,112,TAM,Ron Heller,T,22,1995,0,0,11,62,19,172,0,0,0,0,0,0,0,0,1,1,1,,,Penn St.,College Stats
+1984,5,113,DAL,Steve Pelluer,QB,22,1990,0,0,2,24,22,65,548,974,6870,29,39,142,858,6,0,0,0,,,Washington,College Stats
+1984,5,114,HOU,Robert Lyles,LB,23,1991,0,0,7,40,30,109,0,0,0,0,0,0,0,0,0,0,0,10,10.0,TCU,College Stats
+1984,5,115,NYG,Clint Harris,DB,,,0,0,0,,,,,,,,,,,,,,,,,East Carolina,College Stats
+1984,5,116,PHI,Andre Hardy,RB,22,1987,0,0,0,1,0,10,0,0,0,0,0,26,94,0,6,36,0,,,Weber St.,
+1984,5,117,KAN,Eric Holle,NT,24,1987,0,0,0,7,7,56,0,0,0,0,0,0,0,0,0,0,0,,2.5,Texas,
+1984,5,118,SDG,Lionel James,RB,22,1988,0,0,2,27,27,67,0,2,0,0,1,231,1062,4,209,2278,10,,,Auburn,College Stats
+1984,5,119,CIN,Barney Bussey,DB,22,1995,0,0,2,21,11,144,0,0,0,0,0,0,0,0,0,0,0,10,13.0,South Carolina St.,
+1984,5,120,IND,Golden Tate,WR,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee St.,College Stats
+1984,5,121,SFO,Michael Carter,NT,23,1992,1,3,8,66,66,121,0,0,0,0,0,0,0,0,0,0,0,1,22.5,SMU,
+1984,5,122,NYJ,Tron Armstrong,WR,,,0,0,0,,,,,,,,,,,,,,,,,Eastern Kentucky,
+1984,5,123,NOR,Jitter Fields,DB,22,1987,0,0,0,2,1,19,0,0,0,0,0,0,0,0,0,0,0,,,Texas,College Stats
+1984,5,124,NWE,Paul Fairchild,G,22,1990,0,0,2,21,21,83,0,0,0,0,0,0,0,0,0,0,0,,,Kansas,
+1984,5,125,WAS,Jeff Pegues,LB,,,0,0,0,,,,,,,,,,,,,,,,,East Carolina,
+1984,5,126,GNB,Tom Flynn,DB,22,1988,0,0,2,20,18,68,0,0,0,0,0,0,0,0,0,0,0,11,,Pittsburgh,College Stats
+1984,5,127,RAI,Andy Parker,TE,22,1990,0,0,1,0,0,81,0,0,0,0,0,0,0,0,8,46,2,,,Utah,College Stats
+1984,5,128,BUF,John Kidd,P,23,1998,0,0,0,20,9,215,0,1,0,0,0,8,-19,1,0,0,0,,,Northwestern,College Stats
+1984,5,129,STL,Jeff Leiding,LB,22,1987,0,0,0,3,,21,0,0,0,0,0,0,0,0,0,0,0,,1.0,Texas,College Stats
+1984,5,130,IND,Kevin Call,T,22,1993,0,0,5,30,30,130,0,0,0,0,0,0,0,0,0,0,0,,,Colorado St.,
+1984,5,131,CLE,Dave Piepkorn,T,,,0,0,0,,,,,,,,,,,,,,,,,North Dakota St.,College Stats
+1984,5,132,ATL,Cliff Benson,TE,23,1988,0,0,2,2,2,49,0,0,0,0,0,3,8,0,39,297,0,,,Purdue,College Stats
+1984,5,133,RAM,Hal Stephens,DE,23,1985,0,0,0,0,,2,0,0,0,0,0,0,0,0,0,0,0,,,East Carolina,
+1984,5,134,KAN,Jeff Paine,LB,23,1987,0,0,0,4,4,29,0,0,0,0,0,0,0,0,0,0,0,,1.0,Texas A&M,College Stats
+1984,5,135,PIT,Van Hughes,DE,23,1987,0,0,0,0,,8,0,0,0,0,0,0,0,0,0,0,0,,,Texas St.,
+1984,5,136,STL,John Goode,TE,21,1985,0,0,0,0,0,30,0,0,0,0,0,0,0,0,3,23,0,,,Youngstown St.,
+1984,5,137,DAL,Norm Granger,RB,22,1987,0,0,0,0,0,18,0,0,0,0,0,6,12,0,2,34,0,,,Iowa,College Stats
+1984,5,138,MIA,Dean May,QB,22,1987,0,0,0,0,,5,1,6,33,0,1,2,-4,0,0,0,0,,,Louisville,College Stats
+1984,5,139,SFO,Jeff Fuller,DB,22,1989,0,0,2,20,20,71,0,0,0,0,0,0,0,0,0,0,0,10,9.0,Texas A&M,College Stats
+1984,5,140,MIN,Allen Rice,RB,22,1991,0,0,0,17,16,95,0,1,0,0,0,337,1034,13,102,1076,6,,,Baylor,College Stats
+1984,6,141,HOU,John Grimsley,LB,22,1993,0,1,7,39,31,133,0,0,0,0,0,0,0,0,0,0,0,1,2.0,Kentucky,College Stats
+1984,6,142,TAM,Chris Washington,LB,22,1990,0,0,3,19,19,84,0,0,0,0,0,0,0,0,0,0,0,1,17.5,Iowa St.,
+1984,6,143,NYG,Jim Scott,DE,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,College Stats
+1984,6,144,SDG,Keith Guthrie,NT,23,1984,0,0,0,1,1,11,0,0,0,0,0,0,0,0,0,0,0,,,Texas A&M,
+1984,6,145,PHI,Scott Raridon,T,,,0,0,0,,,,,,,,,,,,,,,,,Nebraska,College Stats
+1984,6,146,KAN,Rufus Stevens,WR,,,0,0,0,,,,,,,,,,,,,,,,,Grambling St.,
+1984,6,147,IND,Dwight Beverly,RB,22,1987,0,0,0,2,,3,0,0,0,0,0,62,217,2,1,8,0,,,Illinois,College Stats
+1984,6,148,ATL,Ben Bennett,QB,22,1987,0,0,0,0,,1,2,6,25,0,1,2,17,0,0,0,0,,,Duke,College Stats
+1984,6,149,NYJ,Tony Paige,RB,21,1992,0,0,5,18,4,130,0,0,0,0,0,272,853,20,197,1515,9,,,Virginia Tech,College Stats
+1984,6,150,CIN,Don Kern,TE,22,1986,0,0,0,0,0,25,0,0,0,0,0,0,0,0,2,14,0,,,Arizona St.,College Stats
+1984,6,151,NWE,Ernest Gibson,DB,22,1989,0,0,1,9,9,72,0,0,0,0,0,0,0,0,0,0,0,4,,Furman,
+1984,6,152,DAL,Eugene Lockhart,LB,23,1992,0,0,7,51,44,136,0,0,0,0,0,0,0,0,0,0,0,6,16.0,Houston,College Stats
+1984,6,153,GNB,Randy Wright,QB,23,1988,0,0,2,14,14,46,602,1119,7106,31,57,55,173,3,0,0,0,,,Wisconsin,College Stats
+1984,6,154,MIN,Dwight Collins,WR,23,1984,0,0,0,1,1,16,0,0,0,0,0,3,-14,0,11,143,1,,,Pittsburgh,College Stats
+1984,6,155,BUF,Tony Slaton,C,23,1990,0,0,1,15,,74,0,0,0,0,0,0,0,0,0,0,0,,,USC,College Stats
+1984,6,156,NOR,Don Thorp,NT,22,1988,0,0,0,2,0,14,0,0,0,0,0,0,0,0,0,0,0,,3.0,Illinois,College Stats
+1984,6,157,STL,Rod Clark,LB,,,0,0,0,,,,,,,,,,,,,,,,,Texas St.,
+1984,6,158,CLE,Terry Nugent,QB,22,1987,0,0,0,0,,1,3,5,47,0,0,2,1,0,0,0,0,,,Colorado St.,College Stats
+1984,6,159,DEN,Aaron Smith,LB,22,1984,0,0,0,1,1,10,0,0,0,0,0,0,0,0,0,0,0,,,Utah St.,College Stats
+1984,6,160,DET,John Witkowski,QB,22,1988,0,0,0,1,1,5,13,35,210,0,0,8,33,0,0,0,0,,,Columbia,College Stats
+1984,6,161,HOU,Eric Mullins,WR,22,1984,0,0,0,1,1,13,0,0,0,0,0,1,0,0,6,85,1,,,Stanford,College Stats
+1984,6,162,SEA,John Kaiser,LB,22,1987,0,0,0,4,3,60,0,0,0,0,0,0,0,0,0,0,0,,,Arizona,
+1984,6,163,ATL,Dan Ralph,DT,23,1984,0,0,0,0,,6,0,0,0,0,0,0,0,0,0,0,0,,,Oregon,
+1984,6,164,PIT,Chris Brown,DB,22,1985,0,0,0,3,3,22,0,0,0,0,0,0,0,0,0,0,0,1,,Notre Dame,College Stats
+1984,6,165,MIA,Rowland Tatum,LB,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,College Stats
+1984,6,166,DAL,Joe Levelis,G,,,0,0,0,,,,,,,,,,,,,,,,,Iowa,
+1984,6,167,WAS,Curt Singer,T,22,1991,0,0,0,3,,33,0,0,0,0,0,0,0,0,0,0,0,,,Tennessee,
+1984,6,168,RAI,Stacey Toran,DB,22,1988,0,0,2,20,20,72,0,0,0,0,0,0,0,0,0,0,0,6,9.0,Notre Dame,
+1984,7,169,TAM,Jay Carroll,TE,22,1985,0,0,0,0,0,32,0,0,0,0,0,0,0,0,6,58,1,,,Minnesota,College Stats
+1984,7,170,HOU,Willie Joyner,RB,22,1984,0,0,0,0,0,10,0,0,0,0,0,14,22,0,0,0,0,,,Maryland,College Stats
+1984,7,171,NYG,Lionel Manuel,WR,22,1990,0,0,4,33,33,90,0,0,0,0,0,9,44,0,232,3941,23,,,Pacific,College Stats
+1984,7,172,PHI,Joe Hayes,RB,23,1984,0,0,0,0,0,12,0,0,0,0,0,0,0,0,0,0,0,,,Central Oklahoma,
+1984,7,173,KAN,Kevin Ross,DB,22,1997,0,2,13,67,57,204,0,0,0,0,0,0,0,0,0,0,0,38,5.0,Temple,College Stats
+1984,7,174,SDG,Jesse Bendross,WR,22,1987,0,0,0,3,3,35,0,0,0,0,0,0,0,0,27,369,2,,,Alabama,College Stats
+1984,7,175,ATL,Kirk Dodge,LB,22,1987,0,0,0,3,,23,0,0,0,0,0,0,0,0,0,0,0,,,UNLV,College Stats
+1984,7,176,NYJ,Harry Hamilton,DB,21,1991,0,0,6,33,10,98,0,0,0,0,0,0,0,0,0,0,0,23,1.0,Penn St.,College Stats
+1984,7,177,CIN,Leo Barker,LB,24,1991,0,0,2,13,13,122,0,0,0,0,0,0,0,0,0,0,0,3,3.0,New Mexico St.,College Stats
+1984,7,178,DET,Jimmie Carter,LB,23,1987,0,0,0,0,,1,0,0,0,0,0,0,0,0,0,0,0,,,New Mexico,
+1984,7,179,CHI,Nakita Robertson,RB,,,0,0,0,,,,,,,,,,,,,,,,,Central Arkansas,
+1984,7,180,MIN,John Haines,NT,22,1986,0,0,0,2,1,19,0,0,0,0,0,0,0,0,0,0,0,,2.0,Texas,
+1984,7,181,GNB,Daryll Jones,DB,22,1987,0,0,0,3,3,25,0,0,0,0,0,0,0,0,0,0,0,,,Georgia,College Stats
+1984,7,182,BUF,Stan David,LB,22,1984,0,0,0,2,2,16,0,0,0,0,0,0,0,0,0,0,0,,1.0,Texas Tech,College Stats
+1984,7,183,RAI,Mitch Willis,NT,22,1990,0,0,0,4,3,51,0,0,0,0,0,0,0,0,0,0,0,,2.0,SMU,
+1984,7,184,NWE,Bruce Kallmeyer,K,,,0,0,0,,,,,,,,,,,,,,,,,Kansas,College Stats
+1984,7,185,STL,Quentin Walker,RB,23,1984,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,,,Virginia,College Stats
+1984,7,186,DEN,Clarence Kay,TE,23,1992,0,0,9,17,17,135,0,0,0,0,0,0,0,0,193,2136,13,,,Georgia,College Stats
+1984,7,187,DET,Renwick Atkins,T,,,0,0,0,,,,,,,,,,,,,,,,,Kansas,
+1984,7,188,RAM,George Radachowsky,DB,22,1989,0,0,1,8,,52,0,0,0,0,0,0,0,0,0,0,0,2,1.5,Boston Col.,College Stats
+1984,7,189,SEA,Sam Slater,T,,,0,0,0,,,,,,,,,,,,,,,,,Weber St.,
+1984,7,190,CLE,Jim Dumont,LB,23,1984,0,0,0,1,1,12,0,0,0,0,0,0,0,0,0,0,0,,,Rutgers,College Stats
+1984,7,191,PIT,Scott Campbell,QB,22,1990,0,0,1,8,2,45,224,454,2983,19,25,43,170,2,0,0,0,,,Purdue,College Stats
+1984,7,192,NWE,Derwin Williams,WR,23,1987,0,0,0,1,1,42,0,0,0,0,0,0,0,0,14,228,0,,,New Mexico,College Stats
+1984,7,193,DAL,Ed Martin,LB,,,0,0,0,,,,,,,,,,,,,,,,,Indiana St.,
+1984,7,194,MIA,Bernard Carvalho,G,,,0,0,0,,,,,,,,,,,,,,,,,Hawaii,
+1984,7,195,WAS,Mark Smith,WR,,,0,0,0,,,,,,,,,,,,,,,,,North Carolina,College Stats
+1984,7,196,MIN,Loyd Lewis,G,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M-Kingsville,College Stats
+1984,8,197,HOU,Kevin Baugh,WR,,,0,0,0,,,,,,,,,,,,,,,,,Penn St.,College Stats
+1984,8,198,TAM,Fred Robinson,LB,22,1986,0,0,0,6,,46,0,0,0,0,0,0,0,0,0,0,0,,14.5,Miami (FL),
+1984,8,199,SDG,Ray Woodard,DE,23,1987,0,0,0,1,,9,0,0,0,0,0,0,0,0,0,0,0,,0.5,Texas,
+1984,8,200,PHI,Manny Matsakis,K,,,0,0,0,,,,,,,,,,,,,,,,,Capital,
+1984,8,201,STL,Niko Noga,LB,22,1991,0,0,4,26,23,122,0,0,0,0,0,0,0,0,0,0,0,1,7.0,Hawaii,
+1984,8,202,KAN,Randy Clark,DB,22,1984,0,0,0,0,,2,0,0,0,0,0,0,0,0,0,0,0,,,Florida,College Stats
+1984,8,203,NYJ,Billy Griggs,TE,22,1989,0,0,0,2,2,64,0,0,0,0,0,0,0,0,25,262,1,,,Virginia,College Stats
+1984,8,204,CIN,Bruce Reimers,G,23,1993,0,0,7,42,33,135,0,0,0,0,0,0,0,0,0,0,0,,,Iowa St.,
+1984,8,205,IND,Eugene Daniel,DB,23,1997,0,0,13,60,59,207,0,0,0,0,0,0,0,0,0,0,0,38,2.0,LSU,College Stats
+1984,8,206,ATL,Jeff Jackson,LB,22,1988,0,0,0,8,3,52,0,0,0,0,0,0,0,0,0,0,0,1,3.0,Auburn,College Stats
+1984,8,207,DEN,Winford Hood,G,22,1988,0,0,0,8,8,47,0,0,0,0,0,0,0,0,0,0,0,,,Georgia,
+1984,8,208,MIN,Paul Sverchek,NT,23,1984,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,,,Cal Poly-San Luis Obispo,
+1984,8,209,BUF,Stacy Rayfield,DB,,,0,0,0,,,,,,,,,,,,,,,,,Texas-Arlington,
+1984,8,210,NOR,Clemon Terrell,RB,,,0,0,0,,,,,,,,,,,,,,,,,Southern Miss,College Stats
+1984,8,211,NWE,James Keyton,T,,,0,0,0,,,,,,,,,,,,,,,,,Arizona St.,College Stats
+1984,8,212,CHI,Brad Anderson,WR,23,1985,0,0,0,1,1,27,0,0,0,0,0,0,0,0,4,83,1,,,Arizona,College Stats
+1984,8,213,STL,Bob Paulling,K,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,College Stats
+1984,8,214,DET,David Jones,G,22,1987,0,0,1,6,5,27,0,0,0,0,0,0,0,0,0,0,0,,,Texas,
+1984,8,215,RAM,Ed Brady,LB,22,1995,0,0,0,10,3,188,0,0,0,0,0,0,0,0,0,0,0,,,Illinois,College Stats
+1984,8,216,SEA,John Puzar,C,,,0,0,0,,,,,,,,,,,,,,,,,Long Beach St.,
+1984,8,217,NYJ,Brett Wright,P,,,0,0,0,,,,,,,,,,,,,,,,,Southeastern Louisiana,College Stats
+1984,8,218,DEN,Scott Garnett,NT,21,1987,0,0,0,3,2,27,0,0,0,0,0,0,0,0,0,0,0,,3.0,Washington,
+1984,8,219,SDG,Bob Craighead,RB,,,0,0,0,,,,,,,,,,,,,,,,,La-Monroe,
+1984,8,220,PIT,Randy Rasmussen,C,23,1988,0,0,0,4,3,43,0,0,0,0,0,0,0,0,0,0,0,,,Minnesota,
+1984,8,221,MIA,Ronnie Landry,RB,,,0,0,0,,,,,,,,,,,,,,,,,McNeese St.,
+1984,8,222,DAL,Mike Revell,RB,,,0,0,0,,,,,,,,,,,,,,,,,Bethune-Cookman,
+1984,8,223,WAS,Jeff Smith,DB,,,0,0,0,,,,,,,,,,,,,,,,,Missouri,College Stats
+1984,8,224,RAI,Sam Seale,DB,21,1993,0,0,4,28,7,121,0,0,0,0,0,0,0,0,0,0,0,11,,Western St. (CO),
+1984,9,225,TAM,Rick Mallory,G,23,1988,0,0,2,16,16,57,0,0,0,0,0,0,0,0,1,9,0,,,Washington,College Stats
+1984,9,226,HOU,Jeff Donaldson,DB,22,1993,0,0,5,28,20,151,0,0,0,0,0,0,0,0,0,0,0,12,5.5,Colorado,College Stats
+1984,9,227,CLE,Don Jones,WR,,,0,0,0,,,,,,,,,,,,,,,,,Texas A&M,College Stats
+1984,9,228,HOU,Mike Johnson,DE,22,1984,0,0,0,1,1,16,0,0,0,0,0,0,0,0,0,0,0,,0.5,Illinois,
+1984,9,229,KAN,Scott Auer,G,22,1985,0,0,0,4,4,23,0,0,0,0,0,0,0,0,0,0,0,,,Michigan St.,College Stats
+1984,9,230,SDG,Zack Barnes,DT,,,0,0,0,,,,,,,,,,,,,,,,,Alabama St.,
+1984,9,231,CIN,Bruce Kozerski,C,22,1995,0,0,8,55,55,172,0,0,0,0,0,0,0,0,0,0,0,,,Holy Cross,
+1984,9,232,DAL,John Hunt,T,21,1987,0,0,0,1,1,3,0,0,0,0,0,0,0,0,0,0,0,,,Florida,
+1984,9,233,ATL,Glen Howe,T,22,1986,0,0,0,3,3,14,0,0,0,0,0,0,0,0,0,0,0,,,Southern Miss,
+1984,9,234,NYJ,Tom Baldwin,NT,23,1988,0,0,0,8,8,64,0,0,0,0,0,0,0,0,0,0,0,,3.5,Tulsa,
+1984,9,235,MIN,Keith Kidd,WR,21,1987,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,,,Arkansas,College Stats
+1984,9,236,BUF,Leroy Howell,DE,,,0,0,0,,,,,,,,,,,,,,,,,Appalachian St.,
+1984,9,237,NOR,Brian Hansen,P,23,1999,0,1,0,24,11,212,3,3,45,1,0,10,-25,0,0,0,0,,,Sioux Falls,
+1984,9,238,NWE,Scott Bolzan,T,,,0,0,0,,,,,,,,,,,,,,,,,Northern Illinois,
+1984,9,239,SFO,Lee Miller,DB,,,0,0,0,,,,,,,,,,,,,,,,,Cal State-Fullerton,College Stats
+1984,9,240,KAN,Dave Hestera,TE,,,0,0,0,,,,,,,,,,,,,,,,,Colorado,College Stats
+1984,9,241,STL,John Walker,RB,,,0,0,0,,,,,,,,,,,,,,,,,Texas,College Stats
+1984,9,242,RAM,George Reynolds,P,,,0,0,0,,,,,,,,,,,,,,,,,Penn St.,College Stats
+1984,9,243,SEA,Adam Schreiber,G,22,1999,0,0,2,21,0,202,0,0,0,0,0,0,0,0,0,0,0,,,Texas,
+1984,9,244,CHI,Mark Casale,QB,,,0,0,0,,,,,,,,,,,,,,,,,Montclair St.,
+1984,9,245,DEN,Chris Brewer,RB,22,1987,0,0,0,1,0,16,0,0,0,0,0,34,83,2,7,76,1,,,Arizona,College Stats
+1984,9,246,DET,Rich Hollins,WR,,,0,0,0,,,,,,,,,,,,,,,,,West Virginia,College Stats
+1984,9,247,PIT,Rich Erenberg,RB,22,1986,0,0,1,14,14,46,0,0,0,0,0,174,642,3,98,901,7,,,Colgate,College Stats
+1984,9,248,SFO,Derrick Harmon,RB,21,1986,0,0,0,5,5,39,0,3,0,0,0,94,361,2,23,203,0,,,Cornell,College Stats
+1984,9,249,DAL,Neil Maune,G,,,0,0,0,,,,,,,,,,,,,,,,,Notre Dame,
+1984,9,250,MIA,Jim Boyle,T,22,1988,0,0,0,3,,9,0,0,0,0,0,0,0,0,1,0,0,,,Tulane,
+1984,9,251,NWE,Dave Windham,LB,23,1987,0,0,0,0,,3,0,0,0,0,0,0,0,0,0,0,0,,,Jackson St.,
+1984,9,252,HOU,Mike Russell,LB,,,0,0,0,,,,,,,,,,,,,,,,,Toledo,College Stats
+1984,10,253,RAM,Norwood Vann,LB,22,1988,0,0,0,6,6,52,0,0,0,0,0,0,0,0,0,0,0,,,East Carolina,College Stats
+1984,10,254,TAM,Jim Gallery,K,22,1990,0,0,0,-1,,19,0,0,0,0,0,0,0,0,0,0,0,,,Minnesota,College Stats
+1984,10,255,NYG,David Jordan,G,22,1987,0,0,0,3,2,33,0,0,0,0,0,0,0,0,0,0,0,,,Auburn,College Stats
+1984,10,256,PHI,John Thomas,DB,,,0,0,0,,,,,,,,,,,,,,,,,TCU,College Stats
+1984,10,257,NYG,Heyward Golden,DB,,,0,0,0,,,,,,,,,,,,,,,,,South Carolina St.,
+1984,10,258,KAN,Al Wenglikowski,LB,24,1987,0,0,0,0,,6,0,0,0,0,0,0,0,0,0,0,0,,,Pittsburgh,
+1984,10,259,DET,William Frizzell,DB,21,1993,0,0,0,13,1,134,0,0,0,0,0,0,0,0,0,0,0,11,4.0,North Carolina Central,
+1984,10,260,ATL,Derrick Franklin,DB,,,0,0,0,,,,,,,,,,,,,,,,,Fresno St.,
+1984,10,261,NYJ,Ronny Cone,RB,,,0,0,0,,,,,,,,,,,,,,,,,Georgia Tech,College Stats
+1984,10,262,CIN,Aaron Jackson,LB,,,0,0,0,,,,,,,,,,,,,,,,,North Carolina,College Stats
+1984,10,263,BUF,Joe Azelby,LB,22,1984,0,0,0,1,1,14,0,0,0,0,0,0,0,0,0,0,0,,,Harvard,
+1984,10,264,NOR,Paul Gray,LB,22,1987,0,0,0,0,,2,0,0,0,0,0,0,0,0,0,0,0,,,Western Kentucky,
+1984,10,265,CIN,Brent Ziegler,RB,,,0,0,0,,,,,,,,,,,,,,,,,Syracuse,College Stats
+1984,10,266,CHI,Kurt Vestman,TE,,,0,0,0,,,,,,,,,,,,,,,,,Idaho,
+1984,10,267,GNB,Gary Hoffman,T,22,1987,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,,,Santa Clara,
+1984,10,268,MIN,James Spencer,LB,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma St.,College Stats
+1984,10,269,STL,Mark Smythe,DT,,,0,0,0,,,,,,,,,,,,,,,,,Indiana,
+1984,10,270,SEA,Randall Morris,RB,23,1988,0,0,0,6,6,64,0,2,0,0,0,156,651,1,15,75,0,,,Tennessee,College Stats
+1984,10,271,CHI,Shaun Gayle,DB,22,1995,0,1,7,45,39,160,0,0,0,0,0,0,0,0,0,0,0,16,2.0,Ohio St.,College Stats
+1984,10,272,DEN,Bobby Micho,TE,22,1987,0,0,0,3,3,26,0,0,0,0,0,4,8,0,25,242,2,,,Texas,College Stats
+1984,10,273,DET,James Thaxton,DB,,,0,0,0,,,,,,,,,,,,,,,,,Louisiana Tech,
+1984,10,274,RAM,Joe Dooley,C,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,
+1984,10,275,SFO,Dave Moritz,WR,,,0,0,0,,,,,,,,,,,,,,,,,Iowa,College Stats
+1984,10,276,PIT,Kirk McJunkin,T,,,0,0,0,,,,,,,,,,,,,,,,,Texas,
+1984,10,277,MIA,John Chesley,TE,22,1984,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,,,Oklahoma St.,College Stats
+1984,10,278,DAL,Brian Salonen,LB,23,1985,0,0,0,3,3,32,0,0,0,0,0,0,0,0,0,0,0,,,Montana,
+1984,10,279,WAS,Keith Griffin,RB,22,1988,0,0,0,11,11,65,0,0,0,0,0,329,1343,3,61,460,2,,,Miami (FL),College Stats
+1984,10,280,CLE,Earnest Byner,RB,21,1997,0,2,8,80,37,211,3,10,90,3,0,2095,8261,56,512,4605,15,,,East Carolina,College Stats
+1984,11,281,TAM,Blair Kiel,QB,22,1991,0,0,0,4,0,25,108,193,1296,8,7,16,105,1,0,0,0,,,Notre Dame,College Stats
+1984,11,282,RAI,Gardner Williams,DB,22,1984,0,0,0,0,,3,0,0,0,0,0,0,0,0,0,0,0,,,St. Mary's (CA),
+1984,11,283,NYG,Frank Cephous,RB,23,1984,0,0,0,0,0,16,0,0,0,0,0,3,2,0,0,0,0,,,UCLA,College Stats
+1984,11,284,PHI,John Robertson,T,,,0,0,0,,,,,,,,,,,,,,,,,East Carolina,
+1984,11,285,KAN,Bobby Johnson,RB,,,0,0,0,,,,,,,,,,,,,,,,,San Jose St.,College Stats
+1984,11,286,SDG,Buford McGee,RB,24,1992,0,0,3,16,4,107,3,3,24,1,0,289,1086,17,155,1264,13,,,Mississippi,College Stats
+1984,11,287,ATL,Tommy Norman,WR,,,0,0,0,,,,,,,,,,,,,,,,,Jackson St.,
+1984,11,288,NYJ,Dan Martin,T,,,0,0,0,,,,,,,,,,,,,,,,,Iowa St.,
+1984,11,289,CIN,Steve McKeaver,RB,,,0,0,0,,,,,,,,,,,,,,,,,Central Oklahoma,
+1984,11,290,IND,Bob Stowe,T,,,0,0,0,,,,,,,,,,,,,,,,,Illinois,
+1984,11,291,NOR,Michel Bourgeau,DE,,,0,0,0,,,,,,,,,,,,,,,,,Boise St.,
+1984,11,292,NWE,Charlie Flager,G,,,0,0,0,,,,,,,,,,,,,,,,,Washington St.,
+1984,11,293,RAM,Michael Harper,WR,23,1989,0,0,0,4,,35,0,0,0,0,0,1,3,0,25,352,1,,,USC,College Stats
+1984,11,294,GNB,Mark Cannon,C,22,1991,0,0,3,22,22,83,0,0,0,0,0,0,0,0,0,0,0,,,Texas-Arlington,
+1984,11,295,MIN,Edgar Pickett,LB,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,
+1984,11,296,STL,Kyle Mackey,QB,22,1989,0,0,0,3,,7,68,134,729,3,6,19,101,2,0,0,0,,,Texas A&M-Commerce,
+1984,11,297,CHI,Mark Butkus,DT,,,0,0,0,,,,,,,,,,,,,,,,,Illinois,
+1984,11,298,DEN,Gene Lang,RB,22,1990,0,0,1,18,10,89,0,1,0,0,0,319,1148,11,134,1280,9,,,LSU,College Stats
+1984,11,299,BUF,Craig White,WR,22,1984,0,0,0,0,0,14,0,0,0,0,0,0,0,0,4,28,0,,,Missouri,College Stats
+1984,11,300,DET,Mike Saxon,P,22,1995,0,0,0,20,,172,1,2,4,0,0,5,23,0,0,0,0,,,San Diego St.,College Stats
+1984,11,301,RAM,Dwayne Love,RB,,,0,0,0,,,,,,,,,,,,,,,,,Houston,College Stats
+1984,11,302,SEA,Steve Gemza,T,,,0,0,0,,,,,,,,,,,,,,,,,UCLA,
+1984,11,303,PIT,Elton Veals,RB,23,1984,0,0,0,1,1,15,0,0,0,0,0,31,87,0,0,0,0,,,Tulane,College Stats
+1984,11,304,DAL,Dowe Aughtman,DT,23,1984,0,0,0,1,1,7,0,0,0,0,0,0,0,0,0,0,0,,,Auburn,
+1984,11,305,MIA,Bud Brown,DB,23,1988,0,0,3,17,17,73,0,0,0,0,0,0,0,0,0,0,0,5,,Southern Miss,College Stats
+1984,11,306,WAS,Anthony Jones,TE,24,1988,0,0,0,0,0,61,0,0,0,0,0,0,0,0,4,27,0,,,Wichita St.,College Stats
+1984,11,307,SFO,Kirk Pendleton,WR,,,0,0,0,,,,,,,,,,,,,,,,,BYU,College Stats
+1984,11,308,MIN,Lawrence Thompson,WR,,,0,0,0,,,,,,,,,,,,,,,,,Miami (FL),College Stats
+1984,12,309,RAM,Rod Fisher,DB,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma St.,College Stats
+1984,12,310,TAM,Thad Jemison,WR,,,0,0,0,,,,,,,,,,,,,,,,,Ohio St.,College Stats
+1984,12,311,NYG,Lawrence Green,LB,,,0,0,0,,,,,,,,,,,,,,,,,Chattanooga,
+1984,12,312,PHI,Paul McFadden,K,22,1989,0,0,0,19,15,79,0,0,0,0,0,0,0,0,0,0,0,,,Youngstown St.,
+1984,12,313,GNB,Lenny Taylor,WR,23,1987,0,0,0,1,0,5,0,0,0,0,0,1,-13,0,13,179,1,,,Tennessee,College Stats
+1984,12,314,KAN,Mark Lang,LB,,,0,0,0,,,,,,,,,,,,,,,,,Texas,College Stats
+1984,12,315,NYJ,David Roberson,WR,,,0,0,0,,,,,,,,,,,,,,,,,Houston,College Stats
+1984,12,316,CIN,Steve Raquet,LB,,,0,0,0,,,,,,,,,,,,,,,,,Holy Cross,
+1984,12,317,IND,Steve Hathaway,LB,22,1984,0,0,0,1,1,6,0,0,0,0,0,0,0,0,0,0,0,,,West Virginia,
+1984,12,318,ATL,Don Holmes,WR,23,1990,0,0,0,3,,60,0,0,0,0,0,0,0,0,25,413,1,,,Colorado Mesa,College Stats
+1984,12,319,NWE,Harper Howell,TE,,,0,0,0,,,,,,,,,,,,,,,,,UCLA,College Stats
+1984,12,320,MIA,William Devane,DT,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,
+1984,12,321,MIN,Mike Jones,RB,,,0,0,0,,,,,,,,,,,,,,,,,North Carolina A&T,
+1984,12,322,BUF,Russell Davis,WR,,,0,0,0,,,,,,,,,,,,,,,,,Maryland,College Stats
+1984,12,323,GNB,Mark Emans,LB,,,0,0,0,,,,,,,,,,,,,,,,,Bowling Green,College Stats
+1984,12,324,NOR,Byron Nelson,T,,,0,0,0,,,,,,,,,,,,,,,,,Arizona,
+1984,12,325,STL,Paul Parker,G,,,0,0,0,,,,,,,,,,,,,,,,,Oklahoma,
+1984,12,326,DEN,Murray Jarman,WR,,,0,0,0,,,,,,,,,,,,,,,,,Clemson,
+1984,12,327,DET,Glenn Streno,C,,,0,0,0,,,,,,,,,,,,,,,,,Tennessee,
+1984,12,328,RAM,Moe Bias,LB,,,0,0,0,,,,,,,,,,,,,,,,,Illinois,
+1984,12,329,SEA,Theodis Windham,DB,,,0,0,0,,,,,,,,,,,,,,,,,Utah St.,College Stats
+1984,12,330,CHI,Donald Jordan,RB,22,1984,0,0,0,1,1,13,0,0,0,0,0,11,70,0,1,6,0,,,Houston,College Stats
+1984,12,331,SDG,Maurice Harper,WR,,,0,0,0,,,,,,,,,,,,,,,,,La Verne,
+1984,12,332,PIT,Scoop Gillespie,RB,22,1984,0,0,0,0,0,14,0,0,0,0,0,7,18,0,1,12,0,,,William Jewell,
+1984,12,333,MIA,Mike Weingrad,LB,,,0,0,0,,,,,,,,,,,,,,,,,Illinois,College Stats
+1984,12,334,DAL,Carl Lewis,WR,,,0,0,0,,,,,,,,,,,,,,,,,Houston,
+1984,12,335,WAS,Curtland Thomas,WR,22,1987,0,0,0,0,,2,0,0,0,0,0,0,0,0,1,14,0,,,Missouri,College Stats
+1984,12,336,RAI,Randy Essington,QB,,,0,0,0,,,,,,,,,,,,,,,,,Colorado,

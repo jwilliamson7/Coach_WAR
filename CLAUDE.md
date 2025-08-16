@@ -49,7 +49,9 @@ Coach_WAR/
     ├── combine_roster_turnover.py # Combine turnover files
     ├── calculate_roster_turnover_crosstab.py # Roster turnover in crosstab format
     ├── calculate_starters_turnover_crosstab.py # Starters turnover in crosstab format
-    └── calculate_starters_games_missed_crosstab.py # Starters games missed analysis
+    ├── calculate_starters_games_missed_crosstab.py # Starters games missed analysis
+    ├── extract_sos_winning_percentage.py # Extract SoS and winning percentage metrics
+    └── combine_final_datasets.py # Combine all final datasets into single comprehensive table
 ```
 
 ## Key Components
@@ -78,20 +80,28 @@ Coach_WAR/
 - **Games Missed Analysis**: Percentage of games missed by starters, aggregated by position
 
 ### Analysis Features
-The project tracks 154+ features across multiple categories:
+The project tracks 222 comprehensive features across multiple categories:
 
-1. **Core Coaching Experience (8 features)**:
-   - Age, number of times as head coach
-   - Years of experience in college/NFL positions, coordinator roles, head coaching
+1. **Salary Cap Management (18 features)**:
+   - Total salary cap allocations and percentages
+   - Positional spending percentages (QB, RB, WR, TE, OL, DL, LB, SEC, K, P, LS, Off, Def, SPT)
+   - Cap space utilization and dead cap analysis
 
-2. **Team Performance Statistics (132 features)**:
-   - Offensive/defensive statistics with role-specific suffixes
-   - Points, yards, turnovers, efficiency metrics
-   - Split by coordinator (OC/DC) and head coach roles
+2. **Roster Management (126 features)**:
+   - Roster turnover rates by position (retention, departure, new player rates)
+   - Starters turnover analysis with simplified position groups
+   - Games missed percentages by position for starters
+   - Player count and net change metrics
 
-3. **Hiring Team Context (14 features)**:
-   - Previous team performance metrics
-   - Historical context for hiring decisions
+3. **Player Performance (66 features)**:
+   - Age and experience metrics by position
+   - Approximate Value (AV) metrics for player contributions
+   - Performance consistency and depth analysis
+
+4. **Team Performance (12 features)**:
+   - Strength of Schedule (SoS) and winning percentage
+   - Penalty rates and interception metrics
+   - Performance context and efficiency measures
 
 ### Key Scripts
 
@@ -169,6 +179,19 @@ The project tracks 154+ features across multiple categories:
 - **Features**: Data normalization, type conversion, z-score standardization
 - **Output**: Yearly league datasets with raw and normalized versions
 
+##### `scripts/extract_sos_winning_percentage.py`
+- **Purpose**: Extracts Strength of Schedule and calculates winning percentage from team records
+- **Features**: Comprehensive winning percentage calculation including ties, SoS extraction from all historical data
+- **Output**: Team-year level SoS and Win_Pct metrics with extraction timestamps
+- **Note**: Outputs only essential columns (Team, Year, SoS, Win_Pct, Extraction_Date) for streamlined analysis
+
+##### `scripts/combine_final_datasets.py`
+- **Purpose**: Combines all processed datasets into a single comprehensive coaching analysis table
+- **Features**: Left join strategy using team-year keys, column conflict resolution, metadata generation
+- **Input**: All CSV files in data/final/ (excluding metadata files)
+- **Output**: Master dataset with 448 rows × 222 columns covering 2011-2024
+- **Key Functions**: Team-year standardization, coverage reporting, automatic suffix handling for conflicting columns
+
 #### Utility Scripts
 
 ##### `crawlers/utils/data_constants.py`
@@ -207,8 +230,9 @@ Each dataset includes extensive offensive and defensive metrics such as:
    - Salary cap allocation efficiency (as percentages of maximum cap)
    - Position spending percentages
 6. **Data Combination**: Merge individual team files into consolidated datasets
-7. **Normalization**: Apply statistical normalization (z-scores) for fair comparison across eras
-8. **Analysis**: Calculate WAR metrics and coaching effectiveness incorporating all data dimensions
+7. **Final Dataset Generation**: Combine all processed datasets into comprehensive master table
+8. **Normalization**: Apply statistical normalization (z-scores) for fair comparison across eras
+9. **Analysis**: Calculate WAR metrics and coaching effectiveness incorporating all data dimensions
 
 ### Team Franchise Mappings
 The project handles historical team relocations and name changes through comprehensive mappings in `data_constants.py`, with corrected PFR abbreviations:
@@ -218,16 +242,17 @@ The project handles historical team relocations and name changes through compreh
 - **Tennessee Titans**: `oti` (not `ten`)
 
 ### Current Analysis Parameters
-- **Data Coverage**: 1920-2024 (105 seasons of league data)
-- **Roster Data**: 2010-2024 (15 seasons)
-- **Starters Data**: 2010-2024 (15 seasons) with games started tracking
+- **Master Dataset Coverage**: 2011-2024 (14 seasons, 448 team-year combinations)
+- **Historical Data**: 1920-2024 (105 seasons of league data)
+- **Roster Data**: 2010-2024 (15 seasons) with turnover calculated 2011-2024
+- **Starters Data**: 2010-2024 (15 seasons) with turnover calculated 2011-2024
 - **Injury Data**: 2010-2024 with weekly status tracking
 - **Salary Data**: 2011-2024 with positional breakdowns (converted to percentages of max cap)
-- **Cutoff Year**: 2022
-- **Current Year**: 2025
-- **Expected Features**: 200+ total features including turnover, games missed, and financial metrics
-- **Hiring Context**: 1-2 year lookback for team performance
+- **Complete Coverage**: 100% data coverage across all 448 team-year combinations
+- **Total Features**: 222 comprehensive coaching performance metrics
+- **Team Coverage**: All 32 current NFL teams with consistent PFR abbreviations
 - **Season Length**: 16 games (≤2022), 17 games (≥2023)
+- **Data Integrity**: Fixed historical team mappings (STL→RAM, SD→SDG) for complete coverage
 
 ## Development Notes
 
@@ -268,9 +293,18 @@ The project is designed as a complete pipeline from data collection to analysis.
 6. **Process Injury Data**: `python scripts/process_injury_data.py`
 
 ### Advanced Analysis (Crosstab Format)
-1. **Roster Turnover Crosstab**: `python scripts/calculate_roster_turnover_crosstab.py --all-teams --year all`
-2. **Starters Turnover Crosstab**: `python scripts/calculate_starters_turnover_crosstab.py --all-teams --year all`
+1. **Roster Turnover Crosstab**: `python scripts/calculate_roster_turnover_crosstab.py --all-teams --year all --minyear 2010`
+2. **Starters Turnover Crosstab**: `python scripts/calculate_starters_turnover_crosstab.py --all-teams --year all --minyear 2010`
 3. **Starters Games Missed Crosstab**: `python scripts/calculate_starters_games_missed_crosstab.py --all-teams --year all`
+4. **Extract SoS and Winning Percentage**: `python scripts/extract_sos_winning_percentage.py --all-teams`
+
+### Final Dataset Generation
+**Combine All Datasets**: `python scripts/combine_final_datasets.py`
+- Combines all processed data into a single comprehensive dataset
+- Uses salary cap data as the base table (448 team-year combinations: 2011-2024)
+- Left joins all other datasets on team-year key
+- Handles column conflicts with appropriate suffixes
+- Generates metadata and coverage statistics
 
 ### Analysis
 Use processed data in `data/final/` for comprehensive coaching WAR calculations incorporating:
@@ -283,10 +317,27 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
 - Position spending percentages
 
 ### Key Output Files in `data/final/`
-- `positional_percentages_combined.csv` - Position spending percentages across all teams/years
-- `roster_turnover_crosstab.csv` - Roster turnover analysis in crosstab format
-- `starters_turnover_crosstab.csv` - Starters turnover analysis in streamlined crosstab format
-- `starters_games_missed_crosstab.csv` - Games missed analysis by position
-- League data files with normalized team and opponent statistics
+
+#### Individual Component Files
+- `salary_cap_totals_combined.csv` - Salary cap totals and percentages (448 rows, 100% coverage)
+- `positional_percentages_combined.csv` - Position spending percentages (448 rows, 100% coverage)
+- `roster_turnover_crosstab.csv` - Roster turnover analysis in crosstab format (448 rows, 100% coverage)
+- `starters_turnover_crosstab.csv` - Starters turnover analysis in streamlined crosstab format (448 rows, 100% coverage)
+- `starters_games_missed_crosstab.csv` - Games missed analysis by position (448 rows, 100% coverage)
+- `age_experience_metrics_crosstab.csv` - Age and experience metrics by position (448 rows, 100% coverage)
+- `av_metrics_crosstab.csv` - Approximate Value metrics (448 rows, 100% coverage)
+- `penalty_interception_metrics.csv` - Penalty and interception rates (448 rows, 100% coverage)
+- `sos_winning_percentage.csv` - Strength of Schedule and winning percentage (448 rows, 100% coverage)
+
+#### Master Dataset
+- **`combined_final_dataset.csv`** - **Complete comprehensive dataset combining all metrics**
+  - **448 rows** (32 teams × 14 years: 2011-2024)
+  - **222 columns** of coaching performance metrics
+  - **100% data coverage** across all categories
+  - **Team-year key structure** for easy analysis and modeling
+  - **Metadata file**: `combined_final_dataset_metadata.csv` with coverage statistics
+
+#### Historical Data
+- League data files with normalized team and opponent statistics (1920-2024)
 
 This structure supports both research and production use cases for comprehensive coaching performance analysis with multiple data dimensions including roster management, injury impact, and financial efficiency.
