@@ -1,2 +1,2 @@
 Creation_Date,Total_Rows,Teams,Years,Year_Range,Metrics_Extracted,Source_Files,Description
-2025-08-16 09:33:49,2384,86,105,1920-2024,"Int Passing, Pen, Yds Penalties","league_team_data_normalized.csv, league_opponent_data_normalized.csv",Normalized penalty and interception metrics for teams and opponents
+2025-08-17 09:13:19,1637,32,55,1970-2024,"Int Passing, Pen, Yds Penalties","league_team_data_normalized.csv, league_opponent_data_normalized.csv",Normalized penalty and interception metrics for teams and opponents
