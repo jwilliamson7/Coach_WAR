@@ -9,8 +9,8 @@ from typing import Dict, List, Optional
 class DraftDataTransformer:
     """Transforms draft pick data into team-by-round summary statistics"""
     
-    def __init__(self, draft_dir: str = "../data/raw/Draft", 
-                 output_dir: str = "../data/processed/Draft"):
+    def __init__(self, draft_dir: str = "data/raw/Draft", 
+                 output_dir: str = "data/processed/Draft"):
         """Initialize transformer with input and output directories"""
         self.draft_dir = Path(draft_dir)
         self.output_dir = Path(output_dir)

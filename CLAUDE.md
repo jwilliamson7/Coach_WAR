@@ -123,8 +123,8 @@ The project tracks 222 comprehensive features across multiple categories:
 - **Output**: Team starters files by year (2010-2024) with position, player, and statistics
 
 ##### `crawlers/PFR/injury_scraping.py`
-- **Purpose**: Scrapes weekly injury status data
-- **Features**: Parses injury table, calculates games missed by status type
+- **Purpose**: Scrapes weekly injury status data from Pro Football Reference
+- **Features**: Rate limiting, reverse year processing (end-year to start-year), 404/403 error handling with team skipping, injury status parsing
 - **Output**: Transposed injury data with team/year metrics
 
 ##### `crawlers/Spotrac/total_view_scraper.py` & `positional_spending_scraper.py`
@@ -187,10 +187,10 @@ The project tracks 222 comprehensive features across multiple categories:
 
 ##### `scripts/combine_final_datasets.py`
 - **Purpose**: Combines all processed datasets into a single comprehensive coaching analysis table
-- **Features**: Left join strategy using team-year keys, column conflict resolution, metadata generation
-- **Input**: All CSV files in data/final/ (excluding metadata files)
-- **Output**: Master dataset with 448 rows × 222 columns covering 2011-2024
-- **Key Functions**: Team-year standardization, coverage reporting, automatic suffix handling for conflicting columns
+- **Features**: Full outer join strategy for most datasets, left join for coaching data, column conflict resolution, metadata generation
+- **Input**: All CSV files in data/final/ plus coaching data from data/processed/
+- **Output**: Master dataset with 1,683 rows × 361 columns covering 1970-2024 (coaching data: left join only for existing team-years)
+- **Key Functions**: Team-year standardization, coverage reporting, automatic suffix handling for conflicting columns, "_Norm" suffix for normalized coaching features
 
 #### Utility Scripts
 
@@ -242,30 +242,35 @@ The project handles historical team relocations and name changes through compreh
 - **Tennessee Titans**: `oti` (not `ten`)
 
 ### Current Analysis Parameters
-- **Master Dataset Coverage**: 2011-2024 (14 seasons, 448 team-year combinations)
+- **Master Dataset Coverage**: 1970-2024 (55 seasons, 1,683 team-year combinations)
 - **Historical Data**: 1920-2024 (105 seasons of league data)
 - **Roster Data**: 2010-2024 (15 seasons) with turnover calculated 2011-2024
 - **Starters Data**: 2010-2024 (15 seasons) with turnover calculated 2011-2024
-- **Injury Data**: 2010-2024 with weekly status tracking
+- **Injury Data**: 2010-2024 with weekly status tracking, reverse year processing for efficient scraping
 - **Salary Data**: 2011-2024 with positional breakdowns (converted to percentages of max cap)
-- **Complete Coverage**: 100% data coverage across all 448 team-year combinations
-- **Total Features**: 222 comprehensive coaching performance metrics
+- **Coaching Data**: 1970-2024 with corrected experience calculations (excludes suspended seasons), normalized features with "_Norm" suffix
+- **Total Features**: 361 comprehensive coaching performance metrics
 - **Team Coverage**: All 32 current NFL teams with consistent PFR abbreviations
 - **Season Length**: 16 games (≤2022), 17 games (≥2023)
-- **Data Integrity**: Fixed historical team mappings (STL→RAM, SD→SDG) for complete coverage
+- **Data Integrity**: Fixed historical team mappings (STL→RAM, SD→SDG) and coaching experience calculations for complete coverage
 
 ## Development Notes
 
 ### Code Quality
 - All scripts include proper error handling and logging
 - Rate limiting implemented for web scraping to respect server resources
+- Advanced error handling for 404/403 responses with team skipping in injury scraper
+- Reverse year processing for efficient scraping (end-year to start-year)
 - Modular design with shared utilities for consistency
 - Type hints and documentation for maintainability
 
 ### Data Integrity
 - Comprehensive exclusion criteria for invalid coaching roles
 - Special handling for fired coaches vs. active coaches
+- Corrected coaching experience calculations (excludes suspended seasons)
+- Fixed head coach hire counting logic (prevents double-counting returns from suspension)
 - Data validation and consistency checks throughout pipeline
+- Normalized feature naming conventions with "_Norm" suffix for clarity
 
 ### Extension Points
 - Additional data sources can be easily integrated
@@ -281,7 +286,7 @@ The project is designed as a complete pipeline from data collection to analysis.
 1. **Coach Data**: `python crawlers/PFR/coach_scraping.py --team all --year all`
 2. **Roster Data**: `python crawlers/PFR/roster_scraping.py --team all --year all`
 3. **Starters Data**: `python crawlers/PFR/starters_scraping.py --all-teams --start-year 2010 --end-year 2024`
-4. **Injury Data**: `python crawlers/PFR/injury_scraping.py --all-teams --year all`
+4. **Injury Data**: `python crawlers/PFR/injury_scraping.py --team all --year all --start-year 2010 --end-year 2024`
 5. **Salary Data**: `python crawlers/Spotrac/total_view_scraper.py --all-teams --all-years`
 
 ### Data Processing
@@ -301,9 +306,11 @@ The project is designed as a complete pipeline from data collection to analysis.
 ### Final Dataset Generation
 **Combine All Datasets**: `python scripts/combine_final_datasets.py`
 - Combines all processed data into a single comprehensive dataset
-- Uses salary cap data as the base table (448 team-year combinations: 2011-2024)
-- Left joins all other datasets on team-year key
+- Uses full outer join for most datasets to capture all team-year combinations (1970-2024)
+- Left joins coaching data only for existing team-years (no new rows added)
 - Handles column conflicts with appropriate suffixes
+- Adds "_Norm" suffix to normalized coaching features
+- Ensures Win_Pct remains as the last column (target variable)
 - Generates metadata and coverage statistics
 
 ### Analysis
@@ -331,9 +338,12 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
 
 #### Master Dataset
 - **`combined_final_dataset.csv`** - **Complete comprehensive dataset combining all metrics**
-  - **448 rows** (32 teams × 14 years: 2011-2024)
-  - **222 columns** of coaching performance metrics
-  - **100% data coverage** across all categories
+  - **1,683 rows** (32+ teams × 55 years: 1970-2024)
+  - **361 columns** of coaching performance metrics
+  - **Full outer join coverage** across all team-year combinations
+  - **Coaching data left-joined** for existing team-years only
+  - **Normalized coaching features** with "_Norm" suffix for clarity
+  - **Win_Pct as target variable** positioned as last column
   - **Team-year key structure** for easy analysis and modeling
   - **Metadata file**: `combined_final_dataset_metadata.csv` with coverage statistics
 

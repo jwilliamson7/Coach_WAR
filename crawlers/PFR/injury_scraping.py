@@ -93,9 +93,16 @@ class InjuryDataScraper:
             self.logger.info(f"Scraping {team} {year} injury data from {url}")
             response = self.session.get(url, timeout=30)
             
-            # Handle 404/403 errors - skip to next team
-            if response.status_code in [404, 403]:
-                self.logger.warning(f"Got {response.status_code} error for {team} {year} - skipping team")
+            # Handle 404 errors - likely no injury data for this year or earlier
+            if response.status_code == 404:
+                self.logger.warning(f"Got 404 error for {team} {year} - likely no injury data available for this year or earlier")
+                self.logger.info(f"URL attempted: {url}")
+                return 'SKIP_TEAM'  # Skip to next team since we're going backwards in time
+            
+            # Handle 403 errors - access denied, skip entire team
+            if response.status_code == 403:
+                self.logger.warning(f"Got 403 error for {team} {year} - access denied, skipping team")
+                self.logger.info(f"URL attempted: {url}")
                 return 'SKIP_TEAM'
             
             response.raise_for_status()
@@ -133,11 +140,14 @@ class InjuryDataScraper:
                 return None
                 
         except requests.RequestException as e:
-            # Check if it's a 404/403 specifically
+            # Check if it's a 404 or 403 specifically
             if hasattr(e, 'response') and e.response is not None:
-                if e.response.status_code in [404, 403]:
-                    self.logger.warning(f"Got {e.response.status_code} error for {team} {year} - skipping team")
-                    return 'SKIP_TEAM'
+                if e.response.status_code == 404:
+                    self.logger.warning(f"Got 404 error for {team} {year} - likely no injury data available for this year or earlier")
+                    return 'SKIP_TEAM'  # Skip to next team since we're going backwards in time
+                elif e.response.status_code == 403:
+                    self.logger.warning(f"Got 403 error for {team} {year} - access denied, skipping team")
+                    return 'SKIP_TEAM'  # Skip entire team
             self.logger.error(f"Request failed for {team} {year}: {e}")
             return None
         except Exception as e:
@@ -406,12 +416,12 @@ class InjuryDataScraper:
                 data = self.scrape_team_year_injuries(team, year)
                 
                 # Handle SKIP_TEAM signal - move to next team
-                if data == 'SKIP_TEAM':
+                if isinstance(data, str) and data == 'SKIP_TEAM':
                     self.logger.warning(f"Skipping remaining years for team {team} due to access error")
                     results['failed'] += len([y for y in years if not (skip_existing and self.file_exists(team, y))])
                     break  # Exit year loop for this team
                 
-                if data is not None and not data.empty:
+                if data is not None and not isinstance(data, str) and not data.empty:
                     if self.save_data(data, team, year):
                         results['success'] += 1
                     else:
