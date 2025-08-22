@@ -16,16 +16,19 @@ Coach_WAR/
 │   │   ├── Rosters/           # Player roster data by team/year (2010-2024)
 │   │   ├── Starters/          # Starting lineup data by team/year (2010-2024)
 │   │   ├── Injuries/          # Team injury data by season
-│   │   └── Spotrac/           # Salary cap and spending data
-│   │       ├── total_view/    # Total salary cap data
-│   │       └── positional_spending/ # Spending by position
+│   │   ├── Spotrac/           # Salary cap and spending data
+│   │   │   ├── total_view/    # Total salary cap data
+│   │   │   └── positional_spending/ # Spending by position
+│   │   └── Draft/             # NFL Draft data by team and round
 │   ├── processed/             # Cleaned and processed data
 │   │   ├── League Data/       # Yearly league-wide statistics (1920-2024)
 │   │   ├── Spotrac/           # Processed salary cap data
 │   │   ├── Injury/            # Combined injury data
-│   │   └── RosterTurnover/    # Roster turnover analysis
-│   │       ├── detailed/      # Year-to-year turnover comparisons
-│   │       └── summary/       # Position turnover averages
+│   │   ├── RosterTurnover/    # Roster turnover analysis
+│   │   │   ├── detailed/      # Year-to-year turnover comparisons
+│   │   │   └── summary/       # Position turnover averages
+│   │   ├── Coaching/          # Processed coaching performance data
+│   │   └── Draft/             # Processed draft pick data
 │   └── final/                 # Final datasets ready for analysis
 ├── crawlers/                  # Web scraping scripts
 │   ├── PFR/                   # Pro Football Reference scrapers
@@ -39,25 +42,34 @@ Coach_WAR/
 │   │   └── positional_spending_scraper.py # Position spending scraper
 │   └── utils/                 # Shared utilities
 │       └── data_constants.py  # Constants and mappings (with NFL season functions)
-└── scripts/                   # Data processing scripts
-    ├── transform_team_data.py # Team data transformation
-    ├── process_spotrac_data.py # Salary cap data processing (with percentage conversion)
-    ├── calculate_positional_percentages.py # Position spending percentages
-    ├── combine_positional_percentages.py # Combine positional percentage files
-    ├── process_injury_data.py # Injury data combination
-    ├── calculate_roster_turnover.py # Roster turnover analysis
-    ├── combine_roster_turnover.py # Combine turnover files
-    ├── calculate_roster_turnover_crosstab.py # Roster turnover in crosstab format
-    ├── calculate_starters_turnover_crosstab.py # Starters turnover in crosstab format
-    ├── calculate_starters_games_missed_crosstab.py # Starters games missed analysis
-    ├── extract_sos_winning_percentage.py # Extract SoS and winning percentage metrics
-    └── combine_final_datasets.py # Combine all final datasets into single comprehensive table
+├── scripts/                   # Data processing scripts
+│   ├── transform_team_data.py # Team data transformation
+│   ├── process_spotrac_data.py # Salary cap data processing (with percentage conversion)
+│   ├── calculate_positional_percentages.py # Position spending percentages
+│   ├── combine_positional_percentages.py # Combine positional percentage files
+│   ├── process_injury_data.py # Injury data combination
+│   ├── calculate_roster_turnover.py # Roster turnover analysis
+│   ├── combine_roster_turnover.py # Combine turnover files
+│   ├── calculate_roster_turnover_crosstab.py # Roster turnover in crosstab format
+│   ├── calculate_starters_turnover_crosstab.py # Starters turnover in crosstab format
+│   ├── calculate_starters_games_missed_crosstab.py # Starters games missed analysis
+│   ├── extract_sos_winning_percentage.py # Extract SoS and winning percentage metrics
+│   ├── finalize_draft_data.py # Process draft data with rolling averages and team mappings
+│   ├── combine_final_datasets.py # Combine all final datasets into single comprehensive table
+│   └── svd_imputation.py     # SVD-based matrix completion for missing value imputation
+└── analysis/                  # Analysis and modeling scripts
+    ├── xgboost_coaching_impact_analysis.py # Coaching impact analysis with XGBoost
+    ├── xgboost_interaction_matrix.py # Feature interaction matrix visualization
+    ├── run_interaction_batch.py # Batch processing for multiple feature interactions
+    └── interaction_matrices/   # Feature interaction analysis outputs
+        ├── csv/               # Interaction matrices in CSV format
+        └── png/               # Heatmap visualizations
 ```
 
 ## Key Components
 
 ### Data Sources
-- **Pro Football Reference (PFR)**: Primary source for coach, team, roster, starters, and injury data
+- **Pro Football Reference (PFR)**: Primary source for coach, team, roster, starters, injury, and draft data
 - **Spotrac**: Salary cap and positional spending data for financial analysis
 - **Coach Data**: Historical records, rankings, and results for individual coaches
 - **Team Data**: Yearly statistics for offensive/defensive performance
@@ -65,6 +77,7 @@ Coach_WAR/
 - **Starters Data**: Starting lineup data by team and year (2010-2024) with games started
 - **Injury Data**: Weekly injury statuses and games missed by team
 - **Salary Data**: Team salary cap allocation and positional spending breakdowns
+- **Draft Data**: NFL Draft picks by team, year, and round (1969-2025) with rolling averages
 
 ### Current Data Status
 - **Coaches**: Extensive collection of coach data with 3 main files per coach:
@@ -78,11 +91,12 @@ Coach_WAR/
 - **Salary Cap**: Total salary cap and positional spending data with PFR team mappings (converted to percentages)
 - **Turnover Analysis**: Position-by-position roster and starters turnover rates between consecutive seasons
 - **Games Missed Analysis**: Percentage of games missed by starters, aggregated by position
+- **Draft Data**: Complete draft pick data (1969-2025) with team franchise mappings and Round 7+ consolidation
 
 ### Analysis Features
-The project tracks 222 comprehensive features across multiple categories:
+The project tracks 390 comprehensive features across multiple categories:
 
-1. **Salary Cap Management (18 features)**:
+1. **Salary Cap Management (54 features)**:
    - Total salary cap allocations and percentages
    - Positional spending percentages (QB, RB, WR, TE, OL, DL, LB, SEC, K, P, LS, Off, Def, SPT)
    - Cap space utilization and dead cap analysis
@@ -98,10 +112,21 @@ The project tracks 222 comprehensive features across multiple categories:
    - Approximate Value (AV) metrics for player contributions
    - Performance consistency and depth analysis
 
-4. **Team Performance (12 features)**:
+4. **Team Performance (8 features)**:
    - Strength of Schedule (SoS) and winning percentage
    - Penalty rates and interception metrics
    - Performance context and efficiency measures
+
+5. **Coaching Performance (139 features)**:
+   - Head coach, offensive coordinator, and defensive coordinator metrics
+   - Normalized performance statistics across offensive and defensive categories
+   - Coaching experience and tenure variables
+   - Opponent-adjusted performance metrics
+
+6. **Draft Strategy (29 features)**:
+   - Current year draft picks by round (Rounds 1-6 individually, 7+ combined)
+   - Rolling averages of historical draft picks (1-4 years back)
+   - Team franchise mappings with proper historical continuity
 
 ### Key Scripts
 
@@ -288,6 +313,7 @@ The project is designed as a complete pipeline from data collection to analysis.
 3. **Starters Data**: `python crawlers/PFR/starters_scraping.py --all-teams --start-year 2010 --end-year 2024`
 4. **Injury Data**: `python crawlers/PFR/injury_scraping.py --team all --year all --start-year 2010 --end-year 2024`
 5. **Salary Data**: `python crawlers/Spotrac/total_view_scraper.py --all-teams --all-years`
+6. **Draft Data**: Raw draft data is processed from existing sources
 
 ### Data Processing
 1. **Process Salary Data**: `python scripts/process_spotrac_data.py`
@@ -302,6 +328,7 @@ The project is designed as a complete pipeline from data collection to analysis.
 2. **Starters Turnover Crosstab**: `python scripts/calculate_starters_turnover_crosstab.py --all-teams --year all --minyear 2010`
 3. **Starters Games Missed Crosstab**: `python scripts/calculate_starters_games_missed_crosstab.py --all-teams --year all`
 4. **Extract SoS and Winning Percentage**: `python scripts/extract_sos_winning_percentage.py --all-teams`
+5. **Finalize Draft Data**: `python scripts/finalize_draft_data.py --start-year 1970`
 
 ### Final Dataset Generation
 **Combine All Datasets**: `python scripts/combine_final_datasets.py`
@@ -310,10 +337,18 @@ The project is designed as a complete pipeline from data collection to analysis.
 - Left joins coaching data only for existing team-years (no new rows added)
 - Handles column conflicts with appropriate suffixes
 - Adds "_Norm" suffix to normalized coaching features
+- Includes draft strategy features with proper team franchise mappings
 - Ensures Win_Pct remains as the last column (target variable)
 - Generates metadata and coverage statistics
 
-### Analysis
+### Data Imputation
+**SVD Imputation**: `python scripts/svd_imputation.py`
+- Applies SVD-based matrix completion to handle missing values
+- Preserves normalized features, standardizes non-normalized features
+- Creates `imputed_final_data.csv` with complete data for machine learning models
+- Configurable SVD components, iterations, and convergence tolerance
+
+### Analysis and Modeling
 Use processed data in `data/final/` for comprehensive coaching WAR calculations incorporating:
 - Team performance metrics
 - Roster turnover rates by position (detailed and crosstab formats)
@@ -322,32 +357,52 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
 - Injury impact analysis
 - Salary cap allocation efficiency (as percentages of maximum cap)
 - Position spending percentages
+- Draft strategy analysis with rolling averages
+
+**Advanced Analysis Tools**:
+1. **Coaching Impact Analysis**: `python analysis/xgboost_coaching_impact_analysis.py`
+2. **Feature Interaction Analysis**: `python analysis/xgboost_interaction_matrix.py feature1 feature2`
+3. **Batch Interaction Analysis**: `python analysis/run_interaction_batch.py`
 
 ### Key Output Files in `data/final/`
 
 #### Individual Component Files
-- `salary_cap_totals_combined.csv` - Salary cap totals and percentages (448 rows, 100% coverage)
-- `positional_percentages_combined.csv` - Position spending percentages (448 rows, 100% coverage)
-- `roster_turnover_crosstab.csv` - Roster turnover analysis in crosstab format (448 rows, 100% coverage)
-- `starters_turnover_crosstab.csv` - Starters turnover analysis in streamlined crosstab format (448 rows, 100% coverage)
-- `starters_games_missed_crosstab.csv` - Games missed analysis by position (448 rows, 100% coverage)
-- `age_experience_metrics_crosstab.csv` - Age and experience metrics by position (448 rows, 100% coverage)
-- `av_metrics_crosstab.csv` - Approximate Value metrics (448 rows, 100% coverage)
-- `penalty_interception_metrics.csv` - Penalty and interception rates (448 rows, 100% coverage)
-- `sos_winning_percentage.csv` - Strength of Schedule and winning percentage (448 rows, 100% coverage)
+- `salary_cap_totals_combined.csv` - Salary cap totals and percentages (448 rows, 26.4% coverage)
+- `positional_percentages_combined.csv` - Position spending percentages (448 rows, 26.4% coverage)
+- `roster_turnover_crosstab.csv` - Roster turnover analysis in crosstab format (1,648 rows, 97.0% coverage)
+- `starters_turnover_crosstab.csv` - Starters turnover analysis in streamlined crosstab format (1,604 rows, 94.4% coverage)
+- `starters_games_missed_crosstab.csv` - Games missed analysis by position (1,637 rows, 96.4% coverage)
+- `age_experience_metrics_crosstab.csv` - Age and experience metrics by position (1,683 rows, 99.1% coverage)
+- `av_metrics_crosstab.csv` - Approximate Value metrics (1,683 rows, 99.1% coverage)
+- `penalty_interception_metrics.csv` - Penalty and interception rates (1,683 rows, 99.1% coverage)
+- `sos_winning_percentage.csv` - Strength of Schedule and winning percentage (1,683 rows, 99.1% coverage)
+- `draft_picks_final.csv` - Draft strategy with rolling averages and team mappings (1,667 rows, 98.1% coverage)
 
-#### Master Dataset
+#### Master Datasets
 - **`combined_final_dataset.csv`** - **Complete comprehensive dataset combining all metrics**
-  - **1,683 rows** (32+ teams × 55 years: 1970-2024)
-  - **361 columns** of coaching performance metrics
+  - **1,699 rows** (32 teams × 55 years: 1970-2024)
+  - **390 columns** of coaching performance metrics
   - **Full outer join coverage** across all team-year combinations
-  - **Coaching data left-joined** for existing team-years only
+  - **Coaching data coverage**: 1,625 rows (95.6% of team-years)
   - **Normalized coaching features** with "_Norm" suffix for clarity
   - **Win_Pct as target variable** positioned as last column
   - **Team-year key structure** for easy analysis and modeling
   - **Metadata file**: `combined_final_dataset_metadata.csv` with coverage statistics
 
+- **`imputed_final_data.csv`** - **Complete dataset with SVD imputation**
+  - **1,683 rows** (removed 16 rows with missing Win_Pct)
+  - **390 columns** with zero missing values
+  - **SVD-based matrix completion** for sophisticated missing value handling
+  - **Standardized non-normalized features**, preserved normalized features
+  - **Ready for machine learning models** requiring complete data
+  - **Summary file**: `imputed_final_data.txt` with processing details
+
 #### Historical Data
 - League data files with normalized team and opponent statistics (1920-2024)
 
-This structure supports both research and production use cases for comprehensive coaching performance analysis with multiple data dimensions including roster management, injury impact, and financial efficiency.
+#### Analysis Outputs
+- `analysis/interaction_matrices/` - Feature interaction analysis results
+  - `csv/` - Interaction matrices in CSV format for 13 feature pairs
+  - `png/` - Dual heatmap visualizations (predictions + sample sizes)
+
+This structure supports both research and production use cases for comprehensive coaching performance analysis with multiple data dimensions including roster management, injury impact, financial efficiency, and draft strategy. The project now provides both raw comprehensive data (`combined_final_dataset.csv`) and machine learning-ready imputed data (`imputed_final_data.csv`) for different analytical approaches.
