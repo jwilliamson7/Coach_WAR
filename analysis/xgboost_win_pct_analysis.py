@@ -185,6 +185,80 @@ def analyze_predictions(y_true, y_pred, team_year_info):
     
     return results, outperformers
 
+def analyze_coach_performance(results):
+    """Aggregate results by coach and rank by average win percentage increase."""
+    print(f"\n{'='*80}")
+    print(f"COACH-LEVEL PERFORMANCE ANALYSIS")
+    print(f"{'='*80}")
+    
+    # Filter out rows with missing coach data
+    coach_results = results[results['Primary_Coach'].notna()].copy()
+    
+    if len(coach_results) == 0:
+        print("No coach data available for analysis.")
+        return pd.DataFrame()
+    
+    # Group by coach and calculate statistics
+    coach_stats = coach_results.groupby('Primary_Coach').agg({
+        'Difference': ['count', 'mean', 'std', 'min', 'max'],
+        'Actual_Win_Pct': 'mean',
+        'Predicted_Win_Pct': 'mean'
+    }).round(4)
+    
+    # Flatten column names
+    coach_stats.columns = ['Games', 'Avg_Difference', 'Std_Difference', 'Min_Difference', 'Max_Difference',
+                          'Avg_Actual_Win_Pct', 'Avg_Predicted_Win_Pct']
+    
+    # Filter coaches with at least 2 seasons for meaningful analysis (exclude one-year coaches)
+    min_games = 2
+    coach_stats = coach_stats[coach_stats['Games'] >= min_games].copy()
+    
+    # Sort by average difference (highest positive impact first)
+    coach_stats = coach_stats.sort_values('Avg_Difference', ascending=False)
+    
+    print(f"\nCoach performance analysis (coaches with {min_games}+ seasons):")
+    print(f"Found {len(coach_stats)} coaches with sufficient data\n")
+    
+    # Display top 20 coaches with highest average win percentage increase
+    print(f"TOP 20 COACHES - HIGHEST AVERAGE WIN PERCENTAGE INCREASE:")
+    print("-" * 120)
+    print(f"{'Coach Name':<25} {'Games':<6} {'Avg +/-':<8} {'Std Dev':<8} {'Min':<8} {'Max':<8} {'Actual Win%':<12} {'Predicted Win%'}")
+    print("-" * 120)
+    
+    for idx, (coach, row) in enumerate(coach_stats.head(20).iterrows(), 1):
+        coach_display = coach[:23] if len(coach) > 23 else coach
+        print(f"{coach_display:<25} {int(row['Games']):<6} {row['Avg_Difference']:+.4f}   {row['Std_Difference']:.4f}   "
+              f"{row['Min_Difference']:+.3f}   {row['Max_Difference']:+.3f}   {row['Avg_Actual_Win_Pct']:.3f}        {row['Avg_Predicted_Win_Pct']:.3f}")
+    
+    # Display bottom 20 coaches (largest negative impact)
+    print(f"\nBOTTOM 20 COACHES - LARGEST NEGATIVE WIN PERCENTAGE IMPACT:")
+    print("-" * 120)
+    print(f"{'Coach Name':<25} {'Games':<6} {'Avg +/-':<8} {'Std Dev':<8} {'Min':<8} {'Max':<8} {'Actual Win%':<12} {'Predicted Win%'}")
+    print("-" * 120)
+    
+    for idx, (coach, row) in enumerate(coach_stats.tail(20).iterrows(), 1):
+        coach_display = coach[:23] if len(coach) > 23 else coach
+        print(f"{coach_display:<25} {int(row['Games']):<6} {row['Avg_Difference']:+.4f}   {row['Std_Difference']:.4f}   "
+              f"{row['Min_Difference']:+.3f}   {row['Max_Difference']:+.3f}   {row['Avg_Actual_Win_Pct']:.3f}        {row['Avg_Predicted_Win_Pct']:.3f}")
+    
+    # Summary statistics
+    print(f"\n{'='*80}")
+    print(f"COACH PERFORMANCE SUMMARY STATISTICS")
+    print(f"{'='*80}")
+    print(f"Total coaches analyzed: {len(coach_stats)}")
+    print(f"Average win percentage increase across all coaches: {coach_stats['Avg_Difference'].mean():+.4f}")
+    print(f"Standard deviation of coach impacts: {coach_stats['Avg_Difference'].std():.4f}")
+    print(f"Best coach average impact: {coach_stats['Avg_Difference'].max():+.4f} ({coach_stats['Avg_Difference'].idxmax()})")
+    print(f"Worst coach average impact: {coach_stats['Avg_Difference'].min():+.4f} ({coach_stats['Avg_Difference'].idxmin()})")
+    
+    # Calculate coaches above/below expectations
+    positive_coaches = len(coach_stats[coach_stats['Avg_Difference'] > 0])
+    negative_coaches = len(coach_stats[coach_stats['Avg_Difference'] < 0])
+    print(f"\nCoaches performing above model predictions: {positive_coaches} ({positive_coaches/len(coach_stats)*100:.1f}%)")
+    print(f"Coaches performing below model predictions: {negative_coaches} ({negative_coaches/len(coach_stats)*100:.1f}%)")
+    
+    return coach_stats
+
 def plot_feature_importance(model, X, top_n=20):
     """Display top feature importances."""
     print(f"\n{'='*80}")
@@ -209,7 +283,7 @@ def plot_feature_importance(model, X, top_n=20):
     
     return importance_df
 
-def save_results(results, outperformers, importance_df):
+def save_results(results, outperformers, importance_df, coach_stats=None):
     """Save analysis results to CSV files."""
     print("\nSaving results...")
     
@@ -228,6 +302,12 @@ def save_results(results, outperformers, importance_df):
     importance_file = 'data/final/xgboost_feature_importance.csv'
     importance_df.to_csv(importance_file, index=False)
     print(f"Feature importance saved to: {importance_file}")
+    
+    # Save coach statistics
+    if coach_stats is not None and len(coach_stats) > 0:
+        coach_file = 'data/final/coach_win_pct_analysis.csv'
+        coach_stats.to_csv(coach_file)  # Keep index (coach names)
+        print(f"Coach analysis saved to: {coach_file}")
 
 def main():
     """Main execution function."""
@@ -246,11 +326,14 @@ def main():
     # Analyze predictions
     results, outperformers = analyze_predictions(y, y_pred, team_year_info)
     
+    # Analyze coach-level performance
+    coach_stats = analyze_coach_performance(results)
+    
     # Display feature importance
     importance_df = plot_feature_importance(model, X, top_n=20)
     
     # Save results
-    save_results(results, outperformers, importance_df)
+    save_results(results, outperformers, importance_df, coach_stats)
     
     print("\n" + "="*80)
     print("ANALYSIS COMPLETE")
@@ -259,6 +342,7 @@ def main():
     print("- xgboost_predictions_full.csv: All predictions and differences")
     print("- xgboost_outperformers.csv: Teams that significantly outperformed")
     print("- xgboost_feature_importance.csv: Feature importance rankings")
+    print("- coach_win_pct_analysis.csv: Coach-level performance aggregation")
 
 if __name__ == "__main__":
     main()
