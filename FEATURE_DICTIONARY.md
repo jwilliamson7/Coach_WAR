@@ -8,7 +8,8 @@ This document provides a comprehensive index and definition of all 389 features 
 |----------|-------|-------------|
 | **Meta** | 3 | Basic identifiers |
 | **Salary Cap** | 18 | Financial allocation and spending |
-| **Roster Turnover** | 72 | Player retention and departure metrics |
+| **Roster Turnover** | 63 | Player retention and departure metrics (full roster) |
+| **Starter Turnover** | 27 | Player retention and departure metrics (starters only) |
 | **Injury/Availability** | 45 | Games missed and player availability |
 | **Player Demographics** | 44 | Age and experience by position |
 | **Player Performance** | 22 | Approximate Value (AV) metrics |
@@ -56,18 +57,18 @@ This document provides a comprehensive index and definition of all 389 features 
 | 22 | SPT_Pct | Salary cap percentage allocated to special teams |
 
 ### Roster Turnover Features (23-94)
-*Note: Each position has 8 turnover metrics (retained, departed, new, rates, net change)*
+*Note: Each position has 8 roster-level turnover metrics (retained, departed, new, rates, net change)*
 
 #### QB Turnover (23-28)
 | # | Feature | Definition |
 |---|---------|------------|
-| 23 | QB_Players_Retained | Number of QB players retained from previous season |
-| 24 | QB_Players_Departed | Number of QB players who left from previous season |
-| 25 | QB_Players_New | Number of new QB players added |
-| 26 | QB_Retention_Rate_Pct | Percentage of QB players retained |
-| 27 | QB_Departure_Rate_Pct | Percentage of QB players departed |
+| 23 | QB_Players_Retained | Number of QB players retained on roster from previous season |
+| 24 | QB_Players_Departed | Number of QB players who left roster from previous season |
+| 25 | QB_Players_New | Number of new QB players added to roster |
+| 26 | QB_Retention_Rate_Pct | Percentage of QB roster players retained |
+| 27 | QB_Departure_Rate_Pct | Percentage of QB roster players departed |
 | 28 | QB_New_Player_Rate_Pct | Percentage of roster that is new QB players |
-| 29 | QB_Net_Change | Net change in QB players (new minus departed) |
+| 29 | QB_Net_Change | Net change in QB roster players (new minus departed) |
 
 #### RB Turnover (30-36)
 | # | Feature | Definition |
@@ -157,38 +158,38 @@ This document provides a comprehensive index and definition of all 389 features 
 | 84 | S_New_Player_Rate_Pct | Percentage of roster that is new S players |
 | 85 | S_Net_Change | Net change in S players (new minus departed) |
 
-### Starter Turnover (Crosstab Format) (86-112)
-*Alternative calculation method for starter turnover rates*
+### Starter Turnover Features (86-112)
+*Turnover rates specifically for starting players (not full roster)*
 
 | # | Feature | Definition |
 |---|---------|------------|
-| 86 | QB_Retention_Rate_Pct_crosstab | QB starter retention rate (crosstab method) |
-| 87 | QB_Departure_Rate_Pct_crosstab | QB starter departure rate (crosstab method) |
-| 88 | QB_New_Player_Rate_Pct_crosstab | QB new starter rate (crosstab method) |
-| 89 | RB_Retention_Rate_Pct_crosstab | RB starter retention rate (crosstab method) |
-| 90 | RB_Departure_Rate_Pct_crosstab | RB starter departure rate (crosstab method) |
-| 91 | RB_New_Player_Rate_Pct_crosstab | RB new starter rate (crosstab method) |
-| 92 | WR_Retention_Rate_Pct_crosstab | WR starter retention rate (crosstab method) |
-| 93 | WR_Departure_Rate_Pct_crosstab | WR starter departure rate (crosstab method) |
-| 94 | WR_New_Player_Rate_Pct_crosstab | WR new starter rate (crosstab method) |
-| 95 | TE_Retention_Rate_Pct_crosstab | TE starter retention rate (crosstab method) |
-| 96 | TE_Departure_Rate_Pct_crosstab | TE starter departure rate (crosstab method) |
-| 97 | TE_New_Player_Rate_Pct_crosstab | TE new starter rate (crosstab method) |
-| 98 | OL_Retention_Rate_Pct_crosstab | OL starter retention rate (crosstab method) |
-| 99 | OL_Departure_Rate_Pct_crosstab | OL starter departure rate (crosstab method) |
-| 100 | OL_New_Player_Rate_Pct_crosstab | OL new starter rate (crosstab method) |
-| 101 | DL_Retention_Rate_Pct_crosstab | DL starter retention rate (crosstab method) |
-| 102 | DL_Departure_Rate_Pct_crosstab | DL starter departure rate (crosstab method) |
-| 103 | DL_New_Player_Rate_Pct_crosstab | DL new starter rate (crosstab method) |
-| 104 | LB_Retention_Rate_Pct_crosstab | LB starter retention rate (crosstab method) |
-| 105 | LB_Departure_Rate_Pct_crosstab | LB starter departure rate (crosstab method) |
-| 106 | LB_New_Player_Rate_Pct_crosstab | LB new starter rate (crosstab method) |
-| 107 | CB_Retention_Rate_Pct_crosstab | CB starter retention rate (crosstab method) |
-| 108 | CB_Departure_Rate_Pct_crosstab | CB starter departure rate (crosstab method) |
-| 109 | CB_New_Player_Rate_Pct_crosstab | CB new starter rate (crosstab method) |
-| 110 | S_Retention_Rate_Pct_crosstab | S starter retention rate (crosstab method) |
-| 111 | S_Departure_Rate_Pct_crosstab | S starter departure rate (crosstab method) |
-| 112 | S_New_Player_Rate_Pct_crosstab | S new starter rate (crosstab method) |
+| 86 | QB_Retention_Rate_Pct_crosstab | Percentage of starting QB players retained from previous season |
+| 87 | QB_Departure_Rate_Pct_crosstab | Percentage of starting QB players who departed from previous season |
+| 88 | QB_New_Player_Rate_Pct_crosstab | Percentage of starting QB players who are new to the team |
+| 89 | RB_Retention_Rate_Pct_crosstab | Percentage of starting RB players retained from previous season |
+| 90 | RB_Departure_Rate_Pct_crosstab | Percentage of starting RB players who departed from previous season |
+| 91 | RB_New_Player_Rate_Pct_crosstab | Percentage of starting RB players who are new to the team |
+| 92 | WR_Retention_Rate_Pct_crosstab | Percentage of starting WR players retained from previous season |
+| 93 | WR_Departure_Rate_Pct_crosstab | Percentage of starting WR players who departed from previous season |
+| 94 | WR_New_Player_Rate_Pct_crosstab | Percentage of starting WR players who are new to the team |
+| 95 | TE_Retention_Rate_Pct_crosstab | Percentage of starting TE players retained from previous season |
+| 96 | TE_Departure_Rate_Pct_crosstab | Percentage of starting TE players who departed from previous season |
+| 97 | TE_New_Player_Rate_Pct_crosstab | Percentage of starting TE players who are new to the team |
+| 98 | OL_Retention_Rate_Pct_crosstab | Percentage of starting OL players retained from previous season |
+| 99 | OL_Departure_Rate_Pct_crosstab | Percentage of starting OL players who departed from previous season |
+| 100 | OL_New_Player_Rate_Pct_crosstab | Percentage of starting OL players who are new to the team |
+| 101 | DL_Retention_Rate_Pct_crosstab | Percentage of starting DL players retained from previous season |
+| 102 | DL_Departure_Rate_Pct_crosstab | Percentage of starting DL players who departed from previous season |
+| 103 | DL_New_Player_Rate_Pct_crosstab | Percentage of starting DL players who are new to the team |
+| 104 | LB_Retention_Rate_Pct_crosstab | Percentage of starting LB players retained from previous season |
+| 105 | LB_Departure_Rate_Pct_crosstab | Percentage of starting LB players who departed from previous season |
+| 106 | LB_New_Player_Rate_Pct_crosstab | Percentage of starting LB players who are new to the team |
+| 107 | CB_Retention_Rate_Pct_crosstab | Percentage of starting CB players retained from previous season |
+| 108 | CB_Departure_Rate_Pct_crosstab | Percentage of starting CB players who departed from previous season |
+| 109 | CB_New_Player_Rate_Pct_crosstab | Percentage of starting CB players who are new to the team |
+| 110 | S_Retention_Rate_Pct_crosstab | Percentage of starting S players retained from previous season |
+| 111 | S_Departure_Rate_Pct_crosstab | Percentage of starting S players who departed from previous season |
+| 112 | S_New_Player_Rate_Pct_crosstab | Percentage of starting S players who are new to the team |
 
 ### Injury/Availability Features (113-149)
 *Games missed percentages and player counts by position*
@@ -504,3 +505,31 @@ Top 5 most important features according to XGBoost model:
 - **Average coaching impact**: +0.0029 per season (+0.05 WAR)
 - **Top coach**: Chuck Pagano (+0.996 WAR per season)
 - **Range**: -0.709 to +0.996 WAR per season
+
+---
+
+## Important Clarification: Roster vs. Starter Turnover
+
+### Why Both Feature Sets Exist
+The model includes **two distinct but complementary turnover measurement systems**:
+
+#### **Roster Turnover (Features 23-85): Organizational Management**
+- Measures turnover across **entire team roster** 
+- Includes starters, backups, practice squad, reserves
+- Captures organizational stability and depth management
+- Shows coaching ability to maintain institutional knowledge
+
+#### **Starter Turnover (Features 86-112): Core Performance Impact**  
+- Measures turnover among **starting players only**
+- Focuses on positions that directly impact game outcomes
+- Captures coaching ability to retain key talent
+- More directly correlated with on-field performance
+
+### Strategic Coaching Analysis
+- **High roster, low starter turnover**: Maintains core while developing depth
+- **Low roster, high starter turnover**: Organizational stability but key position instability
+- **Both high**: Complete team overhaul/rebuilding phase
+- **Both low**: Maximum continuity at all levels
+
+### Model Value
+These **90 complementary features** (63 roster + 27 starter) provide the model with nuanced understanding of different coaching roster management philosophies and their effectiveness.
