@@ -1,0 +1,82 @@
+Draft Picks Final Dataset Summary
+========================================
+
+Years covered: 1970-2024
+Total records: 1619
+Teams: 32
+Years per team: 50
+
+Column Categories:
+- Current_*: Draft picks by round in the current year
+- Prev_1Yr_*: Draft picks by round 1 year ago
+- Prev_2Yr_*: Draft picks by round 2 years ago
+- Prev_3Yr_*: Draft picks by round 3 years ago
+- Prev_4Yr_Round_1_Picks: Round 1 draft picks 4 years ago only
+
+Round Columns (1-6 + 7+):
+- Round 1: Average 1.01 picks per team per year
+- Round 2: Average 1.02 picks per team per year
+- Round 3: Average 1.09 picks per team per year
+- Round 4: Average 1.10 picks per team per year
+- Round 5: Average 1.10 picks per team per year
+- Round 6: Average 1.15 picks per team per year
+- Rounds 7+: Average 3.76 picks per team per year
+
+Total columns in dataset: 31
+
+Data availability by year:
+- 1970: 25 teams
+- 1971: 25 teams
+- 1972: 25 teams
+- 1973: 25 teams
+- 1974: 25 teams
+- 1975: 25 teams
+- 1976: 27 teams
+- 1977: 27 teams
+- 1978: 27 teams
+- 1979: 27 teams
+- 1980: 27 teams
+- 1981: 27 teams
+- 1982: 27 teams
+- 1983: 27 teams
+- 1984: 27 teams
+- 1985: 27 teams
+- 1986: 27 teams
+- 1987: 27 teams
+- 1988: 28 teams
+- 1989: 28 teams
+- 1990: 28 teams
+- 1991: 28 teams
+- 1992: 28 teams
+- 1993: 28 teams
+- 1994: 28 teams
+- 1995: 30 teams
+- 1996: 30 teams
+- 1997: 30 teams
+- 1998: 30 teams
+- 1999: 31 teams
+- 2000: 31 teams
+- 2001: 31 teams
+- 2002: 32 teams
+- 2003: 32 teams
+- 2004: 32 teams
+- 2005: 32 teams
+- 2006: 32 teams
+- 2007: 32 teams
+- 2008: 32 teams
+- 2009: 32 teams
+- 2010: 32 teams
+- 2011: 32 teams
+- 2012: 32 teams
+- 2013: 32 teams
+- 2014: 32 teams
+- 2015: 32 teams
+- 2016: 32 teams
+- 2017: 32 teams
+- 2018: 32 teams
+- 2019: 32 teams
+- 2020: 32 teams
+- 2021: 32 teams
+- 2022: 32 teams
+- 2023: 32 teams
+- 2024: 32 teams

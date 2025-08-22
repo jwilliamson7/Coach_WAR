@@ -5,6 +5,10 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional
 
+# Add parent directory to path to import utils
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from crawlers.utils.data_constants import TEAM_FRANCHISE_MAPPINGS
+
 
 class DraftDataFinalizer:
     """Creates final draft dataset with rolling averages for coaching analysis"""
@@ -17,13 +21,89 @@ class DraftDataFinalizer:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
     def _load_comprehensive_data(self) -> pd.DataFrame:
-        """Load the comprehensive draft data"""
+        """Load the comprehensive draft data and apply team mappings"""
         filepath = self.processed_dir / "draft_picks_by_team_round_all_years.csv"
         
         if not filepath.exists():
             raise FileNotFoundError(f"Comprehensive draft data not found: {filepath}")
         
         df = pd.read_csv(filepath)
+        
+        # Create a direct mapping for all teams to their current PFR abbreviations
+        # This ensures we get exactly 32 teams
+        # Special handling: 'hou' represents both Houston Oilers (1970-1996) and Houston Texans (2002+)
+        def map_houston_team(row):
+            if row['Team'] == 'hou':
+                if row['Draft_Year'] <= 1996:
+                    return 'oti'  # Houston Oilers -> Tennessee Titans
+                else:
+                    return 'htx'  # Houston Texans (2002+)
+            return row['Team']
+        
+        # Apply Houston mapping first
+        df['Team'] = df.apply(map_houston_team, axis=1)
+        
+        team_mapping = {
+            # Historical teams that moved/changed
+            'bos': 'nwe',  # Boston Patriots -> New England Patriots
+            'pho': 'crd',  # Phoenix Cardinals -> Arizona Cardinals
+            'ten': 'oti',  # Tennessee Oilers/Titans -> oti
+            'bal': 'rav',  # Baltimore Ravens
+            'ari': 'crd',  # Arizona Cardinals -> crd
+            'lac': 'sdg',  # LA Chargers -> sdg
+            
+            # Current teams - keep as is with PFR conventions
+            'atl': 'atl',  # Atlanta Falcons
+            'buf': 'buf',  # Buffalo Bills
+            'car': 'car',  # Carolina Panthers
+            'chi': 'chi',  # Chicago Bears
+            'cin': 'cin',  # Cincinnati Bengals
+            'cle': 'cle',  # Cleveland Browns
+            'clt': 'clt',  # Indianapolis Colts
+            'crd': 'crd',  # Arizona Cardinals (already)
+            'dal': 'dal',  # Dallas Cowboys
+            'den': 'den',  # Denver Broncos
+            'det': 'det',  # Detroit Lions
+            'gnb': 'gnb',  # Green Bay Packers
+            'htx': 'htx',  # Houston Texans (expansion team, keep separate)
+            'jax': 'jax',  # Jacksonville Jaguars
+            'kan': 'kan',  # Kansas City Chiefs
+            'mia': 'mia',  # Miami Dolphins
+            'min': 'min',  # Minnesota Vikings
+            'nor': 'nor',  # New Orleans Saints
+            'nwe': 'nwe',  # New England Patriots
+            'nyg': 'nyg',  # New York Giants
+            'nyj': 'nyj',  # New York Jets
+            'oti': 'oti',  # Tennessee Titans (already)
+            'phi': 'phi',  # Philadelphia Eagles
+            'pit': 'pit',  # Pittsburgh Steelers
+            'rai': 'rai',  # Raiders (Oakland/Las Vegas)
+            'ram': 'ram',  # Rams (LA/St. Louis)
+            'rav': 'rav',  # Baltimore Ravens (already)
+            'sdg': 'sdg',  # San Diego/LA Chargers (already)
+            'sea': 'sea',  # Seattle Seahawks
+            'sfo': 'sfo',  # San Francisco 49ers
+            'tam': 'tam',  # Tampa Bay Buccaneers
+            'was': 'was',  # Washington
+        }
+        
+        # Apply mappings
+        df['Team'] = df['Team'].map(team_mapping).fillna(df['Team'])
+        
+        # Aggregate data for teams that have been consolidated
+        # Group by Team and Draft_Year, summing pick counts
+        pick_cols = [col for col in df.columns if col.endswith('_Picks')]
+        agg_dict = {col: 'sum' for col in pick_cols}
+        
+        df = df.groupby(['Team', 'Draft_Year'], as_index=False).agg(agg_dict)
+        
+        # Now combine high rounds after aggregation
+        df = self._combine_high_rounds(df)
+        
+        unique_teams = sorted(df['Team'].unique())
+        print(f"After team mapping: {len(unique_teams)} unique teams")
+        print(f"Teams: {unique_teams}")
+        
         return df
     
     def _filter_years(self, df: pd.DataFrame, start_year: int = 2003, 
@@ -32,9 +112,17 @@ class DraftDataFinalizer:
         return df[(df['Draft_Year'] >= start_year) & (df['Draft_Year'] <= end_year)].copy()
     
     def _get_round_columns(self, df: pd.DataFrame) -> List[str]:
-        """Get list of round pick columns"""
-        round_cols = [col for col in df.columns 
-                     if col.startswith('Round_') and col.endswith('_Picks')]
+        """Get list of round pick columns after combining rounds 7+"""
+        round_cols = []
+        for round_num in range(1, 7):  # Rounds 1-6 individually
+            col = f'Round_{round_num}_Picks'
+            if col in df.columns:
+                round_cols.append(col)
+        
+        # Add combined rounds 7+ column if it exists
+        if 'Round_7Plus_Picks' in df.columns:
+            round_cols.append('Round_7Plus_Picks')
+        
         return sorted(round_cols)
     
     def _calculate_rolling_averages(self, df: pd.DataFrame, team: str, 
@@ -52,9 +140,12 @@ class DraftDataFinalizer:
                 'Team': team
             }
             
-            # Add current year data (all rounds)
+            # Add current year data (all rounds including 7+)
             for col in round_cols:
-                result_row[f'Current_{col}'] = row[col]
+                if col in row.index:
+                    result_row[f'Current_{col}'] = row[col]
+                else:
+                    result_row[f'Current_{col}'] = 0
             
             # Add individual year lookbacks
             for years_back in range(1, 5):  # 1, 2, 3, 4 years ago
@@ -64,11 +155,17 @@ class DraftDataFinalizer:
                 if not year_data.empty:
                     if years_back == 4:
                         # Only Round 1 for 4 years ago
-                        result_row[f'Prev_{years_back}Yr_Round_1_Picks'] = year_data.iloc[0]['Round_1_Picks']
+                        if 'Round_1_Picks' in year_data.columns:
+                            result_row[f'Prev_{years_back}Yr_Round_1_Picks'] = year_data.iloc[0]['Round_1_Picks']
+                        else:
+                            result_row[f'Prev_{years_back}Yr_Round_1_Picks'] = 0
                     else:
-                        # All rounds for 1, 2, 3 years ago
+                        # All rounds (including 7+) for 1, 2, 3 years ago
                         for col in round_cols:
-                            result_row[f'Prev_{years_back}Yr_{col}'] = year_data.iloc[0][col]
+                            if col in year_data.columns:
+                                result_row[f'Prev_{years_back}Yr_{col}'] = year_data.iloc[0][col]
+                            else:
+                                result_row[f'Prev_{years_back}Yr_{col}'] = 0
                 else:
                     # No data available for this year
                     if years_back == 4:
@@ -89,6 +186,7 @@ class DraftDataFinalizer:
         all_results = []
         
         print(f"Processing {len(teams)} teams...")
+        print(f"Round columns found: {round_cols}")
         
         for i, team in enumerate(teams, 1):
             print(f"Processing team {i}/{len(teams)}: {team}")
@@ -103,12 +201,40 @@ class DraftDataFinalizer:
         
         return final_df
     
-    def _add_summary_statistics(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Add summary statistics to the final dataset"""
-        # No additional statistics needed - return dataframe as-is
+    def _combine_high_rounds(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Combine rounds 7+ into a single feature"""
+        df = df.copy()
+        
+        # Find all high round columns (Round 7 and above)
+        high_round_cols = [col for col in df.columns 
+                          if col.startswith('Round_') and col.endswith('_Picks')]
+        high_round_cols = [col for col in high_round_cols 
+                          if int(col.split('_')[1]) >= 7]
+        
+        if high_round_cols:
+            # Sum all rounds 7+ picks
+            df['Round_7Plus_Picks'] = df[high_round_cols].sum(axis=1)
+            
+            # Drop individual high round columns
+            df = df.drop(columns=high_round_cols)
+            
+            print(f"Combined {len(high_round_cols)} high round columns into Round_7Plus_Picks")
+        
         return df
     
-    def _save_final_dataset(self, df: pd.DataFrame, filename: str = "draft_picks_final_2003_2024.csv"):
+    def _add_summary_statistics(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Add summary statistics and convert data types"""
+        # Convert all pick count columns to integers
+        pick_cols = [col for col in df.columns if '_Picks' in col]
+        for col in pick_cols:
+            df[col] = df[col].astype(int)
+        
+        # Ensure Draft_Year is integer
+        df['Draft_Year'] = df['Draft_Year'].astype(int)
+        
+        return df
+    
+    def _save_final_dataset(self, df: pd.DataFrame, filename: str = "draft_picks_final.csv"):
         """Save the final dataset"""
         filepath = self.output_dir / filename
         
@@ -142,12 +268,18 @@ class DraftDataFinalizer:
             f.write("- Prev_3Yr_*: Draft picks by round 3 years ago\n")
             f.write("- Prev_4Yr_Round_1_Picks: Round 1 draft picks 4 years ago only\n\n")
             
-            f.write("Round Columns (1-7):\n")
-            for round_num in range(1, 8):
+            f.write("Round Columns (1-6 + 7+):\n")
+            for round_num in range(1, 7):
                 current_col = f'Current_Round_{round_num}_Picks'
                 if current_col in df.columns:
                     avg_picks = df[current_col].mean()
                     f.write(f"- Round {round_num}: Average {avg_picks:.2f} picks per team per year\n")
+            
+            # Add Round 7+ summary
+            current_col = 'Current_Round_7Plus_Picks'
+            if current_col in df.columns:
+                avg_picks = df[current_col].mean()
+                f.write(f"- Rounds 7+: Average {avg_picks:.2f} picks per team per year\n")
             
             f.write(f"\nTotal columns in dataset: {len(df.columns)}\n")
             
@@ -159,7 +291,7 @@ class DraftDataFinalizer:
         
         print(f"Saved dataset summary to {summary_path}")
     
-    def finalize_draft_data(self, start_year: int = 2003, end_year: int = 2024):
+    def finalize_draft_data(self, start_year: int = 1970, end_year: int = 2024):
         """Main function to create final draft dataset"""
         print(f"Creating final draft dataset for {start_year}-{end_year}")
         
@@ -187,7 +319,7 @@ class DraftDataFinalizer:
         final_df_with_stats = self._add_summary_statistics(final_df)
         
         # Save the final dataset
-        filename = f"draft_picks_final_{start_year}_{end_year}.csv"
+        filename = "draft_picks_final.csv"
         self._save_final_dataset(final_df_with_stats, filename)
         
         print(f"\nFinal dataset created successfully!")
@@ -220,8 +352,8 @@ class DraftDataFinalizer:
 def main():
     """Main execution function"""
     parser = argparse.ArgumentParser(description='Finalize draft data with rolling averages')
-    parser.add_argument('--start-year', type=int, default=2003, 
-                       help='Start year for analysis (default: 2003)')
+    parser.add_argument('--start-year', type=int, default=1970, 
+                       help='Start year for analysis (default: 1970)')
     parser.add_argument('--end-year', type=int, default=2024, 
                        help='End year for analysis (default: 2024)')
     parser.add_argument('--sample', type=str, 

@@ -1,6 +1,12 @@
 """
 XGBoost Feature Interaction Matrix Analysis
 Creates bucketed interaction matrices showing model predictions across two features
+
+Usage:
+    python xgboost_interaction_matrix.py feature1 feature2
+    
+Example:
+    python xgboost_interaction_matrix.py Avg_Starter_AV Avg_Starter_AV_QB
 """
 
 import pandas as pd
@@ -10,6 +16,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import mean_squared_error, r2_score
 import os
+import sys
+import argparse
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -21,7 +29,7 @@ PNG_DIR = os.path.join(OUTPUT_DIR, 'png')
 for directory in [OUTPUT_DIR, CSV_DIR, PNG_DIR]:
     os.makedirs(directory, exist_ok=True)
 
-def load_model_and_data(filepath='data/final/combined_final_dataset.csv'):
+def load_model_and_data(filepath='data/final/imputed_final_data.csv'):
     """Load data and train XGBoost model."""
     print("Loading data and training model...")
     df = pd.read_csv(filepath)
@@ -390,33 +398,65 @@ def analyze_feature_interaction(model, X, feature1, feature2, n_bins1=8, n_bins2
     
     return interaction_matrix, count_matrix
 
+def parse_arguments():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(
+        description='Generate interaction matrix for two features',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python xgboost_interaction_matrix.py Avg_Starter_AV Avg_Starter_AV_QB
+  python xgboost_interaction_matrix.py DeadCap_Pct Avg_Starter_AV
+  python xgboost_interaction_matrix.py num_times_hc "PF (Points For)__oc_Norm"
+        """
+    )
+    
+    parser.add_argument('feature1', 
+                       help='First feature name (x-axis)')
+    parser.add_argument('feature2', 
+                       help='Second feature name (y-axis)')
+    parser.add_argument('--bins1', type=int, default=8,
+                       help='Number of bins for feature1 (default: 8)')
+    parser.add_argument('--bins2', type=int, default=8,
+                       help='Number of bins for feature2 (default: 8)')
+    
+    return parser.parse_args()
+
 def main():
     """Main execution function."""
+    # Parse command line arguments
+    args = parse_arguments()
+    
+    print("="*80)
+    print("XGBOOST INTERACTION MATRIX ANALYSIS")
+    print("="*80)
     
     # Load model and data
     model, X, y, team_year_info = load_model_and_data()
     
-    # Example 1: Avg_Starter_AV vs Avg_Starter_AV_QB
-    feature1 = 'Avg_Starter_AV'
-    feature2 = 'Avg_Starter_AV_QB'
+    # Check if features exist
+    if args.feature1 not in X.columns:
+        print(f"ERROR: Feature '{args.feature1}' not found in dataset")
+        print("\nAvailable features:")
+        for i, col in enumerate(sorted(X.columns), 1):
+            print(f"  {i:3d}. {col}")
+        sys.exit(1)
+        
+    if args.feature2 not in X.columns:
+        print(f"ERROR: Feature '{args.feature2}' not found in dataset")
+        print("\nAvailable features:")
+        for i, col in enumerate(sorted(X.columns), 1):
+            print(f"  {i:3d}. {col}")
+        sys.exit(1)
     
-    interaction_matrix, count_matrix = analyze_feature_interaction(
-        model, X, feature1, feature2, n_bins1=8, n_bins2=8
+    # Run the analysis
+    analyze_feature_interaction(
+        model, X, args.feature1, args.feature2, 
+        n_bins1=args.bins1, n_bins2=args.bins2
     )
     
-    # Additional examples (uncomment to run)
-    
-    # Example 2: Team salary vs performance
-    # analyze_feature_interaction(model, X, 'Active53-Man_Pct', 'Avg_Starter_AV', n_bins1=7, n_bins2=7)
-    
-    # Example 3: Experience metrics
-    # analyze_feature_interaction(model, X, 'Avg_Starter_Experience', 'num_yr_nfl_hc', n_bins1=8, n_bins2=6)
-    
-    # Example 4: Offensive metrics
-    # analyze_feature_interaction(model, X, 'PF (Points For)__hc_Norm', 'NY/A Passing__hc_Norm', n_bins1=8, n_bins2=8)
-    
     print("\n" + "="*80)
-    print("INTERACTION ANALYSIS COMPLETE")
+    print("ANALYSIS COMPLETE")
     print("="*80)
 
 if __name__ == "__main__":
