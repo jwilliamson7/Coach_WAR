@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 import xgboost as xgb
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import argparse
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -111,18 +112,62 @@ def identify_coach_features(X):
     
     return coach_features
 
-def calculate_replacement_features(X, coach_features):
-    """Calculate average (replacement-level) values for coach features."""
+def calculate_replacement_features(X, coach_features, team_year_info):
+    """Calculate average (replacement-level) values for coach features using coach-level averaging."""
     print("\nCalculating replacement-level coach features...")
+    print("Using coach-level averaging (each coach weighted equally regardless of tenure)...")
     
-    # Calculate mean for each coaching feature
+    # Load coach data to group by coach
+    try:
+        coach_df = pd.read_csv('data/processed/Coaching/team_year_head_coaches.csv')
+        
+        # Start with team_year_info and add features
+        if 'Team' in team_year_info.columns and 'Year' in team_year_info.columns:
+            combined_df = team_year_info.reset_index(drop=True).copy()
+        else:
+            print("Warning: No Team/Year columns in team_year_info. Cannot group by coach.")
+            raise ValueError("Missing Team/Year columns")
+            
+        # Add coaching features to the dataframe
+        for feature in coach_features:
+            if feature in X.columns:
+                combined_df[feature] = X[feature].values
+        
+        # Merge with coach information
+        combined_df = combined_df.merge(
+            coach_df[['Team', 'Year', 'Primary_Coach']], 
+            on=['Team', 'Year'], 
+            how='left'
+        )
+        
+        # Remove rows with missing coach information
+        before_count = len(combined_df)
+        combined_df = combined_df.dropna(subset=['Primary_Coach'])
+        after_count = len(combined_df)
+        print(f"Found coach data for {after_count} of {before_count} team-years")
+        
+    except Exception as e:
+        print(f"Warning: Could not load coach data ({e}). Falling back to team-year median.")
+        replacement_values = {}
+        for feature in coach_features:
+            if feature in X.columns:
+                replacement_values[feature] = X[feature].median()
+        return replacement_values
+    
+    # Calculate coach career averages for each feature
     replacement_values = {}
     for feature in coach_features:
-        if feature in X.columns:
-            # Use median for more robust average (less affected by outliers)
-            replacement_values[feature] = X[feature].median()
+        if feature in combined_df.columns:
+            # Group by coach and calculate mean for each coach
+            coach_averages = combined_df.groupby('Primary_Coach')[feature].mean()
+            
+            # Take median of coach averages (each coach weighted equally)
+            replacement_values[feature] = coach_averages.median()
+            
+            print(f"  {feature}: {len(coach_averages)} coaches, replacement = {replacement_values[feature]:.3f}")
     
-    print(f"Calculated replacement values for {len(replacement_values)} features")
+    print(f"\nCalculated replacement values for {len(replacement_values)} features")
+    print("Each coach's career average was weighted equally in replacement calculation")
     
     # Show sample of replacement values
     print("\nSample replacement values:")
@@ -428,20 +473,34 @@ def save_results(results, high_impact_coaches, coach_stats, importance_df):
 
 def main():
     """Main execution function."""
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='XGBoost Coaching Impact Analysis')
+    parser.add_argument('--no-av', action='store_true', 
+                       help='Use dataset without AV (Approximate Value) features')
+    args = parser.parse_args()
+    
+    # Select dataset based on argument
+    if args.no_av:
+        filepath = 'data/final/imputed_final_data_no_AV.csv'
+        dataset_type = "WITHOUT AV features"
+    else:
+        filepath = 'data/final/imputed_final_data.csv'
+        dataset_type = "with ALL features"
+    
     print("="*80)
     print("XGBOOST COACHING IMPACT ANALYSIS")
+    print(f"Using dataset {dataset_type}")
     print("Comparing predictions with actual vs replacement-level coaching")
     print("="*80)
     
     # Load and prepare data
-    filepath = 'data/final/imputed_final_data.csv'
     X, y, team_year_info, full_df = load_and_prepare_data(filepath)
     
     # Identify coaching features
     coach_features = identify_coach_features(X)
     
     # Calculate replacement-level values
-    replacement_values = calculate_replacement_features(X, coach_features)
+    replacement_values = calculate_replacement_features(X, coach_features, team_year_info)
     
     # Create replacement dataset
     X_replacement = create_replacement_dataset(X, coach_features, replacement_values)
@@ -479,6 +538,7 @@ def main():
     
     # Summary statistics
     print(f"\nSummary:")
+    print(f"- Dataset used: {dataset_type}")
     print(f"- Coaching features account for {len(coach_features)} of {len(X.columns)} total features")
     print(f"- Average coaching impact on win percentage: {results['Coaching_Impact'].mean():.4f}")
     print(f"- Maximum positive coaching impact: {results['Coaching_Impact'].max():.4f}")
