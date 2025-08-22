@@ -1,0 +1,9 @@
+Feature1,Feature2,Description,Min_Pred,Max_Pred,Spread,Correlation,Best_Combo,Worst_Combo
+Avg_Starter_Experience,Avg_Starter_AV,Player Experience vs Performance,0.181,0.762,0.581,0.328,High Exp (5.5-8.0) + High AV (8.6-11.2),Mid Exp (4.2-4.5) + Low AV (3.5-5.5)
+num_times_hc,Avg_Starter_AV,HC Tenure Count vs Team Performance,0.183,0.756,0.573,0.101,Second-time HC (1-2) + High AV (8.6-11.2),First-time HC (0-1) + Low AV (3.5-5.5)
+Avg_Starter_Age_QB,Avg_Starter_AV_QB,QB Age vs QB Performance,0.255,0.759,0.504,0.089,Prime Age QB (27-28) + Elite AV (15-25),Young QB (21-24) + Poor AV (-3-5)
+OL_Players_New,Avg_Starter_AV_OL,O-Line Turnover vs Performance,0.239,0.737,0.498,-0.211,Low Turnover (2-3) + High OL AV (9.4-13.8),High Turnover (5-13) + Low OL AV (2-5)
+Avg_Starter_Age,Avg_Starter_Experience,Player Age vs Experience,0.25,0.737,0.486,0.961,Age 27.2-27.5 + Exp 5.0-5.5,Age 27.5-27.8 + Exp 3.9-4.2
+Avg_Starter_AV_QB,NY/A Passing__oc_Norm,QB Quality vs OC Passing Efficiency,0.274,0.714,0.441,0.021,Elite QB (15-25) + Low OC Pass Eff (-2.4-0),Poor QB (-3-5) + Low OC Pass Eff (-2.4-0)
+Avg_Starter_AV_QB,PF (Points For)__oc_Norm,QB Quality vs OC Scoring,0.272,0.706,0.435,0.007,Elite QB (15-25) + High OC Scoring (0.6-2.9),Poor QB (-3-5) + Low OC Scoring (-2.2-0)
+QB_Avg_Games_Missed_Pct,PF (Points For)__oc_Norm,QB Availability vs OC Scoring,0.27,0.608,0.338,-0.003,Healthy QB (-6-0%) + Mid OC Scoring (0-0.6),Injured QB (44-69%) + High OC Scoring (0.6-2.9)
