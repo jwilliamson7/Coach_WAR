@@ -48,7 +48,6 @@ def main():
         ('QB_Pct', 'Avg_Starter_AV_QB', 8, 8,
          'QB Salary Investment vs QB Performance'),
         
-        
         ('Year', 'NY/A Passing__oc_Norm', 8, 8,
          'Evolution of Passing Offense Over Time'),
         

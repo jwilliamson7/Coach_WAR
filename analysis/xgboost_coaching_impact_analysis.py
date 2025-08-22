@@ -434,7 +434,7 @@ def main():
     print("="*80)
     
     # Load and prepare data
-    filepath = 'data/final/combined_final_dataset.csv'
+    filepath = 'data/final/imputed_final_data.csv'
     X, y, team_year_info, full_df = load_and_prepare_data(filepath)
     
     # Identify coaching features

@@ -58,7 +58,8 @@ class FinalDatasetCombiner:
             "age_experience_metrics_crosstab.csv",
             "av_metrics_crosstab.csv",
             "penalty_interception_metrics.csv",
-            "sos_winning_percentage.csv"
+            "sos_winning_percentage.csv",
+            "draft_picks_final.csv"
         ]
         
         # Additional files from other directories
@@ -191,6 +192,9 @@ class FinalDatasetCombiner:
                     # Drop Year_From as it's redundant
                     if 'Year_From' in df.columns:
                         df = df.drop(columns=['Year_From'])
+                # Special handling for draft files that use Draft_Year
+                elif 'Draft_Year' in df.columns:
+                    df = df.rename(columns={'Draft_Year': 'Year'})
                 else:
                     self.logger.warning(f"No Year column found in {filename}")
                     return None
@@ -569,15 +573,29 @@ class FinalDatasetCombiner:
             'age_experience': [col for col in df.columns if 'Age' in col or 'Experience' in col or 'Exp' in col],
             'av_metrics': [col for col in df.columns if 'AV' in col],
             'performance': [col for col in df.columns if col in ['Win_Pct', 'SoS', 'W', 'L', 'T']],
-            'penalties': [col for col in df.columns if 'Pen' in col or 'Int_Passing' in col],
-            'coaching': [col for col in df.columns if any(metric in col for metric in ['num_times_hc', 'num_yr_col', 'num_yr_nfl', 'PF (Points For)', 'Yds__']) or col.startswith('num_')]
+            'penalties': [col for col in df.columns if ('Team_Pen' in col or 'Opp_Pen' in col or 'Team_Int_Passing' in col or 'Opp_Int_Passing' in col or 'Team_Yds_Penalties' in col or 'Opp_Yds_Penalties' in col)],
+            'coaching': [col for col in df.columns if ('_Norm' in col and ('__oc' in col or '__dc' in col or '__hc' in col)) or any(metric in col for metric in ['num_times_hc', 'num_yr_col', 'num_yr_nfl']) or col.startswith('num_')],
+            'draft': [col for col in df.columns if 'Round_' in col and 'Picks' in col]
         }
         
         for category, cols in categories.items():
             if cols:
                 available_cols = [col for col in cols if col in df.columns]
                 if available_cols:
-                    complete_rows = df[available_cols].notna().all(axis=1).sum()
+                    # For coaching data, count any row with at least one non-null value
+                    if category == 'coaching':
+                        # Count rows where at least one coaching column has data
+                        non_null_counts = df[available_cols].notna().sum(axis=1)
+                        complete_rows = (non_null_counts > 0).sum()
+                    elif len(available_cols) > 50:  # Other large categories
+                        # Count rows where at least 50% of columns are non-null
+                        non_null_counts = df[available_cols].notna().sum(axis=1)
+                        threshold = len(available_cols) * 0.5
+                        complete_rows = (non_null_counts >= threshold).sum()
+                    else:
+                        # For smaller categories, require all columns to be non-null
+                        complete_rows = df[available_cols].notna().all(axis=1).sum()
+                    
                     stats['data_completeness'][category] = {
                         'columns': len(available_cols),
                         'complete_rows': complete_rows,
