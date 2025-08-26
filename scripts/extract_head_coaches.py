@@ -116,9 +116,37 @@ class HeadCoachExtractor:
                 self.logger.debug(f"No HC role found for {coach_name}")
                 return None
             
+            # Try to load results file to determine if coach started season
+            results_file = ranks_file.parent / "all_coaching_results.csv"
+            is_starter = False
+            if results_file.exists():
+                try:
+                    results_df = pd.read_csv(results_file)
+                    # Check if coach has games from week 1 (G column should be high, or W+L+T should be near full season)
+                    if 'G' in results_df.columns:
+                        hc_df['Games'] = hc_df['Year'].apply(
+                            lambda y: results_df[results_df['Year'] == y]['G'].iloc[0] 
+                            if len(results_df[results_df['Year'] == y]) > 0 else 0
+                        )
+                        # If coach has 10+ games, they likely started the season
+                        hc_df['Is_Starter'] = hc_df['Games'] >= 10
+                    elif all(col in results_df.columns for col in ['W', 'L', 'T']):
+                        hc_df['Total_Games'] = hc_df['Year'].apply(
+                            lambda y: (results_df[results_df['Year'] == y][['W', 'L', 'T']].sum(axis=1)).iloc[0]
+                            if len(results_df[results_df['Year'] == y]) > 0 else 0
+                        )
+                        hc_df['Is_Starter'] = hc_df['Total_Games'] >= 10
+                    else:
+                        hc_df['Is_Starter'] = True  # Default to true if we can't determine
+                except:
+                    hc_df['Is_Starter'] = True  # Default to true if error reading
+            else:
+                hc_df['Is_Starter'] = True  # Default to true if no results file
+            
             # Extract relevant columns
             result_df = hc_df[['Year', 'Tm']].copy()
             result_df['Coach'] = coach_name
+            result_df['Is_Starter'] = hc_df.get('Is_Starter', True)
             
             # Standardize team names
             result_df['Team'] = result_df['Tm'].apply(self.standardize_team_name)
@@ -135,7 +163,7 @@ class HeadCoachExtractor:
             
             if not result_df.empty:
                 self.logger.info(f"Found {len(result_df)} HC years for {coach_name}")
-                return result_df[['Team', 'Year', 'Coach']]
+                return result_df[['Team', 'Year', 'Coach', 'Is_Starter']]
             else:
                 return None
                 
@@ -215,8 +243,35 @@ class HeadCoachExtractor:
             df_with_order['Coach_Order'] = df_with_order.groupby(['Team', 'Year']).cumcount() + 1
             df_with_order['Total_Coaches'] = df_with_order.groupby(['Team', 'Year'])['Coach'].transform('count')
             
-            # Create a primary coach column (first coach listed, usually main HC)
-            df_with_order['Primary_Coach'] = df_with_order.groupby(['Team', 'Year'])['Coach'].transform('first')
+            # Determine primary coach - the one who STARTED the season
+            # Logic: If a coach was HC in the prior year and is listed for current year, they started
+            def get_primary_coach(group):
+                if len(group) == 1:
+                    # Only one coach, they're primary
+                    return group.iloc[0]['Coach']
+                
+                # Multiple coaches - check who was HC in prior year
+                current_year = group.iloc[0]['Year']
+                prior_year = current_year - 1
+                
+                # Get coaches who were HC in prior year for this team
+                prior_year_coaches = df_with_order[
+                    (df_with_order['Year'] == prior_year) & 
+                    (df_with_order['Team'] == group.iloc[0]['Team'])
+                ]['Coach'].unique()
+                
+                # Check if any current year coaches were also HC in prior year
+                for coach in group['Coach'].unique():
+                    if coach in prior_year_coaches:
+                        return coach
+                
+                # If no prior year match, return first coach alphabetically for consistency
+                return sorted(group['Coach'].unique())[0]
+            
+            # Get primary coach for each team-year group
+            primary_coaches = df_with_order.groupby(['Team', 'Year']).apply(get_primary_coach)
+            # Map back to all rows
+            df_with_order['Primary_Coach'] = df_with_order.set_index(['Team', 'Year']).index.map(primary_coaches.to_dict()).values
             
             # For cases with multiple coaches, concatenate names
             multiple_coach_mask = df_with_order['Total_Coaches'] > 1

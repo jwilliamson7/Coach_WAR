@@ -10,7 +10,8 @@
       "Bash(for:*)",
       "Bash(done)",
       "Bash(mv:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []

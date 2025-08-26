@@ -345,12 +345,13 @@ def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year
 def analyze_coach_rankings(results):
     """Analyze coaching impact by individual coaches across their careers."""
     print(f"\n{'='*80}")
-    print("COACH CAREER IMPACT ANALYSIS")
+    print("COACH CAREER IMPACT ANALYSIS (WAR: Actual Win% - Replacement Prediction)")
     print(f"{'='*80}")
     
     # Group by coach and calculate statistics
     coach_stats = results.groupby('Primary_Coach').agg({
-        'Coaching_Impact': ['mean', 'std', 'count', 'sum'],
+        'Actual_vs_Replacement': ['mean', 'std', 'count', 'sum'],  # Primary WAR metric
+        'Coaching_Impact': ['mean', 'sum'],  # Secondary metric (predicted difference)
         'Actual_Win_Pct': 'mean',
         'Predicted_With_Coach': 'mean',
         'Predicted_Replacement': 'mean'
@@ -359,10 +360,12 @@ def analyze_coach_rankings(results):
     # Flatten column names
     coach_stats.columns = ['_'.join(col).strip() for col in coach_stats.columns.values]
     coach_stats = coach_stats.rename(columns={
-        'Coaching_Impact_mean': 'Avg_Impact',
-        'Coaching_Impact_std': 'Impact_StdDev',
-        'Coaching_Impact_count': 'Seasons',
-        'Coaching_Impact_sum': 'Total_Impact',
+        'Actual_vs_Replacement_mean': 'Avg_WAR',
+        'Actual_vs_Replacement_std': 'WAR_StdDev',
+        'Actual_vs_Replacement_count': 'Seasons',
+        'Actual_vs_Replacement_sum': 'Total_WAR',
+        'Coaching_Impact_mean': 'Avg_Pred_Impact',
+        'Coaching_Impact_sum': 'Total_Pred_Impact',
         'Actual_Win_Pct_mean': 'Avg_Actual_Win',
         'Predicted_With_Coach_mean': 'Avg_Pred_Coach',
         'Predicted_Replacement_mean': 'Avg_Pred_Replace'
@@ -371,28 +374,28 @@ def analyze_coach_rankings(results):
     # Filter for coaches with at least 3 seasons
     coach_stats = coach_stats[coach_stats['Seasons'] >= 3]
     
-    # Sort by average impact
-    coach_stats = coach_stats.sort_values('Avg_Impact', ascending=False)
+    # Sort by average WAR (actual vs replacement)
+    coach_stats = coach_stats.sort_values('Avg_WAR', ascending=False)
     
-    print(f"\nTop 15 Coaches by Average Coaching Impact (min 3 seasons):")
-    print(f"\n{'Coach':<30} {'Avg Impact':<12} {'Seasons':<10} {'Total Impact':<12} {'Avg Win%'}")
+    print(f"\nTop 15 Coaches by Average WAR (min 3 seasons):")
+    print(f"\n{'Coach':<30} {'Avg WAR':<12} {'Seasons':<10} {'Total WAR':<12} {'Avg Win%'}")
     print("-" * 80)
     
     for coach, row in coach_stats.head(15).iterrows():
         if pd.notna(coach) and coach != 'N/A':
             coach_name = coach[:28] if len(coach) > 28 else coach
-            print(f"{coach_name:<30} {row['Avg_Impact']:+.4f}      {int(row['Seasons']):<10} "
-                  f"{row['Total_Impact']:+.4f}      {row['Avg_Actual_Win']:.3f}")
+            print(f"{coach_name:<30} {row['Avg_WAR']:+.4f}      {int(row['Seasons']):<10} "
+                  f"{row['Total_WAR']:+.4f}      {row['Avg_Actual_Win']:.3f}")
     
-    print(f"\nBottom 15 Coaches by Average Coaching Impact (min 3 seasons):")
-    print(f"\n{'Coach':<30} {'Avg Impact':<12} {'Seasons':<10} {'Total Impact':<12} {'Avg Win%'}")
+    print(f"\nBottom 15 Coaches by Average WAR (min 3 seasons):")
+    print(f"\n{'Coach':<30} {'Avg WAR':<12} {'Seasons':<10} {'Total WAR':<12} {'Avg Win%'}")
     print("-" * 80)
     
     for coach, row in coach_stats.tail(15).iterrows():
         if pd.notna(coach) and coach != 'N/A':
             coach_name = coach[:28] if len(coach) > 28 else coach
-            print(f"{coach_name:<30} {row['Avg_Impact']:+.4f}      {int(row['Seasons']):<10} "
-                  f"{row['Total_Impact']:+.4f}      {row['Avg_Actual_Win']:.3f}")
+            print(f"{coach_name:<30} {row['Avg_WAR']:+.4f}      {int(row['Seasons']):<10} "
+                  f"{row['Total_WAR']:+.4f}      {row['Avg_Actual_Win']:.3f}")
     
     return coach_stats
 
@@ -475,17 +478,17 @@ def main():
     """Main execution function."""
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='XGBoost Coaching Impact Analysis')
-    parser.add_argument('--no-av', action='store_true', 
-                       help='Use dataset without AV (Approximate Value) features')
+    parser.add_argument('--with-av', action='store_true', 
+                       help='Include AV (Approximate Value) features in analysis')
     args = parser.parse_args()
     
-    # Select dataset based on argument
-    if args.no_av:
+    # Select dataset based on argument (default is without AV)
+    if args.with_av:
+        filepath = 'data/final/imputed_final_data.csv'
+        dataset_type = "with ALL features (including AV)"
+    else:
         filepath = 'data/final/imputed_final_data_no_AV.csv'
         dataset_type = "WITHOUT AV features"
-    else:
-        filepath = 'data/final/imputed_final_data.csv'
-        dataset_type = "with ALL features"
     
     print("="*80)
     print("XGBOOST COACHING IMPACT ANALYSIS")
@@ -540,9 +543,10 @@ def main():
     print(f"\nSummary:")
     print(f"- Dataset used: {dataset_type}")
     print(f"- Coaching features account for {len(coach_features)} of {len(X.columns)} total features")
-    print(f"- Average coaching impact on win percentage: {results['Coaching_Impact'].mean():.4f}")
-    print(f"- Maximum positive coaching impact: {results['Coaching_Impact'].max():.4f}")
-    print(f"- Maximum negative coaching impact: {results['Coaching_Impact'].min():.4f}")
+    print(f"- Average coaching WAR (Actual - Replacement): {results['Actual_vs_Replacement'].mean():.4f}")
+    print(f"- Maximum positive coaching WAR: {results['Actual_vs_Replacement'].max():.4f}")
+    print(f"- Maximum negative coaching WAR: {results['Actual_vs_Replacement'].min():.4f}")
+    print(f"- Average predicted impact: {results['Coaching_Impact'].mean():.4f}")
 
 if __name__ == "__main__":
     main()
