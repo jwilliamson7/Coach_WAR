@@ -1,0 +1,16 @@
+Background,Experience_Range,Avg_Single_Season_WAR,Sample_Size
+Both,1-3 seasons,-0.5319899924384222,9
+Both,4-7 seasons,0.6919726636505127,10
+Both,8-15 seasons,-0.38044349352518664,6
+Defensive,1-3 seasons,-0.0296475635132699,212
+Defensive,4-7 seasons,0.13662291759606568,165
+Defensive,8-15 seasons,0.5926153216044107,153
+Defensive,16+ seasons,0.9654406550150066,63
+Offensive,1-3 seasons,0.09194098950678375,199
+Offensive,4-7 seasons,0.1871896567484537,150
+Offensive,8-15 seasons,0.3668287399800619,90
+Offensive,16+ seasons,-0.3857100701649983,24
+Other,1-3 seasons,-0.19556281407540302,285
+Other,4-7 seasons,0.20444438326322095,195
+Other,8-15 seasons,0.3442682203009819,155
+Other,16+ seasons,0.7765950188654116,55

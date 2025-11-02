@@ -1,0 +1,369 @@
+Index,Feature_Name,Category,Description
+1,Team,Metadata,Team abbreviation
+2,Year,Metadata,Season year
+3,Total CapAllocations_Pct,Salary Cap,Total cap allocations as percentage of maximum cap
+4,Cap SpaceAll_Pct,Salary Cap,Cap space as percentage of maximum cap
+5,Active53-Man_Pct,Salary Cap,Active 53-man roster cap as percentage of maximum
+6,ReservesIR/PUP/NFI/SUSP_Pct,Salary Cap,Reserve/injured/suspended cap as percentage of maximum
+7,DeadCap_Pct,Salary Cap,Dead cap as percentage of maximum cap
+8,QB_Pct,Salary Cap,Quarterback spending as percentage of total cap
+9,RB_Pct,Salary Cap,Running back spending as percentage of total cap
+10,WR_Pct,Salary Cap,Wide receiver spending as percentage of total cap
+11,TE_Pct,Salary Cap,Tight end spending as percentage of total cap
+12,OL_Pct,Salary Cap,Offensive line spending as percentage of total cap
+13,DL_Pct,Salary Cap,Defensive line spending as percentage of total cap
+14,LB_Pct,Salary Cap,Linebacker spending as percentage of total cap
+15,SEC_Pct,Salary Cap,Secondary (CB/S) spending as percentage of total cap
+16,K_Pct,Salary Cap,Kicker spending as percentage of total cap
+17,P_Pct,Salary Cap,Punter spending as percentage of total cap
+18,LS_Pct,Salary Cap,Long snapper spending as percentage of total cap
+19,Off_Pct,Salary Cap,Total offensive spending as percentage of total cap
+20,Def_Pct,Salary Cap,Total defensive spending as percentage of total cap
+21,SPT_Pct,Salary Cap,Special teams spending as percentage of total cap
+22,QB_Players_Retained,Roster Turnover,Number of QBs retained from previous year
+23,QB_Players_Departed,Roster Turnover,Number of QBs departed from previous year
+24,QB_Players_New,Roster Turnover,Number of new QBs added to roster
+25,QB_Retention_Rate_Pct,Roster Turnover,Percentage of QBs retained from previous year
+26,QB_Departure_Rate_Pct,Roster Turnover,Percentage of QBs departed from previous year
+27,QB_New_Player_Rate_Pct,Roster Turnover,Percentage of new QBs on roster
+28,QB_Net_Change,Roster Turnover,Net change in number of QBs
+29,RB_Players_Retained,Roster Turnover,Number of RBs retained from previous year
+30,RB_Players_Departed,Roster Turnover,Number of RBs departed from previous year
+31,RB_Players_New,Roster Turnover,Number of new RBs added to roster
+32,RB_Retention_Rate_Pct,Roster Turnover,Percentage of RBs retained from previous year
+33,RB_Departure_Rate_Pct,Roster Turnover,Percentage of RBs departed from previous year
+34,RB_New_Player_Rate_Pct,Roster Turnover,Percentage of new RBs on roster
+35,RB_Net_Change,Roster Turnover,Net change in number of RBs
+36,WR_Players_Retained,Roster Turnover,Number of WRs retained from previous year
+37,WR_Players_Departed,Roster Turnover,Number of WRs departed from previous year
+38,WR_Players_New,Roster Turnover,Number of new WRs added to roster
+39,WR_Retention_Rate_Pct,Roster Turnover,Percentage of WRs retained from previous year
+40,WR_Departure_Rate_Pct,Roster Turnover,Percentage of WRs departed from previous year
+41,WR_New_Player_Rate_Pct,Roster Turnover,Percentage of new WRs on roster
+42,WR_Net_Change,Roster Turnover,Net change in number of WRs
+43,TE_Players_Retained,Roster Turnover,Number of TEs retained from previous year
+44,TE_Players_Departed,Roster Turnover,Number of TEs departed from previous year
+45,TE_Players_New,Roster Turnover,Number of new TEs added to roster
+46,TE_Retention_Rate_Pct,Roster Turnover,Percentage of TEs retained from previous year
+47,TE_Departure_Rate_Pct,Roster Turnover,Percentage of TEs departed from previous year
+48,TE_New_Player_Rate_Pct,Roster Turnover,Percentage of new TEs on roster
+49,TE_Net_Change,Roster Turnover,Net change in number of TEs
+50,OL_Players_Retained,Roster Turnover,Number of offensive linemen retained
+51,OL_Players_Departed,Roster Turnover,Number of offensive linemen departed
+52,OL_Players_New,Roster Turnover,Number of new offensive linemen added
+53,OL_Retention_Rate_Pct,Roster Turnover,Percentage of offensive linemen retained
+54,OL_Departure_Rate_Pct,Roster Turnover,Percentage of offensive linemen departed
+55,OL_New_Player_Rate_Pct,Roster Turnover,Percentage of new offensive linemen
+56,OL_Net_Change,Roster Turnover,Net change in number of offensive linemen
+57,DL_Players_Retained,Roster Turnover,Number of defensive linemen retained
+58,DL_Players_Departed,Roster Turnover,Number of defensive linemen departed
+59,DL_Players_New,Roster Turnover,Number of new defensive linemen added
+60,DL_Retention_Rate_Pct,Roster Turnover,Percentage of defensive linemen retained
+61,DL_Departure_Rate_Pct,Roster Turnover,Percentage of defensive linemen departed
+62,DL_New_Player_Rate_Pct,Roster Turnover,Percentage of new defensive linemen
+63,DL_Net_Change,Roster Turnover,Net change in number of defensive linemen
+64,LB_Players_Retained,Roster Turnover,Number of linebackers retained
+65,LB_Players_Departed,Roster Turnover,Number of linebackers departed
+66,LB_Players_New,Roster Turnover,Number of new linebackers added
+67,LB_Retention_Rate_Pct,Roster Turnover,Percentage of linebackers retained
+68,LB_Departure_Rate_Pct,Roster Turnover,Percentage of linebackers departed
+69,LB_New_Player_Rate_Pct,Roster Turnover,Percentage of new linebackers
+70,LB_Net_Change,Roster Turnover,Net change in number of linebackers
+71,CB_Players_Retained,Roster Turnover,Number of cornerbacks retained
+72,CB_Players_Departed,Roster Turnover,Number of cornerbacks departed
+73,CB_Players_New,Roster Turnover,Number of new cornerbacks added
+74,CB_Retention_Rate_Pct,Roster Turnover,Percentage of cornerbacks retained
+75,CB_Departure_Rate_Pct,Roster Turnover,Percentage of cornerbacks departed
+76,CB_New_Player_Rate_Pct,Roster Turnover,Percentage of new cornerbacks
+77,CB_Net_Change,Roster Turnover,Net change in number of cornerbacks
+78,S_Players_Retained,Roster Turnover,Number of safeties retained
+79,S_Players_Departed,Roster Turnover,Number of safeties departed
+80,S_Players_New,Roster Turnover,Number of new safeties added
+81,S_Retention_Rate_Pct,Roster Turnover,Percentage of safeties retained
+82,S_Departure_Rate_Pct,Roster Turnover,Percentage of safeties departed
+83,S_New_Player_Rate_Pct,Roster Turnover,Percentage of new safeties
+84,S_Net_Change,Roster Turnover,Net change in number of safeties
+85,QB_Retention_Rate_Pct_crosstab,Roster Turnover,QB retention rate from crosstab analysis
+86,QB_Departure_Rate_Pct_crosstab,Roster Turnover,QB departure rate from crosstab analysis
+87,QB_New_Player_Rate_Pct_crosstab,Roster Turnover,QB new player rate from crosstab analysis
+88,RB_Retention_Rate_Pct_crosstab,Roster Turnover,RB retention rate from crosstab analysis
+89,RB_Departure_Rate_Pct_crosstab,Roster Turnover,RB departure rate from crosstab analysis
+90,RB_New_Player_Rate_Pct_crosstab,Roster Turnover,RB new player rate from crosstab analysis
+91,WR_Retention_Rate_Pct_crosstab,Roster Turnover,WR retention rate from crosstab analysis
+92,WR_Departure_Rate_Pct_crosstab,Roster Turnover,WR departure rate from crosstab analysis
+93,WR_New_Player_Rate_Pct_crosstab,Roster Turnover,WR new player rate from crosstab analysis
+94,TE_Retention_Rate_Pct_crosstab,Roster Turnover,TE retention rate from crosstab analysis
+95,TE_Departure_Rate_Pct_crosstab,Roster Turnover,TE departure rate from crosstab analysis
+96,TE_New_Player_Rate_Pct_crosstab,Roster Turnover,TE new player rate from crosstab analysis
+97,OL_Retention_Rate_Pct_crosstab,Roster Turnover,OL retention rate from crosstab analysis
+98,OL_Departure_Rate_Pct_crosstab,Roster Turnover,OL departure rate from crosstab analysis
+99,OL_New_Player_Rate_Pct_crosstab,Roster Turnover,OL new player rate from crosstab analysis
+100,DL_Retention_Rate_Pct_crosstab,Roster Turnover,DL retention rate from crosstab analysis
+101,DL_Departure_Rate_Pct_crosstab,Roster Turnover,DL departure rate from crosstab analysis
+102,DL_New_Player_Rate_Pct_crosstab,Roster Turnover,DL new player rate from crosstab analysis
+103,LB_Retention_Rate_Pct_crosstab,Roster Turnover,LB retention rate from crosstab analysis
+104,LB_Departure_Rate_Pct_crosstab,Roster Turnover,LB departure rate from crosstab analysis
+105,LB_New_Player_Rate_Pct_crosstab,Roster Turnover,LB new player rate from crosstab analysis
+106,CB_Retention_Rate_Pct_crosstab,Roster Turnover,CB retention rate from crosstab analysis
+107,CB_Departure_Rate_Pct_crosstab,Roster Turnover,CB departure rate from crosstab analysis
+108,CB_New_Player_Rate_Pct_crosstab,Roster Turnover,CB new player rate from crosstab analysis
+109,S_Retention_Rate_Pct_crosstab,Roster Turnover,S retention rate from crosstab analysis
+110,S_Departure_Rate_Pct_crosstab,Roster Turnover,S departure rate from crosstab analysis
+111,S_New_Player_Rate_Pct_crosstab,Roster Turnover,S new player rate from crosstab analysis
+112,Total_Games_In_Season,Injury/Availability,Total games in NFL season (16 or 17)
+113,QB_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by QBs
+114,QB_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by a QB
+115,QB_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by a QB
+116,QB_Players_Count,Injury/Availability,Number of QBs on roster
+117,RB_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by RBs
+118,RB_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by a RB
+119,RB_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by a RB
+120,RB_Players_Count,Injury/Availability,Number of RBs on roster
+121,WR_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by WRs
+122,WR_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by a WR
+123,WR_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by a WR
+124,WR_Players_Count,Injury/Availability,Number of WRs on roster
+125,TE_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by TEs
+126,TE_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by a TE
+127,TE_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by a TE
+128,TE_Players_Count,Injury/Availability,Number of TEs on roster
+129,OL_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by O-line
+130,OL_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by O-line
+131,OL_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by O-line
+132,OL_Players_Count,Injury/Availability,Number of offensive linemen on roster
+133,DL_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by D-line
+134,DL_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by D-line
+135,DL_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by D-line
+136,DL_Players_Count,Injury/Availability,Number of defensive linemen on roster
+137,LB_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by LBs
+138,LB_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by a LB
+139,LB_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by a LB
+140,LB_Players_Count,Injury/Availability,Number of linebackers on roster
+141,CB_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by CBs
+142,CB_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by a CB
+143,CB_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by a CB
+144,CB_Players_Count,Injury/Availability,Number of cornerbacks on roster
+145,S_Avg_Games_Missed_Pct,Injury/Availability,Average percentage of games missed by safeties
+146,S_Max_Games_Missed_Pct,Injury/Availability,Maximum percentage of games missed by a safety
+147,S_Min_Games_Missed_Pct,Injury/Availability,Minimum percentage of games missed by a safety
+148,S_Players_Count,Injury/Availability,Number of safeties on roster
+149,Avg_Starter_Age,Player Demographics,Average age of all starters
+150,StdDev_Starter_Age,Player Demographics,Standard deviation of starter ages
+151,Avg_Starter_Experience,Player Demographics,Average experience of all starters
+152,StdDev_Starter_Experience,Player Demographics,Standard deviation of starter experience
+153,Avg_Roster_Age,Player Demographics,Average age of entire roster
+154,StdDev_Roster_Age,Player Demographics,Standard deviation of roster ages
+155,Avg_Roster_Experience,Player Demographics,Average experience of entire roster
+156,StdDev_Roster_Experience,Player Demographics,Standard deviation of roster experience
+157,Avg_Starter_Age_QB,Player Demographics,Average age of starting QBs
+158,Avg_Starter_Exp_QB,Player Demographics,Average experience of starting QBs
+159,Avg_Roster_Age_QB,Player Demographics,Average age of all QBs on roster
+160,Avg_Roster_Exp_QB,Player Demographics,Average experience of all QBs on roster
+161,Avg_Starter_Age_RB,Player Demographics,Average age of starting RBs
+162,Avg_Starter_Exp_RB,Player Demographics,Average experience of starting RBs
+163,Avg_Roster_Age_RB,Player Demographics,Average age of all RBs on roster
+164,Avg_Roster_Exp_RB,Player Demographics,Average experience of all RBs on roster
+165,Avg_Starter_Age_WR,Player Demographics,Average age of starting WRs
+166,Avg_Starter_Exp_WR,Player Demographics,Average experience of starting WRs
+167,Avg_Roster_Age_WR,Player Demographics,Average age of all WRs on roster
+168,Avg_Roster_Exp_WR,Player Demographics,Average experience of all WRs on roster
+169,Avg_Starter_Age_TE,Player Demographics,Average age of starting TEs
+170,Avg_Starter_Exp_TE,Player Demographics,Average experience of starting TEs
+171,Avg_Roster_Age_TE,Player Demographics,Average age of all TEs on roster
+172,Avg_Roster_Exp_TE,Player Demographics,Average experience of all TEs on roster
+173,Avg_Starter_Age_OL,Player Demographics,Average age of starting offensive linemen
+174,Avg_Starter_Exp_OL,Player Demographics,Average experience of starting offensive linemen
+175,Avg_Roster_Age_OL,Player Demographics,Average age of all offensive linemen
+176,Avg_Roster_Exp_OL,Player Demographics,Average experience of all offensive linemen
+177,Avg_Starter_Age_DL,Player Demographics,Average age of starting defensive linemen
+178,Avg_Starter_Exp_DL,Player Demographics,Average experience of starting defensive linemen
+179,Avg_Roster_Age_DL,Player Demographics,Average age of all defensive linemen
+180,Avg_Roster_Exp_DL,Player Demographics,Average experience of all defensive linemen
+181,Avg_Starter_Age_LB,Player Demographics,Average age of starting linebackers
+182,Avg_Starter_Exp_LB,Player Demographics,Average experience of starting linebackers
+183,Avg_Roster_Age_LB,Player Demographics,Average age of all linebackers
+184,Avg_Roster_Exp_LB,Player Demographics,Average experience of all linebackers
+185,Avg_Starter_Age_CB,Player Demographics,Average age of starting cornerbacks
+186,Avg_Starter_Exp_CB,Player Demographics,Average experience of starting cornerbacks
+187,Avg_Roster_Age_CB,Player Demographics,Average age of all cornerbacks
+188,Avg_Roster_Exp_CB,Player Demographics,Average experience of all cornerbacks
+189,Avg_Starter_Age_S,Player Demographics,Average age of starting safeties
+190,Avg_Starter_Exp_S,Player Demographics,Average experience of starting safeties
+191,Avg_Roster_Age_S,Player Demographics,Average age of all safeties
+192,Avg_Roster_Exp_S,Player Demographics,Average experience of all safeties
+193,Team_Int_Passing_Norm,Penalty/Opponent,Normalized team interceptions thrown
+194,Team_Pen_Norm,Penalty/Opponent,Normalized team penalties committed
+195,Team_Yds_Penalties_Norm,Penalty/Opponent,Normalized team penalty yards
+196,Opp_Int_Passing_Norm,Penalty/Opponent,Normalized opponent interceptions thrown
+197,Opp_Pen_Norm,Penalty/Opponent,Normalized opponent penalties committed
+198,Opp_Yds_Penalties_Norm,Penalty/Opponent,Normalized opponent penalty yards
+199,SoS,Penalty/Opponent,Strength of Schedule - average win percentage of opponents
+200,Current_Round_1_Picks,Draft Capital,Number of first round picks in current year
+201,Current_Round_2_Picks,Draft Capital,Number of second round picks in current year
+202,Current_Round_3_Picks,Draft Capital,Number of third round picks in current year
+203,Current_Round_4_Picks,Draft Capital,Number of fourth round picks in current year
+204,Current_Round_5_Picks,Draft Capital,Number of fifth round picks in current year
+205,Current_Round_6_Picks,Draft Capital,Number of sixth round picks in current year
+206,Current_Round_7Plus_Picks,Draft Capital,Number of seventh round or later picks in current year
+207,Prev_1Yr_Round_1_Picks,Draft Capital,First round picks 1 year ago
+208,Prev_1Yr_Round_2_Picks,Draft Capital,Second round picks 1 year ago
+209,Prev_1Yr_Round_3_Picks,Draft Capital,Third round picks 1 year ago
+210,Prev_1Yr_Round_4_Picks,Draft Capital,Fourth round picks 1 year ago
+211,Prev_1Yr_Round_5_Picks,Draft Capital,Fifth round picks 1 year ago
+212,Prev_1Yr_Round_6_Picks,Draft Capital,Sixth round picks 1 year ago
+213,Prev_1Yr_Round_7Plus_Picks,Draft Capital,Seventh+ round picks 1 year ago
+214,Prev_2Yr_Round_1_Picks,Draft Capital,Average first round picks over past 2 years
+215,Prev_2Yr_Round_2_Picks,Draft Capital,Average second round picks over past 2 years
+216,Prev_2Yr_Round_3_Picks,Draft Capital,Average third round picks over past 2 years
+217,Prev_2Yr_Round_4_Picks,Draft Capital,Average fourth round picks over past 2 years
+218,Prev_2Yr_Round_5_Picks,Draft Capital,Average fifth round picks over past 2 years
+219,Prev_2Yr_Round_6_Picks,Draft Capital,Average sixth round picks over past 2 years
+220,Prev_2Yr_Round_7Plus_Picks,Draft Capital,Average seventh+ round picks over past 2 years
+221,Prev_3Yr_Round_1_Picks,Draft Capital,Average first round picks over past 3 years
+222,Prev_3Yr_Round_2_Picks,Draft Capital,Average second round picks over past 3 years
+223,Prev_3Yr_Round_3_Picks,Draft Capital,Average third round picks over past 3 years
+224,Prev_3Yr_Round_4_Picks,Draft Capital,Average fourth round picks over past 3 years
+225,Prev_3Yr_Round_5_Picks,Draft Capital,Average fifth round picks over past 3 years
+226,Prev_3Yr_Round_6_Picks,Draft Capital,Average sixth round picks over past 3 years
+227,Prev_3Yr_Round_7Plus_Picks,Draft Capital,Average seventh+ round picks over past 3 years
+228,Prev_4Yr_Round_1_Picks,Draft Capital,Average first round picks over past 4 years
+229,num_times_hc,Coaching Experience,Number of times as head coach
+230,num_yr_col_pos,Coaching Experience,Years coaching college position groups
+231,num_yr_col_coor,Coaching Experience,Years as college coordinator
+232,num_yr_col_hc,Coaching Experience,Years as college head coach
+233,num_yr_nfl_pos,Coaching Experience,Years coaching NFL position groups
+234,num_yr_nfl_coor,Coaching Experience,Years as NFL coordinator
+235,num_yr_nfl_hc,Coaching Experience,Years as NFL head coach
+236,PF (Points For)__oc_Norm,Prior Team Performance (OC),Normalized points scored under OC
+237,Yds__oc_Norm,Prior Team Performance (OC),Normalized offensive yards under OC
+238,Y/P__oc_Norm,Prior Team Performance (OC),Normalized yards per play under OC
+239,TO__oc_Norm,Prior Team Performance (OC),Normalized turnovers under OC
+240,1stD__oc_Norm,Prior Team Performance (OC),Normalized first downs under OC
+241,Cmp Passing__oc_Norm,Prior Team Performance (OC),Normalized pass completions under OC
+242,Att Passing__oc_Norm,Prior Team Performance (OC),Normalized pass attempts under OC
+243,Yds Passing__oc_Norm,Prior Team Performance (OC),Normalized passing yards under OC
+244,TD Passing__oc_Norm,Prior Team Performance (OC),Normalized passing touchdowns under OC
+245,Int Passing__oc_Norm,Prior Team Performance (OC),Normalized interceptions thrown under OC
+246,NY/A Passing__oc_Norm,Prior Team Performance (OC),Normalized net yards per pass attempt under OC
+247,1stD Passing__oc_Norm,Prior Team Performance (OC),Normalized passing first downs under OC
+248,Att Rushing__oc_Norm,Prior Team Performance (OC),Normalized rush attempts under OC
+249,Yds Rushing__oc_Norm,Prior Team Performance (OC),Normalized rushing yards under OC
+250,TD Rushing__oc_Norm,Prior Team Performance (OC),Normalized rushing touchdowns under OC
+251,Y/A Rushing__oc_Norm,Prior Team Performance (OC),Normalized yards per rush under OC
+252,1stD Rushing__oc_Norm,Prior Team Performance (OC),Normalized rushing first downs under OC
+253,Pen__oc_Norm,Prior Team Performance (OC),Normalized penalties under OC
+254,Yds Penalties__oc_Norm,Prior Team Performance (OC),Normalized penalty yards under OC
+255,1stPy__oc_Norm,Prior Team Performance (OC),Normalized first downs by penalty under OC
+256,#Dr__oc_Norm,Prior Team Performance (OC),Normalized number of drives under OC
+257,Sc%__oc_Norm,Prior Team Performance (OC),Normalized scoring percentage under OC
+258,TO%__oc_Norm,Prior Team Performance (OC),Normalized turnover percentage under OC
+259,Time Average Drive__oc_Norm,Prior Team Performance (OC),Normalized average drive time under OC
+260,Plays Average Drive__oc_Norm,Prior Team Performance (OC),Normalized average plays per drive under OC
+261,Yds Average Drive__oc_Norm,Prior Team Performance (OC),Normalized average yards per drive under OC
+262,Pts Average Drive__oc_Norm,Prior Team Performance (OC),Normalized average points per drive under OC
+263,3DAtt__oc_Norm,Prior Team Performance (OC),Normalized third down attempts under OC
+264,3D%__oc_Norm,Prior Team Performance (OC),Normalized third down conversion rate under OC
+265,4DAtt__oc_Norm,Prior Team Performance (OC),Normalized fourth down attempts under OC
+266,4D%__oc_Norm,Prior Team Performance (OC),Normalized fourth down conversion rate under OC
+267,RZAtt__oc_Norm,Prior Team Performance (OC),Normalized red zone attempts under OC
+268,RZPct__oc_Norm,Prior Team Performance (OC),Normalized red zone scoring percentage under OC
+269,PF (Points For)__dc_Norm,Prior Team Performance (DC),Normalized points allowed under DC
+270,Yds__dc_Norm,Prior Team Performance (DC),Normalized yards allowed under DC
+271,Y/P__dc_Norm,Prior Team Performance (DC),Normalized yards per play allowed under DC
+272,TO__dc_Norm,Prior Team Performance (DC),Normalized takeaways under DC
+273,1stD__dc_Norm,Prior Team Performance (DC),Normalized first downs allowed under DC
+274,Cmp Passing__dc_Norm,Prior Team Performance (DC),Normalized pass completions allowed under DC
+275,Att Passing__dc_Norm,Prior Team Performance (DC),Normalized pass attempts faced under DC
+276,Yds Passing__dc_Norm,Prior Team Performance (DC),Normalized passing yards allowed under DC
+277,TD Passing__dc_Norm,Prior Team Performance (DC),Normalized passing touchdowns allowed under DC
+278,Int Passing__dc_Norm,Prior Team Performance (DC),Normalized interceptions by defense under DC
+279,NY/A Passing__dc_Norm,Prior Team Performance (DC),Normalized net yards per pass allowed under DC
+280,1stD Passing__dc_Norm,Prior Team Performance (DC),Normalized passing first downs allowed under DC
+281,Att Rushing__dc_Norm,Prior Team Performance (DC),Normalized rush attempts faced under DC
+282,Yds Rushing__dc_Norm,Prior Team Performance (DC),Normalized rushing yards allowed under DC
+283,TD Rushing__dc_Norm,Prior Team Performance (DC),Normalized rushing touchdowns allowed under DC
+284,Y/A Rushing__dc_Norm,Prior Team Performance (DC),Normalized yards per rush allowed under DC
+285,1stD Rushing__dc_Norm,Prior Team Performance (DC),Normalized rushing first downs allowed under DC
+286,Pen__dc_Norm,Prior Team Performance (DC),Normalized opponent penalties under DC
+287,Yds Penalties__dc_Norm,Prior Team Performance (DC),Normalized opponent penalty yards under DC
+288,1stPy__dc_Norm,Prior Team Performance (DC),Normalized opponent first downs by penalty under DC
+289,#Dr__dc_Norm,Prior Team Performance (DC),Normalized opponent drives under DC
+290,Sc%__dc_Norm,Prior Team Performance (DC),Normalized opponent scoring percentage under DC
+291,TO%__dc_Norm,Prior Team Performance (DC),Normalized opponent turnover percentage under DC
+292,Time Average Drive__dc_Norm,Prior Team Performance (DC),Normalized opponent average drive time under DC
+293,Plays Average Drive__dc_Norm,Prior Team Performance (DC),Normalized opponent average plays per drive under DC
+294,Yds Average Drive__dc_Norm,Prior Team Performance (DC),Normalized opponent average yards per drive under DC
+295,Pts Average Drive__dc_Norm,Prior Team Performance (DC),Normalized opponent average points per drive under DC
+296,3DAtt__dc_Norm,Prior Team Performance (DC),Normalized opponent third down attempts under DC
+297,3D%__dc_Norm,Prior Team Performance (DC),Normalized opponent third down conversion rate under DC
+298,4DAtt__dc_Norm,Prior Team Performance (DC),Normalized opponent fourth down attempts under DC
+299,4D%__dc_Norm,Prior Team Performance (DC),Normalized opponent fourth down conversion rate under DC
+300,RZAtt__dc_Norm,Prior Team Performance (DC),Normalized opponent red zone attempts under DC
+301,RZPct__dc_Norm,Prior Team Performance (DC),Normalized opponent red zone scoring percentage under DC
+302,PF (Points For)__hc_Norm,Prior Team Performance (HC),Normalized points scored under HC
+303,Yds__hc_Norm,Prior Team Performance (HC),Normalized offensive yards under HC
+304,Y/P__hc_Norm,Prior Team Performance (HC),Normalized yards per play under HC
+305,TO__hc_Norm,Prior Team Performance (HC),Normalized turnovers under HC
+306,1stD__hc_Norm,Prior Team Performance (HC),Normalized first downs under HC
+307,Cmp Passing__hc_Norm,Prior Team Performance (HC),Normalized pass completions under HC
+308,Att Passing__hc_Norm,Prior Team Performance (HC),Normalized pass attempts under HC
+309,Yds Passing__hc_Norm,Prior Team Performance (HC),Normalized passing yards under HC
+310,TD Passing__hc_Norm,Prior Team Performance (HC),Normalized passing touchdowns under HC
+311,Int Passing__hc_Norm,Prior Team Performance (HC),Normalized interceptions thrown under HC
+312,NY/A Passing__hc_Norm,Prior Team Performance (HC),Normalized net yards per pass attempt under HC
+313,1stD Passing__hc_Norm,Prior Team Performance (HC),Normalized passing first downs under HC
+314,Att Rushing__hc_Norm,Prior Team Performance (HC),Normalized rush attempts under HC
+315,Yds Rushing__hc_Norm,Prior Team Performance (HC),Normalized rushing yards under HC
+316,TD Rushing__hc_Norm,Prior Team Performance (HC),Normalized rushing touchdowns under HC
+317,Y/A Rushing__hc_Norm,Prior Team Performance (HC),Normalized yards per rush under HC
+318,1stD Rushing__hc_Norm,Prior Team Performance (HC),Normalized rushing first downs under HC
+319,Pen__hc_Norm,Prior Team Performance (HC),Normalized penalties under HC
+320,Yds Penalties__hc_Norm,Prior Team Performance (HC),Normalized penalty yards under HC
+321,1stPy__hc_Norm,Prior Team Performance (HC),Normalized first downs by penalty under HC
+322,#Dr__hc_Norm,Prior Team Performance (HC),Normalized number of drives under HC
+323,Sc%__hc_Norm,Prior Team Performance (HC),Normalized scoring percentage under HC
+324,TO%__hc_Norm,Prior Team Performance (HC),Normalized turnover percentage under HC
+325,Time Average Drive__hc_Norm,Prior Team Performance (HC),Normalized average drive time under HC
+326,Plays Average Drive__hc_Norm,Prior Team Performance (HC),Normalized average plays per drive under HC
+327,Yds Average Drive__hc_Norm,Prior Team Performance (HC),Normalized average yards per drive under HC
+328,Pts Average Drive__hc_Norm,Prior Team Performance (HC),Normalized average points per drive under HC
+329,3DAtt__hc_Norm,Prior Team Performance (HC),Normalized third down attempts under HC
+330,3D%__hc_Norm,Prior Team Performance (HC),Normalized third down conversion rate under HC
+331,4DAtt__hc_Norm,Prior Team Performance (HC),Normalized fourth down attempts under HC
+332,4D%__hc_Norm,Prior Team Performance (HC),Normalized fourth down conversion rate under HC
+333,RZAtt__hc_Norm,Prior Team Performance (HC),Normalized red zone attempts under HC
+334,RZPct__hc_Norm,Prior Team Performance (HC),Normalized red zone scoring percentage under HC
+335,PF (Points For)__opp__hc_Norm,Prior Team Performance (HC),Normalized points allowed under HC
+336,Yds__opp__hc_Norm,Prior Team Performance (HC),Normalized yards allowed under HC
+337,Y/P__opp__hc_Norm,Prior Team Performance (HC),Normalized yards per play allowed under HC
+338,TO__opp__hc_Norm,Prior Team Performance (HC),Normalized takeaways under HC
+339,1stD__opp__hc_Norm,Prior Team Performance (HC),Normalized first downs allowed under HC
+340,Cmp Passing__opp__hc_Norm,Prior Team Performance (HC),Normalized pass completions allowed under HC
+341,Att Passing__opp__hc_Norm,Prior Team Performance (HC),Normalized pass attempts faced under HC
+342,Yds Passing__opp__hc_Norm,Prior Team Performance (HC),Normalized passing yards allowed under HC
+343,TD Passing__opp__hc_Norm,Prior Team Performance (HC),Normalized passing touchdowns allowed under HC
+344,Int Passing__opp__hc_Norm,Prior Team Performance (HC),Normalized interceptions by defense under HC
+345,NY/A Passing__opp__hc_Norm,Prior Team Performance (HC),Normalized net yards per pass allowed under HC
+346,1stD Passing__opp__hc_Norm,Prior Team Performance (HC),Normalized passing first downs allowed under HC
+347,Att Rushing__opp__hc_Norm,Prior Team Performance (HC),Normalized rush attempts faced under HC
+348,Yds Rushing__opp__hc_Norm,Prior Team Performance (HC),Normalized rushing yards allowed under HC
+349,TD Rushing__opp__hc_Norm,Prior Team Performance (HC),Normalized rushing touchdowns allowed under HC
+350,Y/A Rushing__opp__hc_Norm,Prior Team Performance (HC),Normalized yards per rush allowed under HC
+351,1stD Rushing__opp__hc_Norm,Prior Team Performance (HC),Normalized rushing first downs allowed under HC
+352,Pen__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent penalties under HC
+353,Yds Penalties__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent penalty yards under HC
+354,1stPy__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent first downs by penalty under HC
+355,#Dr__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent drives under HC
+356,Sc%__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent scoring percentage under HC
+357,TO%__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent turnover percentage under HC
+358,Time Average Drive__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent average drive time under HC
+359,Plays Average Drive__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent average plays per drive under HC
+360,Yds Average Drive__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent average yards per drive under HC
+361,Pts Average Drive__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent average points per drive under HC
+362,3DAtt__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent third down attempts under HC
+363,3D%__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent third down conversion rate under HC
+364,4DAtt__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent fourth down attempts under HC
+365,4D%__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent fourth down conversion rate under HC
+366,RZAtt__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent red zone attempts under HC
+367,RZPct__opp__hc_Norm,Prior Team Performance (HC),Normalized opponent red zone scoring percentage under HC
+368,Win_Pct,Hiring Team Context,Winning percentage - target variable for prediction

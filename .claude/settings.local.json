@@ -11,7 +11,8 @@
       "Bash(done)",
       "Bash(mv:*)",
       "Bash(dir:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

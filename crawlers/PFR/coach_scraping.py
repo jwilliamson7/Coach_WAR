@@ -122,7 +122,25 @@ class CoachDataScraper:
             
             # Extract coach name from page title
             coach_name = soup.find('h1').text.strip()
-            coach_dir = self._create_coach_directory(coach_name)
+            
+            # Extract coach ID from URL to handle duplicate names (e.g., MoraJi0 vs MoraJi1)
+            coach_id = coach_url.split('/')[-1].replace('.htm', '')
+            
+            # Check if we need to use unique directory name (for coaches with same name)
+            # Get the last character of coach_id - if it's a digit, there are multiple coaches with this name
+            if coach_id and coach_id[-1].isdigit():
+                # For duplicate names, append a suffix to distinguish them
+                suffix_num = coach_id[-1]
+                if suffix_num == '0':
+                    # First coach with this name (usually the older/Sr.)
+                    coach_dir_name = f"{coach_name} Sr"
+                else:
+                    # Subsequent coaches with this name (Jr., III, etc.)
+                    coach_dir_name = f"{coach_name} {'Jr' if suffix_num == '1' else suffix_num}"
+            else:
+                coach_dir_name = coach_name
+                
+            coach_dir = self._create_coach_directory(coach_dir_name)
             
             # Process each table type
             for table_id, config in self.TABLE_CONFIGS.items():
@@ -179,7 +197,8 @@ class CoachDataScraper:
                 '/coaches/CoenLi0.htm', 
                 '/coaches/MoorKe0.htm',
                 '/coaches/GlenAa0.htm',
-                '/coaches/SchoBr0.htm'
+                '/coaches/SchoBr0.htm',
+                '/coaches/MoraJi0.htm'  # Jim E. Mora Sr. (Colts 1998-2001)
             ]
         
         # Combine manual URLs with discovered URLs
