@@ -52,15 +52,17 @@ class HeadCoachExtractor:
         # Team mapping for standardization
         self.team_mappings = {v: v for v in SPOTRAC_TO_PFR_MAPPINGS.values()}
         
-        # Common team abbreviation corrections
+        # Common team abbreviation corrections (year-independent)
         self.team_corrections = {
-            'BAL': 'RAV',  # Baltimore Ravens
-            'HOU': 'HTX',  # Houston Texans  
             'LAC': 'SDG',  # LA Chargers (formerly San Diego)
+            'LAR': 'RAM',  # Los Angeles Rams
             'LAS': 'RAI',  # Las Vegas Raiders
+            'LVR': 'RAI',  # Las Vegas Raiders (alternate)
             'TEN': 'OTI',  # Tennessee Titans
             'IND': 'CLT',  # Indianapolis Colts
             'ARI': 'CRD',  # Arizona Cardinals
+            'PHO': 'CRD',  # Phoenix Cardinals -> Arizona Cardinals
+            'BOS': 'NWE',  # Boston Patriots -> New England Patriots
             'GB': 'GNB',   # Green Bay Packers
             'KC': 'KAN',   # Kansas City Chiefs
             'NE': 'NWE',   # New England Patriots
@@ -69,22 +71,46 @@ class HeadCoachExtractor:
             'TB': 'TAM',   # Tampa Bay Buccaneers
             'WAS': 'WAS',  # Washington (already correct)
             'LV': 'RAI',   # Las Vegas Raiders
-            'OAK': 'RAI'   # Oakland Raiders -> Las Vegas Raiders
+            'OAK': 'RAI',  # Oakland Raiders -> Las Vegas Raiders
         }
         
-    def standardize_team_name(self, team: str) -> str:
+    def standardize_team_name(self, team: str, year: int = None) -> str:
         """
         Standardize team abbreviation to PFR format
         
         Args:
             team: Team abbreviation from coaching data
+            year: Year for context-dependent mappings
             
         Returns:
             Standardized team abbreviation
         """
         team = team.upper().strip()
         
-        # Apply corrections if needed
+        # Handle year-based mappings
+        if year is not None:
+            # BAL: Baltimore Colts vs Baltimore Ravens
+            if team == 'BAL':
+                if year <= 1983:
+                    return 'CLT'  # Baltimore Colts (1953-1983)
+                else:
+                    return 'RAV'  # Baltimore Ravens (1996-present)
+            
+            # HOU: Houston Oilers vs Houston Texans  
+            elif team == 'HOU':
+                if year <= 1996:
+                    return 'OTI'  # Houston Oilers (1960-1996) → Tennessee Titans
+                else:
+                    return 'HTX'  # Houston Texans (2002-present)
+            
+            # STL: St. Louis Cardinals vs St. Louis Rams
+            elif team == 'STL':
+                if year <= 1987:
+                    return 'CRD'  # St. Louis Cardinals (1960-1987)
+                else:
+                    return 'RAM'  # St. Louis Rams (1995-2015)
+        
+        # Apply other corrections
         if team in self.team_corrections:
             team = self.team_corrections[team]
             
@@ -118,38 +144,67 @@ class HeadCoachExtractor:
             
             # Try to load results file to determine if coach started season
             results_file = ranks_file.parent / "all_coaching_results.csv"
-            is_starter = False
             if results_file.exists():
                 try:
                     results_df = pd.read_csv(results_file)
-                    # Check if coach has games from week 1 (G column should be high, or W+L+T should be near full season)
-                    if 'G' in results_df.columns:
-                        hc_df['Games'] = hc_df['Year'].apply(
-                            lambda y: results_df[results_df['Year'] == y]['G'].iloc[0] 
-                            if len(results_df[results_df['Year'] == y]) > 0 else 0
-                        )
-                        # If coach has 10+ games, they likely started the season
-                        hc_df['Is_Starter'] = hc_df['Games'] >= 10
-                    elif all(col in results_df.columns for col in ['W', 'L', 'T']):
-                        hc_df['Total_Games'] = hc_df['Year'].apply(
-                            lambda y: (results_df[results_df['Year'] == y][['W', 'L', 'T']].sum(axis=1)).iloc[0]
-                            if len(results_df[results_df['Year'] == y]) > 0 else 0
-                        )
-                        hc_df['Is_Starter'] = hc_df['Total_Games'] >= 10
-                    else:
-                        hc_df['Is_Starter'] = True  # Default to true if we can't determine
-                except:
-                    hc_df['Is_Starter'] = True  # Default to true if error reading
+                    
+                    # Extract games and notes for each year
+                    def get_coach_info(year):
+                        year_data = results_df[results_df['Year'] == year]
+                        if len(year_data) == 0:
+                            return 0, True, ""  # games, is_starter, notes
+                        
+                        row = year_data.iloc[0]
+                        games = row.get('G', 0)
+                        notes = str(row.get('Notes', '')).lower()
+                        
+                        # Determine if coach started the season based on notes
+                        is_starter = True  # Default assumption
+                        
+                        # Keywords that indicate a coach DIDN'T start the season
+                        non_starter_keywords = [
+                            'interim', 'after week', 'replaced', 'took over',
+                            'mid-season', 'following', 'succeeding'
+                        ]
+                        
+                        # Keywords that indicate a coach was FIRED/REPLACED (so they started)
+                        starter_keywords = [
+                            'fired', 'dismissed', 'resigned', 'stepped down',
+                            'terminated', 'relieved'
+                        ]
+                        
+                        if any(keyword in notes for keyword in non_starter_keywords):
+                            # If they have starter keywords too, they probably took over mid-season
+                            if not any(keyword in notes for keyword in starter_keywords):
+                                is_starter = False
+                        
+                        return games, is_starter, notes
+                    
+                    # Apply to each HC year
+                    coach_info = hc_df['Year'].apply(get_coach_info)
+                    hc_df['Games'] = [info[0] for info in coach_info]
+                    hc_df['Is_Starter'] = [info[1] for info in coach_info]
+                    hc_df['Notes'] = [info[2] for info in coach_info]
+                    
+                except Exception as e:
+                    self.logger.warning(f"Error processing results file for {coach_name}: {e}")
+                    hc_df['Games'] = 16
+                    hc_df['Is_Starter'] = True
+                    hc_df['Notes'] = ""
             else:
-                hc_df['Is_Starter'] = True  # Default to true if no results file
+                hc_df['Games'] = 16
+                hc_df['Is_Starter'] = True
+                hc_df['Notes'] = ""
             
             # Extract relevant columns
             result_df = hc_df[['Year', 'Tm']].copy()
             result_df['Coach'] = coach_name
             result_df['Is_Starter'] = hc_df.get('Is_Starter', True)
+            result_df['Games'] = hc_df.get('Games', 16)
+            result_df['Notes'] = hc_df.get('Notes', "")
             
             # Standardize team names
-            result_df['Team'] = result_df['Tm'].apply(self.standardize_team_name)
+            result_df['Team'] = result_df.apply(lambda row: self.standardize_team_name(row['Tm'], row['Year']), axis=1)
             result_df = result_df.drop(columns=['Tm'])
             
             # Ensure Year is integer
@@ -163,7 +218,7 @@ class HeadCoachExtractor:
             
             if not result_df.empty:
                 self.logger.info(f"Found {len(result_df)} HC years for {coach_name}")
-                return result_df[['Team', 'Year', 'Coach', 'Is_Starter']]
+                return result_df[['Team', 'Year', 'Coach', 'Is_Starter', 'Games', 'Notes']]
             else:
                 return None
                 
@@ -250,7 +305,7 @@ class HeadCoachExtractor:
                     # Only one coach, they're primary
                     return group.iloc[0]['Coach']
                 
-                # Multiple coaches - check who was HC in prior year
+                # Multiple coaches - prioritize selection
                 current_year = group.iloc[0]['Year']
                 prior_year = current_year - 1
                 
@@ -260,13 +315,26 @@ class HeadCoachExtractor:
                     (df_with_order['Team'] == group.iloc[0]['Team'])
                 ]['Coach'].unique()
                 
-                # Check if any current year coaches were also HC in prior year
+                # Priority 1: If any coach was HC in prior year, they are primary
                 for coach in group['Coach'].unique():
                     if coach in prior_year_coaches:
                         return coach
                 
-                # If no prior year match, return first coach alphabetically for consistency
-                return sorted(group['Coach'].unique())[0]
+                # Priority 2: No prior year continuity - pick coach who started the season
+                starters = group[group['Is_Starter'] == True]
+                non_starters = group[group['Is_Starter'] == False]
+                
+                if len(starters) > 0:
+                    # If we have season starters, pick the one with most games among them
+                    starter_with_most_games = starters.loc[starters['Games'].idxmax(), 'Coach']
+                    return starter_with_most_games
+                elif len(non_starters) > 0:
+                    # If only interim coaches, pick the one with most games
+                    interim_with_most_games = non_starters.loc[non_starters['Games'].idxmax(), 'Coach']
+                    return interim_with_most_games
+                else:
+                    # Fallback to most games if no starter info
+                    return group.loc[group['Games'].idxmax(), 'Coach']
             
             # Get primary coach for each team-year group
             primary_coaches = df_with_order.groupby(['Team', 'Year']).apply(get_primary_coach)

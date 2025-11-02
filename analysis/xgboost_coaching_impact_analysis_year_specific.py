@@ -1,7 +1,7 @@
 """
-XGBoost Coaching Impact Analysis Script
-Compares XGBoost predictions using actual coach features versus replacement-level (average) coach features.
-This quantifies the impact of individual coaching characteristics on team performance.
+XGBoost Coaching Impact Analysis Script - Year-Specific Replacement
+Compares XGBoost predictions using actual coach features versus year-specific median coach features.
+This uses year-specific replacement levels rather than overall career averages.
 """
 
 import pandas as pd
@@ -135,84 +135,71 @@ def identify_coach_features(X):
     
     return coach_features
 
-def calculate_replacement_features(X, coach_features, team_year_info):
-    """Calculate average (replacement-level) values for coach features using coach-level averaging."""
-    print("\nCalculating replacement-level coach features...")
-    print("Using coach-level averaging (each coach weighted equally regardless of tenure)...")
+def calculate_year_specific_replacement_features(X, coach_features, team_year_info):
+    """Calculate year-specific median values for coach features."""
+    print("\nCalculating year-specific replacement-level coach features...")
+    print("Using year-specific medians (contemporary peer comparison)...")
     
-    # Load coach data to group by coach
-    try:
-        coach_df = pd.read_csv('data/processed/Coaching/team_year_head_coaches.csv')
-        
-        # Start with team_year_info and add features
-        if 'Team' in team_year_info.columns and 'Year' in team_year_info.columns:
-            combined_df = team_year_info.reset_index(drop=True).copy()
-        else:
-            print("Warning: No Team/Year columns in team_year_info. Cannot group by coach.")
-            raise ValueError("Missing Team/Year columns")
-            
-        # Add coaching features to the dataframe
-        for feature in coach_features:
-            if feature in X.columns:
-                combined_df[feature] = X[feature].values
-        
-        # Merge with coach information
-        combined_df = combined_df.merge(
-            coach_df[['Team', 'Year', 'Primary_Coach']], 
-            on=['Team', 'Year'], 
-            how='left'
-        )
-        
-        # Remove rows with missing coach information
-        before_count = len(combined_df)
-        combined_df = combined_df.dropna(subset=['Primary_Coach'])
-        after_count = len(combined_df)
-        print(f"Found coach data for {after_count} of {before_count} team-years")
-        
-    except Exception as e:
-        print(f"Warning: Could not load coach data ({e}). Falling back to team-year median.")
-        replacement_values = {}
-        for feature in coach_features:
-            if feature in X.columns:
-                replacement_values[feature] = X[feature].median()
-        return replacement_values
+    # Ensure we have Year information
+    if 'Year' not in team_year_info.columns:
+        print("Error: No Year column available for year-specific calculation")
+        raise ValueError("Missing Year column")
     
-    # Calculate coach career averages for each feature
-    replacement_values = {}
+    # Create combined dataframe with features and year
+    combined_df = team_year_info.reset_index(drop=True).copy()
+    
+    # Add coaching features to the dataframe
+    for feature in coach_features:
+        if feature in X.columns:
+            combined_df[feature] = X[feature].values
+    
+    # Calculate year-specific medians for each feature
+    replacement_values_by_year = {}
+    
+    unique_years = sorted(combined_df['Year'].unique())
+    print(f"Calculating replacement values for {len(unique_years)} years ({min(unique_years)}-{max(unique_years)})")
+    
     for feature in coach_features:
         if feature in combined_df.columns:
-            # Group by coach and calculate mean for each coach
-            coach_averages = combined_df.groupby('Primary_Coach')[feature].mean()
+            feature_by_year = {}
             
-            # Take median of coach averages (each coach weighted equally)
-            replacement_values[feature] = coach_averages.median()
+            for year in unique_years:
+                year_data = combined_df[combined_df['Year'] == year]
+                year_median = year_data[feature].median()
+                feature_by_year[year] = year_median
             
-            print(f"  {feature}: {len(coach_averages)} coaches, replacement = {replacement_values[feature]:.3f}")
+            replacement_values_by_year[feature] = feature_by_year
+            
+            # Show sample years for this feature
+            sample_years = list(feature_by_year.keys())[:5]
+            sample_values = [feature_by_year[y] for y in sample_years]
+            print(f"  {feature}: {len(feature_by_year)} years, sample {sample_years}: {sample_values}")
     
-    print(f"\nCalculated replacement values for {len(replacement_values)} features")
-    print("Each coach's career average was weighted equally in replacement calculation")
+    print(f"\nCalculated year-specific replacement values for {len(replacement_values_by_year)} features")
+    print("Each team-year will be compared to that year's median coach performance")
     
-    # Show sample of replacement values
-    print("\nSample replacement values:")
-    sample_features = list(replacement_values.keys())[:5]
-    for feat in sample_features:
-        print(f"  {feat}: {replacement_values[feat]:.3f}")
-    
-    return replacement_values
+    return replacement_values_by_year
 
-def create_replacement_dataset(X, coach_features, replacement_values):
-    """Create dataset with coach features replaced by average values."""
-    print("\nCreating replacement-level dataset...")
+def create_year_specific_replacement_dataset(X, coach_features, replacement_values_by_year, team_year_info):
+    """Create dataset with coach features replaced by year-specific median values."""
+    print("\nCreating year-specific replacement-level dataset...")
     
     # Create a copy of the original data
     X_replacement = X.copy()
     
-    # Replace coaching features with average values
-    for feature in coach_features:
-        if feature in X_replacement.columns:
-            X_replacement[feature] = replacement_values[feature]
+    # Replace coaching features with year-specific median values
+    years = team_year_info['Year'].values
+    features_replaced = 0
     
-    print(f"Replaced {len(coach_features)} coaching features with replacement-level values")
+    for feature in coach_features:
+        if feature in X_replacement.columns and feature in replacement_values_by_year:
+            # Replace each row with that year's median value
+            for i, year in enumerate(years):
+                if year in replacement_values_by_year[feature]:
+                    X_replacement.iloc[i, X_replacement.columns.get_loc(feature)] = replacement_values_by_year[feature][year]
+            features_replaced += 1
+    
+    print(f"Replaced {features_replaced} coaching features with year-specific median values")
     
     return X_replacement
 
@@ -401,14 +388,14 @@ def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year
     print("\nAnalyzing coaching impact...")
     
     # Create results dataframe
-    # Key metric: Coaching WAR = Actual Win% - Replacement Prediction
+    # Key metric: Coaching WAR = Actual Win% - Year-Specific Replacement Prediction
     results = pd.DataFrame({
         'Team': team_year_info.get('Team', 'Unknown'),
         'Year': team_year_info.get('Year', 0),
         'Actual_Win_Pct': y_true.values,
         'Predicted_With_Coach': y_pred_actual,
         'Predicted_Replacement': y_pred_replacement,
-        'Coaching_WAR': y_true.values - y_pred_replacement,  # Primary metric: Actual - Replacement prediction
+        'Coaching_WAR': y_true.values - y_pred_replacement,  # Primary metric: Actual - Year-specific replacement prediction
         'Predicted_Impact': y_pred_actual - y_pred_replacement,  # Secondary metric: Model's predicted difference
         'Prediction_Error_Coach': y_true.values - y_pred_actual,
         'Prediction_Error_Replacement': y_true.values - y_pred_replacement
@@ -435,7 +422,7 @@ def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year
     results = results.sort_values('Coaching_WAR', ascending=False)
     
     # Calculate statistics
-    print(f"\nCoaching WAR Statistics:")
+    print(f"\nCoaching WAR Statistics (vs Year-Specific Medians):")
     print(f"Mean coaching WAR: {results['Coaching_WAR'].mean():.4f}")
     print(f"Std deviation: {results['Coaching_WAR'].std():.4f}")
     print(f"Min WAR: {results['Coaching_WAR'].min():.4f}")
@@ -456,212 +443,21 @@ def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year
     r2_replacement = r2_score(y_true, y_pred_replacement)
     
     print(f"\n{'='*80}")
-    print("MODEL PERFORMANCE COMPARISON")
+    print("MODEL PERFORMANCE COMPARISON (vs Year-Specific Replacement)")
     print(f"{'='*80}")
-    print(f"\n{'Metric':<20} {'With Actual Coach':<20} {'With Replacement':<20} {'Difference':<15}")
+    print(f"\n{'Metric':<20} {'With Actual Coach':<20} {'With Year Replacement':<20} {'Difference':<15}")
     print("-" * 75)
     print(f"{'MSE':<20} {mse_actual:<20.6f} {mse_replacement:<20.6f} {mse_replacement - mse_actual:<15.6f}")
     print(f"{'MAE':<20} {mae_actual:<20.6f} {mae_replacement:<20.6f} {mae_replacement - mae_actual:<15.6f}")
     print(f"{'R² Score':<20} {r2_actual:<20.4f} {r2_replacement:<20.4f} {r2_replacement - r2_actual:<15.4f}")
     print(f"{'RMSE':<20} {np.sqrt(mse_actual):<20.6f} {np.sqrt(mse_replacement):<20.6f} {np.sqrt(mse_replacement) - np.sqrt(mse_actual):<15.6f}")
     
-    # Identify coaches with highest positive WAR
-    threshold_percentile = 95
-    threshold_war = 0.05
-    
-    high_impact_coaches = results[
-        (results['WAR_Percentile'] >= threshold_percentile) | 
-        (results['Coaching_WAR'] > threshold_war)
-    ].copy()
-    
-    print(f"\n{'='*80}")
-    print(f"COACHES WITH HIGHEST POSITIVE WAR")
-    print(f"(Top 5% or WAR > 0.05)")
-    print(f"{'='*80}")
-    
-    if len(high_impact_coaches) > 0:
-        print(f"\nFound {len(high_impact_coaches)} team-years with significant positive coaching WAR:\n")
-        
-        # Display top WAR coaches
-        for idx, row in high_impact_coaches.head(20).iterrows():
-            coach_display = row['Primary_Coach'] if pd.notna(row['Primary_Coach']) else 'N/A'
-            print(f"{row['Team']} ({int(row['Year'])}) - Coach: {coach_display}")
-            print(f"  Actual Win%: {row['Actual_Win_Pct']:.3f}")
-            print(f"  Predicted replacement: {row['Predicted_Replacement']:.3f}")
-            print(f"  Coaching WAR: {row['Coaching_WAR']:+.3f} ({row['WAR_Percentile']:.1f} percentile)")
-            print(f"  Predicted impact: {row['Predicted_Impact']:+.3f}")
-            print()
-    
-    # Show top 10 positive WAR
-    print(f"\n{'='*80}")
-    print(f"TOP 10 POSITIVE COACHING WAR")
-    print(f"{'='*80}")
-    
-    top_10 = results.head(10)
-    print(f"\n{'Team':<6} {'Year':<6} {'Coach':<25} {'Actual':<8} {'Replacement':<12} {'WAR':<8} {'Pred Impact'}")
-    print("-" * 85)
-    for idx, row in top_10.iterrows():
-        if pd.isna(row['Primary_Coach']):
-            coach_name = 'N/A'
-        else:
-            coach_name = row['Primary_Coach'][:23] if len(row['Primary_Coach']) > 23 else row['Primary_Coach']
-        print(f"{row['Team']:<6} {int(row['Year']):<6} {coach_name:<25} {row['Actual_Win_Pct']:.3f}    "
-              f"{row['Predicted_Replacement']:.3f}        {row['Coaching_WAR']:+.3f}    {row['Predicted_Impact']:+.3f}")
-    
-    # Show bottom 10 (negative WAR)
-    print(f"\n{'='*80}")
-    print(f"TOP 10 NEGATIVE COACHING WAR")
-    print(f"{'='*80}")
-    
-    bottom_10 = results.tail(10).iloc[::-1]  # Reverse to show worst first
-    print(f"\n{'Team':<6} {'Year':<6} {'Coach':<25} {'Actual':<8} {'Replacement':<12} {'WAR':<8} {'Pred Impact'}")
-    print("-" * 85)
-    for idx, row in bottom_10.iterrows():
-        if pd.isna(row['Primary_Coach']):
-            coach_name = 'N/A'
-        else:
-            coach_name = row['Primary_Coach'][:23] if len(row['Primary_Coach']) > 23 else row['Primary_Coach']
-        print(f"{row['Team']:<6} {int(row['Year']):<6} {coach_name:<25} {row['Actual_Win_Pct']:.3f}    "
-              f"{row['Predicted_Replacement']:.3f}        {row['Coaching_WAR']:+.3f}    {row['Predicted_Impact']:+.3f}")
-    
-    return results, high_impact_coaches
-
-def analyze_coach_rankings(results):
-    """Analyze coaching impact by individual coaches across their careers."""
-    print(f"\n{'='*80}")
-    print("COACH CAREER IMPACT ANALYSIS (WAR: Actual Win% - Replacement Prediction)")
-    print(f"{'='*80}")
-    
-    # Group by coach and calculate statistics
-    coach_stats = results.groupby('Primary_Coach').agg({
-        'Coaching_WAR': ['mean', 'std', 'count', 'sum'],  # Primary WAR metric
-        'Predicted_Impact': ['mean', 'sum'],  # Secondary metric (predicted difference)
-        'Actual_Win_Pct': 'mean',
-        'Predicted_With_Coach': 'mean',
-        'Predicted_Replacement': 'mean'
-    }).round(4)
-    
-    # Flatten column names
-    coach_stats.columns = ['_'.join(col).strip() for col in coach_stats.columns.values]
-    coach_stats = coach_stats.rename(columns={
-        'Coaching_WAR_mean': 'Avg_WAR',
-        'Coaching_WAR_std': 'WAR_StdDev',
-        'Coaching_WAR_count': 'Seasons',
-        'Coaching_WAR_sum': 'Total_WAR',
-        'Predicted_Impact_mean': 'Avg_Pred_Impact',
-        'Predicted_Impact_sum': 'Total_Pred_Impact',
-        'Actual_Win_Pct_mean': 'Avg_Actual_Win',
-        'Predicted_With_Coach_mean': 'Avg_Pred_Coach',
-        'Predicted_Replacement_mean': 'Avg_Pred_Replace'
-    })
-    
-    # Filter for coaches with at least 3 seasons
-    coach_stats = coach_stats[coach_stats['Seasons'] >= 3]
-    
-    # Sort by average WAR (actual vs replacement)
-    coach_stats = coach_stats.sort_values('Avg_WAR', ascending=False)
-    
-    print(f"\nTop 15 Coaches by Average WAR (min 3 seasons):")
-    print(f"\n{'Coach':<30} {'Avg WAR':<12} {'Seasons':<10} {'Total WAR':<12} {'Avg Win%'}")
-    print("-" * 80)
-    
-    for coach, row in coach_stats.head(15).iterrows():
-        if pd.notna(coach) and coach != 'N/A':
-            coach_name = coach[:28] if len(coach) > 28 else coach
-            print(f"{coach_name:<30} {row['Avg_WAR']:+.4f}      {int(row['Seasons']):<10} "
-                  f"{row['Total_WAR']:+.4f}      {row['Avg_Actual_Win']:.3f}")
-    
-    print(f"\nBottom 15 Coaches by Average WAR (min 3 seasons):")
-    print(f"\n{'Coach':<30} {'Avg WAR':<12} {'Seasons':<10} {'Total WAR':<12} {'Avg Win%'}")
-    print("-" * 80)
-    
-    for coach, row in coach_stats.tail(15).iterrows():
-        if pd.notna(coach) and coach != 'N/A':
-            coach_name = coach[:28] if len(coach) > 28 else coach
-            print(f"{coach_name:<30} {row['Avg_WAR']:+.4f}      {int(row['Seasons']):<10} "
-                  f"{row['Total_WAR']:+.4f}      {row['Avg_Actual_Win']:.3f}")
-    
-    return coach_stats
-
-def plot_feature_importance_comparison(model_actual, X_actual, coach_features, top_n=20):
-    """Compare feature importance with focus on coaching features."""
-    print(f"\n{'='*80}")
-    print(f"FEATURE IMPORTANCE ANALYSIS")
-    print(f"{'='*80}")
-    
-    # Get feature importances
-    importance = model_actual.feature_importances_
-    features = X_actual.columns
-    
-    # Create dataframe
-    importance_df = pd.DataFrame({
-        'Feature': features,
-        'Importance': importance,
-        'Is_Coach_Feature': [f in coach_features for f in features]
-    }).sort_values('Importance', ascending=False)
-    
-    # Calculate coaching feature statistics
-    coach_importance = importance_df[importance_df['Is_Coach_Feature']]['Importance'].sum()
-    total_importance = importance_df['Importance'].sum()
-    coach_pct = (coach_importance / total_importance) * 100 if total_importance > 0 else 0
-    
-    print(f"\nCoaching Features Importance:")
-    print(f"  Total importance of coaching features: {coach_importance:.4f}")
-    print(f"  Percentage of total importance: {coach_pct:.2f}%")
-    print(f"  Number of coaching features: {sum(importance_df['Is_Coach_Feature'])}")
-    
-    # Display top features with coaching indicator
-    print(f"\nTop {top_n} Features by Importance:")
-    print(f"\n{'Rank':<6} {'Feature':<50} {'Importance':<12} {'Coach Feature'}")
-    print("-" * 80)
-    
-    for i, (idx, row) in enumerate(importance_df.head(top_n).iterrows(), 1):
-        coach_indicator = "Yes" if row['Is_Coach_Feature'] else ""
-        print(f"{i:<6} {row['Feature']:<50} {row['Importance']:.6f}    {coach_indicator}")
-    
-    # Show top coaching features specifically
-    top_coach_features = importance_df[importance_df['Is_Coach_Feature']].head(10)
-    if len(top_coach_features) > 0:
-        print(f"\n{'='*80}")
-        print("TOP COACHING FEATURES BY IMPORTANCE")
-        print(f"{'='*80}")
-        print(f"\n{'Rank':<6} {'Feature':<50} {'Importance'}")
-        print("-" * 70)
-        
-        for i, (idx, row) in enumerate(top_coach_features.iterrows(), 1):
-            print(f"{i:<6} {row['Feature']:<50} {row['Importance']:.6f}")
-    
-    return importance_df
-
-def save_results(results, high_impact_coaches, coach_stats, importance_df):
-    """Save analysis results to CSV files."""
-    print("\nSaving results...")
-    
-    # Save full results
-    results_file = 'data/final/coaching_impact_analysis.csv'
-    results.to_csv(results_file, index=False)
-    print(f"Full results saved to: {results_file}")
-    
-    # Save high impact coaches
-    if len(high_impact_coaches) > 0:
-        high_impact_file = 'data/final/high_impact_coaches.csv'
-        high_impact_coaches.to_csv(high_impact_file, index=False)
-        print(f"High impact coaches saved to: {high_impact_file}")
-    
-    # Save coach career statistics
-    coach_stats_file = 'data/final/coach_career_impact_stats.csv'
-    coach_stats.to_csv(coach_stats_file)
-    print(f"Coach career statistics saved to: {coach_stats_file}")
-    
-    # Save feature importance with coaching indicator
-    importance_file = 'data/final/feature_importance_coaching_analysis.csv'
-    importance_df.to_csv(importance_file, index=False)
-    print(f"Feature importance saved to: {importance_file}")
+    return results, None
 
 def main():
     """Main execution function."""
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description='XGBoost Coaching Impact Analysis')
+    parser = argparse.ArgumentParser(description='XGBoost Coaching Impact Analysis - Year-Specific')
     parser.add_argument('--with-av', action='store_true', 
                        help='Include AV (Approximate Value) features in analysis')
     parser.add_argument('--no-tuning', action='store_true',
@@ -674,7 +470,7 @@ def main():
     
     # Create log file with timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_filename = f'analysis/coaching_analysis_log_{timestamp}.txt'
+    log_filename = f'analysis/coaching_analysis_year_specific_log_{timestamp}.txt'
     
     # Set up output redirection to both console and file
     tee = TeeOutput(log_filename)
@@ -691,10 +487,10 @@ def main():
             dataset_type = "WITHOUT AV features"
         
         print("="*80)
-        print("XGBOOST COACHING IMPACT ANALYSIS")
+        print("XGBOOST COACHING IMPACT ANALYSIS - YEAR-SPECIFIC REPLACEMENT")
         print(f"Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"Using dataset {dataset_type}")
-        print("Comparing predictions with actual vs replacement-level coaching")
+        print("Comparing predictions with actual vs YEAR-SPECIFIC MEDIAN coaching")
         if not args.no_tuning:
             print(f"Hyperparameter tuning: ENABLED ({args.n_iter} iterations, {args.cv_folds} CV folds)")
         else:
@@ -708,11 +504,11 @@ def main():
         # Identify coaching features
         coach_features = identify_coach_features(X)
         
-        # Calculate replacement-level values
-        replacement_values = calculate_replacement_features(X, coach_features, team_year_info)
+        # Calculate year-specific replacement-level values
+        replacement_values_by_year = calculate_year_specific_replacement_features(X, coach_features, team_year_info)
         
-        # Create replacement dataset
-        X_replacement = create_replacement_dataset(X, coach_features, replacement_values)
+        # Create year-specific replacement dataset
+        X_replacement = create_year_specific_replacement_dataset(X, coach_features, replacement_values_by_year, team_year_info)
         
         # Train model with actual data
         print("\nTraining model with actual coaching data...")
@@ -720,44 +516,40 @@ def main():
         model_actual, y_pred_actual, train_metrics, test_metrics = train_and_predict(
             X, y, team_year_info, use_tuning=use_tuning, cv_folds=args.cv_folds, n_iter=args.n_iter)
         
-        # Generate predictions with replacement-level coaching
-        print("\nGenerating predictions with replacement-level coaching...")
+        # Generate predictions with year-specific replacement-level coaching
+        print("\nGenerating predictions with year-specific replacement-level coaching...")
         y_pred_replacement = model_actual.predict(X_replacement)
         
         # Analyze coaching impact
-        results, high_impact_coaches = analyze_coaching_impact(
+        results, _ = analyze_coaching_impact(
             y, y_pred_actual, y_pred_replacement, team_year_info
         )
         
-        # Analyze individual coach rankings
-        coach_stats = analyze_coach_rankings(results)
-        
-        # Analyze feature importance
-        importance_df = plot_feature_importance_comparison(model_actual, X, coach_features)
-        
-        # Save results
-        save_results(results, high_impact_coaches, coach_stats, importance_df)
-        
         print("\n" + "="*80)
-        print("ANALYSIS COMPLETE")
+        print("ANALYSIS COMPLETE - YEAR-SPECIFIC VERSION")
         print(f"Completed at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print("="*80)
-        print("\nKey findings have been saved to data/final/")
-        print("- coaching_impact_analysis.csv: Full analysis of coaching impact")
-        print("- high_impact_coaches.csv: Coaches with highest positive impact")
-        print("- coach_career_impact_stats.csv: Career statistics for each coach")
-        print("- feature_importance_coaching_analysis.csv: Feature importance with coaching indicators")
         
         # Summary statistics
         print(f"\nSummary:")
         print(f"- Dataset used: {dataset_type}")
+        print(f"- Replacement method: Year-specific medians")
         print(f"- Train R²: {train_metrics['r2']:.4f}, Test R²: {test_metrics['r2']:.4f}")
-        print(f"- Coaching features account for {len(coach_features)} of {len(X.columns)} total features")
-        print(f"- Average coaching WAR (Actual - Replacement): {results['Coaching_WAR'].mean():.4f}")
+        print(f"- Coaching features: {len(coach_features)} of {len(X.columns)} total features")
+        print(f"- Average coaching WAR (vs year-specific): {results['Coaching_WAR'].mean():.4f}")
         print(f"- Maximum positive coaching WAR: {results['Coaching_WAR'].max():.4f}")
         print(f"- Maximum negative coaching WAR: {results['Coaching_WAR'].min():.4f}")
         print(f"- Average predicted impact: {results['Predicted_Impact'].mean():.4f}")
         print(f"- Log saved to: {log_filename}")
+        
+        # Calculate final R2 on full dataset
+        final_r2_actual = r2_score(y, y_pred_actual)
+        final_r2_replacement = r2_score(y, y_pred_replacement)
+        
+        print(f"\nFinal R² Scores on Full Dataset:")
+        print(f"- With actual coaching: {final_r2_actual:.4f}")
+        print(f"- With year-specific replacement: {final_r2_replacement:.4f}")
+        print(f"- Difference: {final_r2_actual - final_r2_replacement:.4f}")
         
     finally:
         # Restore original stdout and close log file

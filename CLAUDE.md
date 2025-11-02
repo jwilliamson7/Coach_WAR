@@ -94,7 +94,7 @@ Coach_WAR/
 - **Draft Data**: Complete draft pick data (1969-2025) with team franchise mappings and Round 7+ consolidation
 
 ### Analysis Features
-The project tracks 390 comprehensive features across multiple categories:
+The project tracks 390 comprehensive features across multiple categories (389 predictors + Win_Pct target):
 
 1. **Salary Cap Management (54 features)**:
    - Total salary cap allocations and percentages
@@ -274,7 +274,7 @@ The project handles historical team relocations and name changes through compreh
 - **Injury Data**: 2010-2024 with weekly status tracking, reverse year processing for efficient scraping
 - **Salary Data**: 2011-2024 with positional breakdowns (converted to percentages of max cap)
 - **Coaching Data**: 1970-2024 with corrected experience calculations (excludes suspended seasons), normalized features with "_Norm" suffix
-- **Total Features**: 361 comprehensive coaching performance metrics
+- **Total Features**: 390 columns (389 predictors + Win_Pct target)
 - **Team Coverage**: All 32 current NFL teams with consistent PFR abbreviations
 - **Season Length**: 16 games (≤2022), 17 games (≥2023)
 - **Data Integrity**: Fixed historical team mappings (STL→RAM, SD→SDG) and coaching experience calculations for complete coverage
@@ -361,6 +361,10 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
 
 **Advanced Analysis Tools**:
 1. **Coaching Impact Analysis**: `python analysis/xgboost_coaching_impact_analysis.py`
+   - Default: Excludes AV features (use `--with-av` flag to include them)
+   - Calculates coaching WAR as: Actual Win% - Replacement Level Prediction
+   - Compares XGBoost predictions using actual vs replacement-level coach features
+   - Outputs both predicted impact and actual WAR metrics to CSV files
 2. **Feature Interaction Analysis**: `python analysis/xgboost_interaction_matrix.py feature1 feature2`
 3. **Batch Interaction Analysis**: `python analysis/run_interaction_batch.py`
 
@@ -381,7 +385,7 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
 #### Master Datasets
 - **`combined_final_dataset.csv`** - **Complete comprehensive dataset combining all metrics**
   - **1,699 rows** (32 teams × 55 years: 1970-2024)
-  - **390 columns** of coaching performance metrics
+  - **390 columns** (389 predictors + Win_Pct target)
   - **Full outer join coverage** across all team-year combinations
   - **Coaching data coverage**: 1,625 rows (95.6% of team-years)
   - **Normalized coaching features** with "_Norm" suffix for clarity
@@ -401,8 +405,18 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
 - League data files with normalized team and opponent statistics (1920-2024)
 
 #### Analysis Outputs
-- `analysis/interaction_matrices/` - Feature interaction analysis results
-  - `csv/` - Interaction matrices in CSV format for 13 feature pairs
-  - `png/` - Dual heatmap visualizations (predictions + sample sizes)
+- **Coaching Impact Analysis Results**:
+  - `coaching_impact_analysis.csv` - Full analysis comparing actual vs replacement-level coaching
+    - Contains both Coaching_Impact (predicted difference) and Actual_vs_Replacement (WAR)
+  - `high_impact_coaches.csv` - Coaches with highest positive impact (top 5% or impact > 0.05)
+  - `coach_career_impact_stats.csv` - Career statistics for each coach
+    - Includes Avg_WAR, Total_WAR (based on actual results)
+    - Also includes Avg_Pred_Impact, Total_Pred_Impact for comparison
+  - `feature_importance_coaching_analysis.csv` - Feature importance with coaching indicators
+
+- **Feature Interaction Analysis**:
+  - `analysis/interaction_matrices/` - Feature interaction analysis results
+    - `csv/` - Interaction matrices in CSV format for 13 feature pairs
+    - `png/` - Dual heatmap visualizations (predictions + sample sizes)
 
 This structure supports both research and production use cases for comprehensive coaching performance analysis with multiple data dimensions including roster management, injury impact, financial efficiency, and draft strategy. The project now provides both raw comprehensive data (`combined_final_dataset.csv`) and machine learning-ready imputed data (`imputed_final_data.csv`) for different analytical approaches.
