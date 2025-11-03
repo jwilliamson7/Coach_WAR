@@ -1,0 +1,427 @@
+DATA PROCESSING SCRIPTS GUIDE
+======================================================================================
+
+This guide provides a quick overview of each data processing script in this directory.
+These scripts transform raw scraped data into clean, analysis-ready datasets.
+
+======================================================================================
+SALARY CAP & FINANCIAL DATA PROCESSING
+======================================================================================
+
+process_spotrac_data.py
+-----------------------
+Purpose: Processes raw salary cap data with correct PFR team mappings
+What it does:
+  - Corrects team abbreviations to match PFR standards
+    (BAL→rav, HOU→htx, LAC→sdg, TEN→oti)
+  - Handles duplicate entries and data validation
+  - Converts salary cap to percentages of maximum cap
+  - Standardizes data format for analysis
+Input: data/raw/Spotrac/total_view/
+Output: data/processed/Spotrac/salary_cap_totals_processed.csv
+Coverage: 2011-2024 (14 seasons)
+
+calculate_positional_percentages.py
+-----------------------------------
+Purpose: Calculates positional spending as percentage of total salary cap
+What it does:
+  - Processes position spending data (QB, RB, WR, TE, OL, DL, LB, SEC, K, P, LS, Off, Def, SPT)
+  - Converts raw spending to percentages
+  - Merges with total cap data
+  - Excludes Total_Pct from output (redundant)
+Input: data/raw/Spotrac/positional_spending/
+Output: data/processed/Spotrac/positional_percentages_by_year/
+Coverage: 2011-2024 (14 seasons, 54 features)
+
+combine_positional_percentages.py
+---------------------------------
+Purpose: Combines yearly positional percentage files into single dataset
+What it does:
+  - Aggregates all yearly position spending files
+  - Filters unwanted metadata columns
+  - Excludes salary cap percentage columns (handled separately)
+  - Creates consolidated position spending dataset
+Input: data/processed/Spotrac/positional_percentages_by_year/
+Output: data/final/positional_percentages_combined.csv
+Coverage: 448 rows (26.4% of team-years)
+
+combine_salary_cap_totals.py
+----------------------------
+Purpose: Combines salary cap total files into single dataset
+What it does:
+  - Aggregates all yearly salary cap totals
+  - Includes cap percentages and utilization metrics
+  - Removes duplicates and validates data
+Input: data/processed/Spotrac/
+Output: data/final/salary_cap_totals_combined.csv
+Coverage: 448 rows (26.4% of team-years)
+
+======================================================================================
+ROSTER & PLAYER MANAGEMENT METRICS
+======================================================================================
+
+calculate_roster_turnover_crosstab.py
+-------------------------------------
+Purpose: Analyzes roster turnover in crosstab format (team-year rows, position columns)
+What it does:
+  - Compares consecutive year rosters by position
+  - Calculates retention rate, departure rate, new player rate
+  - Groups positions (QB, RB, WR, TE, OL, DL, LB, CB, S, K/P, etc.)
+  - Comprehensive turnover metrics for full rosters
+Input: data/raw/Rosters/
+Output: data/final/roster_turnover_crosstab.csv
+Usage: python calculate_roster_turnover_crosstab.py --all-teams --year all --minyear 2010
+Coverage: 1,648 rows (97.0% of team-years), 126 features
+
+calculate_starters_turnover_crosstab.py
+---------------------------------------
+Purpose: Analyzes starters turnover in crosstab format with combined position groups
+What it does:
+  - Focuses on starting lineup changes between seasons
+  - Combines O-line positions (C, G, T → OL)
+  - Streamlined percentage-only metrics
+  - Position groups: QB, RB, WR, TE, OL, DL, LB, CB, S
+Input: data/raw/Starters/
+Output: data/final/starters_turnover_crosstab.csv
+Usage: python calculate_starters_turnover_crosstab.py --all-teams --year all --minyear 2010
+Coverage: 1,604 rows (94.4% of team-years)
+
+calculate_starters_games_missed_crosstab.py
+-------------------------------------------
+Purpose: Calculates percentage of games missed by starters using Games Started field
+What it does:
+  - Uses get_games_in_season() function (16 games ≤2022, 17 games ≥2023)
+  - Aggregates by position with avg/max/min metrics
+  - Tracks player counts per position
+  - Identifies injury/availability impact by position
+Input: data/raw/Starters/
+Output: data/final/starters_games_missed_crosstab.csv
+Usage: python calculate_starters_games_missed_crosstab.py --all-teams --year all
+Coverage: 1,637 rows (96.4% of team-years)
+
+calculate_age_experience_metrics_crosstab.py
+--------------------------------------------
+Purpose: Calculates age and experience metrics by position
+What it does:
+  - Computes average age by position group
+  - Calculates average years of experience
+  - Tracks player count and roster composition
+  - Identifies team youth vs veteran balance
+Input: data/raw/Rosters/
+Output: data/final/age_experience_metrics_crosstab.csv
+Coverage: 1,683 rows (99.1% of team-years), 66 features
+
+calculate_av_metrics_crosstab.py
+--------------------------------
+Purpose: Calculates Approximate Value (AV) metrics by position
+What it does:
+  - Computes AV statistics for player contributions
+  - Aggregates by position group
+  - Tracks performance consistency and depth
+  - Measures overall roster quality
+Input: data/raw/Rosters/
+Output: data/final/av_metrics_crosstab.csv
+Coverage: 1,683 rows (99.1% of team-years)
+Note: AV features excluded by default in main analysis (use --with-av flag)
+
+combine_roster_turnover.py
+--------------------------
+Purpose: Legacy script - combines individual team turnover files (detailed format)
+What it does:
+  - Aggregates detailed turnover data from individual team files
+  - Data cleaning and duplicate removal
+  - Metadata tracking
+Input: data/processed/RosterTurnover/detailed/
+Output: data/processed/RosterTurnover/combined/
+Note: Superseded by crosstab scripts for most analyses
+
+======================================================================================
+INJURY DATA PROCESSING
+======================================================================================
+
+process_injury_data.py
+----------------------
+Purpose: Combines injury data files into single dataset
+What it does:
+  - Aggregates weekly injury status data across teams/seasons
+  - Processes games missed by injury type
+  - Creates team/year injury impact metrics
+Input: data/raw/Injuries/
+Output: data/processed/Injury/
+Coverage: 2010-2024 (15 seasons)
+
+combine_injury_data.py
+----------------------
+Purpose: Alternative injury data combination script
+What it does:
+  - Similar to process_injury_data.py with different aggregation approach
+  - Combines injury files with metadata preservation
+Input: data/raw/Injuries/
+Output: data/processed/Injury/
+Note: Check which version is currently used in pipeline
+
+======================================================================================
+DRAFT DATA PROCESSING
+======================================================================================
+
+finalize_draft_data.py
+----------------------
+Purpose: Processes draft pick data with rolling averages and team mappings
+What it does:
+  - Handles team franchise mappings for historical continuity
+  - Consolidates Round 7+ picks (rounds 7-32 combined pre-1994)
+  - Calculates rolling averages (1-4 years back)
+  - Creates current year + historical draft strategy features
+Input: data/raw/Draft/ or data/processed/Draft/
+Output: data/final/draft_picks_final.csv
+Usage: python finalize_draft_data.py --start-year 1970
+Coverage: 1,667 rows (98.1% of team-years), 29 features
+
+transform_draft_data.py
+-----------------------
+Purpose: Initial draft data transformation (earlier pipeline step)
+What it does:
+  - Cleans and standardizes raw draft data
+  - Handles round numbering and team abbreviations
+  - Prepares data for rolling average calculations
+Input: data/raw/Draft/
+Output: data/processed/Draft/
+Note: Run before finalize_draft_data.py
+
+======================================================================================
+TEAM PERFORMANCE DATA PROCESSING
+======================================================================================
+
+transform_team_data.py
+----------------------
+Purpose: Transforms team data into league-wide yearly datasets
+What it does:
+  - Processes raw team performance statistics
+  - Data normalization and type conversion
+  - Z-score standardization for fair comparison across eras
+  - Creates both raw and normalized versions
+Input: data/raw/Teams/
+Output: data/processed/League Data/[year]/
+Coverage: 1920-2024 (105 seasons)
+Note: Generates 4 files per year:
+  - league_team_data.csv (raw team stats)
+  - league_team_data_normalized.csv (z-scored)
+  - league_opponent_data.csv (raw opponent stats)
+  - league_opponent_data_normalized.csv (z-scored)
+
+extract_sos_winning_percentage.py
+---------------------------------
+Purpose: Extracts Strength of Schedule and calculates winning percentage
+What it does:
+  - Calculates winning percentage including ties
+  - Extracts SoS from all historical team data
+  - Creates team-year level performance metrics
+  - Outputs only essential columns (Team, Year, SoS, Win_Pct, Extraction_Date)
+Input: data/processed/League Data/
+Output: data/final/sos_winning_percentage.csv
+Usage: python extract_sos_winning_percentage.py --all-teams
+Coverage: 1,683 rows (99.1% of team-years)
+
+extract_penalty_interception_metrics.py
+---------------------------------------
+Purpose: Extracts penalty rates and interception metrics from team data
+What it does:
+  - Calculates penalty rates and counts
+  - Extracts interception statistics (offensive and defensive)
+  - Creates performance context metrics
+Input: data/processed/League Data/
+Output: data/final/penalty_interception_metrics.csv
+Coverage: 1,683 rows (99.1% of team-years), 8 features
+
+transform_positional_spending.py
+--------------------------------
+Purpose: Alternative positional spending transformation script
+What it does:
+  - Processes Spotrac positional spending data
+  - May have different aggregation approach than calculate_positional_percentages.py
+Input: data/raw/Spotrac/positional_spending/
+Output: data/processed/Spotrac/
+Note: Check if this is actively used vs calculate_positional_percentages.py
+
+======================================================================================
+COACHING DATA PROCESSING
+======================================================================================
+
+create_yearly_coach_performance_data.py
+---------------------------------------
+Purpose: Creates yearly coaching performance dataset from raw coach data
+What it does:
+  - Processes raw coaching history, ranks, and results
+  - Calculates coaching experience metrics
+  - Excludes suspended seasons from experience calculations
+  - Normalizes coaching performance features (adds "_Norm" suffix)
+  - Creates head coach, OC, and DC metrics
+Input: data/raw/Coaches/
+Output: data/processed/Coaching/
+Coverage: 1970-2024 (55 seasons, 139 features)
+Note: Properly handles coaching suspensions and returns
+
+extract_head_coaches.py
+-----------------------
+Purpose: Extracts and processes head coach specific data
+What it does:
+  - Filters for head coach positions only
+  - Creates head coach experience and tenure variables
+  - Handles coaching changes mid-season
+Input: data/processed/Coaching/
+Output: Varies (may feed into other scripts)
+
+======================================================================================
+FINAL DATASET GENERATION
+======================================================================================
+
+combine_final_datasets.py
+-------------------------
+Purpose: Combines ALL processed datasets into single comprehensive master table
+What it does:
+  - Full outer join for most datasets (captures all team-years 1970-2024)
+  - Left join for coaching data (only existing team-years)
+  - Column conflict resolution with appropriate suffixes
+  - Adds "_Norm" suffix to normalized coaching features
+  - Ensures Win_Pct remains as last column (target variable)
+  - Generates metadata and coverage statistics
+Input:
+  - data/final/*.csv (all individual processed datasets)
+  - data/processed/Coaching/*.csv (coaching data)
+Output:
+  - data/final/combined_final_dataset.csv (1,699 rows × 390 columns)
+  - data/final/combined_final_dataset_metadata.csv
+Coverage: 1970-2024, all 32 teams, 389 predictors + Win_Pct target
+Note: This is the PRIMARY dataset for all coaching WAR analysis
+
+svd_imputation.py
+-----------------
+Purpose: Applies SVD-based matrix completion to handle missing values
+What it does:
+  - Uses Singular Value Decomposition for sophisticated imputation
+  - Preserves normalized features, standardizes non-normalized features
+  - Iterative convergence for optimal completion
+  - Creates complete dataset ready for machine learning
+  - Configurable SVD components, iterations, and tolerance
+Input: data/final/combined_final_dataset.csv
+Output:
+  - data/final/imputed_final_data.csv (1,683 rows × 390 columns, 0 missing)
+  - data/final/imputed_final_data.txt (processing summary)
+Usage: python svd_imputation.py
+Note: Removes 16 rows with missing Win_Pct (cannot impute target variable)
+
+remove_av_features.py
+---------------------
+Purpose: Creates version of dataset without AV (Approximate Value) features
+What it does:
+  - Filters out all AV-related columns
+  - Creates alternative dataset for analysis without AV bias
+  - Used as default in main coaching impact analysis
+Input: data/final/imputed_final_data.csv
+Output: data/final/imputed_final_data_no_av.csv
+Note: AV excluded by default to avoid circular reasoning (player talent → wins)
+
+======================================================================================
+UTILITY & DOCUMENTATION SCRIPTS
+======================================================================================
+
+document_features_corrected.py
+------------------------------
+Purpose: Generates documentation of all features in final dataset
+What it does:
+  - Lists all 390 features with descriptions
+  - Documents feature categories and sources
+  - Creates feature dictionary for reference
+Output: Feature documentation file
+Note: Useful for understanding dataset structure
+
+create_data.py
+--------------
+Purpose: Legacy data creation script (may be outdated)
+What it does:
+  - Early version of data processing pipeline
+  - May be superseded by more specific processing scripts
+Note: Check if still actively used or replaced by newer scripts
+
+run_all_processing.py
+---------------------
+Purpose: Master script to run entire data processing pipeline
+What it does:
+  - Executes all processing scripts in correct order
+  - Orchestrates full pipeline from raw data to final datasets
+  - Useful for complete data refresh
+Note: Run this to regenerate all processed data from scratch
+
+======================================================================================
+RECOMMENDED DATA PROCESSING WORKFLOW
+======================================================================================
+
+1. TEAM & PERFORMANCE DATA:
+   transform_team_data.py                    # Process team statistics
+   extract_sos_winning_percentage.py         # Extract SoS and Win_Pct
+   extract_penalty_interception_metrics.py   # Extract penalty/INT metrics
+
+2. SALARY CAP & FINANCIAL:
+   process_spotrac_data.py                   # Process salary cap totals
+   calculate_positional_percentages.py       # Calculate position spending %
+   combine_positional_percentages.py         # Combine yearly files
+   combine_salary_cap_totals.py              # Combine cap totals
+
+3. ROSTER & PLAYER METRICS:
+   calculate_roster_turnover_crosstab.py     # Full roster turnover
+   calculate_starters_turnover_crosstab.py   # Starter turnover
+   calculate_starters_games_missed_crosstab.py  # Games missed analysis
+   calculate_age_experience_metrics_crosstab.py # Age/experience metrics
+   calculate_av_metrics_crosstab.py          # Approximate Value metrics
+
+4. DRAFT DATA:
+   transform_draft_data.py                   # Clean draft data
+   finalize_draft_data.py                    # Add rolling averages
+
+5. INJURY DATA:
+   process_injury_data.py                    # Combine injury data
+
+6. COACHING DATA:
+   create_yearly_coach_performance_data.py   # Process coaching metrics
+
+7. FINAL DATASET GENERATION:
+   combine_final_datasets.py                 # Create master dataset
+   svd_imputation.py                         # Impute missing values
+   remove_av_features.py                     # Create no-AV version
+
+8. ALTERNATIVELY:
+   run_all_processing.py                     # Run entire pipeline at once
+
+======================================================================================
+OUTPUT LOCATIONS
+======================================================================================
+
+Raw data:           data/raw/[source]/
+Processed data:     data/processed/[category]/
+Final datasets:     data/final/
+  - Individual component files (roster turnover, salary cap, etc.)
+  - combined_final_dataset.csv (MASTER DATASET)
+  - imputed_final_data.csv (COMPLETE, READY FOR ML)
+  - imputed_final_data_no_av.csv (DEFAULT FOR ANALYSIS)
+
+======================================================================================
+DATA COVERAGE SUMMARY
+======================================================================================
+
+Dataset                              Rows    Coverage    Years       Features
+--------------------------------------------------------------------------------
+Combined Final Dataset              1,699    100.0%     1970-2024   390 cols
+Imputed Final Data                  1,683     99.1%     1970-2024   390 cols
+Coaching Data                       1,625     95.6%     1970-2024   139 features
+Roster Turnover                     1,648     97.0%     2011-2024   126 features
+Starters Turnover                   1,604     94.4%     2011-2024   ~50 features
+Games Missed                        1,637     96.4%     2010-2024   ~40 features
+Age/Experience Metrics              1,683     99.1%     2010-2024   66 features
+AV Metrics                          1,683     99.1%     2010-2024   ~30 features
+Salary Cap Totals                     448     26.4%     2011-2024   ~10 features
+Positional Spending                   448     26.4%     2011-2024   54 features
+Draft Picks                         1,667     98.1%     1970-2024   29 features
+SoS & Winning Percentage            1,683     99.1%     1970-2024   2 features
+Penalty/Interception Metrics        1,683     99.1%     1970-2024   8 features
+
+======================================================================================

@@ -245,7 +245,7 @@ def main():
     show_summary_stats(processed_stats)
     
     # Save the plot
-    output_file = 'analysis/coach_war_vs_tenure.html'
+    output_file = 'analysis/outputs/html/coach_war_vs_tenure.html'
     fig.write_html(output_file)
     
     print(f"\n{'='*80}")

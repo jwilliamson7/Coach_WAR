@@ -246,7 +246,7 @@ def create_background_war_analysis():
     plt.tight_layout()
     
     # Save the plot
-    output_file = 'analysis/coach_background_war_analysis.png'
+    output_file = 'analysis/outputs/png/coach_background_war_analysis.png'
     plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white', edgecolor='none')
     print(f"\nPlot saved as: {output_file}")
     
@@ -276,9 +276,9 @@ def create_background_war_analysis():
                 print(f"    {coach}: {war:+.1f} games")
     
     # Save detailed data
-    coach_backgrounds.to_csv('analysis/coach_backgrounds.csv', index=False)
-    avg_trajectories.to_csv('analysis/coach_background_trajectories.csv', index=False)
-    perf_df.to_csv('analysis/coach_background_performance.csv', index=False)
+    coach_backgrounds.to_csv('analysis/outputs/csv/coach_backgrounds.csv', index=False)
+    avg_trajectories.to_csv('analysis/outputs/csv/coach_background_trajectories.csv', index=False)
+    perf_df.to_csv('analysis/outputs/csv/coach_background_performance.csv', index=False)
     
     print(f"\nDetailed data saved:")
     print("  - coach_backgrounds.csv: Coach background classifications")

@@ -222,7 +222,7 @@ def create_2024_coaches_plot():
         print(f"{int(row['Coach_Index']):2d}. {row['Primary_Coach']:<25} ({war_indicator}{row['Avg_WAR_Games']:.1f} games/season)")
     
     # Save the plot
-    output_file = 'analysis/coach_2024_matrix.html'
+    output_file = 'analysis/outputs/html/coach_2024_matrix.html'
     fig.write_html(output_file)
     print(f"\nInteractive plot saved to: {output_file}")
     print("Open this file in your web browser to interact with the plot.")

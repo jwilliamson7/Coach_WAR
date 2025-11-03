@@ -272,9 +272,9 @@ def main():
     # Save the plot
     if args.coaches:
         coach_suffix = "_".join([c.replace(" ", "_") for c in args.coaches])
-        output_file = f'analysis/coach_war_trajectory_{coach_suffix}.html'
+        output_file = f'analysis/outputs/html/coach_war_trajectory_{coach_suffix}.html'
     else:
-        output_file = 'analysis/coach_war_trajectory.html'
+        output_file = 'analysis/outputs/html/coach_war_trajectory.html'
     
     fig.write_html(output_file)
     

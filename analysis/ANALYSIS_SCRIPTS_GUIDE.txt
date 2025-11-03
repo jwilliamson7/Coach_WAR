@@ -1,0 +1,253 @@
+ANALYSIS SCRIPTS GUIDE
+======================================================================================
+
+This guide provides a quick overview of each analysis script in this directory.
+
+======================================================================================
+MAIN ANALYSIS SCRIPTS
+======================================================================================
+
+xgboost_coaching_impact_analysis.py
+-----------------------------------
+Purpose: Primary coaching WAR analysis using XGBoost with career-average replacement baseline
+What it does:
+  - Trains XGBoost model to predict winning percentage from non-coaching features
+  - Compares actual results to predicted replacement-level performance
+  - Calculates coaching WAR (Wins Above Replacement) for each coach-season
+  - Includes hyperparameter tuning with RandomizedSearchCV (30 iterations, 3 CV folds)
+  - Generates feature importance rankings
+  - Outputs coach career statistics and high-impact coaches
+Usage: python xgboost_coaching_impact_analysis.py [--with-av] [--cv-folds N] [--n-iter N]
+Outputs:
+  - data/final/coaching_impact_analysis.csv
+  - data/final/high_impact_coaches.csv
+  - data/final/coach_career_impact_stats.csv
+  - data/final/feature_importance_coaching_analysis.csv
+  - analysis/outputs/logs/coaching_analysis_log_[timestamp].txt
+
+xgboost_coaching_impact_analysis_year_specific.py
+-------------------------------------------------
+Purpose: Alternative coaching WAR analysis using year-specific median replacement baseline
+What it does:
+  - Same methodology as above but uses era-adjusted replacement level
+  - Compares career-average vs year-specific replacement approaches
+  - Found negligible differences (0.0089 R² difference) - career-average preferred
+Usage: python xgboost_coaching_impact_analysis_year_specific.py [--with-av] [--cv-folds N] [--n-iter N]
+Outputs: Same structure as main analysis script
+Note: Created for methodological comparison; career-average approach is recommended
+
+======================================================================================
+COACH BACKGROUND ANALYSIS
+======================================================================================
+
+coach_background_from_history.py
+--------------------------------
+Purpose: Analyzes coaching performance by background (Offensive/Defensive/Other)
+What it does:
+  - Classifies coaches based on actual Pro Football Reference coaching history
+  - Analyzes first 15 seasons to avoid late-career bias
+  - Performs statistical tests (Welch's t-test, Mann-Whitney U, Cohen's d)
+  - Generates cumulative WAR trajectory plots by background
+  - Finds marginally significant defensive advantage (p=0.078 Mann-Whitney)
+Usage: python coach_background_from_history.py
+Outputs:
+  - analysis/outputs/csv/coach_backgrounds_from_history.csv
+  - analysis/outputs/csv/coach_background_trajectories_from_history_15seasons.csv
+  - analysis/outputs/csv/coach_matched_war_background_data.csv
+  - analysis/outputs/png/coach_background_from_history_15seasons.png
+
+coach_background_by_decade.py
+-----------------------------
+Purpose: Decade-by-decade analysis of offensive vs defensive coach performance
+What it does:
+  - Analyzes coaching performance trends from 1970s to 2020s
+  - Performs statistical tests for each decade
+  - Calculates linear trends over time
+  - Shows shift from defensive dominance (1970s: -0.927 games, p=0.0003)
+    to offensive advantage (2020s: +0.416 games, p=0.116)
+  - Overall trend: +0.182 games per decade favoring offensive coaches (p=0.085)
+Usage: python coach_background_by_decade.py
+Outputs:
+  - analysis/outputs/csv/coach_background_by_decade_summary.csv
+  - analysis/outputs/csv/coach_background_war_by_decade.csv
+  - analysis/outputs/csv/coach_background_counts_by_decade.csv
+  - analysis/outputs/csv/coach_background_hiring_trends_by_decade.csv
+  - analysis/outputs/csv/coach_background_decade_trend_analysis.csv
+
+coach_background_war_analysis.py
+--------------------------------
+Purpose: Earlier version of coach background analysis (pre-history-based classification)
+What it does:
+  - Similar to coach_background_from_history.py but with different classification method
+  - Generates trajectory plots and statistical comparisons
+Usage: python coach_background_war_analysis.py
+Outputs:
+  - analysis/outputs/csv/coach_backgrounds.csv
+  - analysis/outputs/csv/coach_background_trajectories.csv
+  - analysis/outputs/csv/coach_background_performance.csv
+  - analysis/outputs/png/coach_background_war_analysis.png
+Note: Superseded by coach_background_from_history.py for most analyses
+
+======================================================================================
+VISUALIZATION SCRIPTS
+======================================================================================
+
+coach_war_trajectory.py
+-----------------------
+Purpose: Creates individual coach WAR trajectory visualizations
+What it does:
+  - Generates interactive HTML plots of cumulative WAR over careers
+  - Compares coaches to replacement baseline and median performance
+  - Supports multiple coach comparisons in single visualization
+Usage: python coach_war_trajectory.py --coaches "Coach Name 1" "Coach Name 2" ...
+Outputs:
+  - analysis/outputs/html/coach_war_trajectory_[CoachNames].html
+
+coach_impact_scatter.py
+-----------------------
+Purpose: Creates 2x2 matrix scatter plot of coaching performance
+What it does:
+  - Plots coaches by career impact and consistency
+  - Interactive HTML visualization with hover details
+Usage: python coach_impact_scatter.py
+Outputs:
+  - analysis/outputs/html/coach_war_matrix.html
+
+coach_war_vs_tenure.py
+----------------------
+Purpose: Analyzes relationship between coaching tenure and WAR
+What it does:
+  - Creates scatter plot of WAR vs tenure length
+  - Identifies patterns in long vs short coaching careers
+  - Supports highlighting specific coaches
+Usage: python coach_war_vs_tenure.py [--highlight "Coach Name"]
+Outputs:
+  - analysis/outputs/html/coach_war_vs_tenure.html
+  - data/final/coach_war_tenure_stats.csv
+
+======================================================================================
+2024 SEASON ANALYSIS SCRIPTS
+======================================================================================
+
+coach_2024_scatter.py
+---------------------
+Purpose: Interactive 2024 season coaching performance matrix (HTML)
+What it does:
+  - Creates interactive scatter plot for current season coaches
+  - Compares 2024 performance to career averages
+Usage: python coach_2024_scatter.py
+Outputs:
+  - analysis/outputs/html/coach_2024_matrix.html
+
+coach_2024_scatter_png.py
+-------------------------
+Purpose: Static 2024 season coaching performance matrix (PNG)
+What it does:
+  - Same as above but generates high-resolution static image
+  - Better for presentations and documents
+Usage: python coach_2024_scatter_png.py
+Outputs:
+  - analysis/outputs/png/coach_2024_matrix.png
+
+coach_2024_single_year_bar.py
+-----------------------------
+Purpose: Bar chart of 2024 season WAR performance
+What it does:
+  - Creates horizontal bar chart of all current coaches
+  - Orders coaches from worst to best performance
+  - Shows single-season WAR for 2024
+Usage: python coach_2024_single_year_bar.py
+Outputs:
+  - analysis/outputs/png/coach_2024_single_year_bar.png
+
+coach_2024_trajectories_png.py
+------------------------------
+Purpose: Career trajectory plots for 2024 season coaches
+What it does:
+  - Shows cumulative WAR trajectories for all current head coaches
+  - Compares each coach's career path
+Usage: python coach_2024_trajectories_png.py
+Outputs:
+  - analysis/outputs/png/coach_2024_trajectories.png
+
+======================================================================================
+FEATURE INTERACTION ANALYSIS
+======================================================================================
+
+xgboost_interaction_matrix.py
+------------------------------
+Purpose: Analyzes feature interactions in coaching performance model
+What it does:
+  - Creates 2D interaction matrices for feature pairs
+  - Generates dual heatmaps (predictions + sample sizes)
+  - Helps identify non-linear feature relationships
+Usage: python xgboost_interaction_matrix.py feature1 feature2
+Outputs:
+  - analysis/interaction_matrices/csv/interaction_matrix_[features].csv
+  - analysis/interaction_matrices/csv/interaction_counts_[features].csv
+  - analysis/interaction_matrices/png/interaction_[features].png
+
+run_interaction_batch.py
+------------------------
+Purpose: Batch processing for multiple feature interaction analyses
+What it does:
+  - Runs xgboost_interaction_matrix.py for predefined feature pairs
+  - Automates generation of multiple interaction matrices
+Usage: python run_interaction_batch.py
+Outputs: Multiple interaction matrices in analysis/interaction_matrices/
+
+summarize_interactions.py
+-------------------------
+Purpose: Summarizes results from multiple interaction analyses
+What it does:
+  - Aggregates interaction matrix results
+  - Creates summary statistics across feature pairs
+Usage: python summarize_interactions.py
+Note: Used after running batch interaction analysis
+
+======================================================================================
+EXPERIMENTAL/UTILITY SCRIPTS
+======================================================================================
+
+xgboost_win_pct_analysis.py
+---------------------------
+Purpose: Direct win percentage prediction without WAR calculation
+What it does:
+  - Baseline XGBoost model for winning percentage
+  - Used for model development and validation
+Usage: python xgboost_win_pct_analysis.py
+Note: Experimental - main analysis uses coaching impact approach
+
+======================================================================================
+RECOMMENDED WORKFLOW
+======================================================================================
+
+1. Primary Analysis:
+   Run xgboost_coaching_impact_analysis.py to generate coaching WAR metrics
+
+2. Background Analysis:
+   Run coach_background_from_history.py and coach_background_by_decade.py
+   to analyze offensive vs defensive coordinator performance
+
+3. Visualizations:
+   Use coach_war_trajectory.py to create individual coach comparisons
+   Use coach_impact_scatter.py for overall performance matrix
+
+4. Current Season:
+   Run 2024 analysis scripts to evaluate current coaches
+
+5. Deep Dive:
+   Use interaction analysis scripts to explore feature relationships
+
+======================================================================================
+OUTPUT LOCATIONS
+======================================================================================
+
+CSV outputs:     analysis/outputs/csv/
+PNG outputs:     analysis/outputs/png/
+HTML outputs:    analysis/outputs/html/
+Log files:       analysis/outputs/logs/
+Interactions:    analysis/interaction_matrices/csv/ and .../png/
+Data outputs:    data/final/ (main analysis results)
+
+======================================================================================

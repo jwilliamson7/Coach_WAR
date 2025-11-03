@@ -183,7 +183,7 @@ def create_2024_trajectories_plot():
     plt.subplots_adjust(bottom=0.28)
     
     # Save the plot
-    output_file = 'analysis/coach_2024_trajectories.png'
+    output_file = 'analysis/outputs/png/coach_2024_trajectories.png'
     plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white', edgecolor='none')
     print(f"\nPlot saved as: {output_file}")
     
