@@ -14,7 +14,7 @@ def analyze_coach_background_by_decade():
     # Load the matched data from the previous analysis
     print("Loading coach background and WAR data...")
     try:
-        matched_data = pd.read_csv('analysis/coach_matched_war_background_data.csv')
+        matched_data = pd.read_csv('analysis/outputs/csv/coach_matched_war_background_data.csv')
         # Remove duplicates
         matched_data = matched_data.drop_duplicates(subset=['Team', 'Year', 'Primary_Coach'])
         # Filter out "Both" category for cleaner analysis
@@ -198,32 +198,40 @@ def analyze_coach_background_by_decade():
             
             # T-test
             t_stat, p_value = stats.ttest_ind(offensive_data, defensive_data, equal_var=False)
-            
+
+            # Mann-Whitney U test (non-parametric)
+            u_stat, p_value_mw = stats.mannwhitneyu(offensive_data, defensive_data, alternative='two-sided')
+
             # Cohen's d
-            pooled_std = np.sqrt(((len(offensive_data) - 1) * offensive_data.var() + 
-                                 (len(defensive_data) - 1) * defensive_data.var()) / 
+            pooled_std = np.sqrt(((len(offensive_data) - 1) * offensive_data.var() +
+                                 (len(defensive_data) - 1) * defensive_data.var()) /
                                 (len(offensive_data) + len(defensive_data) - 2))
             cohens_d = (offensive_data.mean() - defensive_data.mean()) / pooled_std if pooled_std > 0 else 0
-            
-            print(f"\nStatistical test:")
-            print(f"  t-statistic: {t_stat:.3f}")
-            print(f"  p-value: {p_value:.4f}")
+
+            print(f"\nStatistical tests:")
+            print(f"  Welch's t-test:")
+            print(f"    t-statistic: {t_stat:.3f}")
+            print(f"    p-value: {p_value:.4f}")
+            print(f"  Mann-Whitney U test (non-parametric):")
+            print(f"    U-statistic: {u_stat:.0f}")
+            print(f"    p-value: {p_value_mw:.4f}")
             print(f"  Cohen's d: {cohens_d:.3f}")
-            
-            # Interpretation
-            if p_value < 0.01:
+
+            # Interpretation based on more conservative p-value
+            p_conservative = max(p_value, p_value_mw)
+            if p_conservative < 0.01:
                 sig = "**"
                 sig_text = "highly significant"
-            elif p_value < 0.05:
+            elif p_conservative < 0.05:
                 sig = "*"
                 sig_text = "significant"
-            elif p_value < 0.10:
+            elif p_conservative < 0.10:
                 sig = "†"
                 sig_text = "marginally significant"
             else:
                 sig = ""
                 sig_text = "not significant"
-            
+
             print(f"  Result: {sig_text} {sig}")
             
             # Store for trend analysis
@@ -232,7 +240,8 @@ def analyze_coach_background_by_decade():
                 'Decade': decade,
                 'Year': decade_num,
                 'Difference': offensive_data.mean() - defensive_data.mean(),
-                'p_value': p_value,
+                'p_value_ttest': p_value,
+                'p_value_mw': p_value_mw,
                 'cohens_d': cohens_d,
                 'n_offensive': len(offensive_data),
                 'n_defensive': len(defensive_data)
@@ -272,32 +281,33 @@ def analyze_coach_background_by_decade():
         
         # Display the decade-by-decade differences
         print(f"\nDecade-by-decade differences (Offensive - Defensive):")
-        print(f"{'Decade':<8} {'Difference':<12} {'p-value':<10} {'Significance'}")
-        print("-" * 50)
-        
+        print(f"{'Decade':<8} {'Difference':<12} {'t-test p':<10} {'M-W p':<10} {'Significance'}")
+        print("-" * 60)
+
         for _, row in trend_df.iterrows():
-            if row['p_value'] < 0.01:
+            p_conservative = max(row['p_value_ttest'], row['p_value_mw'])
+            if p_conservative < 0.01:
                 sig = "**"
-            elif row['p_value'] < 0.05:
+            elif p_conservative < 0.05:
                 sig = "*"
-            elif row['p_value'] < 0.10:
+            elif p_conservative < 0.10:
                 sig = "†"
             else:
                 sig = ""
-            
-            print(f"{row['Decade']:<8} {row['Difference']:+.3f} games  {row['p_value']:.4f}     {sig}")
+
+            print(f"{row['Decade']:<8} {row['Difference']:+.3f} games  {row['p_value_ttest']:.4f}     {row['p_value_mw']:.4f}     {sig}")
         
         print(f"\nSignificance: ** p<0.01, * p<0.05, † p<0.10")
         
         # Save trend data
-        trend_df.to_csv('analysis/coach_background_decade_trend_analysis.csv', index=False)
+        trend_df.to_csv('analysis/outputs/csv/coach_background_decade_trend_analysis.csv', index=False)
         print(f"\nTrend analysis saved to: coach_background_decade_trend_analysis.csv")
-    
+
     # Save detailed results
-    summary_df.to_csv('analysis/coach_background_by_decade_summary.csv', index=False)
-    war_pivot.to_csv('analysis/coach_background_war_by_decade.csv')
-    count_pivot.to_csv('analysis/coach_background_counts_by_decade.csv')
-    hiring_pivot.to_csv('analysis/coach_background_hiring_trends_by_decade.csv')
+    summary_df.to_csv('analysis/outputs/csv/coach_background_by_decade_summary.csv', index=False)
+    war_pivot.to_csv('analysis/outputs/csv/coach_background_war_by_decade.csv')
+    count_pivot.to_csv('analysis/outputs/csv/coach_background_counts_by_decade.csv')
+    hiring_pivot.to_csv('analysis/outputs/csv/coach_background_hiring_trends_by_decade.csv')
     
     print(f"\nDetailed data saved:")
     print("  - coach_background_by_decade_summary.csv: Complete summary statistics")

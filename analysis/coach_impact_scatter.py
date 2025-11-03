@@ -179,7 +179,7 @@ def create_coach_war_matrix():
     print(f"Longest career: {df.loc[df['Seasons'].idxmax(), 'Primary_Coach']} ({df['Seasons'].max()} seasons)")
     
     # Save the plot as HTML file
-    output_file = 'analysis/coach_war_matrix.html'
+    output_file = 'analysis/outputs/html/coach_war_matrix.html'
     fig.write_html(output_file)
     print(f"\nInteractive 2x2 matrix saved to: {output_file}")
     print("Open this file in your web browser to interact with the plot.")

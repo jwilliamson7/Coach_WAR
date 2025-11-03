@@ -104,7 +104,7 @@ def create_2024_single_year_bar_chart():
     plt.tight_layout()
     
     # Save the plot
-    output_file = 'analysis/coach_2024_single_year_bar.png'
+    output_file = 'analysis/outputs/png/coach_2024_single_year_bar.png'
     plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white', edgecolor='none')
     print(f"\nPlot saved as: {output_file}")
     

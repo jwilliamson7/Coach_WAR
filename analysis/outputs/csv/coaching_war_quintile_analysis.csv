@@ -1,0 +1,6 @@
+WAR_Quintile,Avg_Year_N_WAR,Count,Avg_Year_N_Win_Pct,Avg_Year_N_Plus_1_Win_Pct
+Q1 (Worst),-0.1266,251,0.3642,0.4586
+Q2,-0.0275,251,0.47,0.4924
+Q3,0.0326,250,0.539,0.5203
+Q4,0.0911,251,0.6169,0.5544
+Q5 (Best),0.1815,251,0.708,0.5811

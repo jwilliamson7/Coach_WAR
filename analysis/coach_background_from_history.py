@@ -310,7 +310,7 @@ def create_background_war_analysis():
     ax.set_xticks(range(1, 16))
     
     # Save the plot
-    output_file = 'analysis/coach_background_from_history_15seasons.png'
+    output_file = 'analysis/outputs/png/coach_background_from_history_15seasons.png'
     plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white', edgecolor='none')
     print(f"\nPlot saved as: {output_file}")
     
@@ -445,9 +445,9 @@ def create_background_war_analysis():
         print("Insufficient data for statistical comparison")
     
     # Save detailed data
-    coach_backgrounds.to_csv('analysis/coach_backgrounds_from_history.csv', index=False)
-    avg_trajectories.to_csv('analysis/coach_background_trajectories_from_history_15seasons.csv', index=False)
-    matched_data.to_csv('analysis/coach_matched_war_background_data.csv', index=False)
+    coach_backgrounds.to_csv('analysis/outputs/csv/coach_backgrounds_from_history.csv', index=False)
+    avg_trajectories.to_csv('analysis/outputs/csv/coach_background_trajectories_from_history_15seasons.csv', index=False)
+    matched_data.to_csv('analysis/outputs/csv/coach_matched_war_background_data.csv', index=False)
     
     print(f"\nDetailed data saved:")
     print("  - coach_backgrounds_from_history.csv: Coach background classifications from actual history")

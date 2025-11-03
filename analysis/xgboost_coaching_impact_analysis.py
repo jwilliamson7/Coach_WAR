@@ -674,7 +674,7 @@ def main():
     
     # Create log file with timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_filename = f'analysis/coaching_analysis_log_{timestamp}.txt'
+    log_filename = f'analysis/outputs/logs/coaching_analysis_log_{timestamp}.txt'
     
     # Set up output redirection to both console and file
     tee = TeeOutput(log_filename)
