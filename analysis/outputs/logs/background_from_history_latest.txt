@@ -1,0 +1,100 @@
+Analyzing coach backgrounds from actual coaching history...
+Matplotlib configured with font family: Helvetica
+Loading coaching history data...
+Found 539 coach directories
+Loaded coaching histories for 537 coaches
+Classifying coach backgrounds from actual coaching history...
+
+Analyzing 537 coaches...
+
+Coach Background Distribution (from actual history):
+==================================================
+Offensive   : 240 coaches ( 44.7%)
+Other       : 158 coaches ( 29.4%)
+Defensive   : 137 coaches ( 25.5%)
+Both        :   2 coaches (  0.4%)
+
+Loading coaching impact analysis data...
+Matching coach backgrounds with WAR performance data...
+
+Matched 2066 coach-seasons
+Unmatched coaches: 226
+Filtered out 'Both' category, remaining: 2063 coach-seasons
+Calculating cumulative WAR trajectories...
+
+Plot saved as: analysis/outputs/png/coach_background_from_history_15seasons.png
+
+Detailed Background Analysis (based on actual coaching history):
+======================================================================
+
+Offensive Coaches (154 matched with WAR data):
+  Average career WAR: +3.5 games
+  Average single season WAR: +0.14 games
+  Top 3 by career WAR:
+    John Harbaugh: +39.3 games
+    Andy Reid: +34.3 games
+    Joe Gibbs: +24.8 games
+  Sample: Aaron Kromer had 25 offensive years, 0 defensive years
+
+Defensive Coaches (112 matched with WAR data):
+  Average career WAR: +4.7 games
+  Average single season WAR: +0.31 games
+  Top 3 by career WAR:
+    Don Shula: +52.2 games
+    Bill Belichick: +42.1 games
+    Mike Smith: +35.9 games
+  Sample: Aaron Glenn had 0 offensive years, 11 defensive years
+
+Other Coaches (34 matched with WAR data):
+  Average career WAR: +5.0 games
+  Average single season WAR: +0.00 games
+  Top 3 by career WAR:
+    Bill Walsh: +20.0 games
+    Jason Garrett: +17.3 games
+    John Robinson: +16.2 games
+  Sample: Al Cornsweet had 0 offensive years, 0 defensive years
+
+======================================================================
+STATISTICAL COMPARISON: OFFENSIVE vs DEFENSIVE COACHES
+======================================================================
+
+Filtering to first 15 seasons of each coach's career...
+Original dataset: 2063 coach-seasons
+First 15 seasons only: 1722 coach-seasons
+
+Descriptive Statistics (First 15 Seasons Only):
+Offensive Coaches:
+  Unique coaches: 154
+  Sample size: 860 coach-seasons
+  Mean WAR: +0.0055
+  Std Dev: 0.1134
+  Median WAR: +0.0023
+
+Defensive Coaches:
+  Unique coaches: 112
+  Sample size: 639 coach-seasons
+  Mean WAR: +0.0152
+  Std Dev: 0.1111
+  Median WAR: +0.0185
+
+Two-Sample T-Test (Welch's t-test):
+  t-statistic: -1.6421
+  p-value: 0.100789
+  Cohen's d (effect size): -0.0855
+
+Interpretation:
+  The difference is not significant (p >= 0.10)
+  Effect size is negligible (|d| = 0.0855)
+  Offensive coaches have lower average WAR by 0.0096
+
+Mann-Whitney U Test (non-parametric):
+  U-statistic: 260162
+  p-value: 0.077990
+  Non-parametric test: not significant
+
+Detailed data saved:
+  - coach_backgrounds_from_history.csv: Coach background classifications from actual history
+  - coach_background_trajectories_from_history_15seasons.csv: Average trajectories by background (first 15 seasons)
+  - coach_matched_war_background_data.csv: Individual coach-season data with backgrounds
+
+Analysis complete! Check the PNG file and CSV outputs for detailed results.
