@@ -5,6 +5,10 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional
 
+# Add parent directory to path to import constants
+sys.path.append(str(Path(__file__).parent.parent))
+from crawlers.utils.data_constants import standardize_team_abbreviation
+
 
 class DraftDataTransformer:
     """Transforms draft pick data into team-by-round summary statistics"""
@@ -48,45 +52,28 @@ class DraftDataTransformer:
             print(f"Error loading {file_path.name}: {e}")
             return None
     
-    def _standardize_team_names(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Standardize team abbreviations to match PFR format"""
+    def _standardize_team_names(self, df: pd.DataFrame, year: int = None) -> pd.DataFrame:
+        """Standardize team abbreviations to match PFR format using centralized function"""
         df_clean = df.copy()
-        
-        # Common team name mappings for draft data
-        team_mappings = {
-            # Handle variations in team abbreviations (uppercase to lowercase)
-            'NWE': 'nwe',  # New England
-            'NOR': 'nor',  # New Orleans
-            'TAM': 'tam',  # Tampa Bay
-            'GNB': 'gnb',  # Green Bay
-            'KAN': 'kan',  # Kansas City
-            'SFO': 'sfo',  # San Francisco
-            'LAR': 'ram',  # Los Angeles Rams
-            'LAC': 'lac',  # Los Angeles Chargers
-            'LVR': 'rai',  # Las Vegas Raiders
-            'RAI': 'rai',  # Raiders (Oakland/Las Vegas)
-            'CRD': 'crd',  # Arizona Cardinals
-            # Handle legacy team names - maintain franchise continuity
-            'STL': 'ram',  # St. Louis Rams -> LA Rams
-            'SD': 'lac',   # San Diego -> LA Chargers
-            'SDG': 'lac',  # San Diego Chargers -> LA Chargers  
-            'OAK': 'rai',  # Oakland -> Las Vegas Raiders
-            # Additional franchise mappings
-            'IND': 'clt',  # Indianapolis uses 'clt' in PFR
-        }
-        
-        # Convert to lowercase and apply mappings
-        df_clean['Team'] = df_clean['Team'].str.upper()
-        df_clean['Team'] = df_clean['Team'].replace(team_mappings)
-        df_clean['Team'] = df_clean['Team'].str.lower()
-        
+
+        # Apply centralized standardize_team_abbreviation function
+        # Note: Draft data typically doesn't include year column, so pass year if available
+        if year is not None:
+            df_clean['Team'] = df_clean['Team'].apply(
+                lambda team: standardize_team_abbreviation(team, year)
+            )
+        else:
+            df_clean['Team'] = df_clean['Team'].apply(
+                lambda team: standardize_team_abbreviation(team)
+            )
+
         return df_clean
     
     def _calculate_picks_by_team_round(self, df: pd.DataFrame, year: int) -> pd.DataFrame:
         """Calculate number of picks by team and round for a given year"""
         try:
-            # Standardize team names
-            df_clean = self._standardize_team_names(df)
+            # Standardize team names with year for proper franchise mapping
+            df_clean = self._standardize_team_names(df, year)
             
             # Group by team and round, count picks
             picks_summary = df_clean.groupby(['Team', 'Round']).size().reset_index(name='Picks')

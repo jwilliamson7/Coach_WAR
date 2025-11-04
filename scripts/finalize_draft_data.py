@@ -7,7 +7,7 @@ from typing import Dict, List, Optional
 
 # Add parent directory to path to import utils
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from crawlers.utils.data_constants import TEAM_FRANCHISE_MAPPINGS
+from crawlers.utils.data_constants import TEAM_FRANCHISE_MAPPINGS, standardize_team_abbreviation
 
 
 class DraftDataFinalizer:
@@ -28,68 +28,11 @@ class DraftDataFinalizer:
             raise FileNotFoundError(f"Comprehensive draft data not found: {filepath}")
         
         df = pd.read_csv(filepath)
-        
-        # Create a direct mapping for all teams to their current PFR abbreviations
-        # This ensures we get exactly 32 teams
-        # Special handling: 'hou' represents both Houston Oilers (1970-1996) and Houston Texans (2002+)
-        def map_houston_team(row):
-            if row['Team'] == 'hou':
-                if row['Draft_Year'] <= 1996:
-                    return 'oti'  # Houston Oilers -> Tennessee Titans
-                else:
-                    return 'htx'  # Houston Texans (2002+)
-            return row['Team']
-        
-        # Apply Houston mapping first
-        df['Team'] = df.apply(map_houston_team, axis=1)
-        
-        team_mapping = {
-            # Historical teams that moved/changed
-            'bos': 'nwe',  # Boston Patriots -> New England Patriots
-            'pho': 'crd',  # Phoenix Cardinals -> Arizona Cardinals
-            'ten': 'oti',  # Tennessee Oilers/Titans -> oti
-            'bal': 'rav',  # Baltimore Ravens
-            'ari': 'crd',  # Arizona Cardinals -> crd
-            'lac': 'sdg',  # LA Chargers -> sdg
-            
-            # Current teams - keep as is with PFR conventions
-            'atl': 'atl',  # Atlanta Falcons
-            'buf': 'buf',  # Buffalo Bills
-            'car': 'car',  # Carolina Panthers
-            'chi': 'chi',  # Chicago Bears
-            'cin': 'cin',  # Cincinnati Bengals
-            'cle': 'cle',  # Cleveland Browns
-            'clt': 'clt',  # Indianapolis Colts
-            'crd': 'crd',  # Arizona Cardinals (already)
-            'dal': 'dal',  # Dallas Cowboys
-            'den': 'den',  # Denver Broncos
-            'det': 'det',  # Detroit Lions
-            'gnb': 'gnb',  # Green Bay Packers
-            'htx': 'htx',  # Houston Texans (expansion team, keep separate)
-            'jax': 'jax',  # Jacksonville Jaguars
-            'kan': 'kan',  # Kansas City Chiefs
-            'mia': 'mia',  # Miami Dolphins
-            'min': 'min',  # Minnesota Vikings
-            'nor': 'nor',  # New Orleans Saints
-            'nwe': 'nwe',  # New England Patriots
-            'nyg': 'nyg',  # New York Giants
-            'nyj': 'nyj',  # New York Jets
-            'oti': 'oti',  # Tennessee Titans (already)
-            'phi': 'phi',  # Philadelphia Eagles
-            'pit': 'pit',  # Pittsburgh Steelers
-            'rai': 'rai',  # Raiders (Oakland/Las Vegas)
-            'ram': 'ram',  # Rams (LA/St. Louis)
-            'rav': 'rav',  # Baltimore Ravens (already)
-            'sdg': 'sdg',  # San Diego/LA Chargers (already)
-            'sea': 'sea',  # Seattle Seahawks
-            'sfo': 'sfo',  # San Francisco 49ers
-            'tam': 'tam',  # Tampa Bay Buccaneers
-            'was': 'was',  # Washington
-        }
-        
-        # Apply mappings
-        df['Team'] = df['Team'].map(team_mapping).fillna(df['Team'])
-        
+
+        # NOTE: Source data is already in correct PFR format (lowercase),
+        # so we do NOT need to apply standardize_team_abbreviation() again.
+        # The data from transform_draft_data.py is already correctly mapped.
+
         # Aggregate data for teams that have been consolidated
         # Group by Team and Draft_Year, summing pick counts
         pick_cols = [col for col in df.columns if col.endswith('_Picks')]

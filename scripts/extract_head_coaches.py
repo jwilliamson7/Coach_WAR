@@ -24,7 +24,7 @@ import glob
 
 # Add parent directory to path to import constants
 sys.path.append(str(Path(__file__).parent.parent))
-from crawlers.utils.data_constants import SPOTRAC_TO_PFR_MAPPINGS
+from crawlers.utils.data_constants import SPOTRAC_TO_PFR_MAPPINGS, standardize_team_abbreviation
 
 class HeadCoachExtractor:
     """Extracts head coach information from coaching data"""
@@ -48,73 +48,6 @@ class HeadCoachExtractor:
             format='%(asctime)s - %(levelname)s - %(message)s'
         )
         self.logger = logging.getLogger(__name__)
-        
-        # Team mapping for standardization
-        self.team_mappings = {v: v for v in SPOTRAC_TO_PFR_MAPPINGS.values()}
-        
-        # Common team abbreviation corrections (year-independent)
-        self.team_corrections = {
-            'LAC': 'SDG',  # LA Chargers (formerly San Diego)
-            'LAR': 'RAM',  # Los Angeles Rams
-            'LAS': 'RAI',  # Las Vegas Raiders
-            'LVR': 'RAI',  # Las Vegas Raiders (alternate)
-            'TEN': 'OTI',  # Tennessee Titans
-            'IND': 'CLT',  # Indianapolis Colts
-            'ARI': 'CRD',  # Arizona Cardinals
-            'PHO': 'CRD',  # Phoenix Cardinals -> Arizona Cardinals
-            'BOS': 'NWE',  # Boston Patriots -> New England Patriots
-            'GB': 'GNB',   # Green Bay Packers
-            'KC': 'KAN',   # Kansas City Chiefs
-            'NE': 'NWE',   # New England Patriots
-            'NO': 'NOR',   # New Orleans Saints
-            'SF': 'SFO',   # San Francisco 49ers
-            'TB': 'TAM',   # Tampa Bay Buccaneers
-            'WAS': 'WAS',  # Washington (already correct)
-            'LV': 'RAI',   # Las Vegas Raiders
-            'OAK': 'RAI',  # Oakland Raiders -> Las Vegas Raiders
-        }
-        
-    def standardize_team_name(self, team: str, year: int = None) -> str:
-        """
-        Standardize team abbreviation to PFR format
-        
-        Args:
-            team: Team abbreviation from coaching data
-            year: Year for context-dependent mappings
-            
-        Returns:
-            Standardized team abbreviation
-        """
-        team = team.upper().strip()
-        
-        # Handle year-based mappings
-        if year is not None:
-            # BAL: Baltimore Colts vs Baltimore Ravens
-            if team == 'BAL':
-                if year <= 1983:
-                    return 'CLT'  # Baltimore Colts (1953-1983)
-                else:
-                    return 'RAV'  # Baltimore Ravens (1996-present)
-            
-            # HOU: Houston Oilers vs Houston Texans  
-            elif team == 'HOU':
-                if year <= 1996:
-                    return 'OTI'  # Houston Oilers (1960-1996) → Tennessee Titans
-                else:
-                    return 'HTX'  # Houston Texans (2002-present)
-            
-            # STL: St. Louis Cardinals vs St. Louis Rams
-            elif team == 'STL':
-                if year <= 1987:
-                    return 'CRD'  # St. Louis Cardinals (1960-1987)
-                else:
-                    return 'RAM'  # St. Louis Rams (1995-2015)
-        
-        # Apply other corrections
-        if team in self.team_corrections:
-            team = self.team_corrections[team]
-            
-        return team
     
     def process_coach_file(self, coach_name: str, ranks_file: Path) -> Optional[pd.DataFrame]:
         """
@@ -203,8 +136,8 @@ class HeadCoachExtractor:
             result_df['Games'] = hc_df.get('Games', 16)
             result_df['Notes'] = hc_df.get('Notes', "")
             
-            # Standardize team names
-            result_df['Team'] = result_df.apply(lambda row: self.standardize_team_name(row['Tm'], row['Year']), axis=1)
+            # Standardize team names and convert to uppercase for consistency
+            result_df['Team'] = result_df.apply(lambda row: standardize_team_abbreviation(row['Tm'], row['Year']), axis=1).str.upper()
             result_df = result_df.drop(columns=['Tm'])
             
             # Ensure Year is integer

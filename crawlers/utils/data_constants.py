@@ -5,7 +5,8 @@ This module contains all the static dictionaries, lists, and mappings
 used throughout the coaching data analysis pipeline.
 """
 
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Optional
+import pandas as pd
 
 
 # Team franchise abbreviation mappings for historical name changes and relocations
@@ -354,10 +355,10 @@ SALARY_CAP_MAX_BY_YEAR = {
 def get_games_in_season(year: int) -> int:
     """
     Get the number of regular season games for a given NFL season year.
-    
+
     Args:
         year: The NFL season year
-        
+
     Returns:
         Number of regular season games (16 for 2022 and earlier, 17 for 2023 and later)
     """
@@ -365,3 +366,79 @@ def get_games_in_season(year: int) -> int:
         return 17
     else:
         return 16
+
+
+def standardize_team_abbreviation(team: str, year: Optional[int] = None) -> str:
+    """
+    Standardize team abbreviation to PFR format with year-based franchise logic.
+
+    This function handles historical team relocations where the same abbreviation
+    meant different franchises in different eras (BAL, HOU, STL).
+
+    Args:
+        team: Team abbreviation (can be any case)
+        year: Optional year for applying year-based franchise logic
+
+    Returns:
+        Standardized PFR team abbreviation (lowercase)
+
+    Examples:
+        >>> standardize_team_abbreviation('BAL', 1975)
+        'clt'  # Baltimore Colts
+        >>> standardize_team_abbreviation('BAL', 2000)
+        'rav'  # Baltimore Ravens
+        >>> standardize_team_abbreviation('HOU', 1990)
+        'oti'  # Houston Oilers
+        >>> standardize_team_abbreviation('HOU', 2010)
+        'htx'  # Houston Texans
+    """
+    if not team or pd.isna(team):
+        return team
+
+    team = str(team).upper().strip()
+
+    # Year-based franchise changes take priority
+    if year is not None:
+        # Baltimore: BAL means different teams in different eras
+        #   1953-1983: Baltimore Colts → CLT
+        #   1996-present: Baltimore Ravens → RAV
+        if team == 'BAL':
+            return 'clt' if year <= 1983 else 'rav'
+
+        # Houston: HOU means different teams in different eras
+        #   1960-1996: Houston Oilers → OTI
+        #   2002-present: Houston Texans → HTX
+        elif team == 'HOU':
+            return 'oti' if year <= 1996 else 'htx'
+
+        # St. Louis: STL means different teams in different eras
+        #   1960-1987: St. Louis Cardinals → CRD
+        #   1995-2015: St. Louis Rams → RAM
+        elif team == 'STL':
+            return 'crd' if year <= 1987 else 'ram'
+
+    # Standard team corrections for teams that didn't have era-based changes
+    standard_mappings = {
+        'ARI': 'crd',   # Arizona Cardinals
+        'IND': 'clt',   # Indianapolis Colts
+        'LAC': 'sdg',   # LA Chargers -> San Diego Chargers
+        'LAR': 'ram',   # LA Rams
+        'LVR': 'rai',   # Las Vegas Raiders
+        'LV': 'rai',    # Las Vegas Raiders (alternate)
+        'OAK': 'rai',   # Oakland Raiders
+        'PHO': 'crd',   # Phoenix Cardinals
+        'TEN': 'oti',   # Tennessee Titans/Oilers
+        'BOS': 'nwe',   # Boston Patriots
+        'GB': 'gnb',    # Green Bay Packers
+        'KC': 'kan',    # Kansas City Chiefs
+        'NE': 'nwe',    # New England Patriots
+        'NO': 'nor',    # New Orleans Saints
+        'SF': 'sfo',    # San Francisco 49ers
+        'TB': 'tam',    # Tampa Bay Buccaneers
+    }
+
+    if team in standard_mappings:
+        return standard_mappings[team]
+
+    # If no mapping found, return lowercase version
+    return team.lower()

@@ -24,7 +24,7 @@ import glob
 
 # Add parent directory to path to import constants
 sys.path.append(str(Path(__file__).parent.parent))
-from crawlers.utils.data_constants import SPOTRAC_TO_PFR_MAPPINGS
+from crawlers.utils.data_constants import SPOTRAC_TO_PFR_MAPPINGS, standardize_team_abbreviation
 
 # Create PFR team abbreviations list from the corrected mappings
 PFR_TEAM_ABBREVIATIONS = list(set(SPOTRAC_TO_PFR_MAPPINGS.values()))
