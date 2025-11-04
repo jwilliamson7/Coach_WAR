@@ -45,55 +45,39 @@ def load_and_prepare_data(filepath):
 
     return X, y, team_year_info
 
-def train_xgboost_model(X_train, y_train, use_tuning=True):
-    """Train XGBoost model with optional hyperparameter tuning."""
+def train_xgboost_model(X_train, y_train, use_tuning=False):
+    """Train XGBoost model with fixed hyperparameters from main analysis.
 
-    if use_tuning:
-        print("\nPerforming hyperparameter tuning...")
+    These hyperparameters were selected via RandomizedSearchCV in the main
+    coaching impact analysis. We use the same parameters here to test
+    generalization without re-tuning on each validation set.
+    """
 
-        param_dist = {
-            'n_estimators': [50, 100, 150, 200, 250],
-            'learning_rate': [0.01, 0.03, 0.05, 0.1],
-            'max_depth': [3, 4, 5, 6, 7, 8],
-            'gamma': [0, 0.1, 0.2, 0.3, 0.5],
-            'reg_alpha': [0, 0.5, 1.0, 2.0],
-            'reg_lambda': [0, 0.5, 1.0, 2.0],
-            'subsample': [0.6, 0.8, 1.0],
-            'colsample_bytree': [0.6, 0.8, 1.0],
-            'min_child_weight': [1, 3, 5]
-        }
+    # Best hyperparameters from main coaching impact analysis
+    # (xgboost_coaching_impact_analysis.py, 50 iterations, 5 CV folds)
+    best_params = {
+        'n_estimators': 250,
+        'learning_rate': 0.05,
+        'max_depth': 3,
+        'gamma': 0,
+        'reg_alpha': 0.1,
+        'reg_lambda': 1.5,
+        'subsample': 1.0,
+        'colsample_bytree': 1.0,
+        'min_child_weight': 8,
+        'objective': 'reg:squarederror',
+        'random_state': 42,
+        'n_jobs': -1
+    }
 
-        base_model = xgb.XGBRegressor(
-            objective='reg:squarederror',
-            random_state=42,
-            n_jobs=-1
-        )
+    print("\nTraining with fixed hyperparameters from main analysis:")
+    for param, value in best_params.items():
+        if param not in ['objective', 'random_state', 'n_jobs']:
+            print(f"  {param}: {value}")
 
-        random_search = RandomizedSearchCV(
-            estimator=base_model,
-            param_distributions=param_dist,
-            n_iter=30,
-            scoring='r2',
-            cv=3,
-            verbose=1,
-            random_state=42,
-            n_jobs=-1
-        )
-
-        random_search.fit(X_train, y_train)
-        print(f"Best parameters: {random_search.best_params_}")
-        print(f"Best CV R²: {random_search.best_score_:.4f}")
-
-        return random_search.best_estimator_
-    else:
-        model = xgb.XGBRegressor(
-            n_estimators=100,
-            learning_rate=0.05,
-            max_depth=5,
-            random_state=42
-        )
-        model.fit(X_train, y_train)
-        return model
+    model = xgb.XGBRegressor(**best_params)
+    model.fit(X_train, y_train)
+    return model
 
 def evaluate_model(model, X, y, dataset_name):
     """Evaluate model performance on a dataset."""
@@ -113,8 +97,8 @@ def evaluate_model(model, X, y, dataset_name):
 def main():
     """Run comprehensive validation tests."""
 
-    # Load data
-    X, y, team_year_info = load_and_prepare_data('data/final/imputed_final_data.csv')
+    # Load data (WITHOUT AV features to match main coaching impact analysis)
+    X, y, team_year_info = load_and_prepare_data('data/final/imputed_final_data_no_AV.csv')
 
     # Reset indices for alignment
     X = X.reset_index(drop=True)
@@ -149,7 +133,7 @@ def main():
     print(f"  Testing: {test_temporal.sum()} seasons (2020-{team_year_info[test_temporal]['Year'].max():.0f})")
 
     # Train model on pre-2020 data
-    model_temporal = train_xgboost_model(X_train_temporal, y_train_temporal, use_tuning=True)
+    model_temporal = train_xgboost_model(X_train_temporal, y_train_temporal)
 
     # Evaluate
     train_results_temporal = evaluate_model(model_temporal, X_train_temporal, y_train_temporal, "Training Set (Pre-2020)")
@@ -188,7 +172,7 @@ def main():
     print(f"  Testing: {len(test_coaches)} coaches, {test_coach_mask.sum()} seasons")
 
     # Train model
-    model_coach = train_xgboost_model(X_train_coach, y_train_coach, use_tuning=True)
+    model_coach = train_xgboost_model(X_train_coach, y_train_coach)
 
     # Evaluate
     train_results_coach = evaluate_model(model_coach, X_train_coach, y_train_coach, "Training Coaches")
@@ -227,7 +211,7 @@ def main():
 
     if test_combined.sum() > 0:
         # Train model
-        model_combined = train_xgboost_model(X_train_combined, y_train_combined, use_tuning=True)
+        model_combined = train_xgboost_model(X_train_combined, y_train_combined)
 
         # Evaluate
         train_results_combined = evaluate_model(model_combined, X_train_combined, y_train_combined, "Training Set")

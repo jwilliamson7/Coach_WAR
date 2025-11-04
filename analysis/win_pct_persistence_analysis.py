@@ -6,14 +6,13 @@ Analyzes year-to-year persistence of team winning percentage.
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import argparse
 from scipy import stats
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
+from figure_utils import configure_matplotlib_fonts
 import warnings
 warnings.filterwarnings('ignore')
-
-# Set font to Cambria
-plt.rcParams['font.family'] = 'Cambria'
 
 def load_coaching_data():
     """Load coaching WAR data with Actual_Actual_Win_Pct."""
@@ -95,9 +94,9 @@ def analyze_win_pct_persistence(lagged_df):
     print(f"  [*] For every 1.0 increase in Year N Win%, expect {model.coef_[0]:.3f} increase in Year N+1")
     print(f"  [*] Strong regression to mean: Only {model.coef_[0]*100:.1f}% of Year N Win% persists to Year N+1")
 
-    return corr, r2, model, lagged_df
+    return corr, r2, model, p_value, lagged_df
 
-def create_persistence_scatter(lagged_df, corr, r2, model):
+def create_persistence_scatter(lagged_df, corr, r2, model, p_value):
     """Create scatter plot of Win Pct persistence."""
     print("\nCreating Win% persistence scatter plot...")
 
@@ -123,21 +122,22 @@ def create_persistence_scatter(lagged_df, corr, r2, model):
     ax.axhline(y=0.500, color='gray', linestyle='-', linewidth=1, alpha=0.5)
     ax.axvline(x=0.500, color='gray', linestyle='-', linewidth=1, alpha=0.5)
 
-    ax.set_xlabel('Year N Winning Percentage', fontsize=12, fontweight='bold')
-    ax.set_ylabel('Year N+1 Winning Percentage', fontsize=12, fontweight='bold')
+    ax.set_xlabel('Year N Winning Percentage', fontsize=18, fontweight='bold')
+    ax.set_ylabel('Year N+1 Winning Percentage', fontsize=18, fontweight='bold')
 
     # Stats box
-    rmse = np.sqrt(mean_squared_error(lagged_df['Year_N_Plus_1_Actual_Win_Pct'],
-                                      model.predict(lagged_df[['Year_N_Actual_Win_Pct']])))
     stats_text = f"Regression: Y = {model.coef_[0]:.3f}X + {model.intercept_:.3f}\n"
     stats_text += f"R² = {r2:.3f}\n"
     stats_text += f"n = {len(lagged_df)} season pairs\n"
-    stats_text += f"RMSE: {rmse:.3f}"
+    if p_value < 0.001:
+        stats_text += f"p < 0.001"
+    else:
+        stats_text += f"p = {p_value:.3f}"
     ax.text(0.05, 0.95, stats_text, transform=ax.transAxes,
-           fontsize=11, verticalalignment='top',
+           fontsize=14, verticalalignment='top',
            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
 
-    ax.legend(loc='lower right', fontsize=10)
+    ax.legend(loc='lower right', fontsize=14)
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
@@ -146,8 +146,11 @@ def create_persistence_scatter(lagged_df, corr, r2, model):
     print("  Saved: win_pct_persistence_scatter.png")
     plt.close()
 
-def main():
+def main(font_family='Helvetica'):
     """Run Win Pct persistence analysis."""
+
+    # Configure matplotlib fonts
+    configure_matplotlib_fonts(font_family)
 
     # Load data
     df = load_coaching_data()
@@ -156,10 +159,10 @@ def main():
     lagged_df = create_consecutive_pairs(df)
 
     # Analyze persistence
-    corr, r2, model, lagged_df = analyze_win_pct_persistence(lagged_df)
+    corr, r2, model, p_value, lagged_df = analyze_win_pct_persistence(lagged_df)
 
     # Create visualization
-    create_persistence_scatter(lagged_df, corr, r2, model)
+    create_persistence_scatter(lagged_df, corr, r2, model, p_value)
 
     # Save results
     lagged_df.to_csv('analysis/outputs/csv/win_pct_persistence_data.csv', index=False)
@@ -178,4 +181,9 @@ def main():
     print("  - analysis/outputs/png/win_pct_persistence_scatter.png")
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description='Win percentage persistence analysis')
+    parser.add_argument('--font', type=str, default='Helvetica',
+                       help='Font family to use (default: Helvetica)')
+    args = parser.parse_args()
+
+    main(font_family=args.font)

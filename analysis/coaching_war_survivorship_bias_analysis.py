@@ -255,7 +255,7 @@ def create_survivorship_visualizations(survival_df, quintile_survival, results_d
 
     # Plot 2: Simple regression to mean (Year N vs Year N+1 with fired penalty)
     # Convert to games (multiply by 16)
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12))
 
     x_pos = np.arange(len(results_df))
     width = 0.35
@@ -265,7 +265,7 @@ def create_survivorship_visualizations(survival_df, quintile_survival, results_d
     year_n_plus_1_games = results_df['Year_N_Plus_1_Adjusted'] * 16
     fired_penalty_games = fired_penalty * 16
 
-    # Left plot: Year N vs Year N+1 bars
+    # Top plot: Year N vs Year N+1 bars
     ax1.bar(x_pos - width/2, year_n_games, width,
            label='Year N', color='steelblue', alpha=0.8, edgecolor='black')
     ax1.bar(x_pos + width/2, year_n_plus_1_games, width,
@@ -273,27 +273,26 @@ def create_survivorship_visualizations(survival_df, quintile_survival, results_d
     ax1.axhline(y=0, color='black', linestyle='-', linewidth=1)
     ax1.set_xlabel('Year N WAR Quintile', fontsize=12, fontweight='bold')
     ax1.set_ylabel('Mean Coaching WAR (Games per Season)', fontsize=12, fontweight='bold')
-    ax1.set_title('Regression to the Mean by Quintile', fontsize=13, fontweight='bold')
     ax1.set_xticks(x_pos)
-    ax1.set_xticklabels(results_df['Quintile'], rotation=45, ha='right')
+    ax1.set_xticklabels(results_df['Quintile'])
     ax1.legend()
     ax1.grid(True, alpha=0.3, axis='y')
 
-    # Right plot: Change from Year N to Year N+1
+    # Bottom plot: Change from Year N to Year N+1
     changes_games = year_n_plus_1_games - year_n_games
     colors = ['red' if x < 0 else 'green' for x in changes_games]
     ax2.bar(x_pos, changes_games, color=colors, alpha=0.7, edgecolor='black')
     ax2.axhline(y=0, color='black', linestyle='-', linewidth=2)
     ax2.set_xlabel('Year N WAR Quintile', fontsize=12, fontweight='bold')
     ax2.set_ylabel('Change in WAR (Games)', fontsize=12, fontweight='bold')
-    ax2.set_title('Regression to the Mean: Change by Quintile', fontsize=13, fontweight='bold')
     ax2.set_xticks(x_pos)
-    ax2.set_xticklabels(results_df['Quintile'], rotation=45, ha='right')
+    ax2.set_xticklabels(results_df['Quintile'])
     ax2.grid(True, alpha=0.3, axis='y')
 
     # Add value labels
     for i, v in enumerate(changes_games):
-        ax2.text(i, v + (0.08 if v > 0 else -0.08), f'{v:.2f}',
+        label = f'+{v:.2f}' if v > 0 else f'{v:.2f}'
+        ax2.text(i, v + (0.08 if v > 0 else -0.08), label,
                 ha='center', va='bottom' if v > 0 else 'top', fontweight='bold')
 
     # Adjust y-axis limits to show labels
@@ -301,9 +300,6 @@ def create_survivorship_visualizations(survival_df, quintile_survival, results_d
     y_range = ymax - ymin
     ax2.set_ylim(ymin - 0.1 * y_range, ymax + 0.1 * y_range)
 
-    plt.suptitle('Coaching WAR Regression to Mean (Accounting for Survivorship Bias)\n' +
-                 f'Fired coaches assigned 10th percentile penalty: {fired_penalty_games:.2f} games',
-                 fontsize=14, fontweight='bold', y=1.02)
     plt.tight_layout()
     plt.savefig('analysis/outputs/png/coaching_regression_to_mean_survivorship_adjusted.png',
                dpi=300, bbox_inches='tight')

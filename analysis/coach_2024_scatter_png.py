@@ -5,12 +5,17 @@ Saves as a PNG image instead of HTML.
 """
 
 import pandas as pd
+import argparse
 import matplotlib.pyplot as plt
 import numpy as np
+from figure_utils import configure_matplotlib_fonts
 
-def create_2024_coaches_plot():
+def create_2024_coaches_plot(font_family='Helvetica'):
     """Create scatter plot for coaches who coached in 2024 and save as PNG."""
-    
+
+    # Configure matplotlib fonts
+    configure_matplotlib_fonts(font_family)
+
     # Load the coaching impact analysis data
     print("Loading coaching impact analysis data...")
     impact_df = pd.read_csv('data/final/coaching_impact_analysis.csv')
@@ -75,7 +80,7 @@ def create_2024_coaches_plot():
         print(f"  - {coach['Primary_Coach']}: {coach['Avg_WAR_Games']:+.1f} games/season ({coach['Seasons']} seasons)")
     
     # Create the plot
-    fig, ax = plt.subplots(figsize=(16, 20))  # Tall figure to accommodate legend below
+    fig, ax = plt.subplots(figsize=(16, 22))  # Tall figure to accommodate legend below
     
     # Create color mapping for fired vs retained
     colors = df_2024['Status'].map({'Fired': '#DC143C', 'Retained': '#1E90FF'})  # Crimson red for fired, dodger blue for retained
@@ -86,9 +91,9 @@ def create_2024_coaches_plot():
     
     # Add index numbers to each point
     for _, row in df_2024.iterrows():
-        ax.text(row['Avg_WAR_Games'], row['Seasons'], str(int(row['Coach_Index'])), 
-                ha='center', va='center', fontsize=12, fontweight='bold', 
-                family='Cambria', color='black')
+        ax.text(row['Avg_WAR_Games'], row['Seasons'], str(int(row['Coach_Index'])),
+                ha='center', va='center', fontsize=16, fontweight='bold',
+                color='black')
     
     # Add reference lines at median values
     median_war = df_2024['Avg_WAR_Games'].median()
@@ -97,16 +102,15 @@ def create_2024_coaches_plot():
     ax.axvline(x=median_war, color='gray', linestyle='--', alpha=0.7, linewidth=1)
     ax.axhline(y=median_seasons, color='gray', linestyle='--', alpha=0.7, linewidth=1)
     
-    # Add median labels
-    ax.text(median_war + 0.1, ax.get_ylim()[1] * 0.95, f'Median WAR: {median_war:.2f} games', 
-            rotation=90, va='top', ha='left', fontsize=10, family='Cambria')
-    ax.text(ax.get_xlim()[1] * 0.95, median_seasons + 0.5, f'Median Career: {median_seasons:.0f} seasons', 
-            rotation=0, va='bottom', ha='right', fontsize=10, family='Cambria')
-    
+    # Add median labels (increased font size)
+    ax.text(median_war + 0.05, ax.get_ylim()[1] * 0.95, f'Median WAR: {median_war:.2f} games',
+            rotation=90, va='top', ha='left', fontsize=18)
+    ax.text(ax.get_xlim()[1] * 0.95, median_seasons + 0.5, f'Median Career: {median_seasons:.0f} seasons',
+            rotation=0, va='bottom', ha='right', fontsize=18)
+
     # Customize the plot
-    ax.set_xlabel('Average WAR (Games Above Replacement per Season)', fontsize=18, family='Cambria')
-    ax.set_ylabel('Career Length (Number of Seasons)', fontsize=18, family='Cambria')
-    ax.set_title('2024 NFL Coaches: Career WAR vs Experience', fontsize=20, fontweight='bold', family='Cambria', pad=20)
+    ax.set_xlabel('Average WAR per Season (in games)', fontsize=22, fontweight='bold')
+    ax.set_ylabel('Career Length (Number of Seasons)', fontsize=22, fontweight='bold')
     
     # Style the plot
     ax.grid(True, alpha=0.3)
@@ -116,13 +120,11 @@ def create_2024_coaches_plot():
     from matplotlib.patches import Patch
     legend_elements = [Patch(facecolor='#1E90FF', edgecolor='black', label='Retained'),
                        Patch(facecolor='#DC143C', edgecolor='black', label='Fired')]
-    ax.legend(handles=legend_elements, loc='upper right', fontsize=14, title='Coach Status', 
-              title_fontsize=14, frameon=True, fancybox=True, shadow=True)
-    
+    ax.legend(handles=legend_elements, loc='upper right', fontsize=18, title='Coach Status',
+              title_fontsize=18, frameon=True, fancybox=True, shadow=True)
+
     # Set font for tick labels
-    ax.tick_params(axis='both', labelsize=12)
-    for label in ax.get_xticklabels() + ax.get_yticklabels():
-        label.set_family('Cambria')
+    ax.tick_params(axis='both', labelsize=16)
     
     # Create legend below the plot
     legend_df = df_2024[['Coach_Index', 'Primary_Coach', 'Avg_WAR_Games', 'Seasons', 'Status']].sort_values('Coach_Index')
@@ -131,39 +133,38 @@ def create_2024_coaches_plot():
     coaches_per_col = (len(legend_df) + 3) // 4  # Round up division
     legend_lines = []
     
-    # Prepare legend data in columns
+    # Prepare legend data in columns (without WAR values, larger font)
     cols = [[] for _ in range(4)]
     for i, (_, row) in enumerate(legend_df.iterrows()):
         col_idx = i // coaches_per_col
         if col_idx < 4:  # Safety check
-            war_sign = "+" if row['Avg_WAR_Games'] >= 0 else ""
-            cols[col_idx].append(f"{int(row['Coach_Index']):2d}. {row['Primary_Coach']:<20} {war_sign}{row['Avg_WAR_Games']:.1f}")
+            cols[col_idx].append(f"{int(row['Coach_Index']):2d}. {row['Primary_Coach']}")
     
     # Create legend text
     max_rows = max(len(col) for col in cols)
     legend_text = "COACH INDEX LEGEND\n\n"
-    
+
     for row_idx in range(max_rows):
         line_parts = []
         for col_idx in range(4):
             if row_idx < len(cols[col_idx]):
-                line_parts.append(f"{cols[col_idx][row_idx]:<35}")
+                line_parts.append(f"{cols[col_idx][row_idx]:<25}")
             else:
-                line_parts.append(" " * 35)
+                line_parts.append(" " * 25)
         legend_text += "".join(line_parts) + "\n"
-    
+
     # Add legend as text below the plot, centered on the x-axis of the plot
     # Get the position of the axes to center on it
     ax_pos = ax.get_position()
     ax_center_x = (ax_pos.x0 + ax_pos.x1) / 2  # Center of the axes
-    
-    fig.text(ax_center_x, 0.23, legend_text, ha='center', va='top', fontsize=12,
-             family='monospace', bbox=dict(boxstyle="round,pad=0.5", facecolor="white", 
+
+    fig.text(ax_center_x, 0.36, legend_text, ha='center', va='top', fontsize=16,
+             family='monospace', bbox=dict(boxstyle="round,pad=0.5", facecolor="white",
              edgecolor="black", alpha=0.9))
-    
+
     # Adjust layout to prevent cutoff with less buffer
     plt.tight_layout()
-    plt.subplots_adjust(bottom=0.28)  # Adjusted buffer for legend
+    plt.subplots_adjust(bottom=0.40)  # Adjusted buffer for legend
     
     # Print index to coach mapping for reference
     print(f"\nCoach Index Reference:")
@@ -174,7 +175,7 @@ def create_2024_coaches_plot():
     
     # Save the plot
     output_file = 'analysis/outputs/png/coach_2024_matrix.png'
-    plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white', edgecolor='none')
+    plt.savefig(output_file, dpi=300, facecolor='white', edgecolor='none', pad_inches=0.5)
     print(f"\nPlot saved as: {output_file}")
     print("High-resolution PNG image ready for use in presentations or documents.")
     
@@ -183,6 +184,11 @@ def create_2024_coaches_plot():
     return df_2024
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Create 2024 NFL coaches WAR analysis')
+    parser.add_argument('--font', type=str, default='Helvetica',
+                       help='Font family to use (default: Helvetica)')
+    args = parser.parse_args()
+
     print("Creating 2024 NFL coaches WAR analysis as PNG...")
-    data = create_2024_coaches_plot()
+    data = create_2024_coaches_plot(font_family=args.font)
     print(f"\nAnalysis complete! Check the PNG file for the visualization.")
