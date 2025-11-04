@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(copy analysisoutputspngcoaching_war_persistence_scatter.png latexfigures)"
+      "Bash(copy analysisoutputspngcoaching_war_persistence_scatter.png latexfigures)",
+      "Bash(analysis/outputs/logs/background_from_history_latest.txt)",
+      "Bash(analysis/outputs/logs/background_by_decade_latest.txt)"
     ],
     "deny": [],
     "ask": []

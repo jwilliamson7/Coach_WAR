@@ -1,20 +1,21 @@
 \BOOKMARK [0][-]{section*.1}{Coach WAR: A Counterfactual Approach to Evaluating NFL Head Coach Impact in the Modern Era}{}% 1
 \BOOKMARK [1][-]{section.1}{1 Introduction}{section*.1}% 2
-\BOOKMARK [1][-]{section.2}{2 Methods}{section*.1}% 3
-\BOOKMARK [2][-]{subsection.2.1}{2.1 The Counterfactual Framework}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.2}{2.2 Model Training}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.3}{2.3 WAR Calculation}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{3 Results}{section*.1}% 7
-\BOOKMARK [2][-]{subsection.3.1}{3.1 Model Validation}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{3.2 Football Context and Career Leaders}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.3}{3.3 Coach WAR in Aggregate}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.4}{3.4 Current Coach Analysis}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.5}{3.5 Offensive versus Defensive Coaches}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.6}{3.6 WAR Persistence and Scheme Obsolescence}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.7}{3.7 Limitations and the ``Franchise Quarterback Effect''}{section.3}% 14
-\BOOKMARK [1][-]{section.4}{4 Conclusion}{section*.1}% 15
-\BOOKMARK [1][-]{appendix.A}{A Feature Count Across Categories}{section*.1}% 16
-\BOOKMARK [1][-]{appendix.B}{B Selected Hyperparameters for the Final Model}{section*.1}% 17
-\BOOKMARK [1][-]{appendix.C}{C Feature Importance Ranking of Top 20 Features}{section*.1}% 18
-\BOOKMARK [1][-]{appendix.D}{D Win Percentage Persistence}{section*.1}% 19
-\BOOKMARK [1][-]{appendix.E}{E WAR Persistence by Coach Background}{section*.1}% 20
+\BOOKMARK [1][-]{section.2}{2 Literature Review}{section*.1}% 3
+\BOOKMARK [1][-]{section.3}{3 Methods}{section*.1}% 4
+\BOOKMARK [2][-]{subsection.3.1}{3.1 The Counterfactual Framework}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.2}{3.2 Model Training}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.3}{3.3 WAR Calculation}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{4 Results}{section*.1}% 8
+\BOOKMARK [2][-]{subsection.4.1}{4.1 Football Context and Career Leaders}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{4.2 Coach WAR in Aggregate}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{4.3 Current Coach Analysis}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.4}{4.4 Offensive versus Defensive Coaches}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.5}{4.5 WAR Persistence and Scheme Obsolescence}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.6}{4.6 Limitations and the ``Franchise Quarterback Effect''}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.7}{4.7 Practical Applications}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{5 Conclusion}{section*.1}% 16
+\BOOKMARK [1][-]{appendix.A}{A Feature Count Across Categories}{section*.1}% 17
+\BOOKMARK [1][-]{appendix.B}{B Selected Hyperparameters for the Final Model}{section*.1}% 18
+\BOOKMARK [1][-]{appendix.C}{C Feature Importance Ranking of Top 20 Features}{section*.1}% 19
+\BOOKMARK [1][-]{appendix.D}{D Win Percentage Persistence}{section*.1}% 20
+\BOOKMARK [1][-]{appendix.E}{E WAR Persistence by Coach Background}{section*.1}% 21
