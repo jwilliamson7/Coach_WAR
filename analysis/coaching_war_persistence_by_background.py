@@ -6,14 +6,13 @@ Compares year-to-year persistence for Offensive vs Defensive coaches.
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import argparse
 from scipy import stats
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
+from figure_utils import configure_matplotlib_fonts
 import warnings
 warnings.filterwarnings('ignore')
-
-# Set font to Cambria
-plt.rcParams['font.family'] = 'Cambria'
 
 def load_coaching_data():
     """Load coaching WAR data with backgrounds."""
@@ -118,6 +117,7 @@ def analyze_by_background(df):
             'corr': corr,
             'r2': r2,
             'rmse': rmse,
+            'p_value': p_value,
             'model': model,
             'n': len(subset)
         }
@@ -204,28 +204,30 @@ def create_background_comparison_scatter(results):
     ax.axhline(y=0, color='black', linestyle='-', linewidth=1, alpha=0.3)
     ax.axvline(x=0, color='black', linestyle='-', linewidth=1, alpha=0.3)
 
-    ax.set_xlabel('Year N Coaching WAR (Games per Season)', fontsize=13, fontweight='bold')
-    ax.set_ylabel('Year N+1 Coaching WAR (Games per Season)', fontsize=13, fontweight='bold')
-    ax.set_title('Coaching WAR Persistence by Background', fontsize=14, fontweight='bold', pad=20)
+    ax.set_xlabel('Year N Coaching WAR (Games per Season)', fontsize=18, fontweight='bold')
+    ax.set_ylabel('Year N+1 Coaching WAR (Games per Season)', fontsize=18, fontweight='bold')
 
     # Stats box
     stats_text = "Regression Equations:\n"
     for background in ['Offensive', 'Defensive']:
         model = results[background]['model']
         r2 = results[background]['r2']
-        rmse = results[background]['rmse'] * 16
+        p_value = results[background]['p_value']
         coef = model.coef_[0]
         intercept = model.intercept_ * 16
         stats_text += f"\n{background}:\n"
         stats_text += f"  Y = {coef:.3f}X + {intercept:.2f}\n"
         stats_text += f"  R² = {r2:.3f}\n"
-        stats_text += f"  RMSE: {rmse:.2f} games\n"
+        if p_value < 0.001:
+            stats_text += f"  p < 0.001\n"
+        else:
+            stats_text += f"  p = {p_value:.3f}\n"
 
     ax.text(0.05, 0.95, stats_text, transform=ax.transAxes,
-           fontsize=10, verticalalignment='top', family='monospace',
+           fontsize=13, verticalalignment='top', family='monospace',
            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.9))
 
-    ax.legend(loc='lower right', fontsize=11, framealpha=0.9)
+    ax.legend(loc='lower right', fontsize=14, framealpha=0.9)
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
@@ -234,8 +236,11 @@ def create_background_comparison_scatter(results):
     print("  Saved: coaching_war_persistence_by_background.png")
     plt.close()
 
-def main():
+def main(font_family='Helvetica'):
     """Run persistence analysis by background."""
+
+    # Configure matplotlib fonts
+    configure_matplotlib_fonts(font_family)
 
     # Load data
     df = load_coaching_data()
@@ -263,4 +268,9 @@ def main():
     print("  - analysis/outputs/png/coaching_war_persistence_by_background.png")
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description='Coaching WAR persistence by background')
+    parser.add_argument('--font', type=str, default='Helvetica',
+                       help='Font family to use (default: Helvetica)')
+    args = parser.parse_args()
+
+    main(font_family=args.font)

@@ -67,8 +67,7 @@ def create_2024_single_year_bar_chart():
     ax.axvline(x=0, color='black', linestyle='-', linewidth=1, alpha=0.8)
     
     # Customize the plot
-    ax.set_xlabel('2024 WAR (Wins Above Replacement)', fontsize=20, family='Cambria')
-    ax.set_title('2024 NFL Coaches: Single Season WAR Performance', fontsize=24, fontweight='bold', family='Cambria', pad=20)
+    ax.set_xlabel('2024 WAR (Wins Above Replacement)', fontsize=20, fontweight='bold', family='Cambria')
     
     # Style the plot
     ax.grid(True, alpha=0.3, axis='x')

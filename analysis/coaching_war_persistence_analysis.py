@@ -7,14 +7,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import argparse
 from scipy import stats
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
+from figure_utils import configure_matplotlib_fonts
 import warnings
 warnings.filterwarnings('ignore')
-
-# Set font to Cambria
-plt.rcParams['font.family'] = 'Cambria'
 
 def load_coaching_data():
     """Load coaching WAR data."""
@@ -108,9 +107,9 @@ def analyze_war_persistence(lagged_df):
     else:
         print(f"  Weak regression to mean - Year N performance largely persists")
 
-    return corr, r2, model
+    return corr, r2, model, p_value
 
-def create_persistence_scatter(lagged_df, corr, r2, model):
+def create_persistence_scatter(lagged_df, corr, r2, model, p_value):
     """Create detailed scatter plot of WAR persistence."""
     print("\nCreating WAR persistence scatter plot...")
 
@@ -140,23 +139,23 @@ def create_persistence_scatter(lagged_df, corr, r2, model):
     ax.axhline(y=0, color='gray', linestyle='-', linewidth=1, alpha=0.5)
     ax.axvline(x=0, color='gray', linestyle='-', linewidth=1, alpha=0.5)
 
-    # Labels and title
-    ax.set_xlabel('Year N Coaching WAR (Games per Season)', fontsize=14, fontweight='bold')
-    ax.set_ylabel('Year N+1 Coaching WAR (Games per Season)', fontsize=14, fontweight='bold')
-    ax.set_title('Coaching WAR Persistence: Year N vs Year N+1',
-                fontsize=15, fontweight='bold', pad=20)
+    # Labels
+    ax.set_xlabel('Year N Coaching WAR (Games per Season)', fontsize=18, fontweight='bold')
+    ax.set_ylabel('Year N+1 Coaching WAR (Games per Season)', fontsize=18, fontweight='bold')
 
-    # Add stats box (convert RMSE to games)
-    rmse_games = np.sqrt(mean_squared_error(lagged_df['Year_N_Plus_1_WAR'], model.predict(lagged_df[['Year_N_WAR']]))) * 16
+    # Add stats box
     stats_text = f"Regression: Y = {model.coef_[0]:.3f}X + {model.intercept_ * 16:.3f}\n"
     stats_text += f"R² = {r2:.3f}\n"
     stats_text += f"n = {len(lagged_df)} season pairs\n"
-    stats_text += f"RMSE: {rmse_games:.2f} games"
+    if p_value < 0.001:
+        stats_text += f"p < 0.001"
+    else:
+        stats_text += f"p = {p_value:.3f}"
     ax.text(0.05, 0.95, stats_text, transform=ax.transAxes,
-           fontsize=11, verticalalignment='top',
+           fontsize=14, verticalalignment='top',
            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
 
-    ax.legend(loc='lower right', fontsize=11)
+    ax.legend(loc='lower right', fontsize=14)
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
@@ -341,8 +340,11 @@ def create_summary_table(lagged_df, overall_corr, overall_r2, quintile_stats):
 
     return summary_df
 
-def main():
+def main(font_family='Helvetica'):
     """Run WAR persistence analysis."""
+
+    # Configure matplotlib fonts
+    configure_matplotlib_fonts(font_family)
 
     # Load data
     df = load_coaching_data()
@@ -351,10 +353,10 @@ def main():
     lagged_df = create_lagged_dataset(df)
 
     # Overall persistence analysis
-    corr, r2, model = analyze_war_persistence(lagged_df)
+    corr, r2, model, p_value = analyze_war_persistence(lagged_df)
 
     # Create main scatter plot
-    create_persistence_scatter(lagged_df, corr, r2, model)
+    create_persistence_scatter(lagged_df, corr, r2, model, p_value)
 
     # Analyze by WAR level
     level_results = analyze_by_war_level(lagged_df)
@@ -386,4 +388,9 @@ def main():
     print(f"  - analysis/outputs/png/coaching_war_regression_to_mean.png")
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description='Coaching WAR persistence analysis')
+    parser.add_argument('--font', type=str, default='Helvetica',
+                       help='Font family to use (default: Helvetica)')
+    args = parser.parse_args()
+
+    main(font_family=args.font)

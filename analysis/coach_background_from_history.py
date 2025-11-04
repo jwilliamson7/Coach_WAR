@@ -9,7 +9,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import glob
+import argparse
 from scipy import stats
+from figure_utils import configure_matplotlib_fonts
 
 def load_all_coaching_histories():
     """Load all coaching history files to analyze backgrounds."""
@@ -203,9 +205,12 @@ def calculate_cumulative_war_by_background(matched_data):
     
     return pd.DataFrame(coach_trajectories)
 
-def create_background_war_analysis():
+def create_background_war_analysis(font_family='Helvetica'):
     """Create comprehensive analysis of coach backgrounds and WAR performance."""
-    
+
+    # Configure matplotlib fonts
+    configure_matplotlib_fonts(font_family)
+
     # Load coaching histories
     print("Loading coaching history data...")
     coach_histories = load_all_coaching_histories()
@@ -292,16 +297,11 @@ def create_background_war_analysis():
     
     # Customize plot
     ax.axhline(y=0, color='black', linestyle='-', linewidth=1, alpha=0.5)
-    ax.set_xlabel('Season Number in Career', fontsize=16, family='Cambria')
-    ax.set_ylabel('Average Cumulative WAR (Wins Above Replacement)', fontsize=16, family='Cambria')
-    ax.set_title('Average Cumulative WAR Trajectories by Actual Coach Background (First 15 Seasons)', fontsize=18, fontweight='bold', family='Cambria')
+    ax.set_xlabel('Season Number in Career', fontsize=22, fontweight='bold')
+    ax.set_ylabel('Average Cumulative WAR (Wins Above Replacement)', fontsize=22, fontweight='bold')
     ax.grid(True, alpha=0.3)
-    legend = ax.legend(fontsize=12, loc='upper left')
-    for text in legend.get_texts():
-        text.set_family('Cambria')
-    ax.tick_params(axis='both', labelsize=12)
-    for label in ax.get_xticklabels() + ax.get_yticklabels():
-        label.set_family('Cambria')
+    legend = ax.legend(fontsize=18, loc='upper left')
+    ax.tick_params(axis='both', labelsize=16)
     
     plt.tight_layout()
     
@@ -459,6 +459,11 @@ def create_background_war_analysis():
     return coach_backgrounds, avg_trajectories, matched_data
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Analyze coach backgrounds from coaching history')
+    parser.add_argument('--font', type=str, default='Helvetica',
+                       help='Font family to use (default: Helvetica)')
+    args = parser.parse_args()
+
     print("Analyzing coach backgrounds from actual coaching history...")
-    backgrounds, trajectories, matched_data = create_background_war_analysis()
+    backgrounds, trajectories, matched_data = create_background_war_analysis(font_family=args.font)
     print(f"\nAnalysis complete! Check the PNG file and CSV outputs for detailed results.")

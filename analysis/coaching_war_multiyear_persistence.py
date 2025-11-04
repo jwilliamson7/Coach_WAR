@@ -241,9 +241,7 @@ def create_comparison_plots(datasets, results_df):
 
         ax.set_xlabel(f'{name} WAR', fontsize=11, fontweight='bold')
         ax.set_ylabel('Year N+1 WAR', fontsize=11, fontweight='bold')
-        ax.set_title(f'{name}: r={result["Pearson_r"]:.3f}, R²={result["R2"]:.3f} (n={result["N"]})',
-                    fontsize=10)
-        ax.legend(fontsize=8)
+        ax.legend(fontsize=8, title=f'r={result["Pearson_r"]:.3f}, R²={result["R2"]:.3f} (n={result["N"]})')
         ax.grid(True, alpha=0.3)
 
     plt.tight_layout()

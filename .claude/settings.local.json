@@ -1,18 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)",
-      "Bash(rmdir:*)",
-      "Bash(rm:*)",
-      "WebFetch(domain:www.spotrac.com)",
-      "Bash(python:*)",
-      "WebFetch(domain:www.pro-football-reference.com)",
-      "Bash(for:*)",
-      "Bash(done)",
-      "Bash(mv:*)",
-      "Bash(dir:*)",
-      "Bash(grep:*)",
-      "Bash(find:*)"
+      "Bash(copy analysisoutputspngcoaching_war_persistence_scatter.png latexfigures)"
     ],
     "deny": [],
     "ask": []
