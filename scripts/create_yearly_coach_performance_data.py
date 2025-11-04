@@ -31,7 +31,8 @@ from crawlers.utils.data_constants import (
     EXCLUDED_ROLE_KEYWORDS,
     TENURE_CLASSIFICATIONS,
     get_all_feature_names,
-    get_feature_dict
+    get_feature_dict,
+    standardize_team_abbreviation
 )
 
 class YearlyCoachPerformanceProcessor:
@@ -52,47 +53,6 @@ class YearlyCoachPerformanceProcessor:
             format='%(asctime)s - %(levelname)s - %(message)s'
         )
         self.logger = logging.getLogger(__name__)
-        
-        # Team mappings for standardization
-        self.team_mappings = {v: v for v in SPOTRAC_TO_PFR_MAPPINGS.values()}
-        
-        # Historical team corrections
-        self.team_corrections = {
-            'BAL': 'RAV',  # Baltimore Ravens
-            'HOU': 'HTX',  # Houston Texans  
-            'LAC': 'SDG',  # LA Chargers
-            'LAS': 'RAI',  # Las Vegas Raiders
-            'TEN': 'OTI',  # Tennessee Titans
-            'IND': 'CLT',  # Indianapolis Colts
-            'ARI': 'CRD',  # Arizona Cardinals
-            'GB': 'GNB',   # Green Bay Packers
-            'KC': 'KAN',   # Kansas City Chiefs
-            'NE': 'NWE',   # New England Patriots
-            'NO': 'NOR',   # New Orleans Saints
-            'SF': 'SFO',   # San Francisco 49ers
-            'TB': 'TAM',   # Tampa Bay Buccaneers
-            'WAS': 'WAS',  # Washington
-            'LV': 'RAI',   # Las Vegas Raiders
-            'OAK': 'RAI',  # Oakland Raiders -> Las Vegas Raiders
-            'STL': 'RAM',  # St. Louis Rams -> Los Angeles Rams
-            'LAR': 'RAM',  # Los Angeles Rams
-            'PHO': 'CRD',  # Phoenix Cardinals -> Arizona Cardinals
-            'BOS': 'NWE',  # Boston Patriots -> New England Patriots
-        }
-    
-    def standardize_team_name(self, team: str) -> str:
-        """Standardize team abbreviation to current PFR format"""
-        if not team:
-            return team
-            
-        team = team.upper().strip()
-        
-        # Apply corrections if needed
-        if team in self.team_corrections:
-            team = self.team_corrections[team]
-            
-        # Return lowercase for consistency with data files
-        return team.lower()
     
     def classify_coaching_role(self, role: str) -> str:
         """Classify coaching role, excluding interim, suspended, and non-coaching positions"""
@@ -113,7 +73,9 @@ class YearlyCoachPerformanceProcessor:
             return "None"
         
         # Classify specific roles
-        if "Head Coach" in role and "Ass" not in role and "Interim" not in role and "Suspended" not in role and "suspended" not in role:
+        # Allow "Interim Head Coach" but exclude other interim coordinator roles
+        if "Head Coach" in role and "Ass" not in role and "Suspended" not in role and "suspended" not in role:
+            # Include both regular HC and Interim HC
             return "HC"
         
         if "Coordinator" in role:
@@ -281,7 +243,7 @@ class YearlyCoachPerformanceProcessor:
             if not coach_ranks.empty:
                 rank_row = coach_ranks[coach_ranks['Year'] == year]
                 if not rank_row.empty:
-                    team = self.standardize_team_name(rank_row.iloc[0].get('Tm', ''))
+                    team = standardize_team_abbreviation(rank_row.iloc[0].get('Tm', ''), year)
             
             classified_role = self.classify_coaching_role(role)
             
@@ -407,7 +369,7 @@ class YearlyCoachPerformanceProcessor:
             if not ranks_df.empty:
                 rank_row = ranks_df[ranks_df['Year'] == year]
                 if not rank_row.empty:
-                    team = self.standardize_team_name(rank_row.iloc[0].get('Tm', ''))
+                    team = standardize_team_abbreviation(rank_row.iloc[0].get('Tm', ''), year)
             
             classified_role = self.classify_coaching_role(role)
             
@@ -433,7 +395,60 @@ class YearlyCoachPerformanceProcessor:
             yearly_records.append(yearly_record)
         
         return yearly_records
-    
+
+    def _filter_to_primary_coaches(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Filter coaching performance data to only include primary coaches.
+
+        For team-years with mid-season coaching changes, only keep the row
+        for the primary coach as identified in team_year_head_coaches.csv.
+
+        Args:
+            df: DataFrame with coaching performance data
+
+        Returns:
+            Filtered DataFrame with only primary coaches
+        """
+        head_coaches_file = self.output_dir / "team_year_head_coaches.csv"
+
+        if not head_coaches_file.exists():
+            self.logger.warning(f"Head coaches file not found: {head_coaches_file}")
+            self.logger.warning("Skipping primary coach filtering - duplicates may remain")
+            return df
+
+        self.logger.info(f"\nFiltering to primary coaches only...")
+
+        # Load head coach mappings
+        head_coaches = pd.read_csv(head_coaches_file)
+
+        # Standardize team codes to uppercase for matching
+        df['Team'] = df['Team'].fillna('').str.upper()
+        head_coaches['Team'] = head_coaches['Team'].str.upper()
+
+        # Create matching key
+        df['match_key'] = df['Team'] + '_' + df['Year'].astype(str) + '_' + df['Coach']
+        head_coaches['match_key'] = head_coaches['Team'] + '_' + head_coaches['Year'].astype(str) + '_' + head_coaches['Primary_Coach']
+
+        # Filter to only rows where coach matches primary coach
+        initial_rows = len(df)
+        df_filtered = df[df['match_key'].isin(head_coaches['match_key'])].copy()
+        removed_rows = initial_rows - len(df_filtered)
+
+        self.logger.info(f"Kept {len(df_filtered)} rows (primary coaches)")
+        self.logger.info(f"Removed {removed_rows} rows (non-primary coaches from mid-season changes)")
+
+        # Check for any remaining duplicates
+        dupes = df_filtered[df_filtered.duplicated(['Team', 'Year'], keep=False)]
+        if not dupes.empty:
+            self.logger.warning(f"WARNING: {len(dupes)} duplicate team-years still remain!")
+        else:
+            self.logger.info("Success: No duplicate team-years remain!")
+
+        # Remove match_key column
+        df_filtered = df_filtered.drop(columns=['match_key'])
+
+        return df_filtered
+
     def process_all_coaches(self, specific_coach=None) -> pd.DataFrame:
         """Process all coaches (or a specific coach) and return combined yearly dataset"""
         if specific_coach:
@@ -460,17 +475,20 @@ class YearlyCoachPerformanceProcessor:
         if not all_records:
             self.logger.warning("No coaching records found")
             return pd.DataFrame()
-        
+
         # Create DataFrame
         df = pd.DataFrame(all_records)
-        
+
         # Sort by coach name and year
         df = df.sort_values(['Coach', 'Year'], ignore_index=True)
-        
+
         self.logger.info(f"Processed {len(df)} yearly coaching records")
         self.logger.info(f"Years covered: {df['Year'].min()}-{df['Year'].max()}")
         self.logger.info(f"Unique coaches: {df['Coach'].nunique()}")
-        
+
+        # Filter to primary coaches only (handle mid-season coaching changes)
+        df = self._filter_to_primary_coaches(df)
+
         return df
     
     def save_data(self, df: pd.DataFrame) -> bool:

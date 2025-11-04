@@ -164,11 +164,17 @@ def main():
             'command': ['python', 'scripts/extract_sos_winning_percentage.py', '--all-teams'],
             'description': 'Extract Strength of Schedule and winning percentage (all historical data)'
         },
-        
-        # 14. Create yearly coach performance data
+
+        # 14. Extract head coaches (must run before create_yearly_coach_performance_data)
+        {
+            'command': ['python', 'scripts/extract_head_coaches.py'],
+            'description': 'Extract primary head coach for each team-year (handles mid-season changes)'
+        },
+
+        # 15. Create yearly coach performance data
         {
             'command': ['python', 'scripts/create_yearly_coach_performance_data.py'],
-            'description': 'Generate yearly coaching performance metrics (1970-2024)'
+            'description': 'Generate yearly coaching performance metrics (1970-2024, primary coaches only)'
         }
     ]
     

@@ -35,18 +35,25 @@ class TeeOutput:
     def close(self):
         self.log.close()
 
-def load_and_prepare_data(filepath):
+def load_and_prepare_data(filepath, exclude_av=False):
     """Load the combined dataset and prepare features."""
     print("Loading data...")
     df = pd.read_csv(filepath)
-    
+
     # Ensure Win_Pct is the target
     if 'Win_Pct' not in df.columns:
         raise ValueError("Win_Pct column not found in dataset")
-    
+
     # Separate features and target
     X = df.drop(['Win_Pct'], axis=1)
     y = df['Win_Pct']
+
+    # Optionally exclude AV (Approximate Value) features
+    if exclude_av:
+        av_cols = [col for col in X.columns if 'AV' in col or 'Approximate_Value' in col]
+        if av_cols:
+            X = X.drop(columns=av_cols)
+            print(f"Excluded {len(av_cols)} AV features")
     
     # Store team and year for later analysis
     if 'Team' in X.columns and 'Year' in X.columns:
@@ -143,23 +150,23 @@ def calculate_replacement_features(X, coach_features, team_year_info):
     # Load coach data to group by coach
     try:
         coach_df = pd.read_csv('data/processed/Coaching/team_year_head_coaches.csv')
-        
+
         # Start with team_year_info and add features
         if 'Team' in team_year_info.columns and 'Year' in team_year_info.columns:
             combined_df = team_year_info.reset_index(drop=True).copy()
         else:
             print("Warning: No Team/Year columns in team_year_info. Cannot group by coach.")
             raise ValueError("Missing Team/Year columns")
-            
+
         # Add coaching features to the dataframe
         for feature in coach_features:
             if feature in X.columns:
                 combined_df[feature] = X[feature].values
-        
+
         # Merge with coach information
         combined_df = combined_df.merge(
-            coach_df[['Team', 'Year', 'Primary_Coach']], 
-            on=['Team', 'Year'], 
+            coach_df[['Team', 'Year', 'Primary_Coach']],
+            on=['Team', 'Year'],
             how='left'
         )
         
@@ -216,7 +223,7 @@ def create_replacement_dataset(X, coach_features, replacement_values):
     
     return X_replacement
 
-def train_and_predict(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=50, test_size=0.2):
+def train_and_predict(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=50, test_size=0.2, random_state=42):
     """Train XGBoost model with coach-based stratification to prevent data leakage."""
     
     # Load coach data for stratification
@@ -240,7 +247,7 @@ def train_and_predict(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=
             # Assign coaches to train/test sets (not individual seasons)
             unique_coaches = coach_seasons.index.tolist()
             coaches_train, coaches_test = train_test_split(
-                unique_coaches, test_size=test_size, random_state=42
+                unique_coaches, test_size=test_size, random_state=random_state
             )
             
             # Create train/test masks based on coach assignments
@@ -289,11 +296,11 @@ def train_and_predict(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=
         
         # Define hyperparameter search space with discrete options
         param_dist = {
-            'n_estimators': [50, 75, 100, 150, 200, 250, 300],
-            'learning_rate': [0.01, 0.03, 0.05],
-            'max_depth': [3, 4, 5, 6, 7, 8, 9, 10],
+            'n_estimators': [50, 100, 150, 200, 250, 300],
+            'learning_rate': [0.01, 0.02, 0.03, 0.04, 0.05],
+            'max_depth': [2, 3, 4, 5],
             'gamma': [0, 0.1, 0.2, 0.3, 0.4, 0.5],
-            'reg_alpha': [0, 0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0],
+            'reg_alpha': [0, 0.1, 0.5, 1.0, 1.5, 2.0],
             'reg_lambda': [0, 0.1, 0.5, 1.0, 1.5, 2.0],
             'subsample': [0.6, 0.7, 0.8, 0.9, 1.0],
             'colsample_bytree': [0.6, 0.7, 0.8, 0.9, 1.0],
@@ -303,11 +310,11 @@ def train_and_predict(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=
         # Base model
         base_model = xgb.XGBRegressor(
             objective='reg:squarederror',
-            random_state=42,
+            random_state=random_state,
             verbosity=0,
             n_jobs=-1
         )
-        
+
         # RandomizedSearchCV on training data only
         random_search = RandomizedSearchCV(
             estimator=base_model,
@@ -316,35 +323,63 @@ def train_and_predict(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=
             cv=cv_folds,
             scoring='r2',
             n_jobs=-1,
-            random_state=42,
+            random_state=random_state,
             verbose=1
         )
         
         # Fit the random search on training data
         random_search.fit(X_train, y_train)
-        
+
         # Get best model
         model = random_search.best_estimator_
         best_params = random_search.best_params_
         best_score = random_search.best_score_
-        
+
         print(f"\nBest CV R² score (training): {best_score:.4f}")
         print("Best parameters:")
         for param, value in best_params.items():
             print(f"  {param}: {value}")
+
+        # Print detailed CV fold results for best model
+        print(f"\n{'='*80}")
+        print("CROSS-VALIDATION FOLD PERFORMANCE (BEST MODEL)")
+        print(f"{'='*80}")
+
+        # Get the index of the best model in cv_results_
+        best_idx = random_search.best_index_
+
+        # Extract fold scores for the best model
+        fold_scores = []
+        for fold_num in range(cv_folds):
+            score_key = f'split{fold_num}_test_score'
+            if score_key in random_search.cv_results_:
+                fold_scores.append(random_search.cv_results_[score_key][best_idx])
+
+        if fold_scores:
+            print(f"\n{'Fold':<10} {'R² Score':<15}")
+            print("-" * 25)
+            for i, score in enumerate(fold_scores, 1):
+                print(f"{'Fold ' + str(i):<10} {score:<15.4f}")
+            print("-" * 25)
+            print(f"{'Mean':<10} {np.mean(fold_scores):<15.4f}")
+            print(f"{'Std Dev':<10} {np.std(fold_scores):<15.4f}")
+            print(f"{'Min':<10} {np.min(fold_scores):<15.4f}")
+            print(f"{'Max':<10} {np.max(fold_scores):<15.4f}")
+        else:
+            print("Could not extract individual fold scores from CV results")
             
     else:
         print("\nUsing default hyperparameters (no tuning)...")
         # Default hyperparameters
         model_params = {
-            'n_estimators': 100,
-            'learning_rate': 0.1,
-            'max_depth': 6,
-            'gamma': 0.01,
-            'reg_alpha': 0,
-            'reg_lambda': 1,
-            'subsample': 0.8,
-            'colsample_bytree': 0.8,
+            'n_estimators': 250,
+            'learning_rate': 0.05,
+            'max_depth': 3,
+            'gamma': 0,
+            'reg_alpha': 0.1,
+            'reg_lambda': 1.5,
+            'subsample': 1.0,
+            'colsample_bytree': 1.0,
             'objective': 'reg:squarederror',
             'random_state': 42,
             'verbosity': 0,
@@ -437,12 +472,19 @@ def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year
     # Calculate statistics
     print(f"\nCoaching WAR Statistics:")
     print(f"Mean coaching WAR: {results['Coaching_WAR'].mean():.4f}")
+    print(f"Median coaching WAR: {results['Coaching_WAR'].median():.4f}")
     print(f"Std deviation: {results['Coaching_WAR'].std():.4f}")
     print(f"Min WAR: {results['Coaching_WAR'].min():.4f}")
     print(f"Max WAR: {results['Coaching_WAR'].max():.4f}")
-    
+
+    # Convert to 16-game season terms for interpretability
+    print(f"\nIn 16-game season terms:")
+    print(f"Mean: {results['Coaching_WAR'].mean() * 16:.2f} games")
+    print(f"Median: {results['Coaching_WAR'].median() * 16:.2f} games")
+
     print(f"\nPredicted Impact Statistics:")
     print(f"Mean predicted impact: {results['Predicted_Impact'].mean():.4f}")
+    print(f"Median predicted impact: {results['Predicted_Impact'].median():.4f}")
     print(f"Std deviation: {results['Predicted_Impact'].std():.4f}")
     print(f"Min impact: {results['Predicted_Impact'].min():.4f}")
     print(f"Max impact: {results['Predicted_Impact'].max():.4f}")
@@ -464,34 +506,16 @@ def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year
     print(f"{'MAE':<20} {mae_actual:<20.6f} {mae_replacement:<20.6f} {mae_replacement - mae_actual:<15.6f}")
     print(f"{'R² Score':<20} {r2_actual:<20.4f} {r2_replacement:<20.4f} {r2_replacement - r2_actual:<15.4f}")
     print(f"{'RMSE':<20} {np.sqrt(mse_actual):<20.6f} {np.sqrt(mse_replacement):<20.6f} {np.sqrt(mse_replacement) - np.sqrt(mse_actual):<15.6f}")
-    
-    # Identify coaches with highest positive WAR
+
+    # Identify coaches with highest positive WAR for saving to file
     threshold_percentile = 95
     threshold_war = 0.05
-    
+
     high_impact_coaches = results[
-        (results['WAR_Percentile'] >= threshold_percentile) | 
+        (results['WAR_Percentile'] >= threshold_percentile) |
         (results['Coaching_WAR'] > threshold_war)
     ].copy()
-    
-    print(f"\n{'='*80}")
-    print(f"COACHES WITH HIGHEST POSITIVE WAR")
-    print(f"(Top 5% or WAR > 0.05)")
-    print(f"{'='*80}")
-    
-    if len(high_impact_coaches) > 0:
-        print(f"\nFound {len(high_impact_coaches)} team-years with significant positive coaching WAR:\n")
-        
-        # Display top WAR coaches
-        for idx, row in high_impact_coaches.head(20).iterrows():
-            coach_display = row['Primary_Coach'] if pd.notna(row['Primary_Coach']) else 'N/A'
-            print(f"{row['Team']} ({int(row['Year'])}) - Coach: {coach_display}")
-            print(f"  Actual Win%: {row['Actual_Win_Pct']:.3f}")
-            print(f"  Predicted replacement: {row['Predicted_Replacement']:.3f}")
-            print(f"  Coaching WAR: {row['Coaching_WAR']:+.3f} ({row['WAR_Percentile']:.1f} percentile)")
-            print(f"  Predicted impact: {row['Predicted_Impact']:+.3f}")
-            print()
-    
+
     # Show top 10 positive WAR
     print(f"\n{'='*80}")
     print(f"TOP 10 POSITIVE COACHING WAR")
@@ -670,6 +694,8 @@ def main():
                        help='Number of cross-validation folds for tuning (default: 5)')
     parser.add_argument('--n-iter', type=int, default=50,
                        help='Number of iterations for RandomizedSearchCV (default: 50)')
+    parser.add_argument('--random-state', type=int, default=42,
+                       help='Random state for reproducibility (default: 42)')
     args = parser.parse_args()
     
     # Create log file with timestamp
@@ -682,14 +708,11 @@ def main():
     sys.stdout = tee
     
     try:
-        # Select dataset based on argument (default is without AV)
-        if args.with_av:
-            filepath = 'data/final/imputed_final_data.csv'
-            dataset_type = "with ALL features (including AV)"
-        else:
-            filepath = 'data/final/imputed_final_data_no_AV.csv'
-            dataset_type = "WITHOUT AV features"
-        
+        # Use single imputed dataset file
+        filepath = 'data/final/imputed_final_data.csv'
+        exclude_av = not args.with_av  # Exclude AV features unless --with-av flag is used
+        dataset_type = "with ALL features (including AV)" if args.with_av else "WITHOUT AV features"
+
         print("="*80)
         print("XGBOOST COACHING IMPACT ANALYSIS")
         print(f"Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -701,9 +724,9 @@ def main():
             print("Hyperparameter tuning: DISABLED (using default parameters)")
         print(f"Log file: {log_filename}")
         print("="*80)
-    
+
         # Load and prepare data
-        X, y, team_year_info, full_df = load_and_prepare_data(filepath)
+        X, y, team_year_info, full_df = load_and_prepare_data(filepath, exclude_av=exclude_av)
         
         # Identify coaching features
         coach_features = identify_coach_features(X)
@@ -718,7 +741,7 @@ def main():
         print("\nTraining model with actual coaching data...")
         use_tuning = not args.no_tuning
         model_actual, y_pred_actual, train_metrics, test_metrics = train_and_predict(
-            X, y, team_year_info, use_tuning=use_tuning, cv_folds=args.cv_folds, n_iter=args.n_iter)
+            X, y, team_year_info, use_tuning=use_tuning, cv_folds=args.cv_folds, n_iter=args.n_iter, random_state=args.random_state)
         
         # Generate predictions with replacement-level coaching
         print("\nGenerating predictions with replacement-level coaching...")

@@ -2,9 +2,9 @@ Draft Picks Final Dataset Summary
 ========================================
 
 Years covered: 1970-2024
-Total records: 1619
+Total records: 1637
 Teams: 32
-Years per team: 50
+Years per team: 51
 
 Column Categories:
 - Current_*: Draft picks by round in the current year
@@ -14,35 +14,35 @@ Column Categories:
 - Prev_4Yr_Round_1_Picks: Round 1 draft picks 4 years ago only
 
 Round Columns (1-6 + 7+):
-- Round 1: Average 1.01 picks per team per year
-- Round 2: Average 1.02 picks per team per year
-- Round 3: Average 1.09 picks per team per year
-- Round 4: Average 1.10 picks per team per year
-- Round 5: Average 1.10 picks per team per year
-- Round 6: Average 1.15 picks per team per year
-- Rounds 7+: Average 3.76 picks per team per year
+- Round 1: Average 1.00 picks per team per year
+- Round 2: Average 1.01 picks per team per year
+- Round 3: Average 1.08 picks per team per year
+- Round 4: Average 1.09 picks per team per year
+- Round 5: Average 1.08 picks per team per year
+- Round 6: Average 1.14 picks per team per year
+- Rounds 7+: Average 3.72 picks per team per year
 
 Total columns in dataset: 31
 
 Data availability by year:
-- 1970: 25 teams
-- 1971: 25 teams
-- 1972: 25 teams
-- 1973: 25 teams
-- 1974: 25 teams
-- 1975: 25 teams
-- 1976: 27 teams
-- 1977: 27 teams
-- 1978: 27 teams
-- 1979: 27 teams
-- 1980: 27 teams
-- 1981: 27 teams
-- 1982: 27 teams
-- 1983: 27 teams
-- 1984: 27 teams
-- 1985: 27 teams
-- 1986: 27 teams
-- 1987: 27 teams
+- 1970: 26 teams
+- 1971: 26 teams
+- 1972: 26 teams
+- 1973: 26 teams
+- 1974: 26 teams
+- 1975: 26 teams
+- 1976: 28 teams
+- 1977: 28 teams
+- 1978: 28 teams
+- 1979: 28 teams
+- 1980: 28 teams
+- 1981: 28 teams
+- 1982: 28 teams
+- 1983: 28 teams
+- 1984: 28 teams
+- 1985: 28 teams
+- 1986: 28 teams
+- 1987: 28 teams
 - 1988: 28 teams
 - 1989: 28 teams
 - 1990: 28 teams

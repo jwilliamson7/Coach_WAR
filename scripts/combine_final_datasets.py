@@ -3,10 +3,8 @@
 Combine All Final Datasets into Single Team-Year Table
 
 This script combines all non-metadata CSV files from data/final/ into a single dataset
-using a full outer join approach. All team-year combinations from any dataset will be
-included in the final output, with missing values handled through imputation.
-
-Coaching data is left-joined only (adds features only for existing team-years).
+using coaching data as the base. Only team-years with coaching data will be included
+in the final output (inner join on coaching data).
 
 Usage:
     python scripts/combine_final_datasets.py
@@ -23,6 +21,10 @@ import logging
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 import glob
+
+# Add parent directory to path to import constants
+sys.path.append(str(Path(__file__).parent.parent))
+from crawlers.utils.data_constants import standardize_team_abbreviation
 
 class FinalDatasetCombiner:
     """Combines all final datasets into a single team-year table"""
@@ -63,87 +65,79 @@ class FinalDatasetCombiner:
         ]
         
         # Additional files from other directories
+        # Note: coaching and coach_win_pct will be merged together first
         self.additional_files = {
             "../processed/Coaching/yearly_coach_performance.csv": "coaching"
         }
+
+        # File to merge with coaching data before joining to main dataset
+        self.coach_win_pct_file = "../processed/Coaching/coach_specific_win_pct.csv"
         
         # Columns to exclude from joins (date/metadata columns)
         self.exclude_columns = [
             'Analysis_Date', 'Extraction_Date', 'Creation_Date',
             'Last_Updated', 'Generated_Date', 'Processed_Date'
         ]
-        
-        # Historical team mappings to current team abbreviations
-        self.team_mappings = {
-            'BOS': 'NWE',  # Boston Patriots → New England Patriots
-            'LAR': 'RAM',  # Los Angeles Rams → Rams (consolidate)
-            'LVR': 'RAI',  # Las Vegas Raiders → Raiders (consolidate)
-            'PHO': 'CRD',  # Phoenix Cardinals → Arizona Cardinals
-            'STL': 'RAM',  # St. Louis Rams → Los Angeles Rams
-        }
-    
+
     def standardize_team_names(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Apply historical team mappings to standardize team names
-        
+        Standardize team abbreviations to uppercase for consistency
+
+        NOTE: Source data is already in correct PFR format (lowercase),
+        so we only need to uppercase for consistency. Do NOT apply
+        standardize_team_abbreviation() again as it would break the
+        already-correct codes.
+
         Args:
             df: DataFrame with Team column
-            
+
         Returns:
-            DataFrame with standardized team names
+            DataFrame with uppercase team names
         """
         if 'Team' in df.columns:
-            df['Team'] = df['Team'].replace(self.team_mappings)
+            # Convert to uppercase for consistency (data is already correct)
+            df['Team'] = df['Team'].str.upper()
         return df
     
     def collect_all_team_years(self) -> Optional[pd.DataFrame]:
         """
-        Collect all unique team-year combinations from all datasets
-        
+        Collect team-year combinations from coaching data (base table)
+
         Returns:
-            DataFrame with all unique team-year combinations
+            DataFrame with team-year combinations from coaching data
         """
-        all_team_years = set()
-        
-        # Process main files from final directory
-        for filename in self.files_to_combine:
-            df = self.load_dataset(filename)
-            if df is not None:
-                for _, row in df.iterrows():
-                    all_team_years.add((row['Team'], row['Year']))
-        
-        # Process additional files from other directories (except coaching which is left-joined)
-        for file_path, file_label in self.additional_files.items():
-            # Skip coaching data in collection phase - it's left-joined later
-            if file_label == "coaching":
-                self.logger.info(f"Skipping {file_label} in team-year collection (left-join only)")
-                continue
-                
-            full_path = self.final_dir / file_path
-            df = self.load_additional_dataset(full_path, file_label)
-            if df is not None:
-                for _, row in df.iterrows():
-                    all_team_years.add((row['Team'], row['Year']))
-        
-        if not all_team_years:
-            self.logger.error("No team-year combinations found in any dataset")
+        # Use coaching data as the base - only include team-years with coaching data
+        coaching_path = self.final_dir / "../processed/Coaching/yearly_coach_performance.csv"
+
+        if not coaching_path.exists():
+            self.logger.error(f"Coaching data not found: {coaching_path}")
             return None
-        
-        # Create master team-year DataFrame and filter for 1970 onwards
-        team_years_df = pd.DataFrame(
-            list(all_team_years), 
-            columns=['Team', 'Year']
-        )
-        
-        # Filter for 1970 onwards to match coaching data availability
-        team_years_df = team_years_df[team_years_df['Year'] >= 1970]
-        team_years_df = team_years_df.sort_values(['Team', 'Year'], ignore_index=True)
-        
-        self.logger.info(f"Found {len(team_years_df)} unique team-year combinations")
-        self.logger.info(f"Team-Year range: {team_years_df['Year'].min()}-{team_years_df['Year'].max()}")
-        self.logger.info(f"Teams: {team_years_df['Team'].nunique()}")
-        
-        return team_years_df
+
+        try:
+            df = pd.read_csv(coaching_path)
+
+            if 'Team' not in df.columns or 'Year' not in df.columns:
+                self.logger.error("Coaching data missing Team/Year columns")
+                return None
+
+            # Standardize team names
+            df['Team'] = df['Team'].str.upper()
+            df['Year'] = df['Year'].astype(int)
+            df = self.standardize_team_names(df)
+
+            # Extract unique team-years
+            team_years_df = df[['Team', 'Year']].drop_duplicates()
+            team_years_df = team_years_df.sort_values(['Team', 'Year'], ignore_index=True)
+
+            self.logger.info(f"Using coaching data as base: {len(team_years_df)} unique team-year combinations")
+            self.logger.info(f"Team-Year range: {team_years_df['Year'].min()}-{team_years_df['Year'].max()}")
+            self.logger.info(f"Teams: {team_years_df['Team'].nunique()}")
+
+            return team_years_df
+
+        except Exception as e:
+            self.logger.error(f"Error loading coaching data: {e}")
+            return None
     
     def load_dataset(self, filename: str) -> Optional[pd.DataFrame]:
         """
@@ -251,34 +245,57 @@ class FinalDatasetCombiner:
                 if 'Team' not in df.columns or 'Year' not in df.columns:
                     self.logger.warning(f"Missing Team/Year columns in {file_path} ({file_label})")
                     return None
-                
-                # Drop non-feature columns (keep only coaching metrics)
+
+                # Standardize Team column before merging
+                df['Team'] = df['Team'].str.upper()
+
+                # First, merge with coach-specific Win_Pct
+                coach_win_pct_path = self.final_dir / self.coach_win_pct_file
+                if coach_win_pct_path.exists():
+                    try:
+                        win_pct_df = pd.read_csv(coach_win_pct_path)
+                        # Keep only Coach_Win_Pct column (merge on Coach and Year only)
+                        win_pct_df = win_pct_df[['Coach', 'Year', 'Coach_Win_Pct']].copy()
+
+                        # Merge with coaching data on Coach and Year (ignore Team to avoid abbreviation issues)
+                        df = df.merge(win_pct_df, on=['Coach', 'Year'], how='left')
+                        self.logger.info(f"Merged coach-specific Win_Pct with coaching data (on Coach + Year)")
+
+                        # Check coverage
+                        coverage = df['Coach_Win_Pct'].notna().sum()
+                        self.logger.info(f"Coach_Win_Pct coverage: {coverage}/{len(df)} ({100*coverage/len(df):.1f}%)")
+                    except Exception as e:
+                        self.logger.warning(f"Failed to merge coach-specific Win_Pct: {e}")
+                else:
+                    self.logger.warning(f"Coach-specific Win_Pct file not found: {coach_win_pct_path}")
+
+                # Drop non-feature columns (keep only coaching metrics and Win_Pct)
                 coaching_exclude = ['Coach', 'Role', 'Age']
                 cols_to_drop = [col for col in coaching_exclude if col in df.columns]
                 if cols_to_drop:
                     df = df.drop(columns=cols_to_drop)
                     self.logger.info(f"Dropped coaching metadata columns: {cols_to_drop}")
-                
+
                 # Add _Norm suffix to normalized coaching features
-                normalized_patterns = ['PF (Points For)', 'Yds__', 'Y/P__', 'TO__', '1stD__', 'Cmp Passing__', 
-                                     'Att Passing__', 'Yds Passing__', 'TD Passing__', 'Int Passing__', 
-                                     'NY/A Passing__', '1stD Passing__', 'Att Rushing__', 'Yds Rushing__', 
-                                     'TD Rushing__', 'Y/A Rushing__', '1stD Rushing__', 'Pen__', 
-                                     'Yds Penalties__', '1stPy__', '#Dr__', 'Sc%__', 'TO%__', 
-                                     'Time Average Drive__', 'Plays Average Drive__', 'Yds Average Drive__', 
-                                     'Pts Average Drive__', '3DAtt__', '3D%__', '4DAtt__', '4D%__', 
+                normalized_patterns = ['PF (Points For)', 'Yds__', 'Y/P__', 'TO__', '1stD__', 'Cmp Passing__',
+                                     'Att Passing__', 'Yds Passing__', 'TD Passing__', 'Int Passing__',
+                                     'NY/A Passing__', '1stD Passing__', 'Att Rushing__', 'Yds Rushing__',
+                                     'TD Rushing__', 'Y/A Rushing__', '1stD Rushing__', 'Pen__',
+                                     'Yds Penalties__', '1stPy__', '#Dr__', 'Sc%__', 'TO%__',
+                                     'Time Average Drive__', 'Plays Average Drive__', 'Yds Average Drive__',
+                                     'Pts Average Drive__', '3DAtt__', '3D%__', '4DAtt__', '4D%__',
                                      'RZAtt__', 'RZPct__']
-                
+
                 rename_dict = {}
                 for col in df.columns:
                     if any(pattern in col for pattern in normalized_patterns):
                         if not col.endswith('_Norm'):  # Don't double-suffix
                             rename_dict[col] = col + '_Norm'
-                
+
                 if rename_dict:
                     df = df.rename(columns=rename_dict)
                     self.logger.info(f"Added _Norm suffix to {len(rename_dict)} normalized coaching features")
-            
+
             else:
                 # Check for required columns for other additional files
                 if 'Team' not in df.columns or 'Year' not in df.columns:
@@ -373,12 +390,12 @@ class FinalDatasetCombiner:
                 df_to_join = df_to_join.rename(columns=rename_dict)
                 self.logger.info(f"Renamed columns: {rename_dict}")
             
-            # Perform outer join to keep all team-year combinations
+            # Perform left join to keep only base team-years (coaching data)
             before_cols = len(combined_df.columns)
             combined_df = combined_df.merge(
-                df_to_join, 
-                on='team_year_key', 
-                how='outer'
+                df_to_join,
+                on='team_year_key',
+                how='left'
             )
             after_cols = len(combined_df.columns)
             
@@ -420,22 +437,16 @@ class FinalDatasetCombiner:
                 df_to_join = df_to_join.rename(columns=rename_dict)
                 self.logger.info(f"Renamed columns: {rename_dict}")
             
-            # Determine join type based on file label
-            if file_label == "coaching":
-                # Use left join for coaching data - only add features where team-year exists
-                join_type = 'left'
-                self.logger.info(f"Using LEFT JOIN for {file_label} (only existing team-years)")
-            else:
-                # Use outer join for other additional files
-                join_type = 'outer'
-                self.logger.info(f"Using OUTER JOIN for {file_label}")
-            
+            # Use left join for all additional files (keeps only coaching data team-years)
+            join_type = 'left'
+            self.logger.info(f"Using LEFT JOIN for {file_label} (only coaching team-years)")
+
             # Perform join
             before_cols = len(combined_df.columns)
             before_rows = len(combined_df)
             combined_df = combined_df.merge(
-                df_to_join, 
-                on='team_year_key', 
+                df_to_join,
+                on='team_year_key',
                 how=join_type
             )
             after_cols = len(combined_df.columns)
@@ -453,7 +464,18 @@ class FinalDatasetCombiner:
         # Final filter: ensure Year is integer and >= 1970
         combined_df['Year'] = combined_df['Year'].astype(int)
         combined_df = combined_df[combined_df['Year'] >= 1970]
-        
+
+        # Replace team-level Win_Pct with coach-specific Win_Pct
+        if 'Coach_Win_Pct' in combined_df.columns:
+            if 'Win_Pct' in combined_df.columns:
+                # Drop old team-level Win_Pct
+                combined_df = combined_df.drop(columns=['Win_Pct'])
+                self.logger.info("Dropped team-level Win_Pct (will use coach-specific instead)")
+
+            # Rename Coach_Win_Pct to Win_Pct
+            combined_df = combined_df.rename(columns={'Coach_Win_Pct': 'Win_Pct'})
+            self.logger.info("Renamed Coach_Win_Pct to Win_Pct (now using coach-specific win percentages)")
+
         # Move Win_Pct to last column if it exists
         if 'Win_Pct' in combined_df.columns:
             win_pct_col = combined_df['Win_Pct']
@@ -632,7 +654,7 @@ def main():
     )
     
     print("Combining all final datasets...")
-    print(f"Join strategy: Full outer join (all team-year combinations)")
+    print(f"Join strategy: Using coaching data as base (only team-years with coaching data)")
     print(f"Files to combine: {len(combiner.files_to_combine)}")
     
     # Combine datasets
