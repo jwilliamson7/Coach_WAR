@@ -157,7 +157,7 @@ def create_background_comparison_scatter(results):
     ax.set_ylabel('Year N+1 Coaching WAR (Games per Season)', fontsize=13, fontweight='bold')
     ax.set_title('2-Year Average WAR Persistence by Background', fontsize=14, fontweight='bold', pad=20)
 
-    # Stats box
+    # Stats box with mathematical notation
     stats_text = "Regression Equations:\n"
     for background in ['Offensive', 'Defensive']:
         model = results[background]['model']
@@ -166,8 +166,8 @@ def create_background_comparison_scatter(results):
         coef = model.coef_[0]
         intercept = model.intercept_ * 16
         stats_text += f"\n{background}:\n"
-        stats_text += f"  Y = {coef:.3f}X + {intercept:.2f}\n"
-        stats_text += f"  R2 = {r2:.3f}\n"
+        stats_text += f"  $WAR_{{N+1}} = {coef:.3f} \\cdot WAR_{{2yr}} + {intercept:.2f}$ games\n"
+        stats_text += f"  $R^2 = {r2:.3f}$\n"
         stats_text += f"  RMSE: {rmse:.2f} games\n"
 
     # Add statistical test result
@@ -176,12 +176,12 @@ def create_background_comparison_scatter(results):
         results['Defensive']['corr'], results['Defensive']['n']
     )
     stats_text += f"\nFisher's Z-test:\n"
-    stats_text += f"  Z = {z_stat:.3f}, p = {p_value:.4f}"
+    stats_text += f"  $Z = {z_stat:.3f}$, $p = {p_value:.4f}$"
     if p_value < 0.10:
         stats_text += "*"
 
     ax.text(0.05, 0.95, stats_text, transform=ax.transAxes,
-           fontsize=10, verticalalignment='top', family='monospace',
+           fontsize=10, verticalalignment='top',
            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.9))
 
     ax.legend(loc='lower right', fontsize=11, framealpha=0.9)

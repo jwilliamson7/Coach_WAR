@@ -275,8 +275,24 @@ def create_survivorship_visualizations(survival_df, quintile_survival, results_d
     ax1.set_ylabel('Mean Coaching WAR (Games per Season)', fontsize=12, fontweight='bold')
     ax1.set_xticks(x_pos)
     ax1.set_xticklabels(results_df['Quintile'])
-    ax1.legend()
+    ax1.legend(loc='upper left')
     ax1.grid(True, alpha=0.3, axis='y')
+
+    # Add value labels to bars in top plot
+    for i, (v_n, v_n1) in enumerate(zip(year_n_games, year_n_plus_1_games)):
+        # Year N labels (left bars)
+        label_n = f'+{v_n:.2f}' if v_n > 0 else f'{v_n:.2f}'
+        ax1.text(i - width/2, v_n + (0.15 if v_n > 0 else -0.15), label_n,
+                ha='center', va='bottom' if v_n > 0 else 'top', fontweight='bold', fontsize=10)
+        # Year N+1 labels (right bars)
+        label_n1 = f'+{v_n1:.2f}' if v_n1 > 0 else f'{v_n1:.2f}'
+        ax1.text(i + width/2, v_n1 + (0.15 if v_n1 > 0 else -0.15), label_n1,
+                ha='center', va='bottom' if v_n1 > 0 else 'top', fontweight='bold', fontsize=10)
+
+    # Adjust y-axis limits to show labels without clipping
+    ymin, ymax = ax1.get_ylim()
+    y_range = ymax - ymin
+    ax1.set_ylim(ymin - 0.1 * y_range, ymax + 0.1 * y_range)
 
     # Bottom plot: Change from Year N to Year N+1
     changes_games = year_n_plus_1_games - year_n_games

@@ -8,13 +8,13 @@ Dan Quinn,ATL,2015,0.5,0.6875
 Dan Quinn,ATL,2016,0.6875,0.625
 Dan Quinn,ATL,2017,0.625,0.4375
 Dan Quinn,ATL,2018,0.4375,0.4375
-Dan Quinn,ATL,2019,0.4375,0.25
+Dan Quinn,ATL,2019,0.4375,0.0
 Dan Reeves,ATL,1997,0.4375,0.875
 Dan Reeves,ATL,1998,0.875,0.3125
 Dan Reeves,ATL,1999,0.3125,0.25
 Dan Reeves,ATL,2000,0.25,0.4375
 Dan Reeves,ATL,2001,0.4375,0.5938
-Dan Reeves,ATL,2002,0.5938,0.3125
+Dan Reeves,ATL,2002,0.5938,0.2308
 Jerry Glanville,ATL,1990,0.3125,0.625
 Jerry Glanville,ATL,1991,0.625,0.375
 Jerry Glanville,ATL,1992,0.375,0.375
@@ -27,9 +27,9 @@ Leeman Bennett,ATL,1978,0.5625,0.375
 Leeman Bennett,ATL,1979,0.375,0.75
 Leeman Bennett,ATL,1980,0.75,0.4375
 Leeman Bennett,ATL,1981,0.4375,0.5556
-Marion Campbell,ATL,1975,0.2857,0.2857
+Marion Campbell,ATL,1975,0.2857,0.2
 Marion Campbell,ATL,1987,0.2,0.3125
-Marion Campbell,ATL,1988,0.3125,0.1875
+Marion Campbell,ATL,1988,0.3125,0.25
 Mike Smith,ATL,2008,0.6875,0.5625
 Mike Smith,ATL,2009,0.5625,0.8125
 Mike Smith,ATL,2010,0.8125,0.625
@@ -39,25 +39,23 @@ Mike Smith,ATL,2013,0.25,0.375
 Norm Van Brocklin,ATL,1970,0.3571,0.5357
 Norm Van Brocklin,ATL,1971,0.5357,0.5
 Norm Van Brocklin,ATL,1972,0.5,0.6429
-Norm Van Brocklin,ATL,1973,0.6429,0.2143
-Chan Gailey,BUF,2010,0.25,0.375
-Chan Gailey,BUF,2011,0.375,0.375
+Norm Van Brocklin,ATL,1973,0.6429,0.25
 Chuck Knox,BUF,1978,0.3125,0.4375
 Chuck Knox,BUF,1979,0.4375,0.6875
 Chuck Knox,BUF,1980,0.6875,0.625
 Chuck Knox,BUF,1981,0.625,0.4444
 Dick Jauron,BUF,2006,0.4375,0.4375
 Dick Jauron,BUF,2007,0.4375,0.4375
-Dick Jauron,BUF,2008,0.4375,0.375
+Dick Jauron,BUF,2008,0.4375,0.3333
 Doug Marrone,BUF,2013,0.375,0.5625
 Gregg Williams,BUF,2001,0.1875,0.5
 Gregg Williams,BUF,2002,0.5,0.375
 Kay Stephenson,BUF,1983,0.5,0.125
-Kay Stephenson,BUF,1984,0.125,0.125
+Kay Stephenson,BUF,1984,0.125,0.0
 Lou Saban,BUF,1972,0.3214,0.6429
 Lou Saban,BUF,1973,0.6429,0.6429
 Lou Saban,BUF,1974,0.6429,0.5714
-Lou Saban,BUF,1975,0.5714,0.1429
+Lou Saban,BUF,1975,0.5714,0.4
 Marv Levy,BUF,1987,0.4667,0.75
 Marv Levy,BUF,1988,0.75,0.5625
 Marv Levy,BUF,1989,0.5625,0.8125
@@ -69,7 +67,7 @@ Marv Levy,BUF,1994,0.4375,0.625
 Marv Levy,BUF,1995,0.625,0.625
 Marv Levy,BUF,1996,0.625,0.375
 Mike Mularkey,BUF,2004,0.5625,0.3125
-Rex Ryan,BUF,2015,0.5,0.4375
+Rex Ryan,BUF,2015,0.5,0.4667
 Sean McDermott,BUF,2017,0.5625,0.375
 Sean McDermott,BUF,2018,0.375,0.625
 Sean McDermott,BUF,2019,0.625,0.8125
@@ -99,9 +97,7 @@ Ron Rivera,CAR,2014,0.4688,0.9375
 Ron Rivera,CAR,2015,0.9375,0.375
 Ron Rivera,CAR,2016,0.375,0.6875
 Ron Rivera,CAR,2017,0.6875,0.4375
-Ron Rivera,CAR,2018,0.4375,0.3125
-Abe Gibron,CHI,1972,0.3214,0.2143
-Abe Gibron,CHI,1973,0.2143,0.2857
+Ron Rivera,CAR,2018,0.4375,0.4167
 Dave Wannstedt,CHI,1993,0.4375,0.5625
 Dave Wannstedt,CHI,1994,0.5625,0.5625
 Dave Wannstedt,CHI,1995,0.5625,0.4375
@@ -113,7 +109,6 @@ Dick Jauron,CHI,2001,0.8125,0.25
 Dick Jauron,CHI,2002,0.25,0.4375
 Jack Pardee,CHI,1975,0.2857,0.5
 Jack Pardee,CHI,1976,0.5,0.6429
-Jim Dooley,CHI,1970,0.4286,0.4286
 John Fox,CHI,2015,0.375,0.1875
 John Fox,CHI,2016,0.1875,0.3125
 Lovie Smith,CHI,2004,0.3125,0.6875
@@ -126,7 +121,7 @@ Lovie Smith,CHI,2010,0.6875,0.5
 Lovie Smith,CHI,2011,0.5,0.625
 Marc Trestman,CHI,2013,0.5,0.3125
 Matt Eberflus,CHI,2022,0.1765,0.4118
-Matt Eberflus,CHI,2023,0.4118,0.2941
+Matt Eberflus,CHI,2023,0.4118,0.3333
 Matt Nagy,CHI,2018,0.75,0.5
 Matt Nagy,CHI,2019,0.5,0.5
 Matt Nagy,CHI,2020,0.5,0.3529
@@ -144,14 +139,14 @@ Neill Armstrong,CHI,1978,0.4375,0.625
 Neill Armstrong,CHI,1979,0.625,0.4375
 Neill Armstrong,CHI,1980,0.4375,0.375
 Bill Johnson,CIN,1976,0.7143,0.5714
-Bill Johnson,CIN,1977,0.5714,0.25
+Bill Johnson,CIN,1977,0.5714,0.0
 Bruce Coslet,CIN,1997,0.4375,0.1875
 Bruce Coslet,CIN,1998,0.1875,0.25
-Bruce Coslet,CIN,1999,0.25,0.25
+Bruce Coslet,CIN,1999,0.25,0.0
 David Shula,CIN,1992,0.3125,0.1875
 David Shula,CIN,1993,0.1875,0.1875
 David Shula,CIN,1994,0.1875,0.4375
-David Shula,CIN,1995,0.4375,0.5
+David Shula,CIN,1995,0.4375,0.1429
 Dick LeBeau,CIN,2001,0.375,0.125
 Forrest Gregg,CIN,1980,0.375,0.75
 Forrest Gregg,CIN,1981,0.75,0.7778
@@ -192,16 +187,13 @@ Bill Belichick,CLE,1991,0.375,0.4375
 Bill Belichick,CLE,1992,0.4375,0.4375
 Bill Belichick,CLE,1993,0.4375,0.6875
 Bill Belichick,CLE,1994,0.6875,0.3125
-Bud Carson,CLE,1989,0.5938,0.1875
-Butch Davis,CLE,2001,0.4375,0.5625
-Butch Davis,CLE,2002,0.5625,0.3125
-Butch Davis,CLE,2003,0.3125,0.25
+Bud Carson,CLE,1989,0.5938,0.2222
 Chris Palmer,CLE,1999,0.125,0.1875
 Eric Mangini,CLE,2009,0.3125,0.3125
 Forrest Gregg,CLE,1975,0.2143,0.6429
-Forrest Gregg,CLE,1976,0.6429,0.4286
+Forrest Gregg,CLE,1976,0.6429,0.4615
 Hue Jackson,CLE,2016,0.0625,0.0
-Hue Jackson,CLE,2017,0.0,0.4688
+Hue Jackson,CLE,2017,0.0,0.3125
 Kevin Stefanski,CLE,2020,0.6875,0.4706
 Kevin Stefanski,CLE,2021,0.4706,0.4118
 Kevin Stefanski,CLE,2022,0.4118,0.6471
@@ -210,33 +202,24 @@ Marty Schottenheimer,CLE,1985,0.5,0.75
 Marty Schottenheimer,CLE,1986,0.75,0.6667
 Marty Schottenheimer,CLE,1987,0.6667,0.625
 Mike Pettine,CLE,2014,0.4375,0.1875
-Nick Skorich,CLE,1971,0.6429,0.7143
-Nick Skorich,CLE,1972,0.7143,0.5714
-Nick Skorich,CLE,1973,0.5714,0.2857
 Pat Shurmur,CLE,2011,0.25,0.3125
 Romeo Crennel,CLE,2005,0.375,0.25
 Romeo Crennel,CLE,2006,0.25,0.625
 Romeo Crennel,CLE,2007,0.625,0.25
-Sam Rutigliano,CLE,1978,0.5,0.5625
-Sam Rutigliano,CLE,1979,0.5625,0.6875
-Sam Rutigliano,CLE,1980,0.6875,0.3125
-Sam Rutigliano,CLE,1981,0.3125,0.4444
-Sam Rutigliano,CLE,1982,0.4444,0.5625
-Sam Rutigliano,CLE,1983,0.5625,0.3125
 Chuck Pagano,CLT,2012,0.6875,0.6875
 Chuck Pagano,CLT,2013,0.6875,0.6875
 Chuck Pagano,CLT,2014,0.6875,0.5
 Chuck Pagano,CLT,2015,0.5,0.5
 Chuck Pagano,CLT,2016,0.5,0.25
 Don McCafferty,CLT,1970,0.8214,0.7143
-Don McCafferty,CLT,1971,0.7143,0.3571
+Don McCafferty,CLT,1971,0.7143,0.2
 Frank Kush,CLT,1982,0.0556,0.4375
-Frank Kush,CLT,1983,0.4375,0.25
+Frank Kush,CLT,1983,0.4375,0.2667
 Frank Reich,CLT,2018,0.625,0.4375
 Frank Reich,CLT,2019,0.4375,0.6875
 Frank Reich,CLT,2020,0.6875,0.5294
-Frank Reich,CLT,2021,0.5294,0.2647
-Howard Schnellenberger,CLT,1973,0.2857,0.1429
+Frank Reich,CLT,2021,0.5294,0.3889
+Howard Schnellenberger,CLT,1973,0.2857,0.0
 Jim Caldwell,CLT,2009,0.875,0.625
 Jim Caldwell,CLT,2010,0.625,0.125
 Jim Mora Sr,CLT,1998,0.1875,0.8125
@@ -244,11 +227,11 @@ Jim Mora Sr,CLT,1999,0.8125,0.625
 Jim Mora Sr,CLT,2000,0.625,0.375
 Lindy Infante,CLT,1996,0.5625,0.1875
 Mike McCormack,CLT,1980,0.4375,0.125
-Rod Dowhower,CLT,1985,0.3125,0.1875
+Rod Dowhower,CLT,1985,0.3125,0.0
 Ron Meyer,CLT,1987,0.6,0.5625
 Ron Meyer,CLT,1988,0.5625,0.5
 Ron Meyer,CLT,1989,0.5,0.4375
-Ron Meyer,CLT,1990,0.4375,0.0625
+Ron Meyer,CLT,1990,0.4375,0.0
 Shane Steichen,CLT,2023,0.5294,0.4706
 Ted Marchibroda,CLT,1975,0.7143,0.7857
 Ted Marchibroda,CLT,1976,0.7857,0.7143
@@ -268,7 +251,7 @@ Bruce Arians,CRD,2013,0.625,0.6875
 Bruce Arians,CRD,2014,0.6875,0.8125
 Bruce Arians,CRD,2015,0.8125,0.4688
 Bruce Arians,CRD,2016,0.4688,0.5
-Bud Wilkinson,CRD,1978,0.375,0.3125
+Bud Wilkinson,CRD,1978,0.375,0.2308
 Buddy Ryan,CRD,1994,0.5,0.25
 Dave McGinnis,CRD,2001,0.4375,0.3125
 Dave McGinnis,CRD,2002,0.3125,0.25
@@ -280,7 +263,7 @@ Don Coryell,CRD,1975,0.7857,0.7143
 Don Coryell,CRD,1976,0.7143,0.5
 Gene Stallings,CRD,1986,0.2812,0.4667
 Gene Stallings,CRD,1987,0.4667,0.4375
-Gene Stallings,CRD,1988,0.4375,0.3125
+Gene Stallings,CRD,1988,0.4375,0.4545
 Jim Hanifan,CRD,1980,0.3125,0.4375
 Jim Hanifan,CRD,1981,0.4375,0.5556
 Jim Hanifan,CRD,1982,0.5556,0.5312
@@ -301,14 +284,13 @@ Kliff Kingsbury,CRD,2021,0.6471,0.2353
 Vince Tobin,CRD,1996,0.4375,0.25
 Vince Tobin,CRD,1997,0.25,0.5625
 Vince Tobin,CRD,1998,0.5625,0.375
-Vince Tobin,CRD,1999,0.375,0.1875
+Vince Tobin,CRD,1999,0.375,0.2857
 Barry Switzer,DAL,1994,0.75,0.75
 Barry Switzer,DAL,1995,0.75,0.625
 Barry Switzer,DAL,1996,0.625,0.375
 Bill Parcells,DAL,2003,0.625,0.375
 Bill Parcells,DAL,2004,0.375,0.5625
 Bill Parcells,DAL,2005,0.5625,0.5625
-Chan Gailey,DAL,1998,0.625,0.5
 Dave Campo,DAL,2000,0.3125,0.3125
 Dave Campo,DAL,2001,0.3125,0.3125
 Jason Garrett,DAL,2011,0.5,0.5
@@ -347,7 +329,7 @@ Tom Landry,DAL,1986,0.4375,0.4667
 Tom Landry,DAL,1987,0.4667,0.1875
 Wade Phillips,DAL,2007,0.8125,0.5625
 Wade Phillips,DAL,2008,0.5625,0.6875
-Wade Phillips,DAL,2009,0.6875,0.375
+Wade Phillips,DAL,2009,0.6875,0.125
 Dan Reeves,DEN,1981,0.625,0.2222
 Dan Reeves,DEN,1982,0.2222,0.5625
 Dan Reeves,DEN,1983,0.5625,0.8125
@@ -368,7 +350,7 @@ John Ralston,DEN,1973,0.5714,0.5357
 John Ralston,DEN,1974,0.5357,0.4286
 John Ralston,DEN,1975,0.4286,0.6429
 Josh McDaniels,DEN,2009,0.5,0.25
-Lou Saban,DEN,1970,0.3929,0.3214
+Lou Saban,DEN,1970,0.3929,0.2778
 Mike Shanahan,DEN,1995,0.5,0.8125
 Mike Shanahan,DEN,1996,0.8125,0.75
 Mike Shanahan,DEN,1997,0.75,0.875
@@ -392,13 +374,13 @@ Vic Fangio,DEN,2020,0.3125,0.4118
 Wade Phillips,DEN,1993,0.5625,0.4375
 Bobby Ross,DET,1997,0.5625,0.3125
 Bobby Ross,DET,1998,0.3125,0.5
-Bobby Ross,DET,1999,0.5,0.5625
+Bobby Ross,DET,1999,0.5,0.5556
 Dan Campbell,DET,2021,0.2059,0.5294
 Dan Campbell,DET,2022,0.5294,0.7059
 Dan Campbell,DET,2023,0.7059,0.8824
 Darryl Rogers,DET,1985,0.4375,0.3125
 Darryl Rogers,DET,1986,0.3125,0.2667
-Darryl Rogers,DET,1987,0.2667,0.25
+Darryl Rogers,DET,1987,0.2667,0.1818
 Jim Caldwell,DET,2014,0.6875,0.4375
 Jim Caldwell,DET,2015,0.4375,0.5625
 Jim Caldwell,DET,2016,0.5625,0.5625
@@ -409,8 +391,6 @@ Jim Schwartz,DET,2012,0.25,0.4375
 Joe Schmidt,DET,1970,0.7143,0.5357
 Joe Schmidt,DET,1971,0.5357,0.6071
 Marty Mornhinweg,DET,2001,0.125,0.1875
-Matt Patricia,DET,2018,0.375,0.2188
-Matt Patricia,DET,2019,0.2188,0.3125
 Monte Clark,DET,1978,0.4375,0.125
 Monte Clark,DET,1979,0.125,0.5625
 Monte Clark,DET,1980,0.5625,0.5
@@ -418,11 +398,11 @@ Monte Clark,DET,1981,0.5,0.4444
 Monte Clark,DET,1982,0.4444,0.5625
 Monte Clark,DET,1983,0.5625,0.2812
 Rick Forzano,DET,1974,0.5,0.5
-Rick Forzano,DET,1975,0.5,0.4286
+Rick Forzano,DET,1975,0.5,0.25
 Rod Marinelli,DET,2006,0.1875,0.4375
 Rod Marinelli,DET,2007,0.4375,0.0
 Steve Mariucci,DET,2003,0.3125,0.375
-Steve Mariucci,DET,2004,0.375,0.3125
+Steve Mariucci,DET,2004,0.375,0.3636
 Wayne Fontes,DET,1989,0.4375,0.375
 Wayne Fontes,DET,1990,0.375,0.75
 Wayne Fontes,DET,1991,0.75,0.3125
@@ -469,7 +449,7 @@ Mike McCarthy,GNB,2013,0.5312,0.75
 Mike McCarthy,GNB,2014,0.75,0.625
 Mike McCarthy,GNB,2015,0.625,0.625
 Mike McCarthy,GNB,2016,0.625,0.4375
-Mike McCarthy,GNB,2017,0.4375,0.4062
+Mike McCarthy,GNB,2017,0.4375,0.375
 Mike Sherman,GNB,2000,0.5625,0.75
 Mike Sherman,GNB,2001,0.75,0.75
 Mike Sherman,GNB,2002,0.75,0.625
@@ -480,7 +460,7 @@ Bill O'Brien,HTX,2015,0.5625,0.5625
 Bill O'Brien,HTX,2016,0.5625,0.25
 Bill O'Brien,HTX,2017,0.25,0.6875
 Bill O'Brien,HTX,2018,0.6875,0.625
-Bill O'Brien,HTX,2019,0.625,0.25
+Bill O'Brien,HTX,2019,0.625,0.0
 DeMeco Ryans,HTX,2023,0.5882,0.5882
 Dom Capers,HTX,2002,0.25,0.3125
 Dom Capers,HTX,2003,0.3125,0.4375
@@ -491,7 +471,7 @@ Gary Kubiak,HTX,2008,0.5,0.5625
 Gary Kubiak,HTX,2009,0.5625,0.375
 Gary Kubiak,HTX,2010,0.375,0.625
 Gary Kubiak,HTX,2011,0.625,0.75
-Gary Kubiak,HTX,2012,0.75,0.125
+Gary Kubiak,HTX,2012,0.75,0.1538
 Doug Marrone,JAX,2017,0.625,0.3125
 Doug Marrone,JAX,2018,0.3125,0.375
 Doug Marrone,JAX,2019,0.375,0.0625
@@ -499,7 +479,7 @@ Doug Pederson,JAX,2022,0.5294,0.5294
 Doug Pederson,JAX,2023,0.5294,0.2353
 Gus Bradley,JAX,2013,0.25,0.1875
 Gus Bradley,JAX,2014,0.1875,0.3125
-Gus Bradley,JAX,2015,0.3125,0.1875
+Gus Bradley,JAX,2015,0.3125,0.1429
 Jack Del Rio,JAX,2003,0.3125,0.5625
 Jack Del Rio,JAX,2004,0.5625,0.75
 Jack Del Rio,JAX,2005,0.75,0.5
@@ -507,7 +487,7 @@ Jack Del Rio,JAX,2006,0.5,0.6875
 Jack Del Rio,JAX,2007,0.6875,0.3125
 Jack Del Rio,JAX,2008,0.3125,0.4375
 Jack Del Rio,JAX,2009,0.4375,0.5
-Jack Del Rio,JAX,2010,0.5,0.3125
+Jack Del Rio,JAX,2010,0.5,0.2727
 Tom Coughlin,JAX,1995,0.25,0.5625
 Tom Coughlin,JAX,1996,0.5625,0.6875
 Tom Coughlin,JAX,1997,0.6875,0.6875
@@ -536,8 +516,6 @@ Hank Stram,KAN,1970,0.5714,0.75
 Hank Stram,KAN,1971,0.75,0.5714
 Hank Stram,KAN,1972,0.5714,0.5714
 Hank Stram,KAN,1973,0.5714,0.3571
-Herm Edwards,KAN,2006,0.5625,0.25
-Herm Edwards,KAN,2007,0.25,0.125
 John Mackovic,KAN,1983,0.375,0.5
 John Mackovic,KAN,1984,0.5,0.375
 John Mackovic,KAN,1985,0.375,0.625
@@ -557,7 +535,7 @@ Marv Levy,KAN,1981,0.5625,0.3333
 Paul Wiggin,KAN,1975,0.3571,0.3571
 Paul Wiggin,KAN,1976,0.3571,0.1429
 Todd Haley,KAN,2009,0.25,0.625
-Todd Haley,KAN,2010,0.625,0.4375
+Todd Haley,KAN,2010,0.625,0.3846
 Adam Gase,MIA,2016,0.625,0.375
 Adam Gase,MIA,2017,0.375,0.4375
 Brian Flores,MIA,2019,0.3125,0.625
@@ -565,7 +543,7 @@ Brian Flores,MIA,2020,0.625,0.5294
 Dave Wannstedt,MIA,2000,0.6875,0.6875
 Dave Wannstedt,MIA,2001,0.6875,0.5625
 Dave Wannstedt,MIA,2002,0.5625,0.625
-Dave Wannstedt,MIA,2003,0.625,0.25
+Dave Wannstedt,MIA,2003,0.625,0.1111
 Don Shula,MIA,1970,0.7143,0.75
 Don Shula,MIA,1971,0.75,1.0
 Don Shula,MIA,1972,1.0,0.8571
@@ -596,17 +574,17 @@ Jimmy Johnson,MIA,1997,0.5625,0.625
 Jimmy Johnson,MIA,1998,0.625,0.5625
 Joe Philbin,MIA,2012,0.4375,0.5
 Joe Philbin,MIA,2013,0.5,0.5
-Joe Philbin,MIA,2014,0.5,0.375
+Joe Philbin,MIA,2014,0.5,0.25
 Mike McDaniel,MIA,2022,0.5294,0.6471
 Mike McDaniel,MIA,2023,0.6471,0.4706
 Nick Saban,MIA,2005,0.5625,0.375
 Tony Sparano,MIA,2008,0.6875,0.4375
 Tony Sparano,MIA,2009,0.4375,0.4375
-Tony Sparano,MIA,2010,0.4375,0.375
+Tony Sparano,MIA,2010,0.4375,0.3077
 Brad Childress,MIN,2006,0.375,0.5
 Brad Childress,MIN,2007,0.5,0.625
 Brad Childress,MIN,2008,0.625,0.75
-Brad Childress,MIN,2009,0.75,0.375
+Brad Childress,MIN,2009,0.75,0.3
 Bud Grant,MIN,1970,0.8571,0.7857
 Bud Grant,MIN,1971,0.7857,0.5
 Bud Grant,MIN,1972,0.5,0.8571
@@ -628,12 +606,7 @@ Dennis Green,MIN,1996,0.5625,0.5625
 Dennis Green,MIN,1997,0.5625,0.9375
 Dennis Green,MIN,1998,0.9375,0.625
 Dennis Green,MIN,1999,0.625,0.6875
-Dennis Green,MIN,2000,0.6875,0.3125
-Jerry Burns,MIN,1986,0.5625,0.5333
-Jerry Burns,MIN,1987,0.5333,0.6875
-Jerry Burns,MIN,1988,0.6875,0.625
-Jerry Burns,MIN,1989,0.625,0.375
-Jerry Burns,MIN,1990,0.375,0.5
+Dennis Green,MIN,2000,0.6875,0.3333
 Kevin O'Connell,MIN,2022,0.7647,0.4118
 Kevin O'Connell,MIN,2023,0.4118,0.8235
 Leslie Frazier,MIN,2011,0.1875,0.625
@@ -641,23 +614,14 @@ Leslie Frazier,MIN,2012,0.625,0.3438
 Mike Tice,MIN,2002,0.375,0.5625
 Mike Tice,MIN,2003,0.5625,0.5
 Mike Tice,MIN,2004,0.5,0.5625
-Mike Zimmer,MIN,2014,0.4375,0.6875
-Mike Zimmer,MIN,2015,0.6875,0.5
-Mike Zimmer,MIN,2016,0.5,0.8125
-Mike Zimmer,MIN,2017,0.8125,0.5312
-Mike Zimmer,MIN,2018,0.5312,0.625
-Mike Zimmer,MIN,2019,0.625,0.4375
-Mike Zimmer,MIN,2020,0.4375,0.4706
 Bum Phillips,NOR,1981,0.25,0.4444
 Bum Phillips,NOR,1982,0.4444,0.5
 Bum Phillips,NOR,1983,0.5,0.4375
-Bum Phillips,NOR,1984,0.4375,0.3125
+Bum Phillips,NOR,1984,0.4375,0.3333
 Dennis Allen,NOR,2022,0.4118,0.5294
-Dennis Allen,NOR,2023,0.5294,0.2941
-Dick Nolan,NOR,1978,0.4375,0.5
-Dick Nolan,NOR,1979,0.5,0.0625
+Dennis Allen,NOR,2023,0.5294,0.2222
 Hank Stram,NOR,1976,0.2857,0.2143
-J.D. Roberts,NOR,1970,0.1786,0.3571
+J.D. Roberts,NOR,1970,0.1429,0.3571
 J.D. Roberts,NOR,1971,0.3571,0.1786
 Jim Haslett,NOR,2000,0.625,0.4375
 Jim Haslett,NOR,2001,0.4375,0.5625
@@ -673,9 +637,9 @@ Jim Mora Sr,NOR,1991,0.6875,0.75
 Jim Mora Sr,NOR,1992,0.75,0.5
 Jim Mora Sr,NOR,1993,0.5,0.4375
 Jim Mora Sr,NOR,1994,0.4375,0.4375
-Jim Mora Sr,NOR,1995,0.4375,0.1875
+Jim Mora Sr,NOR,1995,0.4375,0.25
 John North,NOR,1973,0.3571,0.3571
-John North,NOR,1974,0.3571,0.1429
+John North,NOR,1974,0.3571,0.1667
 Mike Ditka,NOR,1997,0.375,0.375
 Mike Ditka,NOR,1998,0.375,0.1875
 Sean Payton,NOR,2006,0.625,0.4375
@@ -721,9 +685,8 @@ Chuck Fairbanks,NWE,1973,0.3571,0.5
 Chuck Fairbanks,NWE,1974,0.5,0.2143
 Chuck Fairbanks,NWE,1975,0.2143,0.7857
 Chuck Fairbanks,NWE,1976,0.7857,0.6429
-Chuck Fairbanks,NWE,1977,0.6429,0.6875
+Chuck Fairbanks,NWE,1977,0.6429,0.7333
 Dick MacPherson,NWE,1991,0.375,0.125
-John Mazur,NWE,1971,0.4286,0.2143
 Pete Carroll,NWE,1997,0.625,0.5625
 Pete Carroll,NWE,1998,0.5625,0.5
 Raymond Berry,NWE,1985,0.6875,0.6875
@@ -733,12 +696,13 @@ Raymond Berry,NWE,1988,0.5625,0.3125
 Ron Erhardt,NWE,1979,0.5625,0.625
 Ron Erhardt,NWE,1980,0.625,0.125
 Ron Meyer,NWE,1982,0.5556,0.5
-Ron Meyer,NWE,1983,0.5,0.5625
+Ron Meyer,NWE,1983,0.5,0.625
 Alex Webster,NYG,1970,0.6429,0.2857
 Alex Webster,NYG,1971,0.2857,0.5714
 Alex Webster,NYG,1972,0.5714,0.1786
-Ben McAdoo,NYG,2016,0.6875,0.1875
+Ben McAdoo,NYG,2016,0.6875,0.1667
 Bill Arnsparger,NYG,1974,0.1429,0.3571
+Bill Arnsparger,NYG,1975,0.3571,0.0
 Bill Parcells,NYG,1983,0.2188,0.5625
 Bill Parcells,NYG,1984,0.5625,0.625
 Bill Parcells,NYG,1985,0.625,0.875
@@ -758,10 +722,8 @@ Jim Fassel,NYG,2000,0.75,0.4375
 Jim Fassel,NYG,2001,0.4375,0.625
 Jim Fassel,NYG,2002,0.625,0.25
 Joe Judge,NYG,2020,0.375,0.2353
-John McVay,NYG,1976,0.2143,0.3571
 John McVay,NYG,1977,0.3571,0.375
 Pat Shurmur,NYG,2018,0.3125,0.25
-Ray Handley,NYG,1991,0.5,0.375
 Ray Perkins,NYG,1979,0.375,0.25
 Ray Perkins,NYG,1980,0.25,0.5625
 Ray Perkins,NYG,1981,0.5625,0.4444
@@ -782,13 +744,9 @@ Bill Parcells,NYJ,1998,0.75,0.5
 Bruce Coslet,NYJ,1990,0.375,0.5
 Bruce Coslet,NYJ,1991,0.5,0.25
 Bruce Coslet,NYJ,1992,0.25,0.5
-Charley Winner,NYJ,1974,0.5,0.2143
+Charley Winner,NYJ,1974,0.5,0.2222
 Eric Mangini,NYJ,2006,0.625,0.25
 Eric Mangini,NYJ,2007,0.25,0.5625
-Herm Edwards,NYJ,2001,0.625,0.5625
-Herm Edwards,NYJ,2002,0.5625,0.375
-Herm Edwards,NYJ,2003,0.375,0.625
-Herm Edwards,NYJ,2004,0.625,0.25
 Joe Walton,NYJ,1983,0.4375,0.4375
 Joe Walton,NYJ,1984,0.4375,0.6875
 Joe Walton,NYJ,1985,0.6875,0.625
@@ -803,7 +761,7 @@ Rex Ryan,NYJ,2013,0.5,0.25
 Rich Kotite,NYJ,1995,0.1875,0.0625
 Robert Saleh,NYJ,2021,0.2353,0.4118
 Robert Saleh,NYJ,2022,0.4118,0.4118
-Robert Saleh,NYJ,2023,0.4118,0.2941
+Robert Saleh,NYJ,2023,0.4118,0.4
 Todd Bowles,NYJ,2015,0.625,0.3125
 Todd Bowles,NYJ,2016,0.3125,0.3125
 Todd Bowles,NYJ,2017,0.3125,0.25
@@ -815,19 +773,19 @@ Walt Michaels,NYJ,1981,0.6562,0.6667
 Weeb Ewbank,NYJ,1970,0.2857,0.4286
 Weeb Ewbank,NYJ,1971,0.4286,0.5
 Weeb Ewbank,NYJ,1972,0.5,0.2857
-Bill Peterson,OTI,1972,0.0714,0.0714
+Bill Peterson,OTI,1972,0.0714,0.0
 Bum Phillips,OTI,1975,0.7143,0.3571
 Bum Phillips,OTI,1976,0.3571,0.5714
 Bum Phillips,OTI,1977,0.5714,0.625
 Bum Phillips,OTI,1978,0.625,0.6875
 Bum Phillips,OTI,1979,0.6875,0.6875
 Ed Biles,OTI,1981,0.4375,0.1111
-Ed Biles,OTI,1982,0.1111,0.125
-Hugh Campbell,OTI,1984,0.1875,0.3125
+Ed Biles,OTI,1982,0.1111,0.0
+Hugh Campbell,OTI,1984,0.1875,0.3571
 Jack Pardee,OTI,1990,0.5625,0.6875
 Jack Pardee,OTI,1991,0.6875,0.625
 Jack Pardee,OTI,1992,0.625,0.75
-Jack Pardee,OTI,1993,0.75,0.125
+Jack Pardee,OTI,1993,0.75,0.1
 Jeff Fisher,OTI,1995,0.4375,0.5
 Jeff Fisher,OTI,1996,0.5,0.5
 Jeff Fisher,OTI,1997,0.5,0.5
@@ -846,7 +804,7 @@ Jeff Fisher,OTI,2009,0.5,0.375
 Jerry Glanville,OTI,1986,0.3125,0.6
 Jerry Glanville,OTI,1987,0.6,0.625
 Jerry Glanville,OTI,1988,0.625,0.5625
-Ken Whisenhunt,OTI,2014,0.125,0.1875
+Ken Whisenhunt,OTI,2014,0.125,0.1429
 Mike Mularkey,OTI,2016,0.5625,0.5625
 Mike Munchak,OTI,2011,0.5625,0.375
 Mike Munchak,OTI,2012,0.375,0.4375
@@ -872,8 +830,6 @@ Buddy Ryan,PHI,1986,0.3438,0.4667
 Buddy Ryan,PHI,1987,0.4667,0.625
 Buddy Ryan,PHI,1988,0.625,0.6875
 Buddy Ryan,PHI,1989,0.6875,0.625
-Chip Kelly,PHI,2013,0.625,0.625
-Chip Kelly,PHI,2014,0.625,0.4375
 Dick Vermeil,PHI,1976,0.2857,0.3571
 Dick Vermeil,PHI,1977,0.3571,0.5625
 Dick Vermeil,PHI,1978,0.5625,0.6875
@@ -884,9 +840,8 @@ Doug Pederson,PHI,2016,0.4375,0.8125
 Doug Pederson,PHI,2017,0.8125,0.5625
 Doug Pederson,PHI,2018,0.5625,0.5625
 Doug Pederson,PHI,2019,0.5625,0.2812
-Jerry Williams,PHI,1970,0.25,0.4643
 Marion Campbell,PHI,1983,0.3125,0.4062
-Marion Campbell,PHI,1984,0.4062,0.4375
+Marion Campbell,PHI,1984,0.4062,0.4
 Mike McCormack,PHI,1973,0.3929,0.5
 Mike McCormack,PHI,1974,0.5,0.2857
 Nick Sirianni,PHI,2021,0.5294,0.8235
@@ -912,27 +867,6 @@ Bill Cowher,PIT,2002,0.6562,0.375
 Bill Cowher,PIT,2003,0.375,0.9375
 Bill Cowher,PIT,2004,0.9375,0.6875
 Bill Cowher,PIT,2005,0.6875,0.5
-Chuck Noll,PIT,1970,0.3571,0.4286
-Chuck Noll,PIT,1971,0.4286,0.7857
-Chuck Noll,PIT,1972,0.7857,0.7143
-Chuck Noll,PIT,1973,0.7143,0.75
-Chuck Noll,PIT,1974,0.75,0.8571
-Chuck Noll,PIT,1975,0.8571,0.7143
-Chuck Noll,PIT,1976,0.7143,0.6429
-Chuck Noll,PIT,1977,0.6429,0.875
-Chuck Noll,PIT,1978,0.875,0.75
-Chuck Noll,PIT,1979,0.75,0.5625
-Chuck Noll,PIT,1980,0.5625,0.5
-Chuck Noll,PIT,1981,0.5,0.6667
-Chuck Noll,PIT,1982,0.6667,0.625
-Chuck Noll,PIT,1983,0.625,0.5625
-Chuck Noll,PIT,1984,0.5625,0.4375
-Chuck Noll,PIT,1985,0.4375,0.375
-Chuck Noll,PIT,1986,0.375,0.5333
-Chuck Noll,PIT,1987,0.5333,0.3125
-Chuck Noll,PIT,1988,0.3125,0.5625
-Chuck Noll,PIT,1989,0.5625,0.5625
-Chuck Noll,PIT,1990,0.5625,0.4375
 Mike Tomlin,PIT,2007,0.625,0.75
 Mike Tomlin,PIT,2008,0.75,0.5625
 Mike Tomlin,PIT,2009,0.5625,0.75
@@ -956,7 +890,7 @@ Art Shell,RAI,1992,0.4375,0.625
 Art Shell,RAI,1993,0.625,0.5625
 Bill Callahan,RAI,2002,0.6875,0.25
 Dennis Allen,RAI,2012,0.25,0.25
-Dennis Allen,RAI,2013,0.25,0.1875
+Dennis Allen,RAI,2013,0.25,0.0
 Jack Del Rio,RAI,2015,0.4375,0.75
 Jack Del Rio,RAI,2016,0.75,0.375
 John Madden,RAI,1970,0.6429,0.6429
@@ -972,11 +906,10 @@ Jon Gruden,RAI,1999,0.5,0.75
 Jon Gruden,RAI,2000,0.75,0.625
 Jon Gruden,RAI,2018,0.25,0.4375
 Jon Gruden,RAI,2019,0.4375,0.5
-Jon Gruden,RAI,2020,0.5,0.5882
-Josh McDaniels,RAI,2022,0.3529,0.4706
-Lane Kiffin,RAI,2007,0.25,0.3125
-Mike Shanahan,RAI,1988,0.4375,0.5
-Mike White,RAI,1995,0.5,0.4375
+Jon Gruden,RAI,2020,0.5,0.6
+Josh McDaniels,RAI,2022,0.3529,0.375
+Lane Kiffin,RAI,2007,0.25,0.25
+Mike Shanahan,RAI,1988,0.4375,0.25
 Norv Turner,RAI,2004,0.3125,0.25
 Tom Cable,RAI,2009,0.3125,0.5
 Tom Flores,RAI,1979,0.5625,0.6875
@@ -998,7 +931,7 @@ Dick Vermeil,RAM,1998,0.25,0.8125
 Jeff Fisher,RAM,2012,0.4688,0.4375
 Jeff Fisher,RAM,2013,0.4375,0.375
 Jeff Fisher,RAM,2014,0.375,0.4375
-Jeff Fisher,RAM,2015,0.4375,0.25
+Jeff Fisher,RAM,2015,0.4375,0.3077
 John Robinson,RAM,1983,0.5625,0.625
 John Robinson,RAM,1984,0.625,0.6875
 John Robinson,RAM,1985,0.6875,0.625
@@ -1011,14 +944,14 @@ Mike Martz,RAM,2000,0.625,0.875
 Mike Martz,RAM,2001,0.875,0.4375
 Mike Martz,RAM,2002,0.4375,0.75
 Mike Martz,RAM,2003,0.75,0.5
-Mike Martz,RAM,2004,0.5,0.375
+Mike Martz,RAM,2004,0.5,0.4
 Ray Malavasi,RAM,1978,0.75,0.5625
 Ray Malavasi,RAM,1979,0.5625,0.6875
 Ray Malavasi,RAM,1980,0.6875,0.375
 Ray Malavasi,RAM,1981,0.375,0.2222
 Rich Brooks,RAM,1995,0.4375,0.375
 Scott Linehan,RAM,2006,0.5,0.1875
-Scott Linehan,RAM,2007,0.1875,0.125
+Scott Linehan,RAM,2007,0.1875,0.0
 Sean McVay,RAM,2017,0.6875,0.8125
 Sean McVay,RAM,2018,0.8125,0.5625
 Sean McVay,RAM,2019,0.5625,0.625
@@ -1037,22 +970,6 @@ Brian Billick,RAV,2003,0.625,0.5625
 Brian Billick,RAV,2004,0.5625,0.375
 Brian Billick,RAV,2005,0.375,0.8125
 Brian Billick,RAV,2006,0.8125,0.3125
-John Harbaugh,RAV,2008,0.6875,0.5625
-John Harbaugh,RAV,2009,0.5625,0.75
-John Harbaugh,RAV,2010,0.75,0.75
-John Harbaugh,RAV,2011,0.75,0.625
-John Harbaugh,RAV,2012,0.625,0.5
-John Harbaugh,RAV,2013,0.5,0.625
-John Harbaugh,RAV,2014,0.625,0.3125
-John Harbaugh,RAV,2015,0.3125,0.5
-John Harbaugh,RAV,2016,0.5,0.5625
-John Harbaugh,RAV,2017,0.5625,0.625
-John Harbaugh,RAV,2018,0.625,0.875
-John Harbaugh,RAV,2019,0.875,0.6875
-John Harbaugh,RAV,2020,0.6875,0.4706
-John Harbaugh,RAV,2021,0.4706,0.5882
-John Harbaugh,RAV,2022,0.5882,0.7647
-John Harbaugh,RAV,2023,0.7647,0.7059
 Ted Marchibroda,RAV,1996,0.25,0.4062
 Ted Marchibroda,RAV,1997,0.4062,0.375
 Al Saunders,SDG,1987,0.5333,0.375
@@ -1064,7 +981,7 @@ Bobby Ross,SDG,1993,0.5,0.6875
 Bobby Ross,SDG,1994,0.6875,0.5625
 Bobby Ross,SDG,1995,0.5625,0.5
 Brandon Staley,SDG,2021,0.5294,0.5882
-Brandon Staley,SDG,2022,0.5882,0.2941
+Brandon Staley,SDG,2022,0.5882,0.3571
 Dan Henning,SDG,1989,0.375,0.375
 Dan Henning,SDG,1990,0.375,0.25
 Don Coryell,SDG,1979,0.75,0.6875
@@ -1073,9 +990,8 @@ Don Coryell,SDG,1981,0.625,0.6667
 Don Coryell,SDG,1982,0.6667,0.375
 Don Coryell,SDG,1983,0.375,0.4375
 Don Coryell,SDG,1984,0.4375,0.5
-Don Coryell,SDG,1985,0.5,0.25
-Harland Svare,SDG,1972,0.3214,0.1786
-Kevin Gilbride,SDG,1997,0.25,0.3125
+Don Coryell,SDG,1985,0.5,0.125
+Harland Svare,SDG,1972,0.3214,0.1875
 Marty Schottenheimer,SDG,2002,0.5,0.25
 Marty Schottenheimer,SDG,2003,0.25,0.75
 Marty Schottenheimer,SDG,2004,0.75,0.5625
@@ -1093,7 +1009,7 @@ Norv Turner,SDG,2011,0.5,0.4375
 Tommy Prothro,SDG,1974,0.3571,0.1429
 Tommy Prothro,SDG,1975,0.1429,0.4286
 Tommy Prothro,SDG,1976,0.4286,0.5
-Tommy Prothro,SDG,1977,0.5,0.5625
+Tommy Prothro,SDG,1977,0.5,0.25
 Chuck Knox,SEA,1983,0.5625,0.75
 Chuck Knox,SEA,1984,0.75,0.5
 Chuck Knox,SEA,1985,0.5,0.625
@@ -1110,7 +1026,7 @@ Jack Patera,SEA,1977,0.3571,0.5625
 Jack Patera,SEA,1978,0.5625,0.5625
 Jack Patera,SEA,1979,0.5625,0.25
 Jack Patera,SEA,1980,0.25,0.375
-Jack Patera,SEA,1981,0.375,0.4444
+Jack Patera,SEA,1981,0.375,0.0
 Mike Holmgren,SEA,1999,0.5625,0.375
 Mike Holmgren,SEA,2000,0.375,0.5625
 Mike Holmgren,SEA,2001,0.5625,0.4375
@@ -1145,11 +1061,6 @@ Bill Walsh,SFO,1985,0.625,0.6562
 Bill Walsh,SFO,1986,0.6562,0.8667
 Bill Walsh,SFO,1987,0.8667,0.625
 Dennis Erickson,SFO,2003,0.4375,0.125
-Dick Nolan,SFO,1970,0.75,0.6429
-Dick Nolan,SFO,1971,0.6429,0.6071
-Dick Nolan,SFO,1972,0.6071,0.3571
-Dick Nolan,SFO,1973,0.3571,0.4286
-Dick Nolan,SFO,1974,0.4286,0.3571
 George Seifert,SFO,1989,0.875,0.875
 George Seifert,SFO,1990,0.875,0.625
 George Seifert,SFO,1991,0.625,0.875
@@ -1169,8 +1080,8 @@ Kyle Shanahan,SFO,2022,0.7647,0.7059
 Kyle Shanahan,SFO,2023,0.7059,0.3529
 Mike Nolan,SFO,2005,0.25,0.4375
 Mike Nolan,SFO,2006,0.4375,0.3125
-Mike Nolan,SFO,2007,0.3125,0.4375
-Mike Singletary,SFO,2009,0.5,0.375
+Mike Nolan,SFO,2007,0.3125,0.2857
+Mike Singletary,SFO,2009,0.5,0.3333
 Steve Mariucci,SFO,1997,0.8125,0.75
 Steve Mariucci,SFO,1998,0.75,0.25
 Steve Mariucci,SFO,1999,0.25,0.375
@@ -1197,11 +1108,9 @@ Jon Gruden,TAM,2006,0.25,0.5625
 Jon Gruden,TAM,2007,0.5625,0.5625
 Leeman Bennett,TAM,1985,0.125,0.125
 Lovie Smith,TAM,2014,0.125,0.375
-Raheem Morris,TAM,2009,0.1875,0.625
-Raheem Morris,TAM,2010,0.625,0.25
 Ray Perkins,TAM,1987,0.2667,0.3125
 Ray Perkins,TAM,1988,0.3125,0.3125
-Ray Perkins,TAM,1989,0.3125,0.375
+Ray Perkins,TAM,1989,0.3125,0.3846
 Sam Wyche,TAM,1992,0.3125,0.3125
 Sam Wyche,TAM,1993,0.3125,0.375
 Sam Wyche,TAM,1994,0.375,0.4375
@@ -1224,7 +1133,7 @@ Jay Gruden,WAS,2014,0.25,0.5625
 Jay Gruden,WAS,2015,0.5625,0.5312
 Jay Gruden,WAS,2016,0.5312,0.4375
 Jay Gruden,WAS,2017,0.4375,0.4375
-Jay Gruden,WAS,2018,0.4375,0.1875
+Jay Gruden,WAS,2018,0.4375,0.0
 Jim Zorn,WAS,2008,0.5,0.25
 Joe Gibbs,WAS,1981,0.5,0.8889
 Joe Gibbs,WAS,1982,0.8889,0.875
@@ -1248,7 +1157,7 @@ Norv Turner,WAS,1995,0.375,0.5625
 Norv Turner,WAS,1996,0.5625,0.5312
 Norv Turner,WAS,1997,0.5312,0.375
 Norv Turner,WAS,1998,0.375,0.625
-Norv Turner,WAS,1999,0.625,0.5
+Norv Turner,WAS,1999,0.625,0.5385
 Ron Rivera,WAS,2020,0.4375,0.4118
 Ron Rivera,WAS,2021,0.4118,0.5
 Ron Rivera,WAS,2022,0.5,0.2353

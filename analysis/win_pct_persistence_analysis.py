@@ -125,14 +125,14 @@ def create_persistence_scatter(lagged_df, corr, r2, model, p_value):
     ax.set_xlabel('Year N Winning Percentage', fontsize=18, fontweight='bold')
     ax.set_ylabel('Year N+1 Winning Percentage', fontsize=18, fontweight='bold')
 
-    # Stats box
-    stats_text = f"Regression: Y = {model.coef_[0]:.3f}X + {model.intercept_:.3f}\n"
-    stats_text += f"R² = {r2:.3f}\n"
-    stats_text += f"n = {len(lagged_df)} season pairs\n"
+    # Stats box with mathematical notation
+    stats_text = f"$Win\\%_{{N+1}} = {model.coef_[0]:.3f} \\cdot Win\\%_N + {model.intercept_:.3f}$\n"
+    stats_text += f"$R^2 = {r2:.3f}$\n"
+    stats_text += f"$n = {len(lagged_df)}$ season pairs\n"
     if p_value < 0.001:
-        stats_text += f"p < 0.001"
+        stats_text += f"$p < 0.001$"
     else:
-        stats_text += f"p = {p_value:.3f}"
+        stats_text += f"$p = {p_value:.3f}$"
     ax.text(0.05, 0.95, stats_text, transform=ax.transAxes,
            fontsize=14, verticalalignment='top',
            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))

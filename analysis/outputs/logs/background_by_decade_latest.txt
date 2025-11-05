@@ -1,85 +1,85 @@
 Analyzing coach background performance by decade...
 Loading coach background and WAR data...
-Loaded 1634 coach-season records (after deduplication and filtering)
+Loaded 1515 coach-season records (after deduplication and filtering)
 
 1970s Analysis:
 ========================================
-Offensive   :  38 coaches,   95 seasons, Avg WAR: -0.35 games/season
-Defensive   :  24 coaches,  101 seasons, Avg WAR: +0.57 games/season
-Other       :  16 coaches,   72 seasons, Avg WAR: +0.02 games/season
+Offensive   :  34 coaches,   87 seasons, Avg WAR: -0.39 games/season
+Defensive   :  21 coaches,   82 seasons, Avg WAR: +0.51 games/season
+Other       :  12 coaches,   63 seasons, Avg WAR: +0.13 games/season
 
 1980s Analysis:
 ========================================
-Offensive   :  32 coaches,  149 seasons, Avg WAR: +0.42 games/season
-Defensive   :  19 coaches,   76 seasons, Avg WAR: +0.46 games/season
-Other       :  11 coaches,   55 seasons, Avg WAR: -0.11 games/season
+Offensive   :  30 coaches,  146 seasons, Avg WAR: +0.47 games/season
+Defensive   :  22 coaches,   83 seasons, Avg WAR: +0.21 games/season
+Other       :   6 coaches,   31 seasons, Avg WAR: +0.20 games/season
 
 1990s Analysis:
 ========================================
-Offensive   :  38 coaches,  163 seasons, Avg WAR: -0.14 games/season
-Defensive   :  25 coaches,  102 seasons, Avg WAR: +0.19 games/season
-Other       :   6 coaches,   26 seasons, Avg WAR: +0.51 games/season
+Offensive   :  33 coaches,  143 seasons, Avg WAR: -0.33 games/season
+Defensive   :  28 coaches,  126 seasons, Avg WAR: +0.39 games/season
+Other       :   2 coaches,   10 seasons, Avg WAR: +0.60 games/season
 
 2000s Analysis:
 ========================================
-Offensive   :  42 coaches,  165 seasons, Avg WAR: +0.14 games/season
-Defensive   :  33 coaches,  122 seasons, Avg WAR: +0.08 games/season
-Other       :   6 coaches,   31 seasons, Avg WAR: +0.04 games/season
+Offensive   :  40 coaches,  152 seasons, Avg WAR: +0.03 games/season
+Defensive   :  37 coaches,  151 seasons, Avg WAR: +0.16 games/season
+Other       : No data
 
 2010s Analysis:
 ========================================
-Offensive   :  44 coaches,  163 seasons, Avg WAR: +0.25 games/season
-Defensive   :  32 coaches,  126 seasons, Avg WAR: +0.53 games/season
-Other       :   5 coaches,   31 seasons, Avg WAR: +0.43 games/season
+Offensive   :  42 coaches,  158 seasons, Avg WAR: +0.10 games/season
+Defensive   :  33 coaches,  135 seasons, Avg WAR: +0.24 games/season
+Other       : No data
 
 2020s Analysis:
 ========================================
-Offensive   :  33 coaches,   91 seasons, Avg WAR: +0.57 games/season
-Defensive   :  22 coaches,   61 seasons, Avg WAR: +0.16 games/season
-Other       :   2 coaches,    5 seasons, Avg WAR: -0.07 games/season
+Offensive   :  33 coaches,   92 seasons, Avg WAR: +0.46 games/season
+Defensive   :  20 coaches,   56 seasons, Avg WAR: -0.12 games/season
+Other       : No data
 
 ================================================================================
 SUMMARY TABLE: Average Season WAR by Background and Decade
 ================================================================================
 Decade      1970s  1980s  1990s  2000s  2010s  2020s
 Background                                          
-Defensive    0.57   0.46   0.19   0.08   0.53   0.16
-Offensive   -0.35   0.42  -0.14   0.14   0.25   0.57
-Other        0.02  -0.11   0.51   0.04   0.43  -0.07
+Defensive    0.51   0.21   0.39   0.16   0.24  -0.12
+Offensive   -0.39   0.47  -0.33   0.03   0.10   0.46
+Other        0.13   0.20   0.60     --     --     --
 
 ================================================================================
 COACH COUNT by Background and Decade
 ================================================================================
 Decade      1970s  1980s  1990s  2000s  2010s  2020s
 Background                                          
-Defensive      24     19     25     33     32     22
-Offensive      38     32     38     42     44     33
-Other          16     11      6      6      5      2
+Defensive      21     22     28     37     33     20
+Offensive      34     30     33     40     42     33
+Other          12      6      2      0      0      0
 
 ================================================================================
 SEASON COUNT by Background and Decade
 ================================================================================
 Decade      1970s  1980s  1990s  2000s  2010s  2020s
 Background                                          
-Defensive     101     76    102    122    126     61
-Offensive      95    149    163    165    163     91
-Other          72     55     26     31     31      5
+Defensive      82     83    126    151    135     56
+Offensive      87    146    143    152    158     92
+Other          63     31     10      0      0      0
 
 ================================================================================
 DECADE TRENDS
 ================================================================================
-Offensive Coordinators: -0.35 to +0.57 games/season (improving)
-Defensive Coordinators: +0.57 to +0.16 games/season (declining)
-Other Coordinators: +0.02 to -0.07 games/season (declining)
+Offensive Coordinators: -0.39 to +0.46 games/season (improving)
+Defensive Coordinators: +0.51 to -0.12 games/season (declining)
+Other Coordinators: +0.13 to +0.60 games/season (improving)
 
 ================================================================================
 HIRING TRENDS (% of coaches by background)
 ================================================================================
 Decade      1970s  1980s  1990s  2000s  2010s  2020s
 Background                                          
-Defensive    30.8   30.6   36.2   40.7   39.5   38.6
-Offensive    48.7   51.6   55.1   51.9   54.3   57.9
-Other        20.5   17.7    8.7    7.4    6.2    3.5%
+Defensive    31.3   37.9   44.4   48.1   44.0   37.7
+Offensive    50.7   51.7   52.4   51.9   56.0   62.3
+Other        17.9   10.3    3.2    0.0    0.0    0.0%
 
 ================================================================================
 STATISTICAL ANALYSIS: OFFENSIVE vs DEFENSIVE BY DECADE
@@ -88,149 +88,187 @@ STATISTICAL ANALYSIS: OFFENSIVE vs DEFENSIVE BY DECADE
 1970s:
 ----------------------------------------
 Sample sizes:
-  Offensive: 38 coaches, 95 seasons
-  Defensive: 24 coaches, 101 seasons
+  Offensive: 34 coaches, 87 seasons
+  Defensive: 21 coaches, 82 seasons
 
 Mean WAR (games/season):
-  Offensive: -0.355
-  Defensive: +0.573
-  Difference: -0.927
+  Offensive: -0.390
+  Defensive: +0.513
+  Difference: -0.904
 
 Statistical tests:
   Welch's t-test:
-    t-statistic: -3.727
-    p-value: 0.0003
+    t-statistic: -3.041
+    p-value: 0.0027
   Mann-Whitney U test (non-parametric):
-    U-statistic: 3290
-    p-value: 0.0001
-  Cohen's d: -0.532
+    U-statistic: 2626
+    p-value: 0.0031
+  Cohen's d: -0.468
   Result: highly significant **
 
 1980s:
 ----------------------------------------
 Sample sizes:
-  Offensive: 32 coaches, 149 seasons
-  Defensive: 19 coaches, 76 seasons
+  Offensive: 30 coaches, 146 seasons
+  Defensive: 22 coaches, 83 seasons
 
 Mean WAR (games/season):
-  Offensive: +0.421
-  Defensive: +0.456
-  Difference: -0.035
+  Offensive: +0.472
+  Defensive: +0.214
+  Difference: +0.258
 
 Statistical tests:
   Welch's t-test:
-    t-statistic: -0.135
-    p-value: 0.8932
+    t-statistic: 0.918
+    p-value: 0.3600
   Mann-Whitney U test (non-parametric):
-    U-statistic: 5389
-    p-value: 0.5551
-  Cohen's d: -0.019
+    U-statistic: 6272
+    p-value: 0.6593
+  Cohen's d: 0.129
   Result: not significant 
 
 1990s:
 ----------------------------------------
 Sample sizes:
-  Offensive: 38 coaches, 163 seasons
-  Defensive: 25 coaches, 102 seasons
+  Offensive: 33 coaches, 143 seasons
+  Defensive: 28 coaches, 126 seasons
 
 Mean WAR (games/season):
-  Offensive: -0.140
-  Defensive: +0.193
-  Difference: -0.333
+  Offensive: -0.329
+  Defensive: +0.389
+  Difference: -0.718
 
 Statistical tests:
   Welch's t-test:
-    t-statistic: -1.392
-    p-value: 0.1654
+    t-statistic: -3.210
+    p-value: 0.0015
   Mann-Whitney U test (non-parametric):
-    U-statistic: 7553
-    p-value: 0.2109
-  Cohen's d: -0.174
-  Result: not significant 
+    U-statistic: 7144
+    p-value: 0.0034
+  Cohen's d: -0.389
+  Result: highly significant **
 
 2000s:
 ----------------------------------------
 Sample sizes:
-  Offensive: 42 coaches, 165 seasons
-  Defensive: 33 coaches, 122 seasons
+  Offensive: 40 coaches, 152 seasons
+  Defensive: 37 coaches, 151 seasons
 
 Mean WAR (games/season):
-  Offensive: +0.139
-  Defensive: +0.076
-  Difference: +0.063
+  Offensive: +0.029
+  Defensive: +0.156
+  Difference: -0.127
 
 Statistical tests:
   Welch's t-test:
-    t-statistic: 0.286
-    p-value: 0.7754
+    t-statistic: -0.606
+    p-value: 0.5449
   Mann-Whitney U test (non-parametric):
-    U-statistic: 10275
-    p-value: 0.7631
-  Cohen's d: 0.035
+    U-statistic: 11082
+    p-value: 0.6058
+  Cohen's d: -0.070
   Result: not significant 
 
 2010s:
 ----------------------------------------
 Sample sizes:
-  Offensive: 44 coaches, 163 seasons
-  Defensive: 32 coaches, 126 seasons
+  Offensive: 42 coaches, 158 seasons
+  Defensive: 33 coaches, 135 seasons
 
 Mean WAR (games/season):
-  Offensive: +0.246
-  Defensive: +0.528
-  Difference: -0.282
+  Offensive: +0.100
+  Defensive: +0.243
+  Difference: -0.143
 
 Statistical tests:
   Welch's t-test:
-    t-statistic: -1.273
-    p-value: 0.2041
+    t-statistic: -0.627
+    p-value: 0.5314
   Mann-Whitney U test (non-parametric):
-    U-statistic: 9430
-    p-value: 0.2340
-  Cohen's d: -0.151
+    U-statistic: 10192
+    p-value: 0.5134
+  Cohen's d: -0.074
   Result: not significant 
 
 2020s:
 ----------------------------------------
 Sample sizes:
-  Offensive: 33 coaches, 91 seasons
-  Defensive: 22 coaches, 61 seasons
+  Offensive: 33 coaches, 92 seasons
+  Defensive: 20 coaches, 56 seasons
 
 Mean WAR (games/season):
-  Offensive: +0.572
-  Defensive: +0.156
-  Difference: +0.416
+  Offensive: +0.460
+  Defensive: -0.116
+  Difference: +0.576
 
 Statistical tests:
   Welch's t-test:
-    t-statistic: 1.581
-    p-value: 0.1161
+    t-statistic: 1.782
+    p-value: 0.0775
   Mann-Whitney U test (non-parametric):
-    U-statistic: 3151
-    p-value: 0.1587
-  Cohen's d: 0.257
+    U-statistic: 2979
+    p-value: 0.1115
+  Cohen's d: 0.305
   Result: not significant 
+
+================================================================================
+COMPACT SUMMARY TABLE: OFFENSIVE vs DEFENSIVE BY DECADE
+================================================================================
+
+Background                                   1970's              1980's              1990's              2000's              2010's              2020's
+Sample Size, Coaches (O/D)                    34/21               30/22               33/28               40/37               42/33               33/20
+Sample Size, Seasons (O/D)                    87/82              146/83             143/126             152/151             158/135               92/56
+Mean WAR (O/D)                      -0.390 / +0.513     +0.472 / +0.214     -0.329 / +0.389     +0.029 / +0.156     +0.100 / +0.243     +0.460 / -0.116
+Difference (O - D)                           -0.904              +0.258              -0.718              -0.127              -0.143              +0.576
+U-statistic                                    2626                6272                7144               11082               10192                2979
+p-value                                      0.0031              0.6593              0.0034              0.6058              0.5134              0.1115
+Significance                     Highly Significant                   -  Highly Significant                   -                   -                   -
+
+
+================================================================================
+2020s PROJECTION: FULL DECADE ANALYSIS
+================================================================================
+
+Current 2020s data (2020-2024, 5 seasons):
+  Offensive: 92 season observations
+  Defensive: 56 season observations
+  Mean WAR (O/D): +0.460 / -0.116
+  Difference: +0.576
+  Current U-statistic: 2979
+  Current p-value: 0.1115
+
+Projected full decade (2020-2029, 10 seasons):
+Assuming similar hiring patterns and performance distributions continue...
+  Projected sample sizes: 184 offensive, 112 defensive seasons
+  Mean WAR (O/D): +0.460 / -0.116
+  Difference: +0.576
+  Projected U-statistic: 11916
+  Projected p-value: 0.0240
+  Projected result: significant
+
+Note: This projection assumes the current performance trends and hiring patterns
+      continue through 2029 at the same rate as 2020-2024.
 
 ================================================================================
 TREND ANALYSIS: CHANGE OVER TIME
 ================================================================================
 
 Linear trend in Offensive-Defensive difference:
-  Slope: 0.0182 games per year
-  Per decade: 0.182 games
-  R²: 0.565
-  p-value: 0.0850
+  Slope: 0.0194 games per year
+  Per decade: 0.194 games
+  R²: 0.417
+  p-value: 0.1663
   No significant linear trend
 
 Decade-by-decade differences (Offensive - Defensive):
 Decade   Difference   t-test p   M-W p      Significance
 ------------------------------------------------------------
-1970s    -0.927 games  0.0003     0.0001     **
-1980s    -0.035 games  0.8932     0.5551     
-1990s    -0.333 games  0.1654     0.2109     
-2000s    +0.063 games  0.7754     0.7631     
-2010s    -0.282 games  0.2041     0.2340     
-2020s    +0.416 games  0.1161     0.1587     
+1970s    -0.904 games  0.0027     0.0031     **
+1980s    +0.258 games  0.3600     0.6593     
+1990s    -0.718 games  0.0015     0.0034     **
+2000s    -0.127 games  0.5449     0.6058     
+2010s    -0.143 games  0.5314     0.5134     
+2020s    +0.576 games  0.0775     0.1115     
 
 Significance: ** p<0.01, * p<0.05, † p<0.10
 
