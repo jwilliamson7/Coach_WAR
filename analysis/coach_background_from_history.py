@@ -105,18 +105,16 @@ def classify_coach_background(coach_histories):
         defensive_years = len(defensive_experience)
         
         # Classify background
-        if offensive_years > 0 and defensive_years > 0:
-            # If both, classify by which is more prominent
-            if offensive_years > defensive_years:
-                background = 'Offensive'
-            elif defensive_years > offensive_years:
-                background = 'Defensive'
-            else:
-                background = 'Both'
-        elif offensive_years > 0:
+        # Require at least 3 years in both to be classified as "Both"
+        if offensive_years > 2 and defensive_years > 2:
+            background = 'Both'
+        elif offensive_years > defensive_years:
             background = 'Offensive'
-        elif defensive_years > 0:
+        elif defensive_years > offensive_years:
             background = 'Defensive'
+        elif offensive_years > 0:
+            # If equal but > 0, classify as offensive (arbitrary tiebreaker)
+            background = 'Offensive'
         else:
             background = 'Other'
         
@@ -138,39 +136,52 @@ def classify_coach_background(coach_histories):
 
 def match_coaches_with_war_data(coach_backgrounds, impact_df):
     """Match coaching backgrounds with WAR performance data."""
-    
-    # Create various name matching strategies
-    matched_data = []
-    unmatched_coaches = []
-    
+
+    # Create a mapping from coach names to background info
+    background_map = {}
     for _, bg_row in coach_backgrounds.iterrows():
         coach_name = bg_row['Coach_Name']
-        
+        background_map[coach_name] = {
+            'Background': bg_row['Background'],
+            'Offensive_Years': bg_row['Offensive_Years'],
+            'Defensive_Years': bg_row['Defensive_Years']
+        }
+
+    # Now iterate through WAR data and find matches
+    matched_data = []
+    unmatched_coaches = set()
+
+    for _, war_row in impact_df.iterrows():
+        coach_name = war_row['Primary_Coach']
+
         # Try exact match first
-        war_matches = impact_df[impact_df['Primary_Coach'] == coach_name]
-        
-        # If no exact match, try partial matching
-        if len(war_matches) == 0:
+        if coach_name in background_map:
+            match_info = background_map[coach_name]
+        else:
             # Try matching by last name
             last_name = coach_name.split()[-1] if ' ' in coach_name else coach_name
-            war_matches = impact_df[impact_df['Primary_Coach'].str.contains(last_name, case=False, na=False)]
-        
-        if len(war_matches) > 0:
-            # Add background info to each season
-            war_matches = war_matches.copy()
-            war_matches['Background'] = bg_row['Background']
-            war_matches['Offensive_Years'] = bg_row['Offensive_Years']
-            war_matches['Defensive_Years'] = bg_row['Defensive_Years']
-            matched_data.append(war_matches)
-        else:
-            unmatched_coaches.append(coach_name)
-    
+            match_info = None
+            for bg_name, bg_data in background_map.items():
+                if last_name.lower() in bg_name.lower():
+                    match_info = bg_data
+                    break
+
+            if match_info is None:
+                # No match found - assign "Other" with 0/0 years
+                match_info = {'Background': 'Other', 'Offensive_Years': 0, 'Defensive_Years': 0}
+                unmatched_coaches.add(coach_name)
+
+        # Add background info to this season
+        war_row_copy = war_row.copy()
+        war_row_copy['Background'] = match_info['Background']
+        war_row_copy['Offensive_Years'] = match_info['Offensive_Years']
+        war_row_copy['Defensive_Years'] = match_info['Defensive_Years']
+        matched_data.append(war_row_copy)
+
     if matched_data:
-        combined_data = pd.concat(matched_data, ignore_index=True)
+        combined_data = pd.DataFrame(matched_data)
         print(f"\nMatched {len(combined_data)} coach-seasons")
         print(f"Unmatched coaches: {len(unmatched_coaches)}")
-        if len(unmatched_coaches) < 20:  # Don't print too many
-            print(f"Sample unmatched: {unmatched_coaches[:10]}")
         return combined_data
     else:
         print("No matches found between coaching histories and WAR data!")
@@ -254,9 +265,12 @@ def create_background_war_analysis(font_family='Helvetica'):
     
     # Limit to first 15 seasons for trajectory analysis
     trajectories_limited = trajectories_df[trajectories_df['Season_Number'] <= 15]
-    
-    # Calculate average trajectories by background and season (first 15 seasons only)
-    avg_trajectories = trajectories_limited.groupby(['Background', 'Season_Number']).agg({
+
+    # Filter out "Other" category for plotting only (keep for stats)
+    trajectories_for_plot = trajectories_limited[trajectories_limited['Background'] != 'Other']
+
+    # Calculate average trajectories by background and season (first 15 seasons only, excluding Other)
+    avg_trajectories = trajectories_for_plot.groupby(['Background', 'Season_Number']).agg({
         'Cumulative_WAR_Games': ['mean', 'std', 'count'],
         'Single_Season_WAR': 'mean'
     }).round(2)
@@ -313,9 +327,65 @@ def create_background_war_analysis(font_family='Helvetica'):
     output_file = 'analysis/outputs/png/coach_background_from_history_15seasons.png'
     plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white', edgecolor='none')
     print(f"\nPlot saved as: {output_file}")
-    
+
+    # Print matched data summary statistics
+    print(f"\n{'='*70}")
+    print("MATCHED DATA SUMMARY (1970-2024)")
+    print(f"{'='*70}")
+
+    # Count by background in matched data
+    matched_counts = matched_data['Background'].value_counts()
+    matched_coaches = {bg: matched_data[matched_data['Background'] == bg]['Primary_Coach'].nunique()
+                      for bg in ['Offensive', 'Defensive', 'Other']}
+
+    print(f"\nCoach Background Distribution (matched with WAR data 1970+):")
+    print("=" * 50)
+    for background in ['Offensive', 'Defensive', 'Other']:
+        if background in matched_counts:
+            seasons = matched_counts[background]
+            coaches = matched_coaches.get(background, 0)
+            pct = (coaches / sum(matched_coaches.values())) * 100
+            print(f"{background:<12}: {coaches:3d} coaches ({pct:5.1f}%), {seasons:4d} seasons")
+
+    # Add decade-by-decade summary table
+    matched_data_copy = matched_data.copy()
+    matched_data_copy['Decade'] = matched_data_copy['Year'].apply(
+        lambda y: f"{(y//10)*10}s" if y < 2020 else "2020s"
+    )
+    matched_data_copy['WAR_Games'] = matched_data_copy['Coaching_WAR'] * 16
+
+    print(f"\n{'='*70}")
+    print("TABLE 1: MEAN WAR BY BACKGROUND AND DECADE")
+    print(f"{'='*70}")
+    print()
+
+    decades = ['1970s', '1980s', '1990s', '2000s', '2010s', '2020s']
+    backgrounds = ['Offensive', 'Defensive', 'Other']
+
+    # Build the pivot table
+    decade_summary = {}
+    for bg in backgrounds:
+        decade_summary[bg] = []
+        for decade in decades:
+            decade_data = matched_data_copy[
+                (matched_data_copy['Background'] == bg) &
+                (matched_data_copy['Decade'] == decade)
+            ]
+            if len(decade_data) > 0:
+                decade_summary[bg].append(f"{decade_data['WAR_Games'].mean():+.2f}")
+            else:
+                decade_summary[bg].append("--")
+
+    # Print table
+    print(f"{'Background':<12}  " + "    ".join(decades))
+    print("-" * 70)
+    for bg in backgrounds:
+        values_str = "    ".join(f"{v:>7}" for v in decade_summary[bg])
+        print(f"{bg:<12}  {values_str}")
+
     # Print detailed statistics
-    print(f"\nDetailed Background Analysis (based on actual coaching history):")
+    print(f"\n{'='*70}")
+    print("DETAILED BACKGROUND ANALYSIS (based on actual coaching history)")
     print("=" * 70)
     
     for background in ['Offensive', 'Defensive', 'Other']:
@@ -347,45 +417,78 @@ def create_background_war_analysis(font_family='Helvetica'):
     print(f"\n{'='*70}")
     print("STATISTICAL COMPARISON: OFFENSIVE vs DEFENSIVE COACHES")
     print(f"{'='*70}")
-    
+
+    # Calculate season numbers for each coach for first 15 seasons analysis
     # First, calculate season numbers for each coach
     matched_data_with_seasons = matched_data.copy()
     matched_data_with_seasons = matched_data_with_seasons.sort_values(['Primary_Coach', 'Year'])
     matched_data_with_seasons['Season_Number'] = matched_data_with_seasons.groupby('Primary_Coach').cumcount() + 1
-    
+
     # Filter to only first 15 seasons
     first_15_seasons = matched_data_with_seasons[matched_data_with_seasons['Season_Number'] <= 15]
-    
+
+    print(f"\n{'='*70}")
+    print("FIRST 15 SEASONS ANALYSIS (for trajectory comparison)")
+    print(f"{'='*70}")
     print(f"\nFiltering to first 15 seasons of each coach's career...")
     print(f"Original dataset: {len(matched_data)} coach-seasons")
     print(f"First 15 seasons only: {len(first_15_seasons)} coach-seasons")
-    
+
     offensive_war = first_15_seasons[first_15_seasons['Background'] == 'Offensive']['Coaching_WAR']
     defensive_war = first_15_seasons[first_15_seasons['Background'] == 'Defensive']['Coaching_WAR']
-    
+
     # Count unique coaches in each category
     offensive_coaches = first_15_seasons[first_15_seasons['Background'] == 'Offensive']['Primary_Coach'].nunique()
     defensive_coaches = first_15_seasons[first_15_seasons['Background'] == 'Defensive']['Primary_Coach'].nunique()
     
     if len(offensive_war) > 0 and len(defensive_war) > 0:
-        # Descriptive statistics
-        print(f"\nDescriptive Statistics (First 15 Seasons Only):")
-        print(f"Offensive Coaches:")
+        # Descriptive statistics for first 15 seasons
+        print(f"\nOffensive Coaches (First 15 Seasons):")
         print(f"  Unique coaches: {offensive_coaches}")
         print(f"  Sample size: {len(offensive_war)} coach-seasons")
         print(f"  Mean WAR: {offensive_war.mean():+.4f}")
         print(f"  Std Dev: {offensive_war.std():.4f}")
         print(f"  Median WAR: {offensive_war.median():+.4f}")
-        
-        print(f"\nDefensive Coaches:")
+
+        print(f"\nDefensive Coaches (First 15 Seasons):")
         print(f"  Unique coaches: {defensive_coaches}")
         print(f"  Sample size: {len(defensive_war)} coach-seasons")
         print(f"  Mean WAR: {defensive_war.mean():+.4f}")
         print(f"  Std Dev: {defensive_war.std():.4f}")
         print(f"  Median WAR: {defensive_war.median():+.4f}")
-        
-        # Two-sample t-test
+
+        # Print Table 2 with First 15 Seasons
+        print(f"\n{'='*70}")
+        print("TABLE 2: OFFENSIVE vs DEFENSIVE COMPARISON (First 15 Seasons Only)")
+        print(f"{'='*70}")
+        print()
+
+        print(f"{'Background':<12}  {'Coaches':<10}  {'Seasons':<10}  {'Mean WAR':<14}  {'Median WAR':<14}  {'Std Dev':<10}")
+        print("-" * 75)
+        print(f"{'Defensive':<12}  {defensive_coaches:<10}  {len(defensive_war):<10}  {defensive_war.mean()*16:+.2f} games     {defensive_war.median()*16:+.2f} games       {defensive_war.std()*16:.2f}")
+        print(f"{'Offensive':<12}  {offensive_coaches:<10}  {len(offensive_war):<10}  {offensive_war.mean()*16:+.2f} games     {offensive_war.median()*16:+.2f} games       {offensive_war.std()*16:.2f}")
+        print(f"{'Difference':<12}  {defensive_coaches - offensive_coaches:<10}  {len(defensive_war) - len(offensive_war):<10}  {(defensive_war.mean() - offensive_war.mean())*16:+.2f} games     {(defensive_war.median() - offensive_war.median())*16:+.2f} games       {(defensive_war.std() - offensive_war.std())*16:.2f}")
+
+        # Two-sample t-test (for detailed output below)
         t_stat, p_value = stats.ttest_ind(offensive_war, defensive_war, equal_var=False)
+
+        # Mann-Whitney U test (for Table 2)
+        u_stat, p_value_mw = stats.mannwhitneyu(offensive_war, defensive_war, alternative='two-sided')
+
+        print()
+        print(f"Mann-Whitney U test:")
+        print(f"  U-statistic: {u_stat:,.0f}")
+        print(f"  p-value: {p_value_mw:.3f}")
+
+        if p_value_mw < 0.01:
+            interp = "Highly significant"
+        elif p_value_mw < 0.05:
+            interp = "Significant"
+        elif p_value_mw < 0.10:
+            interp = "Marginally significant"
+        else:
+            interp = "Not significant"
+        print(f"  Interpretation: {interp}")
         
         print(f"\nTwo-Sample T-Test (Welch's t-test):")
         print(f"  t-statistic: {t_stat:.4f}")
@@ -440,10 +543,48 @@ def create_background_war_analysis(font_family='Helvetica'):
         else:
             u_significance = "not significant"
         print(f"  Non-parametric test: {u_significance}")
-        
+
+        # Add Table 3 for ALL SEASONS comparison
+        print(f"\n{'='*70}")
+        print("TABLE 3: OFFENSIVE vs DEFENSIVE COMPARISON (All Career Seasons)")
+        print(f"{'='*70}")
+        print()
+
+        # Get all seasons data (from matched_data which already has "Both" filtered out)
+        offensive_war_all = matched_data[matched_data['Background'] == 'Offensive']['Coaching_WAR']
+        defensive_war_all = matched_data[matched_data['Background'] == 'Defensive']['Coaching_WAR']
+
+        # Count unique coaches
+        offensive_coaches_all = matched_data[matched_data['Background'] == 'Offensive']['Primary_Coach'].nunique()
+        defensive_coaches_all = matched_data[matched_data['Background'] == 'Defensive']['Primary_Coach'].nunique()
+
+        print(f"{'Background':<12}  {'Coaches':<10}  {'Seasons':<10}  {'Mean WAR':<14}  {'Median WAR':<14}  {'Std Dev':<10}")
+        print("-" * 75)
+        print(f"{'Defensive':<12}  {defensive_coaches_all:<10}  {len(defensive_war_all):<10}  {defensive_war_all.mean()*16:+.2f} games     {defensive_war_all.median()*16:+.2f} games       {defensive_war_all.std()*16:.2f}")
+        print(f"{'Offensive':<12}  {offensive_coaches_all:<10}  {len(offensive_war_all):<10}  {offensive_war_all.mean()*16:+.2f} games     {offensive_war_all.median()*16:+.2f} games       {offensive_war_all.std()*16:.2f}")
+        print(f"{'Difference':<12}  {defensive_coaches_all - offensive_coaches_all:<10}  {len(defensive_war_all) - len(offensive_war_all):<10}  {(defensive_war_all.mean() - offensive_war_all.mean())*16:+.2f} games     {(defensive_war_all.median() - offensive_war_all.median())*16:+.2f} games       {(defensive_war_all.std() - offensive_war_all.std())*16:.2f}")
+
+        # Mann-Whitney U test for all seasons
+        u_stat_all, p_value_mw_all = stats.mannwhitneyu(offensive_war_all, defensive_war_all, alternative='two-sided')
+
+        print()
+        print(f"Mann-Whitney U test (All Seasons):")
+        print(f"  U-statistic: {u_stat_all:,.0f}")
+        print(f"  p-value: {p_value_mw_all:.3f}")
+
+        if p_value_mw_all < 0.01:
+            interp_all = "Highly significant"
+        elif p_value_mw_all < 0.05:
+            interp_all = "Significant"
+        elif p_value_mw_all < 0.10:
+            interp_all = "Marginally significant"
+        else:
+            interp_all = "Not significant"
+        print(f"  Interpretation: {interp_all}")
+
     else:
         print("Insufficient data for statistical comparison")
-    
+
     # Save detailed data
     coach_backgrounds.to_csv('analysis/outputs/csv/coach_backgrounds_from_history.csv', index=False)
     avg_trajectories.to_csv('analysis/outputs/csv/coach_background_trajectories_from_history_15seasons.csv', index=False)

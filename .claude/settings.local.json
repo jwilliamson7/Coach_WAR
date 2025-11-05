@@ -4,7 +4,9 @@
       "Bash(python -m py_compile:*)",
       "Bash(python scripts/combine_final_datasets.py:*)",
       "Bash(python:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(awk:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

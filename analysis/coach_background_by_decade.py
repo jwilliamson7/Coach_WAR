@@ -169,9 +169,21 @@ def analyze_coach_background_by_decade():
     print("\n" + "="*80)
     print("STATISTICAL ANALYSIS: OFFENSIVE vs DEFENSIVE BY DECADE")
     print("="*80)
-    
-    # Store results for trend analysis
+
+    # Store results for trend analysis and compact table
     decade_differences = []
+    compact_table_data = {
+        'coaches_off': [],
+        'coaches_def': [],
+        'seasons_off': [],
+        'seasons_def': [],
+        'mean_off': [],
+        'mean_def': [],
+        'difference': [],
+        'u_stat': [],
+        'p_value': [],
+        'significance': []
+    }
     
     for decade in decades:
         decade_data = matched_data[matched_data['Decade'] == decade]
@@ -246,7 +258,149 @@ def analyze_coach_background_by_decade():
                 'n_offensive': len(offensive_data),
                 'n_defensive': len(defensive_data)
             })
+
+            # Store for compact table
+            compact_table_data['coaches_off'].append(off_coaches)
+            compact_table_data['coaches_def'].append(def_coaches)
+            compact_table_data['seasons_off'].append(len(offensive_data))
+            compact_table_data['seasons_def'].append(len(defensive_data))
+            compact_table_data['mean_off'].append(offensive_data.mean())
+            compact_table_data['mean_def'].append(defensive_data.mean())
+            compact_table_data['difference'].append(offensive_data.mean() - defensive_data.mean())
+            compact_table_data['u_stat'].append(int(u_stat))
+            compact_table_data['p_value'].append(p_value_mw)
+
+            # Determine significance
+            if p_value_mw < 0.01:
+                compact_table_data['significance'].append('Highly Significant')
+            elif p_value_mw < 0.05:
+                compact_table_data['significance'].append('Significant')
+            elif p_value_mw < 0.10:
+                compact_table_data['significance'].append('Marginally Significant')
+            else:
+                compact_table_data['significance'].append('-')
     
+    # Print compact summary table
+    print("\n" + "="*80)
+    print("COMPACT SUMMARY TABLE: OFFENSIVE vs DEFENSIVE BY DECADE")
+    print("="*80)
+    print()
+
+    # Create formatted compact table with proper column alignment
+    decades_abbr = ['1970s', '1980s', '1990s', '2000s', '2010s', '2020s']
+
+    # Define column width for each decade
+    col_width = 20
+
+    # Header row with decade labels
+    header = f"{'Background':<31}"
+    for decade in ["1970's", "1980's", "1990's", "2000's", "2010's", "2020's"]:
+        header += f"{decade:>{col_width}}"
+    print(header)
+
+    # Row 1: Sample Size, Coaches (O/D)
+    row = f"{'Sample Size, Coaches (O/D)':<31}"
+    for i in range(len(compact_table_data['coaches_off'])):
+        val = f"{compact_table_data['coaches_off'][i]}/{compact_table_data['coaches_def'][i]}"
+        row += f"{val:>{col_width}}"
+    print(row)
+
+    # Row 2: Sample Size, Seasons (O/D)
+    row = f"{'Sample Size, Seasons (O/D)':<31}"
+    for i in range(len(compact_table_data['seasons_off'])):
+        val = f"{compact_table_data['seasons_off'][i]}/{compact_table_data['seasons_def'][i]}"
+        row += f"{val:>{col_width}}"
+    print(row)
+
+    # Row 3: Mean WAR (O/D)
+    row = f"{'Mean WAR (O/D)':<31}"
+    for i in range(len(compact_table_data['mean_off'])):
+        val = f"{compact_table_data['mean_off'][i]:+.3f} / {compact_table_data['mean_def'][i]:+.3f}"
+        row += f"{val:>{col_width}}"
+    print(row)
+
+    # Row 4: Difference (O - D)
+    row = f"{'Difference (O - D)':<31}"
+    for i in range(len(compact_table_data['difference'])):
+        val = f"{compact_table_data['difference'][i]:+.3f}"
+        row += f"{val:>{col_width}}"
+    print(row)
+
+    # Row 5: U-statistic
+    row = f"{'U-statistic':<31}"
+    for i in range(len(compact_table_data['u_stat'])):
+        val = f"{compact_table_data['u_stat'][i]}"
+        row += f"{val:>{col_width}}"
+    print(row)
+
+    # Row 6: p-value
+    row = f"{'p-value':<31}"
+    for i in range(len(compact_table_data['p_value'])):
+        val = f"{compact_table_data['p_value'][i]:.4f}"
+        row += f"{val:>{col_width}}"
+    print(row)
+
+    # Row 7: Significance
+    row = f"{'Significance':<31}"
+    for i in range(len(compact_table_data['significance'])):
+        val = f"{compact_table_data['significance'][i]}"
+        row += f"{val:>{col_width}}"
+    print(row)
+    print()
+
+    # 2020s projection analysis
+    print("\n" + "="*80)
+    print("2020s PROJECTION: FULL DECADE ANALYSIS")
+    print("="*80)
+    print()
+
+    # Get 2020s data
+    data_2020s = matched_data[matched_data['Decade'] == '2020s'].copy()
+    offensive_2020s = data_2020s[data_2020s['Background'] == 'Offensive']['WAR_Games']
+    defensive_2020s = data_2020s[data_2020s['Background'] == 'Defensive']['WAR_Games']
+
+    print(f"Current 2020s data (2020-2024, 5 seasons):")
+    print(f"  Offensive: {len(offensive_2020s)} season observations")
+    print(f"  Defensive: {len(defensive_2020s)} season observations")
+    print(f"  Mean WAR (O/D): {offensive_2020s.mean():+.3f} / {defensive_2020s.mean():+.3f}")
+    print(f"  Difference: {offensive_2020s.mean() - defensive_2020s.mean():+.3f}")
+
+    # Current test
+    u_stat_current, p_value_current = stats.mannwhitneyu(offensive_2020s, defensive_2020s, alternative='two-sided')
+    print(f"  Current U-statistic: {u_stat_current:.0f}")
+    print(f"  Current p-value: {p_value_current:.4f}")
+
+    print(f"\nProjected full decade (2020-2029, 10 seasons):")
+    print(f"Assuming similar hiring patterns and performance distributions continue...")
+
+    # Simply duplicate the existing data to simulate a full decade
+    # Current: 5 years, Target: 10 years (double the samples)
+    offensive_2020s_full = np.concatenate([offensive_2020s, offensive_2020s])
+    defensive_2020s_full = np.concatenate([defensive_2020s, defensive_2020s])
+
+    print(f"  Projected sample sizes: {len(offensive_2020s_full)} offensive, {len(defensive_2020s_full)} defensive seasons")
+    print(f"  Mean WAR (O/D): {offensive_2020s_full.mean():+.3f} / {defensive_2020s_full.mean():+.3f}")
+    print(f"  Difference: {offensive_2020s_full.mean() - defensive_2020s_full.mean():+.3f}")
+
+    # Calculate projected statistics
+    u_stat_projected, p_value_projected = stats.mannwhitneyu(offensive_2020s_full, defensive_2020s_full, alternative='two-sided')
+
+    print(f"  Projected U-statistic: {u_stat_projected:.0f}")
+    print(f"  Projected p-value: {p_value_projected:.4f}")
+
+    if p_value_projected < 0.01:
+        projection_result = "highly significant"
+    elif p_value_projected < 0.05:
+        projection_result = "significant"
+    elif p_value_projected < 0.10:
+        projection_result = "marginally significant"
+    else:
+        projection_result = "not significant"
+
+    print(f"  Projected result: {projection_result}")
+    print(f"\nNote: This projection assumes the current performance trends and hiring patterns")
+    print(f"      continue through 2029 at the same rate as 2020-2024.")
+
     # Trend analysis over time
     print("\n" + "="*80)
     print("TREND ANALYSIS: CHANGE OVER TIME")

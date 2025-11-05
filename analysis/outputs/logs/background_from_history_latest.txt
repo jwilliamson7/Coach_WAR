@@ -9,88 +9,142 @@ Analyzing 537 coaches...
 
 Coach Background Distribution (from actual history):
 ==================================================
-Offensive   : 240 coaches ( 44.7%)
+Offensive   : 221 coaches ( 41.2%)
 Other       : 158 coaches ( 29.4%)
-Defensive   : 137 coaches ( 25.5%)
-Both        :   2 coaches (  0.4%)
+Defensive   : 119 coaches ( 22.2%)
+Both        :  39 coaches (  7.3%)
 
 Loading coaching impact analysis data...
 Matching coach backgrounds with WAR performance data...
 
-Matched 2066 coach-seasons
-Unmatched coaches: 226
-Filtered out 'Both' category, remaining: 2063 coach-seasons
+Matched 1637 coach-seasons
+Unmatched coaches: 0
+Filtered out 'Both' category, remaining: 1515 coach-seasons
 Calculating cumulative WAR trajectories...
 
 Plot saved as: analysis/outputs/png/coach_background_from_history_15seasons.png
 
-Detailed Background Analysis (based on actual coaching history):
+======================================================================
+MATCHED DATA SUMMARY (1970-2024)
 ======================================================================
 
-Offensive Coaches (154 matched with WAR data):
-  Average career WAR: +3.5 games
-  Average single season WAR: +0.14 games
+Coach Background Distribution (matched with WAR data 1970+):
+==================================================
+Offensive   : 134 coaches ( 54.5%),  778 seasons
+Defensive   :  98 coaches ( 39.8%),  633 seasons
+Other       :  14 coaches (  5.7%),  104 seasons
+
+======================================================================
+TABLE 1: MEAN WAR BY BACKGROUND AND DECADE
+======================================================================
+
+Background    1970s    1980s    1990s    2000s    2010s    2020s
+----------------------------------------------------------------------
+Offensive       -0.39      +0.47      -0.33      +0.03      +0.10      +0.46
+Defensive       +0.51      +0.21      +0.39      +0.16      +0.24      -0.12
+Other           +0.13      +0.20      +0.60         --         --         --
+
+======================================================================
+DETAILED BACKGROUND ANALYSIS (based on actual coaching history)
+======================================================================
+
+Offensive Coaches (134 matched with WAR data):
+  Average career WAR: +2.9 games
+  Average single season WAR: +0.06 games
   Top 3 by career WAR:
-    John Harbaugh: +39.3 games
-    Andy Reid: +34.3 games
-    Joe Gibbs: +24.8 games
+    Andy Reid: +27.3 games
+    Mike Holmgren: +24.5 games
+    Joe Gibbs: +24.2 games
   Sample: Aaron Kromer had 25 offensive years, 0 defensive years
 
-Defensive Coaches (112 matched with WAR data):
-  Average career WAR: +4.7 games
-  Average single season WAR: +0.31 games
+Defensive Coaches (98 matched with WAR data):
+  Average career WAR: +4.0 games
+  Average single season WAR: +0.25 games
   Top 3 by career WAR:
-    Don Shula: +52.2 games
-    Bill Belichick: +42.1 games
-    Mike Smith: +35.9 games
+    Don Shula: +57.9 games
+    Bill Belichick: +46.3 games
+    Tom Landry: +30.8 games
   Sample: Aaron Glenn had 0 offensive years, 11 defensive years
 
-Other Coaches (34 matched with WAR data):
-  Average career WAR: +5.0 games
-  Average single season WAR: +0.00 games
+Other Coaches (14 matched with WAR data):
+  Average career WAR: +3.8 games
+  Average single season WAR: +0.19 games
   Top 3 by career WAR:
-    Bill Walsh: +20.0 games
-    Jason Garrett: +17.3 games
-    John Robinson: +16.2 games
+    Don Coryell: +15.2 games
+    Ron Meyer: +13.8 games
+    Bud Grant: +13.8 games
   Sample: Al Cornsweet had 0 offensive years, 0 defensive years
 
 ======================================================================
 STATISTICAL COMPARISON: OFFENSIVE vs DEFENSIVE COACHES
 ======================================================================
 
-Filtering to first 15 seasons of each coach's career...
-Original dataset: 2063 coach-seasons
-First 15 seasons only: 1722 coach-seasons
+======================================================================
+FIRST 15 SEASONS ANALYSIS (for trajectory comparison)
+======================================================================
 
-Descriptive Statistics (First 15 Seasons Only):
-Offensive Coaches:
-  Unique coaches: 154
-  Sample size: 860 coach-seasons
-  Mean WAR: +0.0055
-  Std Dev: 0.1134
+Filtering to first 15 seasons of each coach's career...
+Original dataset: 1515 coach-seasons
+First 15 seasons only: 1418 coach-seasons
+
+Offensive Coaches (First 15 Seasons):
+  Unique coaches: 134
+  Sample size: 734 coach-seasons
+  Mean WAR: +0.0032
+  Std Dev: 0.1206
   Median WAR: +0.0023
 
-Defensive Coaches:
-  Unique coaches: 112
-  Sample size: 639 coach-seasons
-  Mean WAR: +0.0152
-  Std Dev: 0.1111
-  Median WAR: +0.0185
+Defensive Coaches (First 15 Seasons):
+  Unique coaches: 98
+  Sample size: 581 coach-seasons
+  Mean WAR: +0.0116
+  Std Dev: 0.1192
+  Median WAR: +0.0138
+
+======================================================================
+TABLE 2: OFFENSIVE vs DEFENSIVE COMPARISON (First 15 Seasons Only)
+======================================================================
+
+Background    Coaches     Seasons     Mean WAR        Median WAR      Std Dev   
+---------------------------------------------------------------------------
+Defensive     98          581         +0.19 games     +0.22 games       1.91
+Offensive     134         734         +0.05 games     +0.04 games       1.93
+Difference    -36         -153        +0.14 games     +0.18 games       -0.02
+
+Mann-Whitney U test:
+  U-statistic: 203,533
+  p-value: 0.156
+  Interpretation: Not significant
 
 Two-Sample T-Test (Welch's t-test):
-  t-statistic: -1.6421
-  p-value: 0.100789
-  Cohen's d (effect size): -0.0855
+  t-statistic: -1.2697
+  p-value: 0.204435
+  Cohen's d (effect size): -0.0704
 
 Interpretation:
   The difference is not significant (p >= 0.10)
-  Effect size is negligible (|d| = 0.0855)
-  Offensive coaches have lower average WAR by 0.0096
+  Effect size is negligible (|d| = 0.0704)
+  Offensive coaches have lower average WAR by 0.0084
 
 Mann-Whitney U Test (non-parametric):
-  U-statistic: 260162
-  p-value: 0.077990
+  U-statistic: 203533
+  p-value: 0.156352
   Non-parametric test: not significant
+
+======================================================================
+TABLE 3: OFFENSIVE vs DEFENSIVE COMPARISON (All Career Seasons)
+======================================================================
+
+Background    Coaches     Seasons     Mean WAR        Median WAR      Std Dev   
+---------------------------------------------------------------------------
+Defensive     98          633         +0.25 games     +0.28 games       1.90
+Offensive     134         778         +0.06 games     +0.04 games       1.92
+Difference    -36         -145        +0.19 games     +0.25 games       -0.02
+
+Mann-Whitney U test (All Seasons):
+  U-statistic: 231,706
+  p-value: 0.056
+  Interpretation: Marginally significant
 
 Detailed data saved:
   - coach_backgrounds_from_history.csv: Coach background classifications from actual history

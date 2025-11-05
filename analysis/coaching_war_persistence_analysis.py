@@ -143,14 +143,21 @@ def create_persistence_scatter(lagged_df, corr, r2, model, p_value):
     ax.set_xlabel('Year N Coaching WAR (Games per Season)', fontsize=18, fontweight='bold')
     ax.set_ylabel('Year N+1 Coaching WAR (Games per Season)', fontsize=18, fontweight='bold')
 
-    # Add stats box
-    stats_text = f"Regression: Y = {model.coef_[0]:.3f}X + {model.intercept_ * 16:.3f}\n"
-    stats_text += f"R² = {r2:.3f}\n"
-    stats_text += f"n = {len(lagged_df)} season pairs\n"
+    # Add stats box (equation in games scale to match axes)
+    # Since model was fit on WAR scale (0-1), convert to games for display
+    # Y_games = coef * X_games + intercept_games
+    # where Y_games = model.predict(X_war) * 16 and X_games = X_war * 16
+    coef_games = model.coef_[0]  # Coefficient stays the same
+    intercept_games = model.intercept_ * 16  # Intercept scales by 16
+
+    # Use mathematical notation with subscripts
+    stats_text = f"$WAR_{{N+1}} = {coef_games:.3f} \\cdot WAR_N + {intercept_games:.3f}$ games\n"
+    stats_text += f"$R^2 = {r2:.3f}$\n"
+    stats_text += f"$n = {len(lagged_df)}$ season pairs\n"
     if p_value < 0.001:
-        stats_text += f"p < 0.001"
+        stats_text += f"$p < 0.001$"
     else:
-        stats_text += f"p = {p_value:.3f}"
+        stats_text += f"$p = {p_value:.3f}$"
     ax.text(0.05, 0.95, stats_text, transform=ax.transAxes,
            fontsize=14, verticalalignment='top',
            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))

@@ -207,7 +207,7 @@ def create_background_comparison_scatter(results):
     ax.set_xlabel('Year N Coaching WAR (Games per Season)', fontsize=18, fontweight='bold')
     ax.set_ylabel('Year N+1 Coaching WAR (Games per Season)', fontsize=18, fontweight='bold')
 
-    # Stats box
+    # Stats box with mathematical notation
     stats_text = "Regression Equations:\n"
     for background in ['Offensive', 'Defensive']:
         model = results[background]['model']
@@ -216,15 +216,15 @@ def create_background_comparison_scatter(results):
         coef = model.coef_[0]
         intercept = model.intercept_ * 16
         stats_text += f"\n{background}:\n"
-        stats_text += f"  Y = {coef:.3f}X + {intercept:.2f}\n"
-        stats_text += f"  R² = {r2:.3f}\n"
+        stats_text += f"  $WAR_{{N+1}} = {coef:.3f} \\cdot WAR_N + {intercept:.2f}$ games\n"
+        stats_text += f"  $R^2 = {r2:.3f}$\n"
         if p_value < 0.001:
-            stats_text += f"  p < 0.001\n"
+            stats_text += f"  $p < 0.001$\n"
         else:
-            stats_text += f"  p = {p_value:.3f}\n"
+            stats_text += f"  $p = {p_value:.3f}$\n"
 
     ax.text(0.05, 0.95, stats_text, transform=ax.transAxes,
-           fontsize=13, verticalalignment='top', family='monospace',
+           fontsize=13, verticalalignment='top',
            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.9))
 
     ax.legend(loc='lower right', fontsize=14, framealpha=0.9)

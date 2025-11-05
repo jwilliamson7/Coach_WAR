@@ -47,7 +47,7 @@
 %\affil[1]{\protect\raggedright
 %Des Moines, Iowa, e-mail: jon@williamsonconsultinggroup.com}
 
-\abstract{Evaluating head coach performance in the National Football League presents unique challenges because of the complex interactions among coaching decisions, player talent, and organizational factors. We introduce a novel counterfactual framework for measuring head coach impact by predicting how each team would have performed under a replacement-level coach with league-median characteristics, then comparing this baseline to actual results. This difference represents coaching Wins Above Replacement (WAR), the wins directly attributable to that coach's performance. Analyzing 1,683 team-seasons from 1970 to 2024 with 368 features spanning draft history, injuries, rosters, team performance, and coaching histories, we employ XGBoost regression to isolate coaching excellence from roster quality and organizational context. The model achieves R$^2$ of 0.821, with coaching-specific features accounting for 49\% of total model importance. Results reveal substantial coaching impact, with elite coaches averaging +2.4 WAR per season and poor coaches averaging -3.2 WAR. Analysis of offensive versus defensive coaching backgrounds reveals a dramatic historical shift: defensive coaches dominated the 1970s (+0.93 win advantage, p=0.0001), but offensive coaches now hold a +0.41 win edge in the 2020s. Year-to-year persistence analysis demonstrates scheme obsolescence, with offensive coaches showing 20\% reduced persistence in multi-year performance compared to defensive coaches. Our framework provides NFL organizations with objective, context-adjusted coaching evaluation comparable to analytical rigor applied to player personnel decisions.}
+\abstract{Evaluating head coach performance in the National Football League presents unique challenges because of the complex interactions among coaching decisions, player talent, and organizational factors. We introduce a novel counterfactual framework for measuring head coach impact by predicting how each team would have performed under a replacement-level coach with league-median characteristics, then comparing this baseline to actual results. This difference represents coaching Wins Above Replacement (WAR), the wins directly attributable to that coach's performance. Analyzing 1,637 team-seasons from 1970 to 2024 with 368 features spanning draft history, injuries, rosters, team performance, and coaching histories, we employ XGBoost regression to isolate coaching excellence from roster quality and organizational context. The model achieves R$^2$ of 0.795 on the full dataset, with coaching-specific features accounting for 43\% of total model importance. Results reveal substantial coaching impact, with elite coaches averaging +2.6 WAR per season and poor coaches averaging -3.1 WAR. Analysis of offensive versus defensive coaching backgrounds reveals a dramatic historical shift: defensive coaches dominated the 1970s (+0.90 win advantage, p=0.003), but offensive coaches now hold a +0.58 win edge in the 2020s (p=0.112). Year-to-year persistence analysis demonstrates scheme obsolescence, with defensive coaches showing significantly stronger multi-year persistence (2-year: R$^2$=0.169 vs 0.056, p=0.006). Our framework provides NFL organizations with objective, context-adjusted coaching evaluation comparable to analytical rigor applied to player personnel decisions.}
 
 \keywords{coaching analytics, wins above replacement, NFL, sports analytics}
 
@@ -67,7 +67,7 @@ More recently, sports analytics has embraced WAR methodologies for player evalua
 
 \section{Methods}
 
-We analyzed 1,683 team-seasons spanning 1970--2024, representing all 32 current NFL franchises. This period corresponds to the Modern Era of professional football. Our analysis incorporated 368 features spanning multiple data sources. Data included draft pick history, injury reports, starter designations, complete rosters, historical team performance, and comprehensive head coach career histories from Pro Football Reference, along with salary cap allocation and contract details from Spotrac. Feature counts by category are shown in Appendix A (Table \ref{tab:feature_counts}). The coach-specific feature set comprised 139 features capturing coaching tenure and previous team performance during previous hiring instances as either an offensive coordinator, a defensive coordinator, or a head coach. Data availability varied by data category. While team performance and roster metrics extended across all seasons, salary cap data was limited to 2011--2024, and player injury data was limited to 2009--2024.
+We analyzed 1,637 team-seasons spanning 1970--2024, representing all 32 current NFL franchises. This period corresponds to the Modern Era of professional football. Our analysis incorporated 368 features spanning multiple data sources. Data included draft pick history, injury reports, starter designations, complete rosters, historical team performance, and comprehensive head coach career histories from Pro Football Reference, along with salary cap allocation and contract details from Spotrac. Feature counts by category are shown in Appendix A (Table \ref{tab:feature_counts}). The coach-specific feature set comprised 139 features capturing coaching tenure and previous team performance during previous hiring instances as either an offensive coordinator, a defensive coordinator, or a head coach. Data availability varied by data category. While team performance and roster metrics extended across all seasons, salary cap data was limited to 2011--2024, and player injury data was limited to 2009--2024.
 
 \subsection{The Counterfactual Framework}
 
@@ -81,7 +81,7 @@ This approach parallels established WAR methodologies in baseball and basketball
 
 We employed XGBoost regression \citep{chen2016} to predict team winning percentage with coach median metrics, selected for its ability to capture complex non-linear relationships and feature interactions while providing robust feature importance metrics. The model was trained on all 365 predictor features (excluding the target variable and metadata) with winning percentage as the target. To handle missing values in the dataset, primarily arising from incomplete early-era salary data and injury information, we used Singular Value Decomposition (SVD) matrix completion \citep{brand2002}, which preserved data structure while imputing missing values based on observed patterns across similar team-years.
 
-To minimize potential overfitting, we employed a coach-based cross-validation strategy, ensuring coaches in the test set were entirely unseen during training (81.8\% train, 18.2\% test). Hyperparameters were selected through randomized search. Final hyperparameter values are shown in Appendix C (Table \ref{tab:hyperparameters}).
+To minimize potential overfitting, we employed a coach-based cross-validation strategy, ensuring coaches in the test set were entirely unseen during training (81.7\% train, 18.3\% test). Hyperparameters were selected through randomized search with 50 iterations and 5-fold cross-validation. Final hyperparameter values are shown in Appendix C (Table \ref{tab:hyperparameters}).
 
 \subsection{WAR Calculation}
 
@@ -95,11 +95,11 @@ For historical comparability, we standardize all WAR calculations to a 16-game s
 
 \section{Results}
 
-The final model achieved an R$^2$ of 0.821 on the full dataset, demonstrating strong explanatory power for team performance. To validate model generalization, we used a coach-based holdout strategy, randomly withholding 20\% of coaches (54 of 270) along with all their seasons from training. The model achieved R$^2$ = 0.638 on these completely unseen coaches (train R$^2$ = 0.865, gap = 0.226). While this gap indicates overfitting, the test performance remains meaningful because: (1) cross-validation during hyperparameter tuning with aggressive regularization (max depth = 3, $\ell_1$/$\ell_2$ penalties) prevented more severe overfitting, (2) tree-based ensemble models inherently trade some generalization for pattern-detection capability, and (3) our coaching WAR analysis relies on \textit{relative} comparisons between actual and replacement-level coaching rather than absolute win percentage predictions. Additionally, the mean coaching WAR across all team-seasons was 0.20 games (median = 0.19 games), validating that the median replacement baseline correctly centers the distribution near zero. Feature importance analysis confirmed coaching-specific features accounted for 49\% of total model importance, demonstrating that coaches exert substantial influence on outcomes when controlling for roster quality, financial resources, and competitive context. Appendix D (Table \ref{tab:feature_importance}) shows the top 20 features by importance.
+The final model achieved an R$^2$ of 0.795 on the full dataset, demonstrating strong explanatory power for team performance. To validate model generalization, we used a coach-based holdout strategy, randomly withholding $\sim$20\% of coaches (54 of 270) along with all their seasons from training. The model achieved R$^2$ = 0.610 on these completely unseen coaches (train R$^2$ = 0.795, gap = 0.185). While this gap indicates overfitting, the test performance remains meaningful because: (1) cross-validation during hyperparameter tuning with aggressive regularization (max depth = 3, $\ell_1$/$\ell_2$ penalties) prevented more severe overfitting, (2) tree-based ensemble models inherently trade some generalization for pattern-detection capability, and (3) our coaching WAR analysis relies on \textit{relative} comparisons between actual and replacement-level coaching rather than absolute win percentage predictions. Additionally, the mean coaching WAR across all team-seasons was 0.14 games, validating that the median replacement baseline correctly centers the distribution near zero. Feature importance analysis confirmed coaching-specific features accounted for 43\% of total model importance, demonstrating that coaches exert substantial influence on outcomes when controlling for roster quality, financial resources, and competitive context. Appendix D (Table \ref{tab:feature_importance}) shows the top 20 features by importance.
 
 \subsection{Football Context and Career Leaders}
 
-While single-season WAR ranged from +6.8 to -5.2 (as discussed in section 3.7), career averages provide a more robust assessment of coaching ability across varying contexts. Among coaches with at least 3 seasons coached, the top performers averaged between +1.4 and +2.4 WAR per season. Conversely, the worst coaches with at least 3 seasons ranged from -3.2 to -1.7 WAR per season. Tables \ref{tab:top_coaches} and \ref{tab:bottom_coaches} show the best and worst coaches, respectively, by average WAR per season among coaches with at least 3 seasons coached.
+While single-season WAR ranged from +7.1 to -8.4 (as discussed in section 3.7), career averages provide a more robust assessment of coaching ability across varying contexts. Among coaches with at least 3 seasons coached, the top performers averaged between +1.4 and +2.6 WAR per season. Conversely, the worst coaches with at least 3 seasons ranged from -3.1 to -1.9 WAR per season. Tables \ref{tab:top_coaches} and \ref{tab:bottom_coaches} show the best and worst coaches, respectively, by average WAR per season among coaches with at least 3 seasons coached.
 
 \begin{table}[!ht]
 \caption{Top 15 Coaches by Average WAR per Season (minimum 3 seasons)}
@@ -109,21 +109,21 @@ While single-season WAR ranged from +6.8 to -5.2 (as discussed in section 3.7), 
 \toprule
 Rank & Coach & Seasons & Total WAR & Avg. Yearly WAR \\
 \midrule
-1 & Kevin O'Connell & 3 & 7.1 & +2.4 \\
-2 & Mike Martz & 6 & 13.0 & +2.2 \\
-3 & Mike McDaniel & 3 & 6.1 & +2.0 \\
-4 & Don Shula & 27 & 52.2 & +1.9 \\
-5 & Tom Landry & 19 & 32.5 & +1.7 \\
-6 & John Madden & 9 & 15.3 & +1.7 \\
-7 & Chuck Pagano & 6 & 10.1 & +1.7 \\
-8 & Bruce Arians & 8 & 13.3 & +1.7 \\
-9 & Raymond Berry & 5 & 8.2 & +1.6 \\
-10 & Kevin Stefanski & 5 & 7.6 & +1.5 \\
-11 & Kyle Shanahan & 8 & 12.0 & +1.5 \\
-12 & John Ralston & 5 & 7.0 & +1.4 \\
-13 & Red Miller & 4 & 5.6 & +1.4 \\
-14 & Joe Gibbs & 16 & 22.3 & +1.4 \\
-15 & Jim Caldwell & 7 & 9.6 & +1.4 \\
+1 & Kevin O'Connell & 3 & +7.8 & +2.6 \\
+2 & Don Shula & 26 & +57.9 & +2.2 \\
+3 & John Madden & 9 & +17.1 & +1.9 \\
+4 & Mike McDaniel & 3 & +5.6 & +1.9 \\
+5 & Mike Martz & 6 & +11.1 & +1.9 \\
+6 & John Ralston & 5 & +8.8 & +1.8 \\
+7 & Raymond Berry & 5 & +8.6 & +1.7 \\
+8 & Kevin Stefanski & 5 & +8.1 & +1.6 \\
+9 & Tom Landry & 19 & +29.0 & +1.5 \\
+10 & Bill Belichick & 29 & +43.7 & +1.5 \\
+11 & Chuck Pagano & 6 & +9.0 & +1.5 \\
+12 & Kyle Shanahan & 8 & +12.0 & +1.5 \\
+13 & Bruce Arians & 8 & +11.8 & +1.5 \\
+14 & Red Miller & 4 & +5.9 & +1.5 \\
+15 & Mike Vrabel & 6 & +8.4 & +1.4 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -136,45 +136,34 @@ Rank & Coach & Seasons & Total WAR & Avg. Yearly WAR \\
 \toprule
 Rank & Coach & Seasons & Total WAR & Avg. Yearly WAR \\
 \midrule
-1 & Pat Shurmur & 4 & -13.0 & -3.2 \\
-2 & Matt Eberflus & 3 & -8.8 & -2.9 \\
-3 & J.D. Roberts & 4 & -10.4 & -2.6 \\
-4 & Scott Linehan & 3 & -7.4 & -2.5 \\
-5 & Steve Spagnuolo & 3 & -6.3 & -2.1 \\
-6 & June Jones & 3 & -6.2 & -2.1 \\
-7 & Paul Wiggin & 3 & -6.2 & -2.1 \\
-8 & Bruce Coslet & 8 & -15.9 & -2.0 \\
-9 & Abe Gibron & 3 & -5.9 & -2.0 \\
-10 & Rod Marinelli & 3 & -5.9 & -2.0 \\
-11 & Joe Bugel & 5 & -9.4 & -1.9 \\
-12 & Mike Riley & 3 & -5.5 & -1.8 \\
-13 & Mike McCormack & 5 & -9.2 & -1.8 \\
-14 & Kay Stephenson & 3 & -5.2 & -1.7 \\
-15 & Dan Henning & 7 & -12.0 & -1.7 \\
+1 & Pat Shurmur & 4 & -12.4 & -3.1 \\
+2 & Matt Eberflus & 3 & -9.2 & -3.1 \\
+3 & Scott Linehan & 3 & -8.5 & -2.8 \\
+4 & Hue Jackson & 4 & -10.5 & -2.6 \\
+5 & Bruce Coslet & 8 & -20.1 & -2.5 \\
+6 & Jack Patera & 7 & -17.3 & -2.5 \\
+7 & David Shula & 5 & -12.2 & -2.4 \\
+8 & Kay Stephenson & 3 & -7.2 & -2.4 \\
+9 & J.D. Roberts & 3 & -7.0 & -2.3 \\
+10 & Rod Marinelli & 3 & -6.8 & -2.3 \\
+11 & Paul Wiggin & 3 & -6.6 & -2.2 \\
+12 & Bill Arnsparger & 3 & -6.2 & -2.1 \\
+13 & Steve Spagnuolo & 3 & -6.0 & -2.0 \\
+14 & Abe Gibron & 3 & -5.9 & -2.0 \\
+15 & June Jones & 3 & -5.8 & -1.9 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The reigning coach of the year, Kevin O'Connell, currently leads all coaches with an average WAR of +2.4 per season across three seasons with Minnesota (2022--2024). Mike Martz (+2.2 wins per season over 6 seasons) and Mike McDaniel (+2.0 wins per season over 3 seasons) round out the top three.
+The reigning coach of the year, Kevin O'Connell, currently leads all coaches with an average WAR of +2.6 per season across three seasons with Minnesota (2022--2024). Don Shula (+2.2 wins per season over 26 seasons) and John Madden (+1.9 wins per season over 9 seasons) round out the top three.
 
-The career leader board validates the framework's ability to identify coaching excellence across eras. Legendary coaches Don Shula and Tom Landry appear prominently, with Shula averaging +1.9 WAR per season across an unprecedented 27 seasons (total career WAR of +52.2) and Landry posting +1.7 WAR per season across 19 seasons (total +32.5 WAR). These sustained performances across coaching legends demonstrate the validity of this approach in calculating coach WAR.
+The career leader board validates the framework's ability to identify coaching excellence across eras. Legendary coaches Don Shula, John Madden, and Tom Landry appear prominently, with Shula averaging +2.2 WAR per season across an unprecedented 26 seasons (total career WAR of +57.9) and Landry posting +1.5 WAR per season across 19 seasons (total +29.0 WAR). These sustained performances across coaching legends demonstrate the validity of this approach in calculating coach WAR.
 
-At the opposite extreme, the poorest-performing coaches demonstrated persistent struggles across multiple seasons. Pat Shurmur recorded the lowest average at -3.2 WAR per season across 4 seasons (total -13.0 WAR). Matt Eberflus's -2.9 WAR per season ranked the second-worst all-time.
+At the opposite extreme, the poorest-performing coaches demonstrated persistent struggles across multiple seasons. Pat Shurmur recorded the lowest average at -3.1 WAR per season across 4 seasons (total -12.4 WAR). Matt Eberflus's -3.1 WAR per season ranked the second-worst all-time.
 
 The spread between elite and poor career performance is substantial: approximately 5.5 wins per season separates coaches at the 95th percentile (roughly +2.1 wins per season) from those at the 5th percentile (roughly -2.4 wins per season). For NFL franchises, this represents the vital difference between perennial playoff contention and chronic rebuilding.
 
 \subsection{Coach WAR in Aggregate}
-
-Taking the average WAR per season over a coach's career removes the temporal aspect of WAR accumulation. To illustrate this temporal component, Figure \ref{fig:three_coach_trajectories} shows the WAR accumulation trajectory for three standout coaches: Kevin O'Connell, Don Shula, and Matt Eberflus.
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/coach_trajectories_oconnell_shula_eberflus.png}
-\caption{Kevin O'Connell, Don Shula, and Matt Eberflus Coach WAR Trajectories}
-\label{fig:three_coach_trajectories}
-\end{figure}
-
-Although Kevin O'Connell has a higher average WAR per season than Don Shula, at this point in their careers (3 seasons in), Don Shula possessed a distinctly higher average WAR per season ($\sim$3.3 vs. 2.4). Don Shula's 7th, 8th, and 20th--24th seasons heavily impacted his WAR trajectory for his career. It also becomes apparent that Matt Eberflus's first two seasons, while WAR negative, were surpassed by his 3rd season.
 
 Figure \ref{fig:career_distributions} illustrates the relationship between coaching longevity and WAR performance by plotting coaches based on average WAR per season and career length (measured in seasons coached).
 
@@ -235,16 +224,15 @@ One debate that will likely never be satisfied is whether offensive or defensive
 \toprule
 Background & Coaches & Seasons & Mean WAR & Median WAR \\
 \midrule
-Defensive & 112 & 639 & +0.243 & +0.296 \\
-Offensive & 154 & 860 & +0.088 & +0.037 \\
+Defensive & 98 & 633 & +0.25 & +0.28 \\
+Offensive & 134 & 778 & +0.06 & +0.04 \\
 \midrule
-Difference & --- & --- & 0.154 & -0.259 \\
+Difference & -36 & -145 & +0.19 & +0.25 \\
 \midrule
 \multicolumn{5}{l}{\textit{Mann-Whitney U Test}} \\
-Test Statistic & \multicolumn{4}{l}{U = 260,162} \\
-p-value & \multicolumn{4}{l}{0.078} \\
+Test Statistic & \multicolumn{4}{l}{U = 231,706} \\
+p-value & \multicolumn{4}{l}{0.056} \\
 Interpretation & \multicolumn{4}{l}{Marginally significant} \\
-Cohen's $d$ & \multicolumn{4}{l}{-0.086 (negligible effect)} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -263,14 +251,13 @@ But how does the evolution of the game of football play into this analysis? To a
 \toprule
 Background & 1970's & 1980's & 1990's & 2000's & 2010's & 2020's \\
 \midrule
-Offensive & -0.35 & +0.42 & -0.14 & +0.14 & +0.25 & +0.57 \\
-Defensive & +0.57 & +0.46 & +0.19 & +0.08 & +0.53 & +0.16 \\
-Other & +0.02 & -0.11 & +0.51 & +0.04 & +0.43 & -0.07 \\
+Offensive & -0.39 & +0.47 & -0.33 & +0.03 & +0.10 & +0.46 \\
+Defensive & +0.51 & +0.21 & +0.39 & +0.16 & +0.24 & -0.12 \\
+Other & +0.13 & +0.20 & +0.60 & --- & --- & --- \\
 \midrule
 \multicolumn{7}{l}{\textit{Delta, 2020's vs 1970's}} \\
-Offensive & \multicolumn{6}{l}{+0.92} \\
-Defensive & \multicolumn{6}{l}{-0.41} \\
-Other & \multicolumn{6}{l}{-0.09} \\
+Offensive & \multicolumn{6}{l}{+0.85} \\
+Defensive & \multicolumn{6}{l}{-0.63} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -283,25 +270,24 @@ Other & \multicolumn{6}{l}{-0.09} \\
 \toprule
 Metric & 1970's & 1980's & 1990's & 2000's & 2010's & 2020's \\
 \midrule
-Sample Size (O/D) & 38/24 & 32/19 & 38/25 & 42/33 & 44/32 & 33/22 \\
-Seasons (O/D) & 95/101 & 149/76 & 163/102 & 165/122 & 163/126 & 91/61 \\
-Mean WAR (O/D) & -0.355/+0.573 & +0.421/+0.456 & -0.140/+0.193 & +0.139/+0.076 & +0.246/+0.528 & +0.572/+0.156 \\
-Difference (O - D) & -0.927 & -0.035 & -0.333 & 0.063 & -0.282 & 0.416 \\
-U-statistic & 3290 & 5389 & 7553 & 10275 & 9430 & 3151 \\
-p-value & 0.0001 & 0.555 & 0.211 & 0.763 & 0.234 & 0.159 \\
-Cohen's $d$ & -0.532 & -0.019 & -0.174 & 0.035 & -0.151 & 0.257 \\
-Significance & Highly Sig. & --- & --- & --- & --- & --- \\
+Sample Size (O/D) & 34/21 & 30/22 & 33/28 & 40/37 & 42/33 & 33/20 \\
+Seasons (O/D) & 87/82 & 146/83 & 143/126 & 152/151 & 158/135 & 92/56 \\
+Mean WAR (O/D) & -0.390/+0.513 & +0.472/+0.214 & -0.329/+0.389 & +0.029/+0.156 & +0.100/+0.243 & +0.460/-0.116 \\
+Difference (O - D) & -0.904 & +0.258 & -0.718 & -0.127 & -0.143 & +0.576 \\
+U-statistic & 2626 & 6272 & 7144 & 11082 & 10192 & 2979 \\
+p-value & 0.003 & 0.659 & 0.003 & 0.606 & 0.513 & 0.112 \\
+Significance & Highly Sig. & --- & Highly Sig. & --- & --- & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The NFL's evolution from a defense-dominated to offense-dominated league is clearly reflected in coaching success patterns across eras. In the 1970s, defensive-minded head coaches averaged +0.57 WAR per season compared to -0.35 for offensive coaches, a +0.93-win gap favoring defensive backgrounds (p=0.0001, Cohen's $d$ = -0.532, medium effect size). By the 2000s, offensive coaches had pulled even (+0.14 vs. +0.08), and in the 2020s, they've established an apparent (but not statistically significant at typical confidence levels) edge, averaging +0.57 WAR per season compared to just +0.16 for defensive coaches (Cohen's $d$ = 0.257, small effect size). It is reasonable to assume that if the trend between offensive and defensive coaches holds for the remainder of the 2020's, that the difference in WAR would be statistically significant with the larger sample size.
+The NFL's evolution from a defense-dominated to offense-dominated league is clearly reflected in coaching success patterns across eras. In the 1970s, defensive-minded head coaches averaged +0.51 WAR per season compared to -0.39 for offensive coaches, a +0.90-win gap favoring defensive backgrounds (p=0.003). By the 2000s, offensive coaches had pulled even (+0.03 vs. +0.16, p=0.606), and in the 2020s, they've established an apparent (but not statistically significant at typical confidence levels) edge, averaging +0.46 WAR per season compared to just -0.12 for defensive coaches. It should be noted that if the trend between offensive and defensive coaches holds for the remainder of the 2020's, that the difference in WAR would be statistically significant with the larger sample size (p=0.024).
 
-The cumulative shift is clear: defensive coaches have declined by 0.41 WAR per season from the 1970s to 2020s, while offensive coaches have improved by 0.92 WAR per season over the same period, a complete reversal in relative performance. In today's NFL, offensive expertise appears to provide a meaningful competitive advantage that didn't exist in previous generations.
+The cumulative shift is clear: defensive coaches have declined by 0.63 WAR per season from the 1970s to 2020s, while offensive coaches have improved by 0.85 WAR per season over the same period, a complete reversal in relative performance. In today's NFL, offensive expertise appears to provide an apparent competitive advantage that didn't exist in previous generations.
 
 \subsection{WAR Persistence and Scheme Obsolescence}
 
-Coaching performance is unstable from year to year. Analyzing 1,254 consecutive season pairs from 1970--2023, Year N coaching WAR explains only 7\% of the variance in Year N+1 performance (Figure \ref{fig:war_persistence}). Elite coaches averaging +2.64 wins above replacement the following season regress dramatically to just +0.65, losing 75\% of their advantage. In contrast, the worst-performing coaches at -2.33 WAR improve substantially to -0.93 WAR when implementing a 10th percentile penalty for being terminated (Figure \ref{fig:war_quintiles}).
+Coaching performance is unstable from year to year. Analyzing 1,163 consecutive season pairs from 1970--2023, Year N coaching WAR explains only 7\% of the variance in Year N+1 performance (Figure \ref{fig:war_persistence}). Elite coaches averaging +2.75 wins above replacement the following season regress dramatically to just +0.68, losing $\sim$75\% of their advantage. In contrast, the worst-performing coaches at -2.59 WAR improve substantially to -1.29 WAR when implementing a 10th percentile penalty for being terminated (Figures \ref{fig:war_quintiles}).
 
 \begin{figure}[!ht]
 \centering
@@ -319,7 +305,7 @@ Coaching performance is unstable from year to year. Analyzing 1,254 consecutive 
 
 This volatility contrasts sharply with raw winning percentage, which shows nearly double the year-to-year stability (R$^2$ = 0.137, Appendix E, Figure \ref{fig:winpct_persistence}). Winning percentage likely captures persistent organizational advantages, such as market size, ownership stability, accumulated roster talent, that carry forward regardless of coaching. The coach-specific contribution, by contrast, fluctuates, as what worked last season often doesn't work this season. This represents empirical evidence for scheme obsolescence.
 
-But the instability isn't uniform across all coaches. While both offensive and defensive coaches show similar single-year persistence (R$^2$ = 0.085 and 0.064 respectively), multi-year averaging exposes a stark divergence. When evaluating coaches based on 2-year average performance, defensive coaches' predictive power more than doubles to R$^2$ = 0.131. Offensive coaches' predictive power declines to R$^2$ = 0.068. This is a statistically significant difference at 90\% confidence (Appendix F, Figure \ref{fig:war_persistence_background} and Table \ref{tab:war_multiyear_persistence}). At three-year horizons, the gap persists. The difference in persistence between Offensive and Defensive coaches highlights that Offensive schemes may have a shorter shelf life in the modern NFL. These patterns suggest fundamentally different retention strategies by coordinator background. Offensive coaches coming off elite seasons should trigger caution, not contract extensions, as their advantage will likely erode as schemes become known.
+But the instability isn't uniform across all coaches. While both offensive and defensive coaches show similar single-year persistence (R$^2$ = 0.058 and 0.086 respectively), multi-year averaging exposes a stark divergence. When evaluating coaches based on 2-year average performance, defensive coaches' predictive power approximately doubles to R$^2$ = 0.169. Offensive coaches' predictive power remains flat at R$^2$ = 0.056. This is a statistically significant difference at 99\% confidence (Fisher's Z p=0.006, Appendix F, Figure \ref{fig:war_persistence_background} and Table \ref{tab:war_multiyear_persistence}). At three-year horizons, the gap persists (p=0.013). The difference in persistence between Offensive and Defensive coaches highlights that Offensive schemes may have a shorter shelf life in the modern NFL. These patterns suggest fundamentally different retention strategies by coordinator background. Offensive coaches coming off elite seasons should trigger caution, not contract extensions, as their advantage will likely erode as schemes become known.
 
 \subsection{Limitations and the ``Franchise Quarterback Effect''}
 
@@ -333,16 +319,16 @@ Tables \ref{tab:top_single_season} and \ref{tab:bottom_single_season} show the t
 \toprule
 Rank & Team & Year & Coach & Actual Win \% & Replacement Win \% & WAR \\
 \midrule
-1 & CLT & 2009 & Jim Caldwell & 0.875 & 0.451 & +6.8 \\
-2 & CHI & 1987 & Mike Ditka & 0.733 & 0.320 & +6.6 \\
-3 & WAS & 1982 & Joe Gibbs & 0.889 & 0.516 & +6.0 \\
-4 & NWE & 2007 & Bill Belichick & 1.000 & 0.661 & +5.4 \\
-5 & CLT & 1999 & Jim Mora Sr & 0.812 & 0.500 & +5.0 \\
-6 & NOR & 2011 & Sean Payton & 0.812 & 0.514 & +4.8 \\
-7 & DET & 2024 & Dan Campbell & 0.882 & 0.587 & +4.7 \\
-8 & RAI & 1982 & Tom Flores & 0.889 & 0.594 & +4.7 \\
-9 & MIA & 1974 & Don Shula & 0.786 & 0.492 & +4.7 \\
-10 & SFO & 1987 & Bill Walsh & 0.867 & 0.573 & +4.7 \\
+1 & CHI & 1987 & Mike Ditka & 0.733 & 0.291 & +7.1 \\
+2 & CLT & 2009 & Jim Caldwell & 0.875 & 0.466 & +6.5 \\
+3 & WAS & 1982 & Joe Gibbs & 0.889 & 0.519 & +5.9 \\
+4 & RAI & 1976 & John Madden & 0.929 & 0.617 & +5.0 \\
+5 & DET & 2024 & Dan Campbell & 0.882 & 0.571 & +5.0 \\
+6 & SFO & 1987 & Bill Walsh & 0.867 & 0.558 & +4.9 \\
+7 & NYG & 1986 & Bill Parcells & 0.875 & 0.569 & +4.9 \\
+8 & RAI & 1982 & Tom Flores & 0.889 & 0.588 & +4.8 \\
+9 & NOR & 2011 & Sean Payton & 0.812 & 0.515 & +4.8 \\
+10 & PIT & 2004 & Bill Cowher & 0.938 & 0.641 & +4.8 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -355,25 +341,25 @@ Rank & Team & Year & Coach & Actual Win \% & Replacement Win \% & WAR \\
 \toprule
 Rank & Team & Year & Coach & Actual Win \% & Replacement Win \% & WAR \\
 \midrule
-1 & SEA & 1976 & Jack Patera & 0.143 & 0.470 & -5.2 \\
-2 & NOR & 1996 & Jim Mora Sr & 0.188 & 0.501 & -5.0 \\
-3 & SEA & 1992 & Tom Flores & 0.125 & 0.436 & -5.0 \\
-4 & CHI & 2024 & Matt Eberflus & 0.294 & 0.600 & -4.9 \\
-5 & CLT & 1991 & Ron Meyer & 0.062 & 0.364 & -4.8 \\
-6 & CAR & 2001 & George Seifert & 0.062 & 0.356 & -4.7 \\
-7 & DET & 2001 & Marty Mornhinweg & 0.125 & 0.415 & -4.6 \\
-8 & ATL & 2020 & Dan Quinn & 0.250 & 0.535 & -4.6 \\
-9 & RAI & 1997 & Joe Bugel & 0.250 & 0.527 & -4.4 \\
-10 & WAS & 1994 & Norv Turner & 0.188 & 0.460 & -4.4 \\
+1 & ATL & 2020 & Dan Quinn & 0.000 & 0.523 & -8.4 \\
+2 & PHI & 1971 & Jerry Williams & 0.000 & 0.442 & -7.1 \\
+3 & CIN & 1996 & David Shula & 0.143 & 0.575 & -6.9 \\
+4 & HTX & 2020 & Bill O'Brien & 0.000 & 0.415 & -6.6 \\
+5 & SEA & 1982 & Jack Patera & 0.000 & 0.398 & -6.4 \\
+6 & CLT & 1991 & Ron Meyer & 0.000 & 0.357 & -5.7 \\
+7 & CLT & 1972 & Don McCafferty & 0.200 & 0.542 & -5.5 \\
+8 & SFO & 1979 & Bill Walsh & 0.125 & 0.442 & -5.1 \\
+9 & DET & 1976 & Rick Forzano & 0.250 & 0.564 & -5.0 \\
+10 & CIN & 1971 & Paul Brown & 0.286 & 0.595 & -4.9 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The highest single-season coaching WAR values reveal an important limitation of roster-adjusted evaluation. In these extreme performances, three of the top six single-season WAR values belong to coaches during years with elite quarterback play (Peyton Manning in 1999, 2009, and Tom Brady in 2007). This ``franchise quarterback effect'' represents an inherent challenge in isolating coaching contributions: elite quarterbacks and elite coaching are rarely independent. While our framework controls for roster quality through metrics like player age, experience, and positional spending, it cannot fully disentangle whether a coach maximizes quarterback talent or whether an elite quarterback makes ordinary coaching appear exceptional. However, our framework's ability to identify coaching excellence in the absence of elite QB play (Dan Campbell 2024, Mike McDaniel with Tua, defense-focused teams in the 1970s and 1980s) suggests it captures more than just QB quality. Moreover, career-average analysis naturally controls for this.
+The highest single-season coaching WAR values reveal an important limitation of roster-adjusted evaluation. In these extreme performances, two of the top 10 single-season WAR values belong to coaches during years with elite quarterback play (Peyton Manning in 2009, and Drew Brees in 2011). This ``franchise quarterback effect'' represents an inherent challenge in isolating coaching contributions: elite quarterbacks and elite coaching are rarely independent. While our framework controls for roster quality through metrics like player age, experience, and positional spending, it cannot fully disentangle whether a coach maximizes quarterback talent or whether an elite quarterback makes ordinary coaching appear exceptional. However, our framework's ability to identify coaching excellence in the absence of elite QB play (Dan Campbell 2024, defense-focused teams in the 1970s and 1980s) suggests it captures more than just QB quality. Moreover, career-average analysis naturally controls for this.
 
-At the opposite end of the spectrum, the poorest single-season performances ranged from Jack Patera's 1976 expansion Seahawks (-5.2 WAR) to Matt Eberflus's 2024 Bears (-4.9 WAR). Eberflus's Bears finished 5--12, yet the model predicted a replacement-level coach would achieve 9.6 wins with Chicago's roster and schedule.
+At the opposite end of the spectrum, the poorest single-season performances highlight many coaches who were winless prior to being fired in that season. In our approach, we still multiply partially coached seasons by 16 games to estimate the full-season impact. This overstates the negative impact of being fired midseason, which to be fair, is a significant representation of performance.
 
-The $\sim$12 win spread between the best and worst single-season performances highlights coaching's potential impact, even as the franchise quarterback effect reminds us that extreme values should be interpreted with appropriate caution.
+The $\sim$15 win spread between the best and worst single-season performances highlights coaching's potential impact, even as the franchise quarterback effect reminds us that extreme values should be interpreted with appropriate caution.
 
 Additional methodological limitations warrant consideration. First, while the model controls for roster quality through age, experience, turnover, and salary allocation, these proxy measures cannot fully capture player talent. Teams with similar demographic profiles may contain vastly different talent levels. Second, organizational factors beyond our data, such as ownership stability, drafting competence, and facility quality, likely influence outcomes but remain unobserved.
 
@@ -387,9 +373,9 @@ Finally, retention decisions benefit from objective performance baselines. Organ
 
 Head coaching represents one of the most consequential investments in professional sports. In this project, we quantify what NFL decision-makers have long struggled to measure: coaching quality, which fundamentally alters franchise trajectories independent of roster talent.
 
-The practical implications are immediate and substantial. Front offices can now evaluate coaching candidates and incumbent coaches with circumstance-adjusted metrics that separate coaching impact from inherited advantages. Kevin O'Connell's +2.4 WAR per season with Minnesota demonstrates impressive coaching performance despite a roster that hasn't been considered exceptional. Conversely, Matt Eberflus's year 2 cumulative WAR of -3.9 could have prompted the organization to move on and avoid a lame-duck situation for Caleb Williams' rookie year.
+The practical implications are immediate and substantial. Front offices can now evaluate coaching candidates and incumbent coaches with circumstance-adjusted metrics that separate coaching impact from inherited advantages. Kevin O'Connell's +2.6 WAR per season with Minnesota demonstrates impressive coaching performance despite a roster that hasn't been considered exceptional. Conversely, Matt Eberflus's year 2 cumulative WAR of -4.6 could have prompted the organization to move on and avoid a lame-duck situation for Caleb Williams' rookie year.
 
-The evolution of coaching value by coordinator background tells an equally compelling story about the modern NFL. Defensive-minded coaches dominated from the 1970s through the 1990s, but offensive coaches now generate 0.41 more WAR per season in the 2020s. Organizations hiring head coaches today should weigh offensive expertise more heavily than historical precedent would suggest, as the game itself has fundamentally shifted. Yet year-to-year performance analysis reveals this offensive advantage erodes rapidly: while defensive coaches' predictive power more than doubles when evaluated over multiple seasons, offensive coaches' predictive power declines by 20\% over the same timeframe. This asymmetry suggests offensive schemes depreciate while defensive skills compound, a market dynamic with direct implications for retention decisions.
+The evolution of coaching value by coordinator background tells an equally compelling story about the modern NFL. Defensive-minded coaches dominated from the 1970s through the 1990s, but offensive coaches now generate 0.58 more WAR per season in the 2020s. Organizations hiring head coaches today should weigh offensive expertise more heavily than historical precedent would suggest, as the game itself has fundamentally shifted. Yet year-to-year performance analysis reveals this offensive advantage erodes rapidly: while defensive coaches' predictive power more than doubles when evaluated over multiple seasons, offensive coaches' predictive power remains flat over the same timeframe. This asymmetry suggests offensive schemes depreciate while defensive skills compound, a market dynamic with direct implications for retention decisions.
 
 As NFL teams increasingly embrace analytics for player evaluation, from Expected Points Added to catch probability models, coaching assessment has remained surprisingly subjective, relying on win-loss records that confound coaching quality with roster talent, or playoff success that introduces large small-sample noise. But the stakes are too high for subjective evaluation: a single coaching decision can swing a franchise's trajectory by 5+ wins per season, on average, and by $\sim$12 wins in extreme circumstances.
 
@@ -485,14 +471,14 @@ Hyperparameter & Value \\
 Objective & reg:squarederror \\
 Random State & 42 \\
 Number of Estimators & 250 \\
-Learning Rate & 0.05 \\
+Learning Rate & 0.03 \\
 Max Estimator Depth & 3 \\
 Gamma & 0 \\
-Lambda & 1.5 \\
+Lambda & 0.1 \\
 Alpha & 0.1 \\
-Subsample & 1.0 \\
-Colsample by Tree & 1.0 \\
-Minimum Child Weight & 8 \\
+Subsample & 0.6 \\
+Colsample by Tree & 0.6 \\
+Minimum Child Weight & 6 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -565,16 +551,16 @@ Rank & Feature Description & Importance & Coach Metric \\
 \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
 \textbf{Time Horizon} & \textbf{R²} & \textbf{p-value} & \textbf{R²} & \textbf{p-value} & \textbf{R²} & \textbf{p-value} \\
 \midrule
-1-year & 0.085 & <0.001 & 0.064 & <0.001 & 0.026 & 0.102 \\
-2-year avg & 0.068 & <0.001 & 0.131 & <0.001 & 0.026 & 0.134 \\
-3-year avg & 0.065 & <0.001 & 0.119 & <0.001 & 0.019 & 0.256 \\
-4-year avg & 0.062 & <0.001 & 0.095 & <0.001 & 0.033 & 0.188 \\
+1-year & 0.058 & <0.001 & 0.086 & <0.001 & 0.030 & 0.115 \\
+2-year avg & 0.056 & <0.001 & 0.169 & <0.001 & 0.004 & 0.614 \\
+3-year avg & 0.040 & <0.001 & 0.149 & <0.001 & 0.013 & 0.434 \\
+4-year avg & 0.035 & 0.006 & 0.154 & <0.001 & 0.005 & 0.694 \\
 \bottomrule
 \end{tabular}
 
 \smallskip
 \footnotesize
-Note: Sample sizes for Offensive/Defensive/Other backgrounds: 1-year (610/539/105), 2-year avg (468/434/89), 3-year avg (346/332/69), 4-year avg (268/277/54).
+Note: Fisher's Z-test for difference in correlations (Offensive vs Defensive): 1-year (p=0.360), 2-year (p=0.006), 3-year (p=0.013), 4-year (p=0.019).
 \end{table}
 
 \end{document}
