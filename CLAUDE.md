@@ -60,11 +60,13 @@ Coach_WAR/
 └── analysis/                  # Analysis and modeling scripts
     ├── xgboost_coaching_impact_analysis.py # Coaching impact analysis with XGBoost (career-average replacement)
     ├── xgboost_coaching_impact_analysis_year_specific.py # Year-specific median replacement analysis
+    ├── replacement_level_sensitivity.py # Replacement level sensitivity analysis (tests different percentiles)
     ├── coach_background_from_history.py # Coach background analysis from actual coaching history
     ├── coach_background_by_decade.py # Decade-by-decade coaching background analysis
     ├── coach_war_trajectory.py # Individual coach WAR trajectory visualization
     ├── xgboost_interaction_matrix.py # Feature interaction matrix visualization
     ├── run_interaction_batch.py # Batch processing for multiple feature interactions
+    ├── create_career_distribution_figure.py # Career distribution figure generation for LaTeX
     └── interaction_matrices/   # Feature interaction analysis outputs
         ├── csv/               # Interaction matrices in CSV format
         └── png/               # Heatmap visualizations
@@ -500,7 +502,7 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
 
 #### 5. Individual Coach Trajectory Visualization
 - **Tool**: Developed interactive coach WAR trajectory visualization system
-- **Features**: 
+- **Features**:
   - Compares individual coaches to replacement baseline and median performance
   - Supports multi-coach comparisons in single visualization
   - Generates HTML plots for interactive exploration

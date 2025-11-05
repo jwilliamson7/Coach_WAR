@@ -294,17 +294,54 @@ def compare_war_estimates(ridge_results):
         return None
 
 def compare_to_xgboost():
-    """Display XGBoost results for comparison."""
+    """Display XGBoost results for comparison by reading latest log."""
+    import glob
+    import re
+
     print("\n" + "="*60)
     print("COMPARISON TO XGBOOST RESULTS")
     print("="*60)
-    print("\nXGBoost Performance (from log):")
-    print("  Train R²: 0.8646")
-    print("  Test R²: 0.6383")
-    print("  Gap: 0.2264")
-    print("  Mean WAR: 0.20 games")
-    print("  Median WAR: 0.19 games")
-    print("  Coaching feature importance: 49%")
+
+    # Find the most recent XGBoost log file
+    log_files = glob.glob('analysis/outputs/logs/coaching_analysis_log_*.txt')
+    if not log_files:
+        print("\nWARNING: No XGBoost log files found")
+        return
+
+    latest_log = max(log_files)
+    print(f"\nReading from: {latest_log}")
+
+    try:
+        with open(latest_log, 'r') as f:
+            log_content = f.read()
+
+        # Extract metrics using regex
+        train_r2_match = re.search(r'R²\s+(\d+\.\d+)\s+(\d+\.\d+)', log_content)
+        mean_war_match = re.search(r'In 16-game season terms:.*?Mean:\s+([-+]?\d+\.\d+)\s+games', log_content, re.DOTALL)
+        median_war_match = re.search(r'In 16-game season terms:.*?Median:\s+([-+]?\d+\.\d+)\s+games', log_content, re.DOTALL)
+        importance_match = re.search(r'Percentage of total importance:\s+(\d+\.\d+)%', log_content)
+
+        print("\nXGBoost Performance (from latest log):")
+
+        if train_r2_match:
+            train_r2 = float(train_r2_match.group(1))
+            test_r2 = float(train_r2_match.group(2))
+            gap = train_r2 - test_r2
+            print(f"  Train R²: {train_r2:.4f}")
+            print(f"  Test R²: {test_r2:.4f}")
+            print(f"  Gap: {gap:.4f}")
+
+        if mean_war_match:
+            print(f"  Mean WAR: {float(mean_war_match.group(1)):.2f} games")
+
+        if median_war_match:
+            print(f"  Median WAR: {float(median_war_match.group(1)):.2f} games")
+
+        if importance_match:
+            print(f"  Coaching feature importance: {float(importance_match.group(1)):.0f}%")
+
+    except Exception as e:
+        print(f"\nWARNING: Could not parse XGBoost log: {e}")
 
 def main():
     print("="*80)
@@ -340,7 +377,7 @@ def main():
     results_df, war_games = analyze_coaching_impact(model, scaler, X, X_replacement, y, team_year_info)
 
     # Save results
-    output_path = 'analysis/outputs/ridge_coaching_impact_analysis.csv'
+    output_path = 'analysis/outputs/csv/ridge_coaching_impact_analysis.csv'
     results_df.to_csv(output_path, index=False)
     print(f"\nResults saved to: {output_path}")
 

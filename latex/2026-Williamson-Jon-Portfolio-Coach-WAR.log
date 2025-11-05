@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.31)  5 NOV 2025 09:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.31)  5 NOV 2025 10:42
 entering extended mode
 **./2026-Williamson-Jon-Portfolio-Coach-WAR.tex
 (2026-Williamson-Jon-Portfolio-Coach-WAR.tex
@@ -925,7 +925,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 [1{C:/Users/jonwi/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
- <C:/Users/jonwi/AppData/Roaming/MiKTeX/2.9/tex/latex/notes/warn.pdf>] [2]
+ <C:/Users/jonwi/AppData/Roaming/MiKTeX/2.9/tex/latex/notes/warn.pdf>] [2] [3]
 LaTeX Font Info:    Calculating math sizes for size <8.0> on input line 105.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8.0> on input line 105.
@@ -946,127 +946,96 @@ LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.01495> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.01495> not available
 (Font)              size <5> substituted on input line 108.
 
-[3] [4]
-<figures/coach_trajectories_oconnell_shula_eberflus.png, id=179, 705.5961pt x 4
-17.7206pt>
-File: figures/coach_trajectories_oconnell_shula_eberflus.png Graphic file (type
- png)
-<use figures/coach_trajectories_oconnell_shula_eberflus.png>
-Package pdftex.def Info: figures/coach_trajectories_oconnell_shula_eberflus.png
-  used on input line 172.
-(pdftex.def)             Requested size: 352.81538pt x 208.86615pt.
-<figures/coach_career_distributions.png, id=182, 850.1361pt x 562.2606pt>
+[4]
+<figures/coach_career_distributions.png, id=179, 849.8952pt x 562.2606pt>
 File: figures/coach_career_distributions.png Graphic file (type png)
 <use figures/coach_career_distributions.png>
 Package pdftex.def Info: figures/coach_career_distributions.png  used on input 
-line 183.
-(pdftex.def)             Requested size: 352.81538pt x 233.34238pt.
-<figures/coach_2024_matrix.png, id=184, 1197.7548pt x 1268.3385pt>
+line 172.
+(pdftex.def)             Requested size: 441.01756pt x 291.75948pt.
+<figures/coach_2024_matrix.png, id=182, 1197.7548pt x 1268.3385pt>
 File: figures/coach_2024_matrix.png Graphic file (type png)
 <use figures/coach_2024_matrix.png>
-Package pdftex.def Info: figures/coach_2024_matrix.png  used on input line 196.
+Package pdftex.def Info: figures/coach_2024_matrix.png  used on input line 185.
 
-(pdftex.def)             Requested size: 352.81538pt x 373.59537pt.
- [5 <./figures/coach_trajectories_oconnell_shula_eberflus.png>]
-<figures/coach_2024_trajectories.png, id=194, 1342.2948pt x 928.6695pt>
+(pdftex.def)             Requested size: 441.01756pt x 466.99422pt.
+ [5 <./figures/coach_career_distributions.png>]
+<figures/coach_2024_trajectories.png, id=191, 1342.2948pt x 928.6695pt>
 File: figures/coach_2024_trajectories.png Graphic file (type png)
 <use figures/coach_2024_trajectories.png>
 Package pdftex.def Info: figures/coach_2024_trajectories.png  used on input lin
-e 205.
-(pdftex.def)             Requested size: 418.96533pt x 289.85425pt.
-<figures/coach_2024_single_year_bar.png, id=195, 859.5312pt x 1148.8521pt>
+e 194.
+(pdftex.def)             Requested size: 441.01756pt x 305.11569pt.
+<figures/coach_2024_single_year_bar.png, id=192, 859.5312pt x 1148.8521pt>
 File: figures/coach_2024_single_year_bar.png Graphic file (type png)
 <use figures/coach_2024_single_year_bar.png>
 Package pdftex.def Info: figures/coach_2024_single_year_bar.png  used on input 
-line 212.
+line 201.
 (pdftex.def)             Requested size: 374.86761pt x 501.06139pt.
-<figures/coach_background_from_history_15seasons.png, id=200, 995.3988pt x 686.
-565pt>
-File: figures/coach_background_from_history_15seasons.png Graphic file (type pn
-g)
-<use figures/coach_background_from_history_15seasons.png>
-Package pdftex.def Info: figures/coach_background_from_history_15seasons.png  u
-sed on input line 225.
-(pdftex.def)             Requested size: 374.86761pt x 258.56123pt.
+ [6 <./figures/coach_2024_matrix.png>]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8.0> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 243.
- [6 <./figures/coach_career_distributions.png>] [7 <./figures/coach_2024_matrix
-.png>]
-LaTeX Font Info:    Calculating math sizes for size <5.0> on input line 292.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 224.
+LaTeX Font Info:    Calculating math sizes for size <5.0> on input line 247.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <3.51306> on input line 292.
+(Font)              <3.51306> on input line 247.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <2.50934> on input line 292.
+(Font)              <2.50934> on input line 247.
 
-Overfull \hbox (23.49522pt too wide) in paragraph at lines 280--293
+Overfull \hbox (23.49522pt too wide) in paragraph at lines 235--248
 [][] 
  []
 
-[8 <./figures/coach_2024_trajectories.png>] [9 <./figures/coach_2024_single_yea
+[7 <./figures/coach_2024_trajectories.png>] [8 <./figures/coach_2024_single_yea
 r_bar.png>]
-<figures/coaching_war_persistence_scatter.png, id=237, 706.8006pt x 707.0415pt>
+<figures/coaching_war_persistence_scatter.png, id=223, 706.8006pt x 707.0415pt>
 
 File: figures/coaching_war_persistence_scatter.png Graphic file (type png)
 <use figures/coaching_war_persistence_scatter.png>
 Package pdftex.def Info: figures/coaching_war_persistence_scatter.png  used on 
-input line 305.
+input line 260.
 (pdftex.def)             Requested size: 352.81538pt x 352.93729pt.
-<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=238, 715.473
+<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=224, 715.473
 pt x 860.2539pt>
 File: figures/coaching_regression_to_mean_survivorship_adjusted.png Graphic fil
 e (type png)
 <use figures/coaching_regression_to_mean_survivorship_adjusted.png>
 Package pdftex.def Info: figures/coaching_regression_to_mean_survivorship_adjus
-ted.png  used on input line 312.
+ted.png  used on input line 267.
 (pdftex.def)             Requested size: 418.96533pt x 503.73875pt.
- [10 <./figures/coach_background_from_history_15seasons.png>]
-[11 <./figures/coaching_war_persistence_scatter.png>] [12 <./figures/coaching_r
-egression_to_mean_survivorship_adjusted.png>] [13]
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 413.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <9.5> not available
-(Font)              size <9> substituted on input line 413.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 413.
-
-[14]
-Underfull \hbox (badness 2221) in paragraph at lines 435--436
+ [9] [10 <./figures/coaching_war_persistence_scatter.png>] [11 <./figures/coach
+ing_regression_to_mean_survivorship_adjusted.png>] [12]
+Underfull \hbox (badness 2221) in paragraph at lines 390--391
 []\T1/lmss/m/n/8.0 (+20) Woolner, K. (2002). VORP: Value over re-place-ment pla
 yer. \T1/lmss/m/sl/8.0 (+20) Base-ball Prospec-tus\T1/lmss/m/n/8.0 (+20) . Avai
 l-able at: 
  []
 
-[15] [16
+[13] [14
 
-] [17
+] [15
 
-] [18
+] [16
 
 ]
-<figures/win_pct_persistence_scatter.png, id=294, 706.8006pt x 707.0415pt>
+<figures/win_pct_persistence_scatter.png, id=276, 706.8006pt x 707.0415pt>
 File: figures/win_pct_persistence_scatter.png Graphic file (type png)
 <use figures/win_pct_persistence_scatter.png>
 Package pdftex.def Info: figures/win_pct_persistence_scatter.png  used on input
- line 539.
+ line 494.
 (pdftex.def)             Requested size: 352.81538pt x 352.93729pt.
- [19
+ [17
 
  <./figures/win_pct_persistence_scatter.png>]
-<figures/coaching_war_persistence_by_background.png, id=301, 851.3406pt x 707.0
+<figures/coaching_war_persistence_by_background.png, id=282, 851.3406pt x 707.0
 415pt>
 File: figures/coaching_war_persistence_by_background.png Graphic file (type png
 )
 <use figures/coaching_war_persistence_by_background.png>
 Package pdftex.def Info: figures/coaching_war_persistence_by_background.png  us
-ed on input line 550.
+ed on input line 505.
 (pdftex.def)             Requested size: 352.81538pt x 293.01758pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 
-563.
+517.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/lm\ts1lmss.fd"
 File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1078,15 +1047,15 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 
 AED: lastpage setting LastPage
-[20
+[18
 
  <./figures/coaching_war_persistence_by_background.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 577.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 577.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 531.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 531.
 
 (2026-Williamson-Jon-Portfolio-Coach-WAR.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 577.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 577.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 531.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 531.
 Package rerunfilecheck Info: File `2026-Williamson-Jon-Portfolio-Coach-WAR.out'
  has not changed.
 (rerunfilecheck)             Checksum: B7501DC2A441D668822DA7EDABF46259;1660.
@@ -1095,16 +1064,16 @@ Package rerunfilecheck Info: File `2026-Williamson-Jon-Portfolio-Coach-WAR.out'
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.98874pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 577.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 531.
  ) 
 Here is how much of TeX's memory you used:
- 15047 strings out of 481178
- 239262 string characters out of 2912453
- 557081 words of memory out of 3000000
- 29917 multiletter control sequences out of 15000+200000
- 628774 words of font info for 203 fonts, out of 3000000 for 9000
+ 14985 strings out of 481178
+ 237714 string characters out of 2912453
+ 564773 words of memory out of 3000000
+ 29877 multiletter control sequences out of 15000+200000
+ 626269 words of font info for 194 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,10n,100p,1737b,543s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,10n,100p,2173b,517s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/
 MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/
 dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
@@ -1117,10 +1086,10 @@ ram Files/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.
 lic/lm/lmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsso8.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (20 pages, 610013
-1 bytes).
+Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (18 pages, 525354
+6 bytes).
 PDF statistics:
- 369 PDF objects out of 1000 (max. 8388607)
- 79 named destinations out of 1000 (max. 500000)
- 51956 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 349 PDF objects out of 1000 (max. 8388607)
+ 74 named destinations out of 1000 (max. 500000)
+ 50922 words of extra memory for PDF output out of 51595 (max. 10000000)
 
