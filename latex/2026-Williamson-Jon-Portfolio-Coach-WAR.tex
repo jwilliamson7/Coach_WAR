@@ -47,7 +47,7 @@
 %\affil[1]{\protect\raggedright
 %Des Moines, Iowa, e-mail: jon@williamsonconsultinggroup.com}
 
-\abstract{Evaluating head coach performance in the National Football League presents unique challenges because of the complex interactions among coaching decisions, player talent, and organizational factors. We introduce a novel counterfactual framework for measuring head coach impact by predicting how each team would have performed under a replacement-level coach with league-median characteristics, then comparing this baseline to actual results. This difference represents coaching Wins Above Replacement (WAR), the wins directly attributable to that coach's performance. Analyzing 1,637 team-seasons from 1970 to 2024 with 368 features spanning draft history, injuries, rosters, team performance, and coaching histories, we employ XGBoost regression to isolate coaching excellence from roster quality and organizational context. The model achieves R$^2$ of 0.795 on the full dataset, with coaching-specific features accounting for 43\% of total model importance. Results reveal substantial coaching impact, with elite coaches averaging +2.6 WAR per season and poor coaches averaging -3.1 WAR. Analysis of offensive versus defensive coaching backgrounds reveals a dramatic historical shift: defensive coaches dominated the 1970s (+0.90 win advantage, p=0.003), but offensive coaches now hold a +0.58 win edge in the 2020s (p=0.112). Year-to-year persistence analysis demonstrates scheme obsolescence, with defensive coaches showing significantly stronger multi-year persistence (2-year: R$^2$=0.169 vs 0.056, p=0.006). Our framework provides NFL organizations with objective, context-adjusted coaching evaluation comparable to analytical rigor applied to player personnel decisions.}
+\abstract{Evaluating head coach performance in the National Football League presents unique challenges because of the complex interactions among coaching decisions, player talent, and organizational factors. We introduce a novel counterfactual framework for measuring head coach impact by predicting how each team would have performed under a replacement-level coach with league-median characteristics, then comparing this baseline to actual results. This difference represents coaching Wins Above Replacement (WAR), the wins directly attributable to that coach's performance. Analyzing 1,637 team-seasons from 1970 to 2024 with 368 features spanning draft history, injuries, rosters, team performance, and coaching histories, we employ XGBoost regression to isolate coaching excellence from roster quality and organizational context. The model achieves R$^2$ of 0.795 on the full dataset, with coaching-specific features accounting for 43\% of total model importance. Results reveal substantial coaching impact, with elite coaches averaging up to +2.6 WAR per season and poor coaches averaging up to -3.1 WAR. Analysis of offensive versus defensive coaching backgrounds reveals a dramatic historical shift: defensive coaches dominated the 1970s (+0.90 win advantage, p=0.003), but offensive coaches now hold a +0.58 win edge in the 2020s (p=0.112). Year-to-year persistence analysis demonstrates scheme obsolescence, with defensive coaches showing significantly stronger multi-year persistence (2-year: R$^2$=0.169 vs 0.056, p=0.006). Our framework provides NFL organizations with objective, context-adjusted coaching evaluation comparable to analytical rigor applied to player personnel decisions.}
 
 \keywords{coaching analytics, wins above replacement, NFL, sports analytics}
 
@@ -95,7 +95,7 @@ For historical comparability, we standardize all WAR calculations to a 16-game s
 
 \section{Results}
 
-The final model achieved an R$^2$ of 0.795 on the full dataset, demonstrating strong explanatory power for team performance. To validate model generalization, we used a coach-based holdout strategy, randomly withholding $\sim$20\% of coaches (54 of 270) along with all their seasons from training. The model achieved R$^2$ = 0.610 on these completely unseen coaches (train R$^2$ = 0.795, gap = 0.185). While this gap indicates overfitting, the test performance remains meaningful because: (1) cross-validation during hyperparameter tuning with aggressive regularization (max depth = 3, $\ell_1$/$\ell_2$ penalties) prevented more severe overfitting, (2) tree-based ensemble models inherently trade some generalization for pattern-detection capability, and (3) our coaching WAR analysis relies on \textit{relative} comparisons between actual and replacement-level coaching rather than absolute win percentage predictions. Additionally, the mean coaching WAR across all team-seasons was 0.14 games, validating that the median replacement baseline correctly centers the distribution near zero. Feature importance analysis confirmed coaching-specific features accounted for 43\% of total model importance, demonstrating that coaches exert substantial influence on outcomes when controlling for roster quality, financial resources, and competitive context. Appendix D (Table \ref{tab:feature_importance}) shows the top 20 features by importance.
+The final model achieved an R$^2$ of 0.795 on the full dataset, demonstrating strong explanatory power for team performance. To validate model generalization, we used a coach-based holdout strategy, randomly withholding $\sim$20\% of coaches (54 of 270) along with all their seasons from training. The model achieved R$^2$ = 0.610 on these completely unseen coaches (gap = 0.185 vs. training set). While this gap indicates overfitting, the test performance remains meaningful because: (1) cross-validation during hyperparameter tuning with regularization (max depth = 3, $\ell_1$/$\ell_2$ penalties) prevented more severe overfitting, (2) tree-based ensemble models inherently trade some generalization for pattern-detection capability, and (3) our coaching WAR analysis relies on \textit{relative} comparisons between actual and replacement-level coaching rather than absolute win percentage predictions. During hyperparameter tuning, we performed 5-fold cross-validation, achieving $\sigma$ = 0.044. The consistency across folds confirms our holdout results reflect genuine performance rather than fortunate test set selection. To verify our findings are not artifacts of the XGBoost algorithm, we compared results to Ridge regression (linear baseline). Coach WAR estimates from both approaches correlated highly (Spearman $\rho$ = 0.86), confirming relative rankings are robust to modeling approach. XGBoost achieved superior predictive performance (test R$^2$ = 0.61 vs. 0.543 for Ridge), justifying its selection for the primary analysis. Additionally, the mean coaching WAR across all team-seasons was 0.14 games (median = 0.19), validating that the median replacement baseline correctly centers the distribution near zero. Feature importance analysis confirmed coaching-specific features accounted for 43\% of total model importance, demonstrating that coaches exert substantial influence on outcomes when controlling for roster quality, financial resources, and competitive context. Appendix D (Table \ref{tab:feature_importance}) shows the top 20 features by importance.
 
 \subsection{Football Context and Career Leaders}
 
@@ -169,7 +169,7 @@ Figure \ref{fig:career_distributions} illustrates the relationship between coach
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/coach_career_distributions.png}
+\includegraphics[width=1.0\textwidth]{figures/coach_career_distributions.png}
 \caption{Coach WAR Career Distributions}
 \label{fig:career_distributions}
 \end{figure}
@@ -182,7 +182,7 @@ Figure \ref{fig:2024_coaches_avg} shows the average career WAR per season for 20
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/coach_2024_matrix.png}
+\includegraphics[width=1.0\textwidth]{figures/coach_2024_matrix.png}
 \caption{2024 Head Coach Average WAR per Season versus Career Length}
 \label{fig:2024_coaches_avg}
 \end{figure}
@@ -191,7 +191,7 @@ These averages, however, are not the whole story. To dig deeper into the firing 
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/coach_2024_trajectories.png}
+\includegraphics[width=1.0\textwidth]{figures/coach_2024_trajectories.png}
 \caption{Coach WAR Trajectory for 2024 Head Coaches}
 \label{fig:2024_trajectories}
 \end{figure}
@@ -203,45 +203,11 @@ These averages, however, are not the whole story. To dig deeper into the firing 
 \label{fig:2024_single_year}
 \end{figure}
 
-Figure \ref{fig:2024_single_year} shows how much the firing of Mike McCarthy stands out from that of other fired coaches. With a 2024 WAR of +1.9, Mike McCarthy ranked in the top 25\% of NFL head coaches in the season. In contrast, four of the seven fired coaches were in the bottom 5 for 2024 Coach WAR. Brian Callahan was the lone exception (a bottom 5 coach who was not fired), but he has since been fired in the 2025 season\footnote{Analysis conducted October 2025 on 1970--2024 data; the partially complete 2025 season was excluded from this analysis}.
+Figure \ref{fig:2024_single_year} shows how much the firing of Mike McCarthy stands out from that of other fired coaches. With a 2024 WAR of +1.3, Mike McCarthy ranked in the top 30\% of NFL head coaches in the season. In contrast, three of the seven fired coaches were in the bottom 4 for 2024 Coach WAR. Brian Callahan was the lone exception (a bottom 4 coach who was not fired), but he has since been fired in the 2025 season\footnote{Analysis conducted October 2025 on 1970--2024 data; the partially complete 2025 season was excluded from this analysis}.
 
 \subsection{Offensive versus Defensive Coaches}
 
-One debate that will likely never be satisfied is whether offensive or defensive coaches are more successful. For this analysis, coaches were classified as offensive or defensive based on their experience as coordinators or position coaches prior to becoming a head coach. Offensive backgrounds included offensive coordinators and offensive position coach roles (quarterbacks, wide receivers, etc.), and defensive backgrounds included defensive coordinators and defensive position coach roles (linebackers, secondary, etc.). We analyzed Coach WAR by coach type (offensive, defensive, or other/indeterminate) to identify whether coaches of a specific background outperformed other coaches. Figure \ref{fig:background_trajectory} shows the average coach WAR trajectory for coaches by type for the first 15 seasons of a career as head coach. Table \ref{tab:background_mann_whitney} contains Mann-Whitney U test results.
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.85\textwidth]{figures/coach_background_from_history_15seasons.png}
-\caption{Average Cumulative Coach WAR by Coach Background (First 15 Seasons)}
-\label{fig:background_trajectory}
-\end{figure}
-
-\begin{table}[!ht]
-\caption{Mann-Whitney U Test comparing Offensive and Defensive Coaching Backgrounds}
-\label{tab:background_mann_whitney}
-\small
-\begin{tabular}{lcccc}
-\toprule
-Background & Coaches & Seasons & Mean WAR & Median WAR \\
-\midrule
-Defensive & 98 & 633 & +0.25 & +0.28 \\
-Offensive & 134 & 778 & +0.06 & +0.04 \\
-\midrule
-Difference & -36 & -145 & +0.19 & +0.25 \\
-\midrule
-\multicolumn{5}{l}{\textit{Mann-Whitney U Test}} \\
-Test Statistic & \multicolumn{4}{l}{U = 231,706} \\
-p-value & \multicolumn{4}{l}{0.056} \\
-Interpretation & \multicolumn{4}{l}{Marginally significant} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-This data provides evidence that, at least through the lens of circumstance-adjusted performance, defensive-minded head coaches hold a slight edge on average in the modern era (1970+), though the effect size is negligible (Cohen's $d$ = -0.086). The gap between defensive and offensive coordinators' performance is less pronounced than the 15-year cumulative totals suggest, as the meaningful divergence doesn't begin until season 4. Across the first three seasons, both groups track nearly identically, indicating no statistically significant difference in how coordinators from either background navigate their initial head-coaching years. The separation emerges in season 4, when defensive coaches accumulate WAR faster than offensive coaches. This occurs again in seasons 10--15, which yield the majority of the difference in WAR. The gap in WAR accumulation in the later stages of careers suggests that offensive coaches may struggle to maintain performance over time, potentially caused by maintaining an outdated scheme / not continuing to innovate with the league.
-
-Coaches from other backgrounds, including special teams coordinators and those whose experience could not easily be classified, underperform both groups initially, averaging slightly negative cumulative WAR throughout the start of their careers. However, by season 5, they begin to accumulate WAR at a similar rate. This could be explained by the fact that some ``other'' coaches are less experienced than traditional coordinators, and it takes time to acclimate to the NFL.
-
-But how does the evolution of the game of football play into this analysis? To answer this question, this project segmented the data by decade to isolate the average coach impact for each coach type over time. The results are shown in Table \ref{tab:background_by_decade} below. Mann-Whitney U-Test results are shown in Table \ref{tab:background_decade_stats} for each decade.
+One debate that will likely never be satisfied is whether offensive or defensive coaches are more successful. For this analysis, coaches were classified as offensive or defensive based on their experience as coordinators or position coaches prior to becoming a head coach. Offensive backgrounds included offensive coordinators and offensive position coach roles (quarterbacks, wide receivers, etc.), and defensive backgrounds included defensive coordinators and defensive position coach roles (linebackers, secondary, etc.). We analyzed Coach WAR by coach type (offensive, defensive, or other/indeterminate) to identify whether coaches of a specific background outperformed other coaches. This data provides evidence that, at least through the lens of circumstance-adjusted performance, defensive-minded head coaches hold a slight edge (p=0.056) on average in the modern era (1970+), though the effect size is negligible (Cohen's $d$ = -0.070). But how does the evolution of the game of football play into this analysis? To answer this question, this project segmented the data by decade to isolate the average coach impact for each coach type over time. The results are shown in Table \ref{tab:background_by_decade} below. Mann-Whitney U-Test results are shown in Table \ref{tab:background_decade_stats} for each decade.
 
 \begin{table}[!ht]
 \caption{Average Coach WAR per Season by Coach Background and Decade}
@@ -367,7 +333,7 @@ Additional methodological limitations warrant consideration. First, while the mo
 
 The Coach WAR framework offers immediate practical value for NFL front offices facing high-stakes personnel decisions. In hiring decisions, rather than relying on win-loss records that conflate coaching with roster quality, teams can evaluate candidates based on circumstance-adjusted performance. A coach with a .500 record but +1.5 WAR per season likely outperformed a coach with a .600 record but -0.5 WAR who inherited superior talent. Similarly, contract negotiations benefit from quantifiable performance metrics for compensation discussions, analogous to how player WAR informs salary arbitration in baseball. These applications provide decision-makers with objective baselines for evaluating coaching contributions independent of the circumstances coaches inherit.
 
-Finally, retention decisions benefit from objective performance baselines. Organizations can identify underperforming coaches earlier and avoid prolonged rebuilds. Matt Eberflus's cumulative -3.9 WAR through two seasons provided quantitative evidence that performance issues were structural rather than circumstantial, validated by his subsequent -4.9 single-season WAR in 2024. Conversely, coaches like Mike McCarthy (+1.9 WAR in 2024 despite dismissal) demonstrate that firing decisions based on win-loss records alone may discard above-replacement talent.
+Finally, retention decisions benefit from objective performance baselines. Organizations can identify underperforming coaches earlier and avoid prolonged rebuilds. Matt Eberflus's cumulative -4.6 WAR through two seasons provided quantitative evidence that performance issues were structural rather than circumstantial, validated by his subsequent -4.5 single-season WAR in 2024. Conversely, coaches like Mike McCarthy (+1.3 WAR in 2024 despite dismissal) demonstrate that firing decisions based on win-loss records alone may discard above-replacement talent.
 
 \section{Conclusion}
 
@@ -377,7 +343,7 @@ The practical implications are immediate and substantial. Front offices can now 
 
 The evolution of coaching value by coordinator background tells an equally compelling story about the modern NFL. Defensive-minded coaches dominated from the 1970s through the 1990s, but offensive coaches now generate 0.58 more WAR per season in the 2020s. Organizations hiring head coaches today should weigh offensive expertise more heavily than historical precedent would suggest, as the game itself has fundamentally shifted. Yet year-to-year performance analysis reveals this offensive advantage erodes rapidly: while defensive coaches' predictive power more than doubles when evaluated over multiple seasons, offensive coaches' predictive power remains flat over the same timeframe. This asymmetry suggests offensive schemes depreciate while defensive skills compound, a market dynamic with direct implications for retention decisions.
 
-As NFL teams increasingly embrace analytics for player evaluation, from Expected Points Added to catch probability models, coaching assessment has remained surprisingly subjective, relying on win-loss records that confound coaching quality with roster talent, or playoff success that introduces large small-sample noise. But the stakes are too high for subjective evaluation: a single coaching decision can swing a franchise's trajectory by 5+ wins per season, on average, and by $\sim$12 wins in extreme circumstances.
+As NFL teams increasingly embrace analytics for player evaluation, from Expected Points Added to catch probability models, coaching assessment has remained surprisingly subjective, relying on win-loss records that confound coaching quality with roster talent, or playoff success that introduces large small-sample noise. But the stakes are too high for subjective evaluation: a single coaching decision can swing a franchise's trajectory by 5+ wins per season, on average, and by $\sim$15 wins in extreme circumstances.
 
 The key question facing NFL organizations is whether they will continue to make eight-figure coaching decisions based on intuition and non-context-adjusted performance, or whether they will embrace objective, context-adjusted evaluation that separates true coaching impact from the circumstances coaches inherit. This Coach WAR framework provides the objective baseline the industry needs, quantifying the wins directly attributable to coaching excellence or deficiency, isolated from roster advantages, schedule strength, and organizational resources. Front offices armed with circumstance-adjusted coaching metrics can make these critical decisions with the same analytical rigor they now apply to draft picks and free agent signings, and the franchises that adopt it first will gain a sustainable competitive advantage in the league's most impactful personnel decision.
 
@@ -542,7 +508,6 @@ Rank & Feature Description & Importance & Coach Metric \\
 \end{figure}
 
 \begin{table}[!ht]
-\centering
 \caption{Coaching WAR Persistence by Background and Time Horizon}
 \label{tab:war_multiyear_persistence}
 \begin{tabular}{lcccccc}

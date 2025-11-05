@@ -21,22 +21,25 @@ def create_career_distribution_figure(font_family='Helvetica'):
 
     print(f"Loaded {len(df)} coaches")
 
+    # Convert WAR from percentage to games (multiply by 16)
+    df['Avg_WAR_Games'] = df['Avg_WAR'] * 16
+
     # Calculate medians for quadrant lines
     median_seasons = df['Seasons'].median()
-    median_war = df['Avg_WAR'].median()
+    median_war = df['Avg_WAR_Games'].median()
 
     print(f"\nMedian career length: {median_seasons} seasons")
-    print(f"Median avg WAR: {median_war:.4f}")
+    print(f"Median avg WAR: {median_war:.2f} games per season")
 
     # Create figure
     fig, ax = plt.subplots(figsize=(12, 8))
 
     # Define quadrants for color coding
     df['Quadrant'] = 'Unknown'
-    df.loc[(df['Seasons'] >= median_seasons) & (df['Avg_WAR'] >= median_war), 'Quadrant'] = 'High Quality, Long Career'
-    df.loc[(df['Seasons'] < median_seasons) & (df['Avg_WAR'] >= median_war), 'Quadrant'] = 'High Quality, Short Career'
-    df.loc[(df['Seasons'] >= median_seasons) & (df['Avg_WAR'] < median_war), 'Quadrant'] = 'Low Quality, Long Career'
-    df.loc[(df['Seasons'] < median_seasons) & (df['Avg_WAR'] < median_war), 'Quadrant'] = 'Low Quality, Short Career'
+    df.loc[(df['Seasons'] >= median_seasons) & (df['Avg_WAR_Games'] >= median_war), 'Quadrant'] = 'High Quality, Long Career'
+    df.loc[(df['Seasons'] < median_seasons) & (df['Avg_WAR_Games'] >= median_war), 'Quadrant'] = 'High Quality, Short Career'
+    df.loc[(df['Seasons'] >= median_seasons) & (df['Avg_WAR_Games'] < median_war), 'Quadrant'] = 'Low Quality, Long Career'
+    df.loc[(df['Seasons'] < median_seasons) & (df['Avg_WAR_Games'] < median_war), 'Quadrant'] = 'Low Quality, Short Career'
 
     # Color mapping for quadrants
     colors = {
@@ -49,13 +52,13 @@ def create_career_distribution_figure(font_family='Helvetica'):
     # Plot points by quadrant
     for quadrant, color in colors.items():
         quad_data = df[df['Quadrant'] == quadrant]
-        ax.scatter(quad_data['Seasons'], quad_data['Avg_WAR'],
+        ax.scatter(quad_data['Seasons'], quad_data['Avg_WAR_Games'],
                   c=color, s=60, alpha=0.6, edgecolors='black',
                   linewidths=0.5, label=quadrant, zorder=3)
 
     # Add median lines
     ax.axhline(y=median_war, color='gray', linestyle='--', linewidth=1.5,
-               alpha=0.7, zorder=2, label=f'Median WAR ({median_war:.3f})')
+               alpha=0.7, zorder=2, label=f'Median WAR ({median_war:.2f} games)')
     ax.axvline(x=median_seasons, color='gray', linestyle='--', linewidth=1.5,
                alpha=0.7, zorder=2, label=f'Median Seasons ({median_seasons:.0f})')
 
@@ -74,7 +77,7 @@ def create_career_distribution_figure(font_family='Helvetica'):
         coach_data = df[df['Primary_Coach'] == coach]
         if len(coach_data) > 0:
             x = coach_data['Seasons'].values[0]
-            y = coach_data['Avg_WAR'].values[0]
+            y = coach_data['Avg_WAR_Games'].values[0]
 
             # Offset annotation to avoid overlapping points
             if y > median_war:
@@ -100,7 +103,7 @@ def create_career_distribution_figure(font_family='Helvetica'):
 
     # Formatting
     ax.set_xlabel('Career Length (Seasons Coached)', fontsize=16, fontweight='bold')
-    ax.set_ylabel('Average WAR per Season', fontsize=16, fontweight='bold')
+    ax.set_ylabel('Average WAR per Season (Games)', fontsize=16, fontweight='bold')
 
     # Grid
     ax.grid(True, alpha=0.3, linestyle='-', linewidth=0.5)
