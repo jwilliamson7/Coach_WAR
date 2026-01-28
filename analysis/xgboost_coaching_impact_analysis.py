@@ -58,9 +58,12 @@ def load_and_prepare_data(filepath, exclude_av=False):
     # Store team and year for later analysis
     if 'Team' in X.columns and 'Year' in X.columns:
         team_year_info = df[['Team', 'Year']].copy()
-        # Remove Team from features if it's a string column
+        # Remove Team and Year from features (metadata only, not predictors)
         if X['Team'].dtype == 'object':
-            X = X.drop(['Team'], axis=1)
+            X = X.drop(['Team', 'Year'], axis=1)
+        else:
+            # If Team was already numeric (shouldn't happen), just drop Year
+            X = X.drop(['Year'], axis=1)
     else:
         team_year_info = pd.DataFrame(index=df.index)
     

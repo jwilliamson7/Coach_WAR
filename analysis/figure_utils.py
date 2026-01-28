@@ -11,11 +11,15 @@ def configure_matplotlib_fonts(font_family='Helvetica'):
 
     Args:
         font_family: Font family to use (default: 'Helvetica')
-                    Common options: 'Helvetica', 'Arial', 'Times New Roman', 'Cambria'
+                    Common options: 'Helvetica', 'Arial', 'Times New Roman', 'Cambria', 'serif'
     """
     # Set font family
-    plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['font.sans-serif'] = [font_family, 'DejaVu Sans', 'Arial']
+    if font_family.lower() == 'serif':
+        plt.rcParams['font.family'] = 'serif'
+        plt.rcParams['font.serif'] = ['Computer Modern', 'DejaVu Serif', 'Times New Roman']
+    else:
+        plt.rcParams['font.family'] = 'sans-serif'
+        plt.rcParams['font.sans-serif'] = [font_family, 'DejaVu Sans', 'Arial']
 
     # Set font sizes for consistency (increased for better readability)
     plt.rcParams['font.size'] = 14

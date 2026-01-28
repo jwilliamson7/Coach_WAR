@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\jonwi\Documents\Projects\Coach_WAR\analysis\coaching_war_persistence_analysis.py", line 8, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'

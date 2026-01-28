@@ -12,8 +12,9 @@ from scipy import stats
 import warnings
 warnings.filterwarnings('ignore')
 
-# Set font to Cambria
-plt.rcParams['font.family'] = 'Cambria'
+# Set font to serif (Computer Modern for LaTeX compatibility)
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['font.serif'] = ['Computer Modern', 'DejaVu Serif', 'Times New Roman']
 
 def load_coaching_data():
     """Load coaching WAR data."""
@@ -89,9 +90,17 @@ def analyze_survival_by_performance(survival_df):
     quintile_survival = survival_df.groupby('WAR_Quintile').agg({
         'Year_N_WAR': ['mean', 'std'],
         'Survived': ['sum', 'count', 'mean']
-    }).round(4)
+    })
 
+    # Flatten MultiIndex columns
+    quintile_survival.columns = ['_'.join(col).strip() for col in quintile_survival.columns.values]
     quintile_survival.columns = ['Mean_WAR', 'Std_WAR', 'N_Survived', 'N_Total', 'Survival_Rate']
+
+    # Ensure numeric types
+    for col in quintile_survival.columns:
+        quintile_survival[col] = pd.to_numeric(quintile_survival[col], errors='coerce')
+
+    quintile_survival = quintile_survival.round(4)
     quintile_survival['N_Fired'] = quintile_survival['N_Total'] - quintile_survival['N_Survived']
     quintile_survival['Survival_Pct'] = (quintile_survival['Survival_Rate'] * 100).round(1)
 
@@ -381,6 +390,9 @@ def analyze_by_tenure(survival_df):
     print("\nSurvival rates by tenure:")
     tenure_survival = survival_df.groupby('Tenure_Category')['Survived'].agg(['mean', 'count'])
     tenure_survival.columns = ['Survival_Rate', 'N']
+    # Ensure numeric types
+    tenure_survival['Survival_Rate'] = pd.to_numeric(tenure_survival['Survival_Rate'], errors='coerce')
+    tenure_survival['N'] = pd.to_numeric(tenure_survival['N'], errors='coerce')
     tenure_survival['Survival_Pct'] = (tenure_survival['Survival_Rate'] * 100).round(1)
     print(tenure_survival[['N', 'Survival_Pct']].to_string())
 
@@ -389,6 +401,9 @@ def analyze_by_tenure(survival_df):
     q1_data = survival_df[survival_df['WAR_Quintile'] == 'Q1 (Worst)']
     q1_tenure = q1_data.groupby('Tenure_Category')['Survived'].agg(['mean', 'count'])
     q1_tenure.columns = ['Survival_Rate', 'N']
+    # Ensure numeric types
+    q1_tenure['Survival_Rate'] = pd.to_numeric(q1_tenure['Survival_Rate'], errors='coerce')
+    q1_tenure['N'] = pd.to_numeric(q1_tenure['N'], errors='coerce')
     q1_tenure['Survival_Pct'] = (q1_tenure['Survival_Rate'] * 100).round(1)
     print(q1_tenure[['N', 'Survival_Pct']].to_string())
 
