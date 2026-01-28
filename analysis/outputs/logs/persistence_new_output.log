@@ -1,0 +1,118 @@
+Matplotlib configured with font family: Helvetica
+Loading coaching WAR data...
+Loaded 1515 coach-season records
+
+Creating consecutive season pairs...
+Created 1163 consecutive season pairs (same coach, same team)
+Years: 1970-2023
+Unique coaches: 211
+
+================================================================================
+WAR PERSISTENCE ANALYSIS: Year N WAR -> Year N+1 WAR
+================================================================================
+
+Overall Persistence:
+  Pearson r: 0.2695 (p=0.000000)
+  Spearman rho: 0.2599 (p=0.000000)
+  R²: 0.0727
+  RMSE: 0.1102
+  Regression: Year N+1 WAR = 0.2934 * Year N WAR + 0.0046
+
+Interpretation:
+  Weak persistence (R² = 0.073)
+  High year-to-year variability
+
+Regression to the mean:
+  Coefficient: 0.2934
+  Strong regression to mean - extreme Year N values don't persist
+
+Creating WAR persistence scatter plot...
+Saved to: analysis/outputs/png/coaching_war_persistence_scatter.png
+
+================================================================================
+PERSISTENCE BY WAR LEVEL
+================================================================================
+
+Sample sizes:
+WAR_Category
+Below Replacement    290
+Replacement Level    402
+Above Replacement    471
+Name: count, dtype: int64
+
+Below Replacement (n=290):
+  Year N mean WAR: -0.1138
+  Year N+1 mean WAR: -0.0255
+  Change: 0.0883 (regression to mean)
+  Correlation: r=0.2326 (p=0.000064), R²=0.0541
+
+Replacement Level (n=402):
+  Year N mean WAR: -0.0013
+  Year N+1 mean WAR: 0.0024
+  Change: 0.0038 (regression to mean)
+  Correlation: r=0.0713 (p=0.153749), R²=0.0051
+
+Above Replacement (n=471):
+  Year N mean WAR: 0.1212
+  Year N+1 mean WAR: 0.0396
+  Change: -0.0816 (regression to mean)
+  Correlation: r=0.1453 (p=0.001572), R²=0.0211
+
+================================================================================
+QUINTILE ANALYSIS: REGRESSION TO THE MEAN
+================================================================================
+
+Quintile performance:
+              Year_N_Mean  Year_N_Std  Count  Year_N_Plus_1_Mean  Year_N_Plus_1_Std  Change  Pct_Retained
+WAR_Quintile                                                                                             
+Q1 (Worst)        -0.1274      0.0523    233             -0.0302             0.1127  0.0972          23.7
+Q2                -0.0354      0.0169    232             -0.0064             0.1068  0.0290          18.1
+Q3                 0.0200      0.0169    233              0.0096             0.1184 -0.0104          48.0
+Q4                 0.0793      0.0168    232              0.0294             0.1066 -0.0499          37.1
+Q5 (Best)          0.1648      0.0485    233              0.0503             0.1110 -0.1145          30.5
+
+Saved quintile plot to: analysis/outputs/png/coaching_war_regression_to_mean.png
+
+================================================================================
+COMPARISON: WAR vs Win% Persistence
+================================================================================
+
+WAR Persistence:
+  r = 0.2695, R² = 0.0727, p = 0.000000
+
+Win% Persistence:
+  r = 0.3704, R² = 0.1372, p = 0.000000
+
+Comparison:
+  WAR R² / Win% R² = 0.53x
+  WAR is LESS stable than Win% (lower persistence)
+  Note: This is expected if WAR successfully removes contextual luck
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+
+                           Metric     Value
+Sample size (consecutive seasons)      1163
+                      Time period 1970-2023
+                   Unique coaches       211
+          Overall correlation (r)    0.2695
+          R² (variance explained)    0.0727
+                  Mean Year N WAR    0.0203
+                Mean Year N+1 WAR    0.0105
+                    SD Year N WAR    0.1052
+                  SD Year N+1 WAR    0.1145
+             Mean absolute change    0.1060
+           Median absolute change    0.0889
+
+================================================================================
+ANALYSIS COMPLETE
+================================================================================
+
+Results saved to:
+  - analysis/outputs/csv/coaching_war_persistence_data.csv
+  - analysis/outputs/csv/coaching_war_persistence_by_level.csv
+  - analysis/outputs/csv/coaching_war_persistence_quintiles.csv
+  - analysis/outputs/csv/coaching_war_persistence_summary.csv
+  - analysis/outputs/png/coaching_war_persistence_scatter.png
+  - analysis/outputs/png/coaching_war_regression_to_mean.png

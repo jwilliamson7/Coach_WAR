@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\jonwi\Documents\Projects\Coach_WAR\analysis\xgboost_coaching_impact_analysis.py", line 795, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\jonwi\Documents\Projects\Coach_WAR\analysis\xgboost_coaching_impact_analysis.py", line 709, in main
+    tee = TeeOutput(log_filename)
+  File "C:\Users\jonwi\Documents\Projects\Coach_WAR\analysis\xgboost_coaching_impact_analysis.py", line 24, in __init__
+    self.log = open(filename, 'w')
+               ~~~~^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'analysis/outputs/logs/coaching_analysis_log_20260127_194442.txt'

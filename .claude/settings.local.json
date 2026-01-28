@@ -7,7 +7,14 @@
       "Bash(findstr:*)",
       "Bash(awk:*)",
       "Bash(dir:*)",
-      "Bash(pdflatex:*)"
+      "Bash(pdflatex:*)",
+      "Bash(\"/c/Users/jonwi/AppData/Local/Programs/MiKTeX/miktex/bin/x64/pdflatex.exe\" -interaction=nonstopmode 2026-Williamson-Jon-Portfolio-Coach-WAR.tex)",
+      "Bash(pip install:*)",
+      "Bash(python3:*)",
+      "Bash(ls:*)",
+      "Bash(tee:*)",
+      "Bash(grep:*)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []
