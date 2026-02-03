@@ -14,7 +14,14 @@
       "Bash(ls:*)",
       "Bash(tee:*)",
       "Bash(grep:*)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(sort:*)",
+      "Bash(/c/Users/jonwi/AppData/Local/Programs/MiKTeX/miktex/bin/x64/pdflatex.exe:*)",
+      "Bash(where:*)",
+      "Bash(where /R \"C:\\\\Program Files\" pdflatex.exe)",
+      "Bash(where /R \"C:\\\\Users\\\\jonwi\\\\AppData\\\\Local\\\\Programs\\\\MiKTeX\" pdflatex.exe)",
+      "Bash(cmd /c \"where pdflatex\")",
+      "Bash(cmd /c \"dir /s /b C:\\\\Users\\\\jonwi\\\\AppData\\\\Local\\\\Programs\\\\MiKTeX\\\\miktex\\\\bin\\\\pdflatex.exe\")"
     ],
     "deny": [],
     "ask": []

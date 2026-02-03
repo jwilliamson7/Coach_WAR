@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  27 JAN 2026 20:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  2 FEB 2026 08:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -911,10 +911,9 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 [1{C:/Users/jonwi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/jo
 nwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
 
-{C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <C:
-/Users/jonwi/AppData/Local/Programs/MiKTeX/tex/latex/notes/warn.pdf>] [2] [3{C:
-/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:
-/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
+{C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/
+Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <C:
+/Users/jonwi/AppData/Local/Programs/MiKTeX/tex/latex/notes/warn.pdf>] [2]
 LaTeX Font Info:    Calculating math sizes for size <8.0> on input line 105.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8.0> on input line 105.
@@ -935,33 +934,35 @@ LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.01495> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.01495> not available
 (Font)              size <5> substituted on input line 108.
 
-[4]
-<figures/coach_career_distributions.png, id=180, 850.1361pt x 562.2606pt>
+[3{C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
+c}]
+<figures/coach_career_distributions.png, id=176, 850.1361pt x 562.2606pt>
 File: figures/coach_career_distributions.png Graphic file (type png)
 <use figures/coach_career_distributions.png>
 Package pdftex.def Info: figures/coach_career_distributions.png  used on input 
 line 172.
 (pdftex.def)             Requested size: 441.01756pt x 291.67369pt.
+ [4]
 <figures/coach_2024_matrix.png, id=183, 1198.2366pt x 1274.6019pt>
 File: figures/coach_2024_matrix.png Graphic file (type png)
 <use figures/coach_2024_matrix.png>
 Package pdftex.def Info: figures/coach_2024_matrix.png  used on input line 185.
 
 (pdftex.def)             Requested size: 441.01756pt x 469.12532pt.
- [5 <./figures/coach_career_distributions.png>]
-<figures/coach_2024_trajectories.png, id=192, 1342.7766pt x 934.9329pt>
+<figures/coach_2024_trajectories.png, id=186, 1342.7766pt x 934.9329pt>
 File: figures/coach_2024_trajectories.png Graphic file (type png)
 <use figures/coach_2024_trajectories.png>
 Package pdftex.def Info: figures/coach_2024_trajectories.png  used on input lin
 e 194.
 (pdftex.def)             Requested size: 441.01756pt x 307.05942pt.
-<figures/coach_2024_single_year_bar.png, id=193, 859.7721pt x 1148.8521pt>
+<figures/coach_2024_single_year_bar.png, id=187, 859.7721pt x 1148.8521pt>
 File: figures/coach_2024_single_year_bar.png Graphic file (type png)
 <use figures/coach_2024_single_year_bar.png>
 Package pdftex.def Info: figures/coach_2024_single_year_bar.png  used on input 
 line 201.
 (pdftex.def)             Requested size: 374.86761pt x 500.90363pt.
- [6 <./figures/coach_2024_matrix.png>]
+ [5 <./figures/coach_career_distributions.png>] [6 <./figures/coach_2024_matrix
+.png>]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8.0> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 224.
 LaTeX Font Info:    Calculating math sizes for size <5.0> on input line 247.
@@ -976,14 +977,14 @@ Overfull \hbox (20.37335pt too wide) in paragraph at lines 235--248
 
 [7 <./figures/coach_2024_trajectories.png>] [8 <./figures/coach_2024_single_yea
 r_bar.png>]
-<figures/coaching_war_persistence_scatter.png, id=224, 706.8006pt x 706.8006pt>
+<figures/coaching_war_persistence_scatter.png, id=225, 706.8006pt x 706.8006pt>
 
 File: figures/coaching_war_persistence_scatter.png Graphic file (type png)
 <use figures/coaching_war_persistence_scatter.png>
 Package pdftex.def Info: figures/coaching_war_persistence_scatter.png  used on 
 input line 260.
 (pdftex.def)             Requested size: 352.81538pt x 352.81703pt.
-<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=225, 715.232
+<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=226, 715.232
 1pt x 859.5312pt>
 File: figures/coaching_regression_to_mean_survivorship_adjusted.png Graphic fil
 e (type png)
@@ -991,31 +992,44 @@ e (type png)
 Package pdftex.def Info: figures/coaching_regression_to_mean_survivorship_adjus
 ted.png  used on input line 267.
 (pdftex.def)             Requested size: 418.96533pt x 503.49918pt.
- [9] [10 <./figures/coaching_war_persistence_scatter.png>] [11 <./figures/coach
-ing_regression_to_mean_survivorship_adjusted.png>] [12]
+ [9 <./figures/coaching_war_persistence_scatter.png>] [10 <./figures/coaching_r
+egression_to_mean_survivorship_adjusted.png>] [11] [12]
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <9.5> not available
+(Font)              size <9> substituted on input line 386.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <9.5> not available
+(Font)              size <9> substituted on input line 386.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <9.5> not available
+(Font)              size <9> substituted on input line 386.
+
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 387--388
 []\T1/lmss/m/n/8.0 (+20) Woolner, K. (2002). VORP: Value over re-place-ment pla
 yer. \T1/lmss/m/sl/8.0 (+20) Base-ball Prospec-tus\T1/lmss/m/n/8.0 (+20) . Avai
 l-able at: 
  []
 
-[13] [14
-
-] [15
+[14] [15
 
 ] [16
 
+] [17
+
 ]
-<figures/win_pct_persistence_scatter.png, id=277, 706.8006pt x 706.8006pt>
+<figures/win_pct_persistence_scatter.png, id=281, 706.8006pt x 706.8006pt>
 File: figures/win_pct_persistence_scatter.png Graphic file (type png)
 <use figures/win_pct_persistence_scatter.png>
 Package pdftex.def Info: figures/win_pct_persistence_scatter.png  used on input
  line 492.
 (pdftex.def)             Requested size: 352.81538pt x 352.81703pt.
- [17
+ [18
 
  <./figures/win_pct_persistence_scatter.png>]
-<figures/coaching_war_persistence_by_background.png, id=283, 851.3406pt x 706.8
+<figures/coaching_war_persistence_by_background.png, id=287, 851.3406pt x 706.8
 006pt>
 File: figures/coaching_war_persistence_by_background.png Graphic file (type png
 )
@@ -1033,7 +1047,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [18
+ [19
 
 {C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <.
 /figures/coaching_war_persistence_by_background.png>]
@@ -1054,13 +1068,13 @@ Package rerunfilecheck Info: File `2026-Williamson-Jon-Portfolio-Coach-WAR.out'
 (rerunfilecheck)             Checksum: D66569B135BCE953D8B56181FF566CDB;4739.
  ) 
 Here is how much of TeX's memory you used:
- 18567 strings out of 467871
- 305916 string characters out of 5418376
- 758745 words of memory out of 5000000
- 46777 multiletter control sequences out of 15000+600000
- 722129 words of font info for 208 fonts, out of 8000000 for 9000
+ 18610 strings out of 467871
+ 306663 string characters out of 5418376
+ 752744 words of memory out of 5000000
+ 46804 multiletter control sequences out of 15000+600000
+ 724635 words of font info for 217 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,10n,131p,1898b,574s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,10n,131p,1898b,687s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb
 ><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb
 ><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb>
@@ -1071,10 +1085,10 @@ Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb><C:/U
 sers/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:
 /Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.pfb><C:
 /Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (18 pages, 530632
-7 bytes).
+Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (19 pages, 530738
+1 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 73 named destinations out of 1000 (max. 500000)
- 50922 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 355 PDF objects out of 1000 (max. 8388607)
+ 74 named destinations out of 1000 (max. 500000)
+ 51946 words of extra memory for PDF output out of 61914 (max. 10000000)
 
