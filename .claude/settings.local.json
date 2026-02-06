@@ -21,7 +21,10 @@
       "Bash(where /R \"C:\\\\Program Files\" pdflatex.exe)",
       "Bash(where /R \"C:\\\\Users\\\\jonwi\\\\AppData\\\\Local\\\\Programs\\\\MiKTeX\" pdflatex.exe)",
       "Bash(cmd /c \"where pdflatex\")",
-      "Bash(cmd /c \"dir /s /b C:\\\\Users\\\\jonwi\\\\AppData\\\\Local\\\\Programs\\\\MiKTeX\\\\miktex\\\\bin\\\\pdflatex.exe\")"
+      "Bash(cmd /c \"dir /s /b C:\\\\Users\\\\jonwi\\\\AppData\\\\Local\\\\Programs\\\\MiKTeX\\\\miktex\\\\bin\\\\pdflatex.exe\")",
+      "Bash(find:*)",
+      "Bash(pip show:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

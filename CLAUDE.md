@@ -67,6 +67,7 @@ Coach_WAR/
     ├── xgboost_interaction_matrix.py # Feature interaction matrix visualization
     ├── run_interaction_batch.py # Batch processing for multiple feature interactions
     ├── create_career_distribution_figure.py # Career distribution figure generation for LaTeX
+    ├── shap_feature_importance_analysis.py # SHAP feature importance by category with coaching subcategory drill-down
     └── interaction_matrices/   # Feature interaction analysis outputs
         ├── csv/               # Interaction matrices in CSV format
         └── png/               # Heatmap visualizations
@@ -396,7 +397,17 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
      - Compares specific coaches to replacement baseline and median performance
      - Supports comparison of multiple coaches in single visualization
 
-4. **Feature Interaction Analysis**: 
+4. **SHAP Feature Importance Analysis**: `python analysis/shap_feature_importance_analysis.py`
+   - Computes SHAP values using TreeExplainer for the coaching WAR XGBoost model
+   - Categorizes 365 features (AV excluded by default) into 8 categories:
+     - Coaching Performance (132), Salary Cap (19), Team Performance (7), Roster Turnover (90), Injury/Availability (37), Player Age & Experience (44), Draft Strategy (29), Coaching Experience (7)
+   - Reports total importance (sum of mean |SHAP|) and average importance (mean |SHAP| per feature) by category
+   - Includes coaching performance subcategory drill-down by role: OC, DC, HC Offense, HC Defense
+   - Generates beeswarm plots, bar charts, category breakdowns, and per-category top feature grids
+   - Uses same coach-based train/test stratification and hyperparameter tuning as main analysis
+   - CLI flags: `--with-av` (include AV features), `--no-tuning`, `--top-n`, `--font`
+
+5. **Feature Interaction Analysis**:
    - **Single Pair Analysis**: `python analysis/xgboost_interaction_matrix.py feature1 feature2`
    - **Batch Processing**: `python analysis/run_interaction_batch.py`
 
@@ -459,6 +470,18 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
   - `coach_background_decade_trend_analysis.csv` - Statistical trend analysis over time
   - `coach_background_from_history_15seasons.png` - Cumulative WAR trajectory plot by background
 
+- **SHAP Feature Importance Analysis**:
+  - `shap_feature_importance.csv` - Per-feature SHAP importance with category labels and rankings
+  - `shap_category_importance.csv` - Category-level aggregated importance (total, average, max, count, % of total)
+  - `shap_coaching_feature_importance.csv` - Per-feature SHAP for coaching performance features with role subcategories
+  - `shap_coaching_subcategory_importance.csv` - Coaching subcategory importance (OC, DC, HC Offense, HC Defense)
+  - `analysis/outputs/png/shap_category_total_importance.png` - Total SHAP importance by category
+  - `analysis/outputs/png/shap_category_avg_importance.png` - Average SHAP per feature by category
+  - `analysis/outputs/png/shap_beeswarm_top_features.png` - SHAP beeswarm plot for top features
+  - `analysis/outputs/png/shap_bar_top_features.png` - SHAP bar plot for top features
+  - `analysis/outputs/png/shap_top_features_by_category.png` - Multi-panel grid of top features per category
+  - `analysis/outputs/png/shap_coaching_subcategory_breakdown.png` - Coaching role subcategory breakdown (total + average)
+
 - **Feature Interaction Analysis**:
   - `analysis/interaction_matrices/` - Feature interaction analysis results
     - `csv/` - Interaction matrices in CSV format for 13 feature pairs
@@ -506,6 +529,24 @@ Use processed data in `data/final/` for comprehensive coaching WAR calculations 
   - Compares individual coaches to replacement baseline and median performance
   - Supports multi-coach comparisons in single visualization
   - Generates HTML plots for interactive exploration
+
+#### 6. SHAP Feature Importance Analysis
+- **Method**: TreeExplainer SHAP values computed on the full XGBoost model (365 features, AV excluded)
+- **Category-Level Results** (by total importance):
+  - Coaching Performance: 27.7% (132 features, largest total contributor)
+  - Salary Cap: 23.0% (19 features)
+  - Team Performance: 19.7% (7 features, highest average importance per feature)
+  - Roster Turnover: 10.2% (90 features)
+  - Injury/Availability: 10.0% (37 features)
+  - Player Age & Experience: 6.8% (44 features)
+  - Draft Strategy: 2.3% (29 features)
+  - Coaching Experience: 0.3% (7 features)
+- **Coaching Subcategory Drill-Down** (% of coaching importance):
+  - HC Defense (opponent stats): 31.0% — most important coaching subcategory
+  - OC: 28.8% — offensive coordinator track record
+  - HC Offense: 21.0% — head coach team offensive performance
+  - DC: 19.2% — defensive coordinator track record
+- **Caveats**: Model shows 0.25 R² train-test gap; subcategory-level differences may be sensitive to random seed and collinearity within role groups. Category-level findings are more robust than subcategory magnitudes.
 
 ### Key Insights from Recent Analysis
 
