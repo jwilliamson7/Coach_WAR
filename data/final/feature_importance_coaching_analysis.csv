@@ -1,366 +1,366 @@
 Feature,Importance,Is_Coach_Feature
-ReservesIR/PUP/NFI/SUSP_Pct,0.04066076,False
-Opp_Int_Passing_Norm,0.02530749,False
-PF (Points For)__opp__hc_Norm,0.024519004,True
-Team_Int_Passing_Norm,0.024511756,False
-Yds__opp__hc_Norm,0.022768598,True
-Avg_Roster_Age,0.016268022,False
-Active53-Man_Pct,0.015790053,False
-TD Passing__hc_Norm,0.015773967,True
-QB_Avg_Games_Missed_Pct,0.01570289,False
-QB_Players_New,0.013745226,False
-Avg_Starter_Exp_OL,0.012021325,False
-4DAtt__oc_Norm,0.010115299,True
-PF (Points For)__hc_Norm,0.009505354,True
-TE_Players_New,0.0092132855,False
-Pts Average Drive__hc_Norm,0.009139739,True
-TD Rushing__opp__hc_Norm,0.008843751,True
-RB_Min_Games_Missed_Pct,0.008694132,False
-Yds Passing__oc_Norm,0.0085625965,True
-Avg_Starter_Experience,0.008464258,False
-LB_Net_Change,0.008341462,False
-CB_New_Player_Rate_Pct,0.008319733,False
-QB_New_Player_Rate_Pct,0.00818702,False
-Sc%__hc_Norm,0.008065603,True
-Y/P__opp__hc_Norm,0.0075619603,True
-RB_Pct,0.0069495495,False
-Plays Average Drive__oc_Norm,0.00673014,True
-TO%__hc_Norm,0.0066600195,True
-Avg_Roster_Exp_OL,0.0064697587,False
-Avg_Roster_Experience,0.0064299554,False
-SoS,0.0061459644,False
-1stD__oc_Norm,0.006010354,True
-K_Pct,0.0059930086,False
-SPT_Pct,0.0058339406,False
-NY/A Passing__oc_Norm,0.005736533,True
-P_Pct,0.005598198,False
-TE_New_Player_Rate_Pct,0.0055925474,False
-RB_Avg_Games_Missed_Pct,0.005540965,False
-Pts Average Drive__opp__hc_Norm,0.0054609785,True
-1stD Rushing__hc_Norm,0.005459327,True
-1stD Rushing__opp__hc_Norm,0.005417211,True
-Avg_Roster_Exp_QB,0.00527491,False
-Time Average Drive__dc_Norm,0.00526166,True
-NY/A Passing__hc_Norm,0.0052178046,True
-Avg_Starter_Age,0.0051274165,False
-OL_Avg_Games_Missed_Pct,0.0050886963,False
-Team_Yds_Penalties_Norm,0.005027064,False
-1stD__hc_Norm,0.0049799653,True
-CB_Players_Retained,0.0049735527,False
-Yds Penalties__oc_Norm,0.0049607074,True
-RB_Max_Games_Missed_Pct,0.0049089002,False
-Avg_Roster_Exp_DL,0.0048874305,False
-Yds Rushing__opp__hc_Norm,0.0048457375,True
-Pts Average Drive__oc_Norm,0.004803254,True
-QB_Retention_Rate_Pct,0.0047904328,False
-StdDev_Roster_Age,0.0047189416,False
-Yds Average Drive__dc_Norm,0.004714358,True
-Yds Passing__opp__hc_Norm,0.0046817935,True
-1stD Rushing__dc_Norm,0.0045227995,True
-OL_Players_New,0.004489615,False
-OL_Max_Games_Missed_Pct,0.00438517,False
-RZAtt__dc_Norm,0.0042692963,True
-RZPct__opp__hc_Norm,0.0042648516,True
-Yds Penalties__opp__hc_Norm,0.0042296555,True
-QB_Net_Change,0.0042020786,False
-LB_New_Player_Rate_Pct,0.004174564,False
-RZAtt__opp__hc_Norm,0.0040602097,True
-TO%__oc_Norm,0.0040009264,True
-TD Passing__opp__hc_Norm,0.00399537,True
-1stD Passing__dc_Norm,0.003976744,True
-Prev_2Yr_Round_1_Picks,0.003957817,False
-RZAtt__hc_Norm,0.003903896,True
-Pen__hc_Norm,0.0038868377,True
-Cmp Passing__oc_Norm,0.0038305463,True
-3D%__opp__hc_Norm,0.0038112444,True
-3DAtt__oc_Norm,0.003791892,True
-TD Passing__oc_Norm,0.003749399,True
-Plays Average Drive__hc_Norm,0.0037456548,True
-Sc%__oc_Norm,0.0037419875,True
-WR_New_Player_Rate_Pct_crosstab,0.0037127251,False
-Pen__oc_Norm,0.003699347,True
-RB_Retention_Rate_Pct,0.003642575,False
-Cmp Passing__dc_Norm,0.0035956562,True
-QB_Pct,0.003492912,False
-Avg_Starter_Exp_WR,0.0034517902,False
-Avg_Roster_Age_TE,0.0034498656,False
-4D%__oc_Norm,0.0034434746,True
-S_Max_Games_Missed_Pct,0.0034342008,False
-Avg_Starter_Age_TE,0.0033606992,False
-Yds Passing__hc_Norm,0.0033492541,True
-Int Passing__dc_Norm,0.0033454476,True
-1stPy__dc_Norm,0.0033241855,True
-WR_Players_New,0.003289651,False
-CB_Players_Departed,0.0032560173,False
-Cmp Passing__opp__hc_Norm,0.0032312197,True
-Avg_Starter_Age_OL,0.0032039054,False
-Pen__dc_Norm,0.0031989487,True
-RZPct__dc_Norm,0.003150158,True
-1stD__opp__hc_Norm,0.0031486123,True
-LB_Avg_Games_Missed_Pct,0.0031290164,False
-RB_Retention_Rate_Pct_crosstab,0.003126664,False
-OL_Retention_Rate_Pct,0.0031153897,False
-Yds__hc_Norm,0.0030953018,True
-1stD Passing__hc_Norm,0.0030856233,True
-OL_Retention_Rate_Pct_crosstab,0.0030827243,False
-OL_New_Player_Rate_Pct,0.003080056,False
-TD Passing__dc_Norm,0.0030620643,True
-PF (Points For)__oc_Norm,0.0030587905,True
-Yds Average Drive__opp__hc_Norm,0.0030348944,True
-num_yr_col_coor,0.003016017,True
-Cmp Passing__hc_Norm,0.002987246,True
-DL_Max_Games_Missed_Pct,0.002983877,False
-4D%__opp__hc_Norm,0.0029318149,True
-RZPct__hc_Norm,0.0029261112,True
-LB_Retention_Rate_Pct,0.0029197067,False
-DL_Players_New,0.0029168462,False
-Avg_Roster_Exp_RB,0.0029037124,False
-Y/A Rushing__oc_Norm,0.0027666967,True
-QB_Players_Retained,0.0027368497,False
-Avg_Starter_Age_RB,0.002730077,False
-Avg_Roster_Age_WR,0.0027204272,False
-Def_Pct,0.0027053205,False
-4D%__hc_Norm,0.0026854677,True
-Yds Rushing__dc_Norm,0.0026698255,True
-Yds Rushing__oc_Norm,0.0026582377,True
-1stPy__opp__hc_Norm,0.002646198,True
-Yds Penalties__dc_Norm,0.0025762566,True
-QB_Players_Departed,0.002569639,False
-Time Average Drive__oc_Norm,0.0025693232,True
-DL_Players_Departed,0.0025604062,False
-LB_Retention_Rate_Pct_crosstab,0.002495101,False
-DL_Min_Games_Missed_Pct,0.002490852,False
-1stPy__hc_Norm,0.0024896357,True
-Prev_2Yr_Round_4_Picks,0.0024881898,False
-Prev_3Yr_Round_7Plus_Picks,0.002478221,False
-Current_Round_2_Picks,0.0024666095,False
-Y/P__oc_Norm,0.0024612388,True
-Avg_Roster_Exp_CB,0.0024448805,False
-4D%__dc_Norm,0.002434067,True
-Avg_Roster_Age_QB,0.002393784,False
-TE_Pct,0.0023707743,False
-WR_Max_Games_Missed_Pct,0.0023571283,False
-Avg_Roster_Exp_LB,0.002355781,False
-Att Rushing__oc_Norm,0.002343869,True
-Plays Average Drive__opp__hc_Norm,0.002337327,True
-Prev_3Yr_Round_4_Picks,0.0023145922,False
-Att Rushing__hc_Norm,0.0023062555,True
-1stD Rushing__oc_Norm,0.0022986904,True
-SEC_Pct,0.0022941388,False
-#Dr__dc_Norm,0.0022703633,True
-DeadCap_Pct,0.0022694657,False
-Y/A Rushing__dc_Norm,0.0022686862,True
-OL_Min_Games_Missed_Pct,0.0022587166,False
-TE_Avg_Games_Missed_Pct,0.0022446392,False
-Avg_Roster_Exp_TE,0.002238078,False
-Prev_1Yr_Round_4_Picks,0.002228022,False
-4DAtt__dc_Norm,0.0022268011,True
-Prev_3Yr_Round_6_Picks,0.0021826853,False
-4DAtt__opp__hc_Norm,0.0021632975,True
-Avg_Starter_Exp_RB,0.0021629713,False
-OL_New_Player_Rate_Pct_crosstab,0.002146902,False
-TE_Players_Retained,0.0021369462,False
-Avg_Starter_Age_QB,0.0021216823,False
-LB_New_Player_Rate_Pct_crosstab,0.0021008488,False
-3DAtt__dc_Norm,0.0020982185,True
-num_yr_nfl_hc,0.0020715531,True
-LB_Max_Games_Missed_Pct,0.0020638409,False
-LB_Players_Retained,0.002063156,False
-Avg_Roster_Age_RB,0.0020497583,False
-TO__opp__hc_Norm,0.0020452563,True
-WR_Avg_Games_Missed_Pct,0.0020229283,False
-Avg_Starter_Exp_DL,0.0020063382,False
-Y/A Rushing__hc_Norm,0.0020044656,True
-3DAtt__hc_Norm,0.0019991805,True
-Opp_Pen_Norm,0.0019890394,False
-CB_Min_Games_Missed_Pct,0.0019879634,False
-Avg_Roster_Age_DL,0.0019824507,False
-RZPct__oc_Norm,0.0019791357,True
-Opp_Yds_Penalties_Norm,0.0019788058,False
-RZAtt__oc_Norm,0.0019772144,True
-RB_Players_New,0.0019535136,False
-Yds__oc_Norm,0.0019388668,True
-Att Rushing__dc_Norm,0.0019225391,True
-DL_New_Player_Rate_Pct,0.001915956,False
-Att Passing__hc_Norm,0.0019154963,True
-#Dr__oc_Norm,0.0019053823,True
-CB_Net_Change,0.0018987504,False
-3D%__oc_Norm,0.0018969442,True
-WR_Net_Change,0.0018700055,False
-Avg_Starter_Age_CB,0.0018688347,False
-Pts Average Drive__dc_Norm,0.0018509474,True
-OL_Net_Change,0.0018451393,False
-TD Rushing__oc_Norm,0.0018412231,True
-Prev_3Yr_Round_2_Picks,0.001821954,False
-Sc%__dc_Norm,0.0018181772,True
-TE_Max_Games_Missed_Pct,0.0018177646,False
-Att Passing__opp__hc_Norm,0.0018164035,True
-TO%__dc_Norm,0.0018055214,True
-TE_Retention_Rate_Pct,0.0018011014,False
-Avg_Starter_Exp_CB,0.0017953893,False
-Time Average Drive__opp__hc_Norm,0.0017953514,True
-WR_Players_Retained,0.0017936357,False
-num_yr_nfl_pos,0.001792359,True
-WR_Retention_Rate_Pct_crosstab,0.0017625086,False
-Int Passing__opp__hc_Norm,0.0017264367,True
-1stD Passing__oc_Norm,0.0017221404,True
-PF (Points For)__dc_Norm,0.0017105589,True
-3D%__dc_Norm,0.0016990496,True
-Prev_3Yr_Round_3_Picks,0.0016984162,False
-StdDev_Starter_Experience,0.0016824197,False
-DL_Retention_Rate_Pct_crosstab,0.0016782716,False
-Yds Penalties__hc_Norm,0.0016732936,True
-TO__oc_Norm,0.0016718103,True
-Yds Average Drive__hc_Norm,0.001669015,True
-DL_Net_Change,0.0016356854,False
-Avg_Roster_Age_LB,0.001591442,False
-TO__hc_Norm,0.0015684951,True
-Yds__dc_Norm,0.0015682334,True
-CB_Departure_Rate_Pct,0.0015496332,False
-CB_Avg_Games_Missed_Pct,0.0015476353,False
-CB_Players_Count,0.0015389461,False
-NY/A Passing__dc_Norm,0.0015357326,True
-Time Average Drive__hc_Norm,0.0015248935,True
-Avg_Starter_Exp_LB,0.001506447,False
-TD Rushing__hc_Norm,0.0015026812,True
-TE_Min_Games_Missed_Pct,0.0014960018,False
-Avg_Starter_Exp_S,0.0014902266,False
-DL_Pct,0.0014877268,False
-NY/A Passing__opp__hc_Norm,0.0014793591,True
-RB_Net_Change,0.0014766492,False
-Current_Round_7Plus_Picks,0.0014684666,False
-WR_Retention_Rate_Pct,0.0014681185,False
-CB_Max_Games_Missed_Pct,0.0014479009,False
-Avg_Roster_Exp_WR,0.0014379311,False
-Team_Pen_Norm,0.0013717375,False
-4DAtt__hc_Norm,0.0013680808,True
-LB_Pct,0.0013394846,False
-Prev_4Yr_Round_1_Picks,0.001229042,False
-Avg_Starter_Exp_TE,0.0012207703,False
-OL_Pct,0.0012011256,False
-Current_Round_3_Picks,0.0011997483,False
-Pen__opp__hc_Norm,0.0011989833,True
-TO%__opp__hc_Norm,0.0011967376,True
-LS_Pct,0.0011603457,False
-S_Net_Change,0.0011409231,False
-Att Rushing__opp__hc_Norm,0.0011403449,True
-S_Avg_Games_Missed_Pct,0.0011020785,False
-Y/A Rushing__opp__hc_Norm,0.0010904315,True
-Prev_1Yr_Round_6_Picks,0.001089336,False
-num_yr_nfl_coor,0.0010699286,True
-1stPy__oc_Norm,0.0010535242,True
-Avg_Starter_Age_LB,0.0010439696,False
-QB_Retention_Rate_Pct_crosstab,0.0010165849,False
-RB_Players_Departed,0.00101253,False
-WR_New_Player_Rate_Pct,0.0009714697,False
-Avg_Roster_Exp_S,0.0009712688,False
-Avg_Roster_Age_OL,0.00095126586,False
-Cap SpaceAll_Pct,0.00094732124,False
-StdDev_Roster_Experience,0.0009317124,False
-WR_Pct,0.0008897907,False
-Prev_2Yr_Round_6_Picks,0.00087344536,False
-TD Rushing__dc_Norm,0.0008696378,True
-Avg_Starter_Age_WR,0.0007463151,False
-1stD Passing__opp__hc_Norm,0.0006315386,True
-DL_Retention_Rate_Pct,0.00058292446,False
-TO__dc_Norm,0.0005636679,True
-LB_Players_Departed,0.00053300447,False
-RB_New_Player_Rate_Pct,0.0004984709,False
-TE_Players_Departed,0.00041834346,False
-Current_Round_4_Picks,0.00027768046,False
-CB_Players_New,0.0001432821,False
-Off_Pct,5.377051e-05,False
-Total CapAllocations_Pct,4.532988e-05,False
-Prev_2Yr_Round_7Plus_Picks,0.0,False
-Prev_1Yr_Round_7Plus_Picks,0.0,False
-Prev_2Yr_Round_2_Picks,0.0,False
-Prev_2Yr_Round_5_Picks,0.0,False
-Prev_2Yr_Round_3_Picks,0.0,False
-Current_Round_5_Picks,0.0,False
-Current_Round_6_Picks,0.0,False
-Prev_1Yr_Round_2_Picks,0.0,False
-Prev_1Yr_Round_1_Picks,0.0,False
-Avg_Starter_Age_S,0.0,False
-Avg_Roster_Age_CB,0.0,False
-Prev_1Yr_Round_3_Picks,0.0,False
-Prev_1Yr_Round_5_Picks,0.0,False
-S_Min_Games_Missed_Pct,0.0,False
-3DAtt__opp__hc_Norm,0.0,True
+ReservesIR/PUP/NFI/SUSP_Pct,0.030775672,False
+Opp_Int_Passing_Norm,0.026302114,False
+TD Passing__hc_Norm,0.024176264,True
+Pts Average Drive__opp__hc_Norm,0.022605073,True
+Yds__opp__hc_Norm,0.022302957,True
+PF (Points For)__hc_Norm,0.0217873,True
+Team_Int_Passing_Norm,0.021382416,False
+Sc%__hc_Norm,0.017995466,True
+PF (Points For)__opp__hc_Norm,0.016526183,True
+QB_Avg_Games_Missed_Pct,0.015737075,False
+Active53-Man_Pct,0.014838265,False
+Avg_Starter_Experience,0.012784504,False
+QB_Players_New,0.011693894,False
+CB_New_Player_Rate_Pct,0.010470044,False
+Avg_Roster_Age,0.010373732,False
+TE_Players_New,0.010371049,False
+RZAtt__opp__hc_Norm,0.009817764,True
+4DAtt__oc_Norm,0.009026712,True
+Avg_Roster_Experience,0.008979053,False
+Avg_Starter_Exp_OL,0.00840627,False
+QB_New_Player_Rate_Pct,0.007921578,False
+Yds__oc_Norm,0.0078014713,True
+RB_Pct,0.007446175,False
+TO%__hc_Norm,0.0073246993,True
+RZAtt__hc_Norm,0.007114437,True
+RB_Max_Games_Missed_Pct,0.007048316,False
+SoS,0.0069220117,False
+NY/A Passing__hc_Norm,0.0068504824,True
+Yds__hc_Norm,0.0066225016,True
+TE_New_Player_Rate_Pct,0.006366468,False
+OL_Avg_Games_Missed_Pct,0.005969506,False
+LB_Retention_Rate_Pct,0.005773795,False
+TD Passing__opp__hc_Norm,0.005762668,True
+K_Pct,0.0057204305,False
+RB_Avg_Games_Missed_Pct,0.0057128393,False
+Time Average Drive__dc_Norm,0.0056392774,True
+StdDev_Starter_Experience,0.005590153,False
+P_Pct,0.0054327343,False
+Current_Round_6_Picks,0.0053971442,False
+TE_Min_Games_Missed_Pct,0.005383368,False
+4D%__oc_Norm,0.0053720567,True
+OL_Max_Games_Missed_Pct,0.005261383,False
+DL_New_Player_Rate_Pct_crosstab,0.0052403463,False
+LB_New_Player_Rate_Pct,0.0052369703,False
+LB_Max_Games_Missed_Pct,0.0050874418,False
+Yds Passing__oc_Norm,0.0047817486,True
+SPT_Pct,0.004695763,False
+Avg_Roster_Exp_QB,0.0046406,False
+1stD Passing__dc_Norm,0.0046321824,True
+Avg_Starter_Age_TE,0.0045571914,False
+RZPct__opp__hc_Norm,0.0045192093,True
+TD Passing__oc_Norm,0.004494314,True
+4D%__opp__hc_Norm,0.004483412,True
+QB_Retention_Rate_Pct,0.004409409,False
+TO%__oc_Norm,0.0043537817,True
+num_yr_col_pos,0.0042937016,True
+NY/A Passing__oc_Norm,0.004288079,True
+OL_Players_New,0.00427657,False
+OL_Min_Games_Missed_Pct,0.0041317805,False
+DL_Min_Games_Missed_Pct,0.004130532,False
+QB_Pct,0.0040511996,False
+OL_Retention_Rate_Pct_crosstab,0.004049058,False
+Cmp Passing__hc_Norm,0.004020725,True
+Att Rushing__oc_Norm,0.004014425,True
+StdDev_Roster_Age,0.004008226,False
+Pen__opp__hc_Norm,0.0040060817,True
+1stPy__opp__hc_Norm,0.0039685215,True
+Yds Rushing__oc_Norm,0.003962961,True
+DL_Players_Departed,0.003959965,False
+TE_Players_Retained,0.0039473744,False
+Avg_Roster_Age_LB,0.003943669,False
+Prev_2Yr_Round_1_Picks,0.003932746,False
+RZPct__dc_Norm,0.0039058563,True
+Yds Penalties__opp__hc_Norm,0.0038977098,True
+OL_Net_Change,0.0038728379,False
+1stPy__dc_Norm,0.0038119776,True
+#Dr__dc_Norm,0.0037878475,True
+Yds Penalties__dc_Norm,0.0037523888,True
+Def_Pct,0.0036926763,False
+1stD Passing__hc_Norm,0.0036676237,True
+Yds Average Drive__oc_Norm,0.0036478068,True
+1stD Rushing__hc_Norm,0.0036005753,True
+4D%__dc_Norm,0.0035914923,True
+Avg_Roster_Age_QB,0.0035285018,False
+Yds__dc_Norm,0.0035151925,True
+Avg_Roster_Exp_OL,0.0035140463,False
+Opp_Pen_Norm,0.0035050164,False
+CB_Departure_Rate_Pct,0.0034990192,False
+Yds Penalties__oc_Norm,0.0034885476,True
+Pts Average Drive__hc_Norm,0.0034458702,True
+Avg_Starter_Exp_CB,0.0034409324,False
+Cmp Passing__oc_Norm,0.0034189248,True
+S_Max_Games_Missed_Pct,0.0033569355,False
+WR_Max_Games_Missed_Pct,0.0033524507,False
+DL_Avg_Games_Missed_Pct,0.0033468585,False
+1stD__hc_Norm,0.003317013,True
+Avg_Roster_Age_WR,0.0033039565,False
+TO__hc_Norm,0.0033015483,True
+Prev_2Yr_Round_7Plus_Picks,0.0032984868,False
+1stD Rushing__oc_Norm,0.003295195,True
+LB_New_Player_Rate_Pct_crosstab,0.003268393,False
+#Dr__oc_Norm,0.003263949,True
+QB_Players_Departed,0.0032615676,False
+Yds Penalties__hc_Norm,0.003235488,True
+WR_Net_Change,0.0032039112,False
+4DAtt__hc_Norm,0.003146864,True
+Yds Passing__opp__hc_Norm,0.003136241,True
+Att Passing__hc_Norm,0.003130119,True
+CB_Players_New,0.0031165464,False
+Plays Average Drive__opp__hc_Norm,0.0031134342,True
+RZAtt__oc_Norm,0.0030975442,True
+CB_Avg_Games_Missed_Pct,0.0030911388,False
+DL_Players_New,0.0030715165,False
+Avg_Starter_Exp_LB,0.0030612848,False
+3DAtt__oc_Norm,0.0030583565,True
+OL_Pct,0.0030555017,False
+Att Rushing__dc_Norm,0.003036085,True
+Att Rushing__hc_Norm,0.003025358,True
+Avg_Roster_Age_CB,0.0030181813,False
+Prev_3Yr_Round_4_Picks,0.002996039,False
+StdDev_Roster_Experience,0.002989383,False
+OL_New_Player_Rate_Pct,0.0029834788,False
+CB_Retention_Rate_Pct,0.0029751693,False
+Sc%__dc_Norm,0.0029730338,True
+Current_Round_3_Picks,0.002956265,False
+RZPct__hc_Norm,0.0029527298,True
+DeadCap_Pct,0.0029456576,False
+Int Passing__opp__hc_Norm,0.0029140417,True
+LS_Pct,0.0029086475,False
+1stPy__hc_Norm,0.00289838,True
+LB_Players_Retained,0.0028951133,False
+Avg_Starter_Age,0.0028838287,False
+RB_Retention_Rate_Pct,0.0028733965,False
+4DAtt__dc_Norm,0.0028652141,True
+Time Average Drive__hc_Norm,0.002844039,True
+Opp_Yds_Penalties_Norm,0.0028372218,False
+TO__opp__hc_Norm,0.002809695,True
+WR_New_Player_Rate_Pct,0.0027932962,False
+Avg_Roster_Age_RB,0.0027887728,False
+Avg_Starter_Age_RB,0.002786807,False
+QB_Players_Retained,0.0027698504,False
+LB_Players_New,0.0027683766,False
+Int Passing__hc_Norm,0.0027577481,True
+DL_Max_Games_Missed_Pct,0.0027471364,False
+LB_Departure_Rate_Pct_crosstab,0.002710426,False
+Time Average Drive__oc_Norm,0.002708453,True
+Avg_Starter_Age_WR,0.0027052504,False
+Y/P__opp__hc_Norm,0.002704524,True
+Off_Pct,0.0027002569,False
+LB_Pct,0.0026917038,False
+1stPy__oc_Norm,0.0026872784,True
+Pts Average Drive__dc_Norm,0.0026812612,True
+Y/A Rushing__oc_Norm,0.0026753782,True
+1stD__oc_Norm,0.0026714471,True
+Time Average Drive__opp__hc_Norm,0.002669387,True
+SEC_Pct,0.0026681013,False
+Att Passing__opp__hc_Norm,0.0026491121,True
+WR_Avg_Games_Missed_Pct,0.0026226498,False
+Avg_Roster_Exp_LB,0.0026154919,False
+Avg_Roster_Age_DL,0.0026071551,False
+Cap SpaceAll_Pct,0.0025953143,False
+3D%__opp__hc_Norm,0.0025830579,True
+RZAtt__dc_Norm,0.0025761467,True
+4D%__hc_Norm,0.002574337,True
+TO%__opp__hc_Norm,0.002564855,True
+QB_Retention_Rate_Pct_crosstab,0.0025562597,False
+CB_Max_Games_Missed_Pct,0.0025427593,False
+Avg_Starter_Age_CB,0.002528017,False
+Avg_Roster_Exp_CB,0.002524074,False
+Prev_3Yr_Round_2_Picks,0.0025170457,False
+Avg_Starter_Exp_WR,0.002484238,False
+Y/A Rushing__hc_Norm,0.0024783907,True
+3DAtt__hc_Norm,0.0024531814,True
+Cmp Passing__dc_Norm,0.0024394013,True
+#Dr__hc_Norm,0.002436414,True
+Plays Average Drive__hc_Norm,0.0024223798,True
+1stD Passing__oc_Norm,0.0024164,True
+Att Passing__dc_Norm,0.0024143343,True
+4DAtt__opp__hc_Norm,0.0024072505,True
+Prev_2Yr_Round_4_Picks,0.0023865805,False
+WR_Players_New,0.0023713405,False
+Avg_Roster_Age_S,0.0023709561,False
+Y/A Rushing__dc_Norm,0.0023398413,True
+Avg_Starter_Age_OL,0.002314793,False
+NY/A Passing__dc_Norm,0.0023107317,True
+Pen__dc_Norm,0.0022634878,True
+Plays Average Drive__dc_Norm,0.00226134,True
+3D%__oc_Norm,0.0022529652,True
+WR_Pct,0.0022393486,False
+TO%__dc_Norm,0.002233915,True
+Total CapAllocations_Pct,0.0022267364,False
+3DAtt__opp__hc_Norm,0.0022222882,True
+RB_Net_Change,0.0022129738,False
+CB_Players_Count,0.002202963,False
+CB_Players_Departed,0.0021881089,False
+PF (Points For)__dc_Norm,0.0021742382,True
+TE_Avg_Games_Missed_Pct,0.002173313,False
+TE_Net_Change,0.0021586614,False
+Yds Passing__dc_Norm,0.0021500578,True
+S_Retention_Rate_Pct_crosstab,0.0021269196,False
+RB_New_Player_Rate_Pct,0.002109685,False
+3DAtt__dc_Norm,0.002092926,True
+LB_Net_Change,0.0020836955,False
+Att Passing__oc_Norm,0.002032435,True
+RB_Players_Departed,0.0020194731,False
+Prev_3Yr_Round_7Plus_Picks,0.0020129785,False
+Plays Average Drive__oc_Norm,0.0020116477,True
+DL_Net_Change,0.0019926303,False
+Avg_Starter_Exp_QB,0.001974128,False
+Cmp Passing__opp__hc_Norm,0.0019158898,True
+S_Avg_Games_Missed_Pct,0.001910062,False
+WR_Players_Departed,0.0017998385,False
+LB_Avg_Games_Missed_Pct,0.0017910125,False
+TO__oc_Norm,0.0017094786,True
+Prev_3Yr_Round_3_Picks,0.0016295604,False
+1stD Rushing__dc_Norm,0.0015583811,True
+1stD Passing__opp__hc_Norm,0.0014520657,True
+num_yr_nfl_hc,0.0013461721,True
+Pts Average Drive__oc_Norm,0.0012444857,True
+TE_Pct,0.0009874568,False
+LB_Players_Departed,0.0007599564,False
+TO__dc_Norm,0.0007373618,True
+CB_Min_Games_Missed_Pct,0.0,False
+LB_Min_Games_Missed_Pct,0.0,False
+Yds Average Drive__opp__hc_Norm,0.0,True
+Y/A Rushing__opp__hc_Norm,0.0,True
 LB_Players_Count,0.0,False
 #Dr__opp__hc_Norm,0.0,True
-Avg_Starter_Exp_QB,0.0,False
-S_Players_Count,0.0,False
-StdDev_Starter_Age,0.0,False
 Sc%__opp__hc_Norm,0.0,True
-Avg_Starter_Age_DL,0.0,False
-RB_Departure_Rate_Pct,0.0,False
-WR_Players_Departed,0.0,False
-QB_Departure_Rate_Pct,0.0,False
-RB_Players_Retained,0.0,False
+TD Rushing__opp__hc_Norm,0.0,True
+Yds Rushing__opp__hc_Norm,0.0,True
+Att Rushing__opp__hc_Norm,0.0,True
+WR_Players_Retained,0.0,False
 WR_Departure_Rate_Pct,0.0,False
-Avg_Roster_Age_S,0.0,False
+1stD Rushing__opp__hc_Norm,0.0,True
+RB_Departure_Rate_Pct,0.0,False
+RB_Players_New,0.0,False
+Prev_1Yr_Round_3_Picks,0.0,False
+Prev_1Yr_Round_2_Picks,0.0,False
+Prev_1Yr_Round_1_Picks,0.0,False
+Current_Round_7Plus_Picks,0.0,False
+Current_Round_5_Picks,0.0,False
+Current_Round_4_Picks,0.0,False
+Current_Round_2_Picks,0.0,False
 Current_Round_1_Picks,0.0,False
-Prev_3Yr_Round_1_Picks,0.0,False
-TE_New_Player_Rate_Pct_crosstab,0.0,False
-OL_Departure_Rate_Pct_crosstab,0.0,False
-TE_Retention_Rate_Pct_crosstab,0.0,False
-RB_New_Player_Rate_Pct_crosstab,0.0,False
-WR_Departure_Rate_Pct_crosstab,0.0,False
-TE_Departure_Rate_Pct_crosstab,0.0,False
-RB_Departure_Rate_Pct_crosstab,0.0,False
-S_Retention_Rate_Pct,0.0,False
-S_Departure_Rate_Pct,0.0,False
-QB_Departure_Rate_Pct_crosstab,0.0,False
-S_New_Player_Rate_Pct,0.0,False
-Yds Average Drive__oc_Norm,0.0,True
-S_Players_Retained,0.0,False
-S_Players_Departed,0.0,False
-S_Players_New,0.0,False
-Att Passing__oc_Norm,0.0,True
-LB_Min_Games_Missed_Pct,0.0,False
-Int Passing__oc_Norm,0.0,True
-S_Retention_Rate_Pct_crosstab,0.0,False
-CB_New_Player_Rate_Pct_crosstab,0.0,False
-num_times_hc,0.0,True
-QB_Max_Games_Missed_Pct,0.0,False
+Team_Yds_Penalties_Norm,0.0,False
+Team_Pen_Norm,0.0,False
+Avg_Roster_Exp_S,0.0,False
+Avg_Starter_Exp_S,0.0,False
+Avg_Starter_Age_S,0.0,False
+Avg_Starter_Age_DL,0.0,False
+Avg_Starter_Age_LB,0.0,False
+Avg_Roster_Exp_DL,0.0,False
+TE_Players_Count,0.0,False
+DL_Players_Count,0.0,False
+Avg_Roster_Age_TE,0.0,False
+Avg_Starter_Exp_DL,0.0,False
+Avg_Roster_Age_OL,0.0,False
+OL_Players_Count,0.0,False
+Avg_Roster_Exp_TE,0.0,False
+S_Departure_Rate_Pct_crosstab,0.0,False
 QB_Min_Games_Missed_Pct,0.0,False
-WR_Players_Count,0.0,False
-WR_Min_Games_Missed_Pct,0.0,False
+QB_Max_Games_Missed_Pct,0.0,False
+RB_Min_Games_Missed_Pct,0.0,False
 QB_Players_Count,0.0,False
 RB_Players_Count,0.0,False
-TE_Players_Count,0.0,False
-OL_Players_Count,0.0,False
-DL_Avg_Games_Missed_Pct,0.0,False
-DL_Players_Count,0.0,False
-Prev_3Yr_Round_5_Picks,0.0,False
-num_yr_col_hc,0.0,True
-num_yr_col_pos,0.0,True
+WR_Min_Games_Missed_Pct,0.0,False
+WR_Players_Count,0.0,False
+TE_Max_Games_Missed_Pct,0.0,False
+S_Players_Count,0.0,False
+S_Min_Games_Missed_Pct,0.0,False
+StdDev_Starter_Age,0.0,False
+Avg_Roster_Exp_RB,0.0,False
+Avg_Starter_Age_QB,0.0,False
+Avg_Starter_Exp_RB,0.0,False
+Avg_Roster_Exp_WR,0.0,False
+Avg_Starter_Exp_TE,0.0,False
+CB_Departure_Rate_Pct_crosstab,0.0,False
+CB_New_Player_Rate_Pct_crosstab,0.0,False
 Total_Games_In_Season,0.0,False
 S_New_Player_Rate_Pct_crosstab,0.0,False
-S_Departure_Rate_Pct_crosstab,0.0,False
-QB_New_Player_Rate_Pct_crosstab,0.0,False
-1stD__dc_Norm,0.0,True
-CB_Departure_Rate_Pct_crosstab,0.0,False
-CB_Retention_Rate_Pct_crosstab,0.0,False
-DL_New_Player_Rate_Pct_crosstab,0.0,False
-LB_Departure_Rate_Pct_crosstab,0.0,False
-Y/P__dc_Norm,0.0,True
-Yds Passing__dc_Norm,0.0,True
-Att Passing__dc_Norm,0.0,True
+QB_Departure_Rate_Pct,0.0,False
+DL_Pct,0.0,False
+QB_Net_Change,0.0,False
+RB_Players_Retained,0.0,False
+NY/A Passing__opp__hc_Norm,0.0,True
+1stD__opp__hc_Norm,0.0,True
+WR_Retention_Rate_Pct,0.0,False
+Prev_4Yr_Round_1_Picks,0.0,False
+Prev_3Yr_Round_1_Picks,0.0,False
+Prev_2Yr_Round_2_Picks,0.0,False
+Prev_3Yr_Round_5_Picks,0.0,False
+Prev_2Yr_Round_6_Picks,0.0,False
+Y/P__oc_Norm,0.0,True
+Prev_3Yr_Round_6_Picks,0.0,False
+Prev_2Yr_Round_5_Picks,0.0,False
+Prev_2Yr_Round_3_Picks,0.0,False
+Prev_1Yr_Round_7Plus_Picks,0.0,False
+Prev_1Yr_Round_4_Picks,0.0,False
+num_yr_col_hc,0.0,True
+num_times_hc,0.0,True
+LB_Retention_Rate_Pct_crosstab,0.0,False
 DL_Departure_Rate_Pct_crosstab,0.0,False
-OL_Players_Departed,0.0,False
-OL_Players_Retained,0.0,False
-TE_Net_Change,0.0,False
-TE_Departure_Rate_Pct,0.0,False
-Plays Average Drive__dc_Norm,0.0,True
-DL_Players_Retained,0.0,False
-DL_Departure_Rate_Pct,0.0,False
+DL_Retention_Rate_Pct_crosstab,0.0,False
+OL_New_Player_Rate_Pct_crosstab,0.0,False
+TE_New_Player_Rate_Pct_crosstab,0.0,False
+OL_Departure_Rate_Pct_crosstab,0.0,False
+TE_Departure_Rate_Pct_crosstab,0.0,False
+TE_Retention_Rate_Pct_crosstab,0.0,False
+RB_New_Player_Rate_Pct_crosstab,0.0,False
+WR_New_Player_Rate_Pct_crosstab,0.0,False
+WR_Departure_Rate_Pct_crosstab,0.0,False
+WR_Retention_Rate_Pct_crosstab,0.0,False
+RB_Retention_Rate_Pct_crosstab,0.0,False
+RB_Departure_Rate_Pct_crosstab,0.0,False
+QB_New_Player_Rate_Pct_crosstab,0.0,False
+QB_Departure_Rate_Pct_crosstab,0.0,False
+Sc%__oc_Norm,0.0,True
+S_Net_Change,0.0,False
+S_New_Player_Rate_Pct,0.0,False
+S_Departure_Rate_Pct,0.0,False
+S_Players_New,0.0,False
+S_Retention_Rate_Pct,0.0,False
+S_Players_Departed,0.0,False
+S_Players_Retained,0.0,False
+CB_Net_Change,0.0,False
+PF (Points For)__oc_Norm,0.0,True
+num_yr_nfl_coor,0.0,True
+num_yr_nfl_pos,0.0,True
+num_yr_col_coor,0.0,True
+Int Passing__oc_Norm,0.0,True
+TD Rushing__oc_Norm,0.0,True
+Pen__oc_Norm,0.0,True
+Prev_1Yr_Round_5_Picks,0.0,False
+Prev_1Yr_Round_6_Picks,0.0,False
 OL_Departure_Rate_Pct,0.0,False
+OL_Players_Retained,0.0,False
+TE_Departure_Rate_Pct,0.0,False
+TE_Retention_Rate_Pct,0.0,False
+TE_Players_Departed,0.0,False
+3D%__dc_Norm,0.0,True
+Yds Average Drive__dc_Norm,0.0,True
+CB_Retention_Rate_Pct_crosstab,0.0,False
+RZPct__oc_Norm,0.0,True
+Y/P__dc_Norm,0.0,True
+Int Passing__dc_Norm,0.0,True
+TD Passing__dc_Norm,0.0,True
+TD Rushing__dc_Norm,0.0,True
+Yds Rushing__dc_Norm,0.0,True
+1stD__dc_Norm,0.0,True
+OL_Retention_Rate_Pct,0.0,False
+OL_Players_Departed,0.0,False
+CB_Players_Retained,0.0,False
+DL_New_Player_Rate_Pct,0.0,False
+DL_Departure_Rate_Pct,0.0,False
+DL_Retention_Rate_Pct,0.0,False
+DL_Players_Retained,0.0,False
+Yds Passing__hc_Norm,0.0,True
 Y/P__hc_Norm,0.0,True
-CB_Retention_Rate_Pct,0.0,False
-LB_Players_New,0.0,False
 LB_Departure_Rate_Pct,0.0,False
-#Dr__hc_Norm,0.0,True
+Pen__hc_Norm,0.0,True
+TD Rushing__hc_Norm,0.0,True
 Yds Rushing__hc_Norm,0.0,True
-Int Passing__hc_Norm,0.0,True
 3D%__hc_Norm,0.0,True
+Yds Average Drive__hc_Norm,0.0,True

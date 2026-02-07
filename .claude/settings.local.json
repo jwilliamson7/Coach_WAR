@@ -24,7 +24,17 @@
       "Bash(cmd /c \"dir /s /b C:\\\\Users\\\\jonwi\\\\AppData\\\\Local\\\\Programs\\\\MiKTeX\\\\miktex\\\\bin\\\\pdflatex.exe\")",
       "Bash(find:*)",
       "Bash(pip show:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebSearch",
+      "WebFetch(domain:www.degruyterbrill.com)",
+      "WebFetch(domain:www.researchgate.net)",
+      "WebFetch(domain:onlinelibrary.wiley.com)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:www.semanticscholar.org)",
+      "WebFetch(domain:ar5iv.labs.arxiv.org)",
+      "WebFetch(domain:ideas.repec.org)",
+      "WebFetch(domain:journals.sagepub.com)",
+      "WebFetch(domain:link.springer.com)"
     ],
     "deny": [],
     "ask": []
