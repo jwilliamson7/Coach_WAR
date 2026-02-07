@@ -9,7 +9,7 @@ import numpy as np
 import xgboost as xgb
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import RandomizedSearchCV, train_test_split
-from scipy.stats import uniform, randint
+from scipy.stats import uniform, randint, t as t_dist
 import argparse
 import warnings
 import sys
@@ -373,16 +373,17 @@ def train_and_predict(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=
             
     else:
         print("\nUsing default hyperparameters (no tuning)...")
-        # Default hyperparameters
+        # Default hyperparameters (from 200-iteration RandomizedSearchCV, 5-fold CV)
         model_params = {
-            'n_estimators': 250,
+            'n_estimators': 300,
             'learning_rate': 0.05,
-            'max_depth': 3,
+            'max_depth': 2,
             'gamma': 0,
             'reg_alpha': 0.1,
-            'reg_lambda': 1.5,
-            'subsample': 1.0,
+            'reg_lambda': 0.1,
+            'subsample': 0.7,
             'colsample_bytree': 1.0,
+            'min_child_weight': 5,
             'objective': 'reg:squarederror',
             'random_state': 42,
             'verbosity': 0,
@@ -434,10 +435,17 @@ def train_and_predict(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=
     
     return model, y_pred_full, train_metrics, test_metrics
 
-def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year_info):
+def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year_info, test_rmse=None):
     """Analyze the impact of coaching by comparing actual vs replacement predictions."""
     print("\nAnalyzing coaching impact...")
-    
+
+    # Compute global WAR SE from test set RMSE (converted to 16-game wins)
+    if test_rmse is not None:
+        war_se = test_rmse * 16  # Convert win percentage RMSE to 16-game season wins
+        print(f"Model residual standard error: ±{war_se:.2f} wins per season (from test RMSE = {test_rmse:.4f})")
+    else:
+        war_se = np.nan
+
     # Create results dataframe
     # Key metric: Coaching WAR = Actual Win% - Replacement Prediction
     results = pd.DataFrame({
@@ -449,7 +457,8 @@ def analyze_coaching_impact(y_true, y_pred_actual, y_pred_replacement, team_year
         'Coaching_WAR': y_true.values - y_pred_replacement,  # Primary metric: Actual - Replacement prediction
         'Predicted_Impact': y_pred_actual - y_pred_replacement,  # Secondary metric: Model's predicted difference
         'Prediction_Error_Coach': y_true.values - y_pred_actual,
-        'Prediction_Error_Replacement': y_true.values - y_pred_replacement
+        'Prediction_Error_Replacement': y_true.values - y_pred_replacement,
+        'WAR_SE': war_se  # Global model SE in wins (same for all rows)
     })
     
     # Load head coach data
@@ -558,7 +567,7 @@ def analyze_coach_rankings(results):
     print(f"\n{'='*80}")
     print("COACH CAREER IMPACT ANALYSIS (WAR: Actual Win% - Replacement Prediction)")
     print(f"{'='*80}")
-    
+
     # Group by coach and calculate statistics
     coach_stats = results.groupby('Primary_Coach').agg({
         'Coaching_WAR': ['mean', 'std', 'count', 'sum'],  # Primary WAR metric
@@ -567,7 +576,7 @@ def analyze_coach_rankings(results):
         'Predicted_With_Coach': 'mean',
         'Predicted_Replacement': 'mean'
     }).round(4)
-    
+
     # Flatten column names
     coach_stats.columns = ['_'.join(col).strip() for col in coach_stats.columns.values]
     coach_stats = coach_stats.rename(columns={
@@ -581,33 +590,50 @@ def analyze_coach_rankings(results):
         'Predicted_With_Coach_mean': 'Avg_Pred_Coach',
         'Predicted_Replacement_mean': 'Avg_Pred_Replace'
     })
-    
+
     # Filter for coaches with at least 3 seasons
     coach_stats = coach_stats[coach_stats['Seasons'] >= 3]
-    
+
+    # Compute 95% confidence intervals for career average WAR
+    # SE = std / sqrt(N), CI = mean ± t_{N-1, 0.025} × SE
+    # WAR values are in win-percentage units; convert to 16-game wins for CI
+    coach_stats['SE'] = (coach_stats['WAR_StdDev'] / np.sqrt(coach_stats['Seasons'])) * 16
+    t_crit = coach_stats['Seasons'].apply(lambda n: t_dist.ppf(0.975, df=n - 1))
+    coach_stats['CI_Lower'] = coach_stats['Avg_WAR'] * 16 - t_crit * coach_stats['SE']
+    coach_stats['CI_Upper'] = coach_stats['Avg_WAR'] * 16 + t_crit * coach_stats['SE']
+
+    # Round CI columns
+    coach_stats['SE'] = coach_stats['SE'].round(2)
+    coach_stats['CI_Lower'] = coach_stats['CI_Lower'].round(2)
+    coach_stats['CI_Upper'] = coach_stats['CI_Upper'].round(2)
+
     # Sort by average WAR (actual vs replacement)
     coach_stats = coach_stats.sort_values('Avg_WAR', ascending=False)
-    
+
     print(f"\nTop 15 Coaches by Average WAR (min 3 seasons):")
-    print(f"\n{'Coach':<30} {'Avg WAR':<12} {'Seasons':<10} {'Total WAR':<12} {'Avg Win%'}")
-    print("-" * 80)
-    
+    print(f"\n{'Coach':<25} {'Avg WAR':<10} {'Seasons':<9} {'Total WAR':<11} {'95% CI':<18} {'Avg Win%'}")
+    print("-" * 90)
+
     for coach, row in coach_stats.head(15).iterrows():
         if pd.notna(coach) and coach != 'N/A':
-            coach_name = coach[:28] if len(coach) > 28 else coach
-            print(f"{coach_name:<30} {row['Avg_WAR']:+.4f}      {int(row['Seasons']):<10} "
-                  f"{row['Total_WAR']:+.4f}      {row['Avg_Actual_Win']:.3f}")
-    
+            coach_name = coach[:23] if len(coach) > 23 else coach
+            avg_war_games = row['Avg_WAR'] * 16
+            ci_str = f"[{row['CI_Lower']:+.1f}, {row['CI_Upper']:+.1f}]"
+            print(f"{coach_name:<25} {avg_war_games:+.1f}      {int(row['Seasons']):<9} "
+                  f"{row['Total_WAR'] * 16:+.1f}       {ci_str:<18} {row['Avg_Actual_Win']:.3f}")
+
     print(f"\nBottom 15 Coaches by Average WAR (min 3 seasons):")
-    print(f"\n{'Coach':<30} {'Avg WAR':<12} {'Seasons':<10} {'Total WAR':<12} {'Avg Win%'}")
-    print("-" * 80)
-    
+    print(f"\n{'Coach':<25} {'Avg WAR':<10} {'Seasons':<9} {'Total WAR':<11} {'95% CI':<18} {'Avg Win%'}")
+    print("-" * 90)
+
     for coach, row in coach_stats.tail(15).iterrows():
         if pd.notna(coach) and coach != 'N/A':
-            coach_name = coach[:28] if len(coach) > 28 else coach
-            print(f"{coach_name:<30} {row['Avg_WAR']:+.4f}      {int(row['Seasons']):<10} "
-                  f"{row['Total_WAR']:+.4f}      {row['Avg_Actual_Win']:.3f}")
-    
+            coach_name = coach[:23] if len(coach) > 23 else coach
+            avg_war_games = row['Avg_WAR'] * 16
+            ci_str = f"[{row['CI_Lower']:+.1f}, {row['CI_Upper']:+.1f}]"
+            print(f"{coach_name:<25} {avg_war_games:+.1f}      {int(row['Seasons']):<9} "
+                  f"{row['Total_WAR'] * 16:+.1f}       {ci_str:<18} {row['Avg_Actual_Win']:.3f}")
+
     return coach_stats
 
 def plot_feature_importance_comparison(model_actual, X_actual, coach_features, top_n=20):
@@ -750,9 +776,10 @@ def main():
         print("\nGenerating predictions with replacement-level coaching...")
         y_pred_replacement = model_actual.predict(X_replacement)
         
-        # Analyze coaching impact
+        # Analyze coaching impact (pass test RMSE for global model SE)
+        test_rmse = np.sqrt(test_metrics['mse'])
         results, high_impact_coaches = analyze_coaching_impact(
-            y, y_pred_actual, y_pred_replacement, team_year_info
+            y, y_pred_actual, y_pred_replacement, team_year_info, test_rmse=test_rmse
         )
         
         # Analyze individual coach rankings
@@ -778,6 +805,7 @@ def main():
         print(f"\nSummary:")
         print(f"- Dataset used: {dataset_type}")
         print(f"- Train R²: {train_metrics['r2']:.4f}, Test R²: {test_metrics['r2']:.4f}")
+        print(f"- Model residual SE: ±{test_rmse * 16:.2f} wins per season")
         print(f"- Coaching features account for {len(coach_features)} of {len(X.columns)} total features")
         print(f"- Average coaching WAR (Actual - Replacement): {results['Coaching_WAR'].mean():.4f}")
         print(f"- Maximum positive coaching WAR: {results['Coaching_WAR'].max():.4f}")

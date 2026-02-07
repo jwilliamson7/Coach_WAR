@@ -180,6 +180,8 @@ def analyze_coach_background_by_decade():
         'mean_off': [],
         'mean_def': [],
         'difference': [],
+        'diff_ci_lower': [],
+        'diff_ci_upper': [],
         'u_stat': [],
         'p_value': [],
         'significance': []
@@ -220,6 +222,18 @@ def analyze_coach_background_by_decade():
                                 (len(offensive_data) + len(defensive_data) - 2))
             cohens_d = (offensive_data.mean() - defensive_data.mean()) / pooled_std if pooled_std > 0 else 0
 
+            # Welch's t-interval for difference in means
+            se_diff = np.sqrt(offensive_data.var() / len(offensive_data) + defensive_data.var() / len(defensive_data))
+            # Welch-Satterthwaite degrees of freedom
+            nu_num = (offensive_data.var() / len(offensive_data) + defensive_data.var() / len(defensive_data))**2
+            nu_den = ((offensive_data.var() / len(offensive_data))**2 / (len(offensive_data) - 1) +
+                      (defensive_data.var() / len(defensive_data))**2 / (len(defensive_data) - 1))
+            df_welch = nu_num / nu_den if nu_den > 0 else min(len(offensive_data), len(defensive_data)) - 1
+            t_crit_welch = stats.t.ppf(0.975, df=df_welch)
+            diff_mean = offensive_data.mean() - defensive_data.mean()
+            diff_ci_lower = diff_mean - t_crit_welch * se_diff
+            diff_ci_upper = diff_mean + t_crit_welch * se_diff
+
             print(f"\nStatistical tests:")
             print(f"  Welch's t-test:")
             print(f"    t-statistic: {t_stat:.3f}")
@@ -228,6 +242,7 @@ def analyze_coach_background_by_decade():
             print(f"    U-statistic: {u_stat:.0f}")
             print(f"    p-value: {p_value_mw:.4f}")
             print(f"  Cohen's d: {cohens_d:.3f}")
+            print(f"  95% CI on difference (O-D): [{diff_ci_lower:+.3f}, {diff_ci_upper:+.3f}]")
 
             # Interpretation based on more conservative p-value
             p_conservative = max(p_value, p_value_mw)
@@ -252,6 +267,8 @@ def analyze_coach_background_by_decade():
                 'Decade': decade,
                 'Year': decade_num,
                 'Difference': offensive_data.mean() - defensive_data.mean(),
+                'Diff_CI_Lower': diff_ci_lower,
+                'Diff_CI_Upper': diff_ci_upper,
                 'p_value_ttest': p_value,
                 'p_value_mw': p_value_mw,
                 'cohens_d': cohens_d,
@@ -267,6 +284,8 @@ def analyze_coach_background_by_decade():
             compact_table_data['mean_off'].append(offensive_data.mean())
             compact_table_data['mean_def'].append(defensive_data.mean())
             compact_table_data['difference'].append(offensive_data.mean() - defensive_data.mean())
+            compact_table_data['diff_ci_lower'].append(diff_ci_lower)
+            compact_table_data['diff_ci_upper'].append(diff_ci_upper)
             compact_table_data['u_stat'].append(int(u_stat))
             compact_table_data['p_value'].append(p_value_mw)
 
@@ -323,6 +342,13 @@ def analyze_coach_background_by_decade():
     row = f"{'Difference (O - D)':<31}"
     for i in range(len(compact_table_data['difference'])):
         val = f"{compact_table_data['difference'][i]:+.3f}"
+        row += f"{val:>{col_width}}"
+    print(row)
+
+    # Row 4b: 95% CI on Difference
+    row = f"{'95% CI (O - D)':<31}"
+    for i in range(len(compact_table_data['diff_ci_lower'])):
+        val = f"[{compact_table_data['diff_ci_lower'][i]:+.2f},{compact_table_data['diff_ci_upper'][i]:+.2f}]"
         row += f"{val:>{col_width}}"
     print(row)
 
