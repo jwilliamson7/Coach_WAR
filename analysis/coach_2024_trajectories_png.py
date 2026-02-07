@@ -10,7 +10,7 @@ import numpy as np
 import argparse
 from figure_utils import configure_matplotlib_fonts
 
-def create_2024_trajectories_plot(font_family='Helvetica'):
+def create_2024_trajectories_plot(font_family='serif'):
     """Create line chart showing cumulative WAR trajectories for 2024 coaches."""
 
     # Configure matplotlib fonts
@@ -222,8 +222,8 @@ def create_2024_trajectories_plot(font_family='Helvetica'):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Create 2024 NFL coaches career WAR trajectories')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use (default: serif)')
     args = parser.parse_args()
 
     print("Creating 2024 NFL coaches career WAR trajectories as PNG...")

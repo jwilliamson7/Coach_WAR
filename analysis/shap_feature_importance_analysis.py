@@ -496,7 +496,7 @@ def analyze_coaching_subcategories(shap_values, feature_names):
 
 
 def generate_visualizations(shap_values, feature_df, category_df, coaching_subcat_df,
-                            top_n=30, font='Helvetica'):
+                            top_n=30, font='serif'):
     """Generate all SHAP visualizations."""
     configure_matplotlib_fonts(font)
     colors = get_color_palette()
@@ -712,8 +712,8 @@ def main():
                         help='Random state for reproducibility (default: 42)')
     parser.add_argument('--top-n', type=int, default=30,
                         help='Number of top features to display in plots (default: 30)')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                        help='Font family for plots (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                        help='Font family for plots (default: serif)')
     args = parser.parse_args()
 
     # Create log file

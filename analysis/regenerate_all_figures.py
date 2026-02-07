@@ -8,7 +8,7 @@ import sys
 import argparse
 from pathlib import Path
 
-def run_script(script_path, font='Helvetica', extra_args=None):
+def run_script(script_path, font='serif', extra_args=None):
     """Run a Python script with optional font argument."""
     cmd = [sys.executable, script_path, '--font', font]
     if extra_args:
@@ -36,7 +36,7 @@ def run_script(script_path, font='Helvetica', extra_args=None):
         print(f"EXCEPTION running {script_path}: {e}")
         return False
 
-def regenerate_all_figures(font='Helvetica'):
+def regenerate_all_figures(font='serif'):
     """Regenerate all figures needed for the LaTeX paper."""
     print(f"\n{'#'*80}")
     print(f"# REGENERATING ALL FIGURES WITH FONT: {font}")
@@ -93,8 +93,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Regenerate all figures for LaTeX paper with consistent font'
     )
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use for all figures (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use for all figures (default: serif)')
     args = parser.parse_args()
 
     success = regenerate_all_figures(font=args.font)

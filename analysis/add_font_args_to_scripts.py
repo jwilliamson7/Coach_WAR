@@ -62,7 +62,7 @@ def add_font_support_to_script(filepath):
             # Add argparse in main
             indent = '    '
             new_lines.append(f"{indent}parser = argparse.ArgumentParser()")
-            new_lines.append(f"{indent}parser.add_argument('--font', default='Helvetica', help='Font family')")
+            new_lines.append(f"{indent}parser.add_argument('--font', default='serif', help='Font family')")
             new_lines.append(f"{indent}args = parser.parse_args()")
             new_lines.append(f"{indent}configure_matplotlib_fonts(args.font)")
             new_lines.append('')

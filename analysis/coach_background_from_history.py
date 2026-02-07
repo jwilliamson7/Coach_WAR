@@ -216,7 +216,7 @@ def calculate_cumulative_war_by_background(matched_data):
     
     return pd.DataFrame(coach_trajectories)
 
-def create_background_war_analysis(font_family='Helvetica'):
+def create_background_war_analysis(font_family='serif'):
     """Create comprehensive analysis of coach backgrounds and WAR performance."""
 
     # Configure matplotlib fonts
@@ -601,8 +601,8 @@ def create_background_war_analysis(font_family='Helvetica'):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Analyze coach backgrounds from coaching history')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use (default: serif)')
     args = parser.parse_args()
 
     print("Analyzing coach backgrounds from actual coaching history...")

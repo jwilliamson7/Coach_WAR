@@ -347,7 +347,7 @@ def create_summary_table(lagged_df, overall_corr, overall_r2, quintile_stats):
 
     return summary_df
 
-def main(font_family='Helvetica'):
+def main(font_family='serif'):
     """Run WAR persistence analysis."""
 
     # Configure matplotlib fonts
@@ -396,8 +396,8 @@ def main(font_family='Helvetica'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Coaching WAR persistence analysis')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use (default: serif)')
     args = parser.parse_args()
 
     main(font_family=args.font)

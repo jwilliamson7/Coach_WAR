@@ -360,9 +360,9 @@ def get_games_in_season(year: int) -> int:
         year: The NFL season year
 
     Returns:
-        Number of regular season games (16 for 2022 and earlier, 17 for 2023 and later)
+        Number of regular season games (16 for 2020 and earlier, 17 for 2021 and later)
     """
-    if year >= 2023:
+    if year >= 2021:
         return 17
     else:
         return 16

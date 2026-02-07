@@ -602,6 +602,10 @@ def analyze_coach_rankings(results):
     coach_stats['CI_Lower'] = coach_stats['Avg_WAR'] * 16 - t_crit * coach_stats['SE']
     coach_stats['CI_Upper'] = coach_stats['Avg_WAR'] * 16 + t_crit * coach_stats['SE']
 
+    # Compute Total WAR 95% confidence intervals
+    coach_stats['Total_CI_Lower'] = (coach_stats['Seasons'] * coach_stats['CI_Lower']).round(1)
+    coach_stats['Total_CI_Upper'] = (coach_stats['Seasons'] * coach_stats['CI_Upper']).round(1)
+
     # Round CI columns
     coach_stats['SE'] = coach_stats['SE'].round(2)
     coach_stats['CI_Lower'] = coach_stats['CI_Lower'].round(2)
@@ -611,28 +615,32 @@ def analyze_coach_rankings(results):
     coach_stats = coach_stats.sort_values('Avg_WAR', ascending=False)
 
     print(f"\nTop 15 Coaches by Average WAR (min 3 seasons):")
-    print(f"\n{'Coach':<25} {'Avg WAR':<10} {'Seasons':<9} {'Total WAR':<11} {'95% CI':<18} {'Avg Win%'}")
-    print("-" * 90)
+    print(f"\n{'Coach':<25} {'Avg WAR':<10} {'Avg 95% CI':<18} {'Total WAR':<11} {'Total 95% CI':<20} {'Seasons'}")
+    print("-" * 100)
 
     for coach, row in coach_stats.head(15).iterrows():
         if pd.notna(coach) and coach != 'N/A':
             coach_name = coach[:23] if len(coach) > 23 else coach
             avg_war_games = row['Avg_WAR'] * 16
-            ci_str = f"[{row['CI_Lower']:+.1f}, {row['CI_Upper']:+.1f}]"
-            print(f"{coach_name:<25} {avg_war_games:+.1f}      {int(row['Seasons']):<9} "
-                  f"{row['Total_WAR'] * 16:+.1f}       {ci_str:<18} {row['Avg_Actual_Win']:.3f}")
+            avg_ci_str = f"[{row['CI_Lower']:+.1f}, {row['CI_Upper']:+.1f}]"
+            total_war_games = row['Total_WAR'] * 16
+            total_ci_str = f"[{row['Total_CI_Lower']:+.1f}, {row['Total_CI_Upper']:+.1f}]"
+            print(f"{coach_name:<25} {avg_war_games:+.1f}      {avg_ci_str:<18} "
+                  f"{total_war_games:+.1f}       {total_ci_str:<20} {int(row['Seasons'])}")
 
     print(f"\nBottom 15 Coaches by Average WAR (min 3 seasons):")
-    print(f"\n{'Coach':<25} {'Avg WAR':<10} {'Seasons':<9} {'Total WAR':<11} {'95% CI':<18} {'Avg Win%'}")
-    print("-" * 90)
+    print(f"\n{'Coach':<25} {'Avg WAR':<10} {'Avg 95% CI':<18} {'Total WAR':<11} {'Total 95% CI':<20} {'Seasons'}")
+    print("-" * 100)
 
     for coach, row in coach_stats.tail(15).iterrows():
         if pd.notna(coach) and coach != 'N/A':
             coach_name = coach[:23] if len(coach) > 23 else coach
             avg_war_games = row['Avg_WAR'] * 16
-            ci_str = f"[{row['CI_Lower']:+.1f}, {row['CI_Upper']:+.1f}]"
-            print(f"{coach_name:<25} {avg_war_games:+.1f}      {int(row['Seasons']):<9} "
-                  f"{row['Total_WAR'] * 16:+.1f}       {ci_str:<18} {row['Avg_Actual_Win']:.3f}")
+            avg_ci_str = f"[{row['CI_Lower']:+.1f}, {row['CI_Upper']:+.1f}]"
+            total_war_games = row['Total_WAR'] * 16
+            total_ci_str = f"[{row['Total_CI_Lower']:+.1f}, {row['Total_CI_Upper']:+.1f}]"
+            print(f"{coach_name:<25} {avg_war_games:+.1f}      {avg_ci_str:<18} "
+                  f"{total_war_games:+.1f}       {total_ci_str:<20} {int(row['Seasons'])}")
 
     return coach_stats
 

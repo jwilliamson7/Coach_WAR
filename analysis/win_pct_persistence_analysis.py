@@ -146,7 +146,7 @@ def create_persistence_scatter(lagged_df, corr, r2, model, p_value):
     print("  Saved: win_pct_persistence_scatter.png")
     plt.close()
 
-def main(font_family='Helvetica'):
+def main(font_family='serif'):
     """Run Win Pct persistence analysis."""
 
     # Configure matplotlib fonts
@@ -182,8 +182,8 @@ def main(font_family='Helvetica'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Win percentage persistence analysis')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use (default: serif)')
     args = parser.parse_args()
 
     main(font_family=args.font)

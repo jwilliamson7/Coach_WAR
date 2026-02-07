@@ -195,7 +195,7 @@ def create_background_comparison_scatter(results):
     print("  Saved: coaching_war_3year_persistence_by_background.png")
     plt.close()
 
-def main(font_family='Helvetica'):
+def main(font_family='serif'):
     """Run 3-year average persistence analysis by background."""
 
     # Configure matplotlib fonts
@@ -232,8 +232,8 @@ def main(font_family='Helvetica'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='3-year average WAR persistence analysis by background')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use (default: serif)')
     args = parser.parse_args()
 
     main(font_family=args.font)
