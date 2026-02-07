@@ -1,0 +1,405 @@
+================================================================================
+XGBOOST COACHING IMPACT ANALYSIS
+Started at: 2026-02-07 14:43:55
+Using dataset WITHOUT AV features
+Comparing predictions with actual vs replacement-level coaching
+Hyperparameter tuning: DISABLED (using default parameters)
+Log file: analysis/outputs/logs/coaching_analysis_log_20260207_144355.txt
+================================================================================
+Loading data...
+Excluded 22 AV features
+Data shape: (1637, 365)
+Target shape: (1637,)
+
+Identifying coaching features...
+Found 139 coaching-related features
+  - Performance metrics: 132
+  - Tenure/experience metrics: 7
+
+Sample coaching features identified:
+  - PF (Points For)__oc_Norm
+  - Yds__oc_Norm
+  - Y/P__oc_Norm
+  - TO__oc_Norm
+  - 1stD__oc_Norm
+  - Cmp Passing__oc_Norm
+  - Att Passing__oc_Norm
+  - Yds Passing__oc_Norm
+  - TD Passing__oc_Norm
+  - Int Passing__oc_Norm
+  ... and 129 more
+
+Calculating replacement-level coach features...
+Using coach-level averaging (each coach weighted equally regardless of tenure)...
+Found coach data for 1637 of 1637 team-years
+  PF (Points For)__oc_Norm: 270 coaches, replacement = 0.471
+  Yds__oc_Norm: 270 coaches, replacement = 0.428
+  Y/P__oc_Norm: 270 coaches, replacement = 0.391
+  TO__oc_Norm: 270 coaches, replacement = -0.071
+  1stD__oc_Norm: 270 coaches, replacement = 0.432
+  Cmp Passing__oc_Norm: 270 coaches, replacement = 0.307
+  Att Passing__oc_Norm: 270 coaches, replacement = 0.143
+  Yds Passing__oc_Norm: 270 coaches, replacement = 0.420
+  TD Passing__oc_Norm: 270 coaches, replacement = 0.366
+  Int Passing__oc_Norm: 270 coaches, replacement = -0.061
+  NY/A Passing__oc_Norm: 270 coaches, replacement = 0.518
+  1stD Passing__oc_Norm: 270 coaches, replacement = 0.387
+  Att Rushing__oc_Norm: 270 coaches, replacement = 0.126
+  Yds Rushing__oc_Norm: 270 coaches, replacement = -0.022
+  TD Rushing__oc_Norm: 270 coaches, replacement = 0.339
+  Y/A Rushing__oc_Norm: 270 coaches, replacement = -0.091
+  1stD Rushing__oc_Norm: 270 coaches, replacement = -0.060
+  Pen__oc_Norm: 270 coaches, replacement = -0.027
+  Yds Penalties__oc_Norm: 270 coaches, replacement = -0.027
+  1stPy__oc_Norm: 270 coaches, replacement = 0.184
+  #Dr__oc_Norm: 270 coaches, replacement = 0.033
+  Sc%__oc_Norm: 270 coaches, replacement = 0.287
+  TO%__oc_Norm: 270 coaches, replacement = -0.180
+  Time Average Drive__oc_Norm: 270 coaches, replacement = 0.175
+  Plays Average Drive__oc_Norm: 270 coaches, replacement = 0.122
+  Yds Average Drive__oc_Norm: 270 coaches, replacement = 0.298
+  Pts Average Drive__oc_Norm: 270 coaches, replacement = 0.289
+  3DAtt__oc_Norm: 270 coaches, replacement = -0.161
+  3D%__oc_Norm: 270 coaches, replacement = 0.131
+  4DAtt__oc_Norm: 270 coaches, replacement = -0.116
+  4D%__oc_Norm: 270 coaches, replacement = -0.043
+  RZAtt__oc_Norm: 270 coaches, replacement = 0.357
+  RZPct__oc_Norm: 270 coaches, replacement = 0.211
+  PF (Points For)__dc_Norm: 270 coaches, replacement = -0.685
+  Yds__dc_Norm: 270 coaches, replacement = -0.691
+  Y/P__dc_Norm: 270 coaches, replacement = -0.629
+  TO__dc_Norm: 270 coaches, replacement = 0.307
+  1stD__dc_Norm: 270 coaches, replacement = -0.605
+  Cmp Passing__dc_Norm: 270 coaches, replacement = 0.040
+  Att Passing__dc_Norm: 270 coaches, replacement = 0.104
+  Yds Passing__dc_Norm: 270 coaches, replacement = -0.363
+  TD Passing__dc_Norm: 270 coaches, replacement = -0.550
+  Int Passing__dc_Norm: 270 coaches, replacement = 0.297
+  NY/A Passing__dc_Norm: 270 coaches, replacement = -0.556
+  1stD Passing__dc_Norm: 270 coaches, replacement = -0.279
+  Att Rushing__dc_Norm: 270 coaches, replacement = -0.438
+  Yds Rushing__dc_Norm: 270 coaches, replacement = -0.542
+  TD Rushing__dc_Norm: 270 coaches, replacement = -0.599
+  Y/A Rushing__dc_Norm: 270 coaches, replacement = -0.445
+  1stD Rushing__dc_Norm: 270 coaches, replacement = -0.570
+  Pen__dc_Norm: 270 coaches, replacement = 0.007
+  Yds Penalties__dc_Norm: 270 coaches, replacement = 0.019
+  1stPy__dc_Norm: 270 coaches, replacement = -0.153
+  #Dr__dc_Norm: 270 coaches, replacement = 0.275
+  Sc%__dc_Norm: 270 coaches, replacement = -0.559
+  TO%__dc_Norm: 270 coaches, replacement = 0.290
+  Time Average Drive__dc_Norm: 270 coaches, replacement = -0.534
+  Plays Average Drive__dc_Norm: 270 coaches, replacement = -0.477
+  Yds Average Drive__dc_Norm: 270 coaches, replacement = -0.641
+  Pts Average Drive__dc_Norm: 270 coaches, replacement = -0.625
+  3DAtt__dc_Norm: 270 coaches, replacement = 0.099
+  3D%__dc_Norm: 270 coaches, replacement = -0.555
+  4DAtt__dc_Norm: 270 coaches, replacement = -0.064
+  4D%__dc_Norm: 270 coaches, replacement = -0.250
+  RZAtt__dc_Norm: 270 coaches, replacement = -0.413
+  RZPct__dc_Norm: 270 coaches, replacement = -0.275
+  PF (Points For)__hc_Norm: 270 coaches, replacement = -0.085
+  Yds__hc_Norm: 270 coaches, replacement = 0.009
+  Y/P__hc_Norm: 270 coaches, replacement = -0.016
+  TO__hc_Norm: 270 coaches, replacement = -0.037
+  1stD__hc_Norm: 270 coaches, replacement = -0.017
+  Cmp Passing__hc_Norm: 270 coaches, replacement = -0.083
+  Att Passing__hc_Norm: 270 coaches, replacement = -0.016
+  Yds Passing__hc_Norm: 270 coaches, replacement = -0.097
+  TD Passing__hc_Norm: 270 coaches, replacement = -0.189
+  Int Passing__hc_Norm: 270 coaches, replacement = -0.065
+  NY/A Passing__hc_Norm: 270 coaches, replacement = -0.034
+  1stD Passing__hc_Norm: 270 coaches, replacement = -0.139
+  Att Rushing__hc_Norm: 270 coaches, replacement = 0.018
+  Yds Rushing__hc_Norm: 270 coaches, replacement = 0.034
+  TD Rushing__hc_Norm: 270 coaches, replacement = -0.046
+  Y/A Rushing__hc_Norm: 270 coaches, replacement = 0.023
+  1stD Rushing__hc_Norm: 270 coaches, replacement = -0.009
+  Pen__hc_Norm: 270 coaches, replacement = 0.025
+  Yds Penalties__hc_Norm: 270 coaches, replacement = 0.015
+  1stPy__hc_Norm: 270 coaches, replacement = -0.129
+  #Dr__hc_Norm: 270 coaches, replacement = -0.112
+  Sc%__hc_Norm: 270 coaches, replacement = -0.124
+  TO%__hc_Norm: 270 coaches, replacement = -0.052
+  Time Average Drive__hc_Norm: 270 coaches, replacement = 0.173
+  Plays Average Drive__hc_Norm: 270 coaches, replacement = 0.139
+  Yds Average Drive__hc_Norm: 270 coaches, replacement = -0.007
+  Pts Average Drive__hc_Norm: 270 coaches, replacement = -0.103
+  3DAtt__hc_Norm: 270 coaches, replacement = 0.047
+  3D%__hc_Norm: 270 coaches, replacement = -0.152
+  4DAtt__hc_Norm: 270 coaches, replacement = 0.606
+  4D%__hc_Norm: 270 coaches, replacement = -0.182
+  RZAtt__hc_Norm: 270 coaches, replacement = -0.006
+  RZPct__hc_Norm: 270 coaches, replacement = -0.075
+  PF (Points For)__opp__hc_Norm: 270 coaches, replacement = 0.138
+  Yds__opp__hc_Norm: 270 coaches, replacement = 0.040
+  Y/P__opp__hc_Norm: 270 coaches, replacement = 0.049
+  TO__opp__hc_Norm: 270 coaches, replacement = -0.142
+  1stD__opp__hc_Norm: 270 coaches, replacement = 0.036
+  Cmp Passing__opp__hc_Norm: 270 coaches, replacement = 0.058
+  Att Passing__opp__hc_Norm: 270 coaches, replacement = -0.007
+  Yds Passing__opp__hc_Norm: 270 coaches, replacement = 0.056
+  TD Passing__opp__hc_Norm: 270 coaches, replacement = 0.104
+  Int Passing__opp__hc_Norm: 270 coaches, replacement = -0.074
+  NY/A Passing__opp__hc_Norm: 270 coaches, replacement = 0.064
+  1stD Passing__opp__hc_Norm: 270 coaches, replacement = 0.068
+  Att Rushing__opp__hc_Norm: 270 coaches, replacement = -0.081
+  Yds Rushing__opp__hc_Norm: 270 coaches, replacement = -0.030
+  TD Rushing__opp__hc_Norm: 270 coaches, replacement = 0.004
+  Y/A Rushing__opp__hc_Norm: 270 coaches, replacement = 0.038
+  1stD Rushing__opp__hc_Norm: 270 coaches, replacement = -0.061
+  Pen__opp__hc_Norm: 270 coaches, replacement = -0.082
+  Yds Penalties__opp__hc_Norm: 270 coaches, replacement = -0.115
+  1stPy__opp__hc_Norm: 270 coaches, replacement = -0.035
+  #Dr__opp__hc_Norm: 270 coaches, replacement = -0.102
+  Sc%__opp__hc_Norm: 270 coaches, replacement = 0.107
+  TO%__opp__hc_Norm: 270 coaches, replacement = -0.118
+  Time Average Drive__opp__hc_Norm: 270 coaches, replacement = 0.016
+  Plays Average Drive__opp__hc_Norm: 270 coaches, replacement = 0.000
+  Yds Average Drive__opp__hc_Norm: 270 coaches, replacement = 0.088
+  Pts Average Drive__opp__hc_Norm: 270 coaches, replacement = 0.161
+  3DAtt__opp__hc_Norm: 270 coaches, replacement = 0.015
+  3D%__opp__hc_Norm: 270 coaches, replacement = 0.200
+  4DAtt__opp__hc_Norm: 270 coaches, replacement = -0.174
+  4D%__opp__hc_Norm: 270 coaches, replacement = 0.021
+  RZAtt__opp__hc_Norm: 270 coaches, replacement = -0.016
+  RZPct__opp__hc_Norm: 270 coaches, replacement = 0.115
+  num_times_hc: 270 coaches, replacement = -0.414
+  num_yr_col_pos: 270 coaches, replacement = -0.654
+  num_yr_col_coor: 270 coaches, replacement = -0.504
+  num_yr_col_hc: 270 coaches, replacement = -0.400
+  num_yr_nfl_pos: 270 coaches, replacement = -0.087
+  num_yr_nfl_coor: 270 coaches, replacement = -0.571
+  num_yr_nfl_hc: 270 coaches, replacement = -0.681
+
+Calculated replacement values for 139 features
+Each coach's career average was weighted equally in replacement calculation
+
+Sample replacement values:
+  PF (Points For)__oc_Norm: 0.471
+  Yds__oc_Norm: 0.428
+  Y/P__oc_Norm: 0.391
+  TO__oc_Norm: -0.071
+  1stD__oc_Norm: 0.432
+
+Creating replacement-level dataset...
+Replaced 139 coaching features with replacement-level values
+
+Training model with actual coaching data...
+
+Found 270 unique coaches
+Coach season distribution: min=1, max=29, mean=6.1
+Coach-based split:
+  Training coaches: 216 (seasons: 1338)
+  Test coaches: 54 (seasons: 299)
+  Missing coach data: 0 (assigned to train)
+
+Final split sizes:
+  Training set: 1338 samples (81.7%)
+  Test set: 299 samples (18.3%)
+Training set size: 1338 samples
+Test set size: 299 samples
+
+Using default hyperparameters (no tuning)...
+
+============================================================
+TRAIN/TEST PERFORMANCE COMPARISON
+============================================================
+Metric       Training        Test            Difference     
+------------------------------------------------------------
+R²           0.7886          0.6015          -0.1871        
+RMSE         0.0902          0.1298          0.0395         
+MAE          0.0706          0.1032          0.0326         
+
+WARNING: Possible overfitting detected (R² difference: 0.1871)
+
+Generating predictions with replacement-level coaching...
+
+Analyzing coaching impact...
+Model residual standard error: ±2.08 wins per season (from test RMSE = 0.1298)
+
+Coaching WAR Statistics:
+Mean coaching WAR: -0.0006
+Median coaching WAR: 0.0038
+Std deviation: 0.1136
+Min WAR: -0.5386
+Max WAR: 0.3693
+
+In 16-game season terms:
+Mean: -0.01 games
+Median: 0.06 games
+
+Predicted Impact Statistics:
+Mean predicted impact: -0.0006
+Median predicted impact: 0.0037
+Std deviation: 0.0342
+Min impact: -0.1306
+Max impact: 0.0920
+
+================================================================================
+MODEL PERFORMANCE COMPARISON
+================================================================================
+
+Metric               With Actual Coach    With Replacement     Difference     
+---------------------------------------------------------------------------
+MSE                  0.009728             0.012887             0.003159       
+MAE                  0.076573             0.089015             0.012442       
+R² Score             0.7518               0.6712               -0.0806        
+RMSE                 0.098629             0.113520             0.014891       
+
+================================================================================
+TOP 10 POSITIVE COACHING WAR
+================================================================================
+
+Team   Year   Coach                     Actual   Replacement  WAR      Pred Impact
+-------------------------------------------------------------------------------------
+CHI    1987   Mike Ditka                0.733    0.364        +0.369    +0.079
+DET    2024   Dan Campbell              0.882    0.598        +0.284    +0.004
+SFO    2019   Kyle Shanahan             0.812    0.531        +0.282    +0.052
+CRD    1989   Gene Stallings            0.455    0.176        +0.278    -0.009
+PIT    2004   Bill Cowher               0.938    0.664        +0.273    +0.037
+NWE    2017   Bill Belichick            0.812    0.540        +0.273    +0.029
+MIN    2017   Mike Zimmer               0.812    0.540        +0.272    +0.010
+CLT    2012   Chuck Pagano              0.688    0.417        +0.270    +0.037
+GNB    1998   Mike Holmgren             0.688    0.424        +0.263    +0.037
+CLT    2009   Jim Caldwell              0.875    0.617        +0.258    +0.017
+
+================================================================================
+TOP 10 NEGATIVE COACHING WAR
+================================================================================
+
+Team   Year   Coach                     Actual   Replacement  WAR      Pred Impact
+-------------------------------------------------------------------------------------
+ATL    2020   Dan Quinn                 0.000    0.539        -0.539    -0.110
+SEA    1982   Jack Patera               0.000    0.494        -0.494    -0.013
+PHI    1971   Jerry Williams            0.000    0.493        -0.493    -0.046
+CIN    1996   David Shula               0.143    0.581        -0.438    -0.131
+HTX    2020   Bill O'Brien              0.000    0.426        -0.426    -0.015
+DAL    2010   Wade Phillips             0.125    0.512        -0.387    +0.005
+DET    1976   Rick Forzano              0.250    0.635        -0.385    -0.028
+CLT    1972   Don McCafferty            0.200    0.537        -0.337    +0.020
+CIN    1971   Paul Brown                0.286    0.610        -0.324    -0.128
+CLT    1991   Ron Meyer                 0.000    0.313        -0.313    -0.012
+
+================================================================================
+COACH CAREER IMPACT ANALYSIS (WAR: Actual Win% - Replacement Prediction)
+================================================================================
+
+Top 15 Coaches by Average WAR (min 3 seasons):
+
+Coach                     Avg WAR    Avg 95% CI         Total WAR   Total 95% CI         Seasons
+----------------------------------------------------------------------------------------------------
+Kevin O'Connell           +2.3      [+1.3, +3.2]       +6.8       [+3.8, +9.7]         3
+Gene Stallings            +2.3      [-0.2, +4.7]       +9.0       [-0.6, +18.7]        4
+John Ralston              +2.2      [+1.0, +3.3]       +10.9       [+5.2, +16.5]        5
+John Madden               +2.1      [+1.3, +2.8]       +18.7       [+12.0, +25.4]       9
+Don Shula                 +2.0      [+1.5, +2.5]       +52.1       [+40.1, +64.0]       26
+Mike McDaniel             +1.8      [-1.1, +4.7]       +5.4       [-3.3, +14.2]        3
+Kevin Stefanski           +1.7      [-0.5, +3.8]       +8.4       [-2.3, +19.2]        5
+Chuck Pagano              +1.6      [-0.8, +4.1]       +9.7       [-5.1, +24.5]        6
+Red Miller                +1.6      [-1.6, +4.8]       +6.4       [-6.4, +19.2]        4
+Kyle Shanahan             +1.5      [+0.3, +2.7]       +12.1       [+2.5, +21.7]        8
+Mike Vrabel               +1.4      [+0.2, +2.6]       +8.6       [+1.3, +15.9]        6
+Mike Martz                +1.4      [+0.1, +2.8]       +8.6       [+0.3, +16.8]        6
+Nick Sirianni             +1.4      [+0.2, +2.7]       +5.7       [+0.7, +10.8]        4
+Bill Parcells             +1.3      [+0.8, +1.9]       +25.4       [+15.0, +35.9]       19
+Bill Belichick            +1.2      [+0.4, +1.9]       +34.0       [+12.1, +56.0]       29
+
+Bottom 15 Coaches by Average WAR (min 3 seasons):
+
+Coach                     Avg WAR    Avg 95% CI         Total WAR   Total 95% CI         Seasons
+----------------------------------------------------------------------------------------------------
+Mike Nolan                -1.9      [-3.9, +0.1]       -7.4       [-15.4, +0.6]        4
+Rick Forzano              -1.9      [-11.1, +7.3]      -5.8       [-33.3, +21.8]       3
+Abe Gibron                -1.9      [-5.4, +1.5]       -5.8       [-16.2, +4.6]        3
+Bruce Coslet              -2.1      [-3.2, -1.0]       -16.7       [-25.4, -7.9]        8
+Jim Schwartz              -2.2      [-4.1, -0.3]       -10.8       [-20.4, -1.3]        5
+J.D. Roberts              -2.3      [-4.3, -0.3]       -6.9       [-12.9, -0.9]        3
+David Shula               -2.3      [-5.7, +1.1]       -11.6       [-28.6, +5.4]        5
+Rod Marinelli             -2.4      [-5.8, +1.0]       -7.2       [-17.4, +2.9]        3
+Scott Linehan             -2.6      [-5.8, +0.6]       -7.8       [-17.3, +1.7]        3
+Paul Wiggin               -2.6      [-6.5, +1.3]       -7.8       [-19.3, +3.8]        3
+Jack Patera               -2.6      [-5.2, -0.0]       -18.5       [-36.7, -0.2]        7
+Hue Jackson               -2.9      [-6.4, +0.7]       -11.4       [-25.7, +2.9]        4
+Matt Eberflus             -2.9      [-5.9, +0.1]       -8.7       [-17.8, +0.4]        3
+Steve Spagnuolo           -3.0      [-6.3, +0.4]       -8.9       [-19.0, +1.2]        3
+Pat Shurmur               -3.3      [-4.7, -2.0]       -13.3       [-18.6, -7.9]        4
+
+================================================================================
+FEATURE IMPORTANCE ANALYSIS
+================================================================================
+
+Coaching Features Importance:
+  Total importance of coaching features: 0.4198
+  Percentage of total importance: 41.98%
+  Number of coaching features: 139
+
+Top 20 Features by Importance:
+
+Rank   Feature                                            Importance   Coach Feature
+--------------------------------------------------------------------------------
+1      ReservesIR/PUP/NFI/SUSP_Pct                        0.048763    
+2      Active53-Man_Pct                                   0.033859    
+3      QB_Players_New                                     0.022314    
+4      Pts Average Drive__opp__hc_Norm                    0.019662    Yes
+5      Opp_Int_Passing_Norm                               0.019371    
+6      Team_Int_Passing_Norm                              0.017540    
+7      PF (Points For)__hc_Norm                           0.015745    Yes
+8      1stD Rushing__opp__hc_Norm                         0.014095    Yes
+9      Avg_Starter_Experience                             0.014069    
+10     PF (Points For)__opp__hc_Norm                      0.013540    Yes
+11     QB_Avg_Games_Missed_Pct                            0.013282    
+12     Sc%__hc_Norm                                       0.011734    Yes
+13     Yds Rushing__opp__hc_Norm                          0.011183    Yes
+14     NY/A Passing__opp__hc_Norm                         0.011075    Yes
+15     Pts Average Drive__hc_Norm                         0.009762    Yes
+16     1stD__opp__hc_Norm                                 0.009612    Yes
+17     TD Passing__dc_Norm                                0.009607    Yes
+18     QB_New_Player_Rate_Pct                             0.009514    
+19     Yds__opp__hc_Norm                                  0.008844    Yes
+20     Y/P__opp__hc_Norm                                  0.008277    Yes
+
+================================================================================
+TOP COACHING FEATURES BY IMPORTANCE
+================================================================================
+
+Rank   Feature                                            Importance
+----------------------------------------------------------------------
+1      Pts Average Drive__opp__hc_Norm                    0.019662
+2      PF (Points For)__hc_Norm                           0.015745
+3      1stD Rushing__opp__hc_Norm                         0.014095
+4      PF (Points For)__opp__hc_Norm                      0.013540
+5      Sc%__hc_Norm                                       0.011734
+6      Yds Rushing__opp__hc_Norm                          0.011183
+7      NY/A Passing__opp__hc_Norm                         0.011075
+8      Pts Average Drive__hc_Norm                         0.009762
+9      1stD__opp__hc_Norm                                 0.009612
+10     TD Passing__dc_Norm                                0.009607
+
+Saving results...
+Full results saved to: data/final/coaching_impact_analysis.csv
+High impact coaches saved to: data/final/high_impact_coaches.csv
+Coach career statistics saved to: data/final/coach_career_impact_stats.csv
+Feature importance saved to: data/final/feature_importance_coaching_analysis.csv
+
+================================================================================
+ANALYSIS COMPLETE
+Completed at: 2026-02-07 14:43:56
+================================================================================
+
+Key findings have been saved to data/final/
+- coaching_impact_analysis.csv: Full analysis of coaching impact
+- high_impact_coaches.csv: Coaches with highest positive impact
+- coach_career_impact_stats.csv: Career statistics for each coach
+- feature_importance_coaching_analysis.csv: Feature importance with coaching indicators
+
+Summary:
+- Dataset used: WITHOUT AV features
+- Train R²: 0.7886, Test R²: 0.6015
+- Model residual SE: ±2.08 wins per season
+- Coaching features account for 139 of 365 total features
+- Average coaching WAR (Actual - Replacement): -0.0006
+- Maximum positive coaching WAR: 0.3693
+- Maximum negative coaching WAR: -0.5386
+- Average predicted impact: -0.0006
+- Log saved to: analysis/outputs/logs/coaching_analysis_log_20260207_144355.txt

@@ -483,6 +483,34 @@ def analyze_coach_background_by_decade():
         trend_df.to_csv('analysis/outputs/csv/coach_background_decade_trend_analysis.csv', index=False)
         print(f"\nTrend analysis saved to: coach_background_decade_trend_analysis.csv")
 
+    # Within-group era change analysis (1970s vs 2020s)
+    print("\n" + "="*80)
+    print("ERA CHANGE ANALYSIS: 1970s vs 2020s WITHIN EACH BACKGROUND")
+    print("="*80)
+
+    for background in ['Offensive', 'Defensive']:
+        data_70s = matched_data[(matched_data['Decade'] == '1970s') & (matched_data['Background'] == background)]['WAR_Games']
+        data_20s = matched_data[(matched_data['Decade'] == '2020s') & (matched_data['Background'] == background)]['WAR_Games']
+
+        if len(data_70s) > 1 and len(data_20s) > 1:
+            change = data_20s.mean() - data_70s.mean()
+            se = np.sqrt(data_70s.var() / len(data_70s) + data_20s.var() / len(data_20s))
+            nu_num = (data_70s.var() / len(data_70s) + data_20s.var() / len(data_20s))**2
+            nu_den = ((data_70s.var() / len(data_70s))**2 / (len(data_70s) - 1) +
+                      (data_20s.var() / len(data_20s))**2 / (len(data_20s) - 1))
+            df_w = nu_num / nu_den if nu_den > 0 else min(len(data_70s), len(data_20s)) - 1
+            t_crit = stats.t.ppf(0.975, df=df_w)
+            ci_lo = change - t_crit * se
+            ci_hi = change + t_crit * se
+            t_stat_era, p_era = stats.ttest_ind(data_20s, data_70s, equal_var=False)
+
+            print(f"\n{background} coaches:")
+            print(f"  1970s: n={len(data_70s)} seasons, mean={data_70s.mean():+.3f}, sd={data_70s.std():+.3f}")
+            print(f"  2020s: n={len(data_20s)} seasons, mean={data_20s.mean():+.3f}, sd={data_20s.std():+.3f}")
+            print(f"  Change (2020s - 1970s): {change:+.3f} games/season")
+            print(f"  95% CI: [{ci_lo:+.3f}, {ci_hi:+.3f}]")
+            print(f"  Welch's t = {t_stat_era:.3f}, df = {df_w:.1f}, p = {p_era:.4f}")
+
     # Save detailed results
     summary_df.to_csv('analysis/outputs/csv/coach_background_by_decade_summary.csv', index=False)
     war_pivot.to_csv('analysis/outputs/csv/coach_background_war_by_decade.csv')
