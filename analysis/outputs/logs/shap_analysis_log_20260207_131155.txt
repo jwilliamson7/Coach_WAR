@@ -1,0 +1,306 @@
+================================================================================
+SHAP FEATURE IMPORTANCE ANALYSIS
+Started at: 2026-02-07 13:11:55
+Using dataset WITHOUT AV features
+Hyperparameter tuning: DISABLED (using default parameters)
+Log file: analysis/outputs/logs/shap_analysis_log_20260207_131155.txt
+================================================================================
+Loading data...
+Excluded 22 AV features
+Data shape: (1637, 365)
+Target shape: (1637,)
+
+Feature categorization (365 features):
+  Coaching Experience: 7
+  Coaching Performance: 132
+  Draft Strategy: 29
+  Injury/Availability: 37
+  Player Age & Experience: 44
+  Roster Turnover: 90
+  Salary Cap: 19
+  Team Performance: 7
+
+Training XGBoost model...
+
+Found 270 unique coaches
+Coach season distribution: min=1, max=29, mean=6.1
+Coach-based split:
+  Training coaches: 216 (seasons: 1338)
+  Test coaches: 54 (seasons: 299)
+  Missing coach data: 0 (assigned to train)
+
+Final split sizes:
+  Training set: 1338 samples (81.7%)
+  Test set: 299 samples (18.3%)
+
+Using default hyperparameters (no tuning)...
+
+============================================================
+TRAIN/TEST PERFORMANCE COMPARISON
+============================================================
+Metric       Training        Test            Difference     
+------------------------------------------------------------
+R²           0.7886          0.6015          -0.1871        
+RMSE         0.0902          0.1298          0.0395         
+MAE          0.0706          0.1032          0.0326         
+
+WARNING: Possible overfitting detected (R² difference: 0.1871)
+
+Computing SHAP values using TreeExplainer...
+  Dataset shape: (1637, 365)
+  SHAP values shape: (1637, 365)
+  Expected value (base rate): 0.4970
+
+==========================================================================================
+FEATURE CATEGORY IMPORTANCE (sorted by Total SHAP)
+==========================================================================================
+
+Category                     Total SHAP     Avg SHAP       Max Feature    Count    % Total
+------------------------------------------------------------------------------------------
+Coaching Performance         0.091668       0.000694       0.005774       132      21.2%
+Salary Cap                   0.090349       0.004755       0.039155       19       20.9%
+Injury/Availability          0.086775       0.002345       0.025358       37       20.1%
+Team Performance             0.085527       0.012218       0.039885       7        19.8%
+Roster Turnover              0.035787       0.000398       0.004716       90       8.3%
+Player Age & Experience      0.034301       0.000780       0.005374       44       7.9%
+Draft Strategy               0.005840       0.000201       0.002565       29       1.4%
+Coaching Experience          0.001409       0.000201       0.000642       7        0.3%
+------------------------------------------------------------------------------------------
+TOTAL                        0.431655                                     365      100.0%
+
+==========================================================================================
+FEATURE CATEGORY IMPORTANCE (sorted by Average SHAP per feature)
+==========================================================================================
+
+Category                     Avg SHAP       Total SHAP     Max Feature    Count    % Total
+------------------------------------------------------------------------------------------
+Team Performance             0.012218       0.085527       0.039885       7        19.8%
+Salary Cap                   0.004755       0.090349       0.039155       19       20.9%
+Injury/Availability          0.002345       0.086775       0.025358       37       20.1%
+Player Age & Experience      0.000780       0.034301       0.005374       44       7.9%
+Coaching Performance         0.000694       0.091668       0.005774       132      21.2%
+Roster Turnover              0.000398       0.035787       0.004716       90       8.3%
+Draft Strategy               0.000201       0.005840       0.002565       29       1.4%
+Coaching Experience          0.000201       0.001409       0.000642       7        0.3%
+
+======================================================================
+TOP 10 FEATURES: Coaching Performance (132 total)
+======================================================================
+Rank   Feature                                            Mean |SHAP|
+----------------------------------------------------------------------
+11     Yds Rushing__opp__hc_Norm                          0.005774
+13     PF (Points For)__hc_Norm                           0.005492
+18     PF (Points For)__opp__hc_Norm                      0.003740
+20     NY/A Passing__hc_Norm                              0.003597
+26     Pts Average Drive__hc_Norm                         0.003061
+27     1stPy__dc_Norm                                     0.003007
+34     1stD Passing__oc_Norm                              0.002549
+42     NY/A Passing__opp__hc_Norm                         0.002149
+43     RZAtt__dc_Norm                                     0.002143
+44     4D%__dc_Norm                                       0.002102
+
+======================================================================
+TOP 10 FEATURES: Salary Cap (19 total)
+======================================================================
+Rank   Feature                                            Mean |SHAP|
+----------------------------------------------------------------------
+2      ReservesIR/PUP/NFI/SUSP_Pct                        0.039155
+4      Active53-Man_Pct                                   0.029776
+8      RB_Pct                                             0.007595
+19     Cap SpaceAll_Pct                                   0.003616
+28     P_Pct                                              0.002901
+37     Total CapAllocations_Pct                           0.002492
+38     WR_Pct                                             0.002442
+88     K_Pct                                              0.000882
+126    SEC_Pct                                            0.000527
+163    SPT_Pct                                            0.000344
+
+======================================================================
+TOP 10 FEATURES: Injury/Availability (37 total)
+======================================================================
+Rank   Feature                                            Mean |SHAP|
+----------------------------------------------------------------------
+5      QB_Avg_Games_Missed_Pct                            0.025358
+7      OL_Players_Count                                   0.008282
+9      OL_Max_Games_Missed_Pct                            0.006533
+10     S_Max_Games_Missed_Pct                             0.006282
+12     OL_Avg_Games_Missed_Pct                            0.005680
+15     WR_Avg_Games_Missed_Pct                            0.005178
+22     OL_Min_Games_Missed_Pct                            0.003524
+24     S_Avg_Games_Missed_Pct                             0.003273
+29     TE_Max_Games_Missed_Pct                            0.002669
+33     S_Min_Games_Missed_Pct                             0.002555
+
+======================================================================
+TOP 7 FEATURES: Team Performance (7 total)
+======================================================================
+Rank   Feature                                            Mean |SHAP|
+----------------------------------------------------------------------
+1      Opp_Int_Passing_Norm                               0.039885
+3      Team_Int_Passing_Norm                              0.033235
+6      SoS                                                0.009768
+49     Opp_Yds_Penalties_Norm                             0.001775
+113    Opp_Pen_Norm                                       0.000682
+199    Team_Yds_Penalties_Norm                            0.000181
+239    Team_Pen_Norm                                      0.000000
+
+======================================================================
+TOP 10 FEATURES: Roster Turnover (90 total)
+======================================================================
+Rank   Feature                                            Mean |SHAP|
+----------------------------------------------------------------------
+16     QB_Retention_Rate_Pct                              0.004716
+17     TE_New_Player_Rate_Pct                             0.003867
+23     LB_New_Player_Rate_Pct                             0.003338
+31     WR_New_Player_Rate_Pct_crosstab                    0.002580
+40     QB_Players_New                                     0.002230
+55     RB_Net_Change                                      0.001603
+57     WR_Retention_Rate_Pct_crosstab                     0.001506
+59     QB_New_Player_Rate_Pct                             0.001432
+62     QB_Players_Departed                                0.001382
+67     QB_Players_Retained                                0.001289
+
+======================================================================
+TOP 10 FEATURES: Player Age & Experience (44 total)
+======================================================================
+Rank   Feature                                            Mean |SHAP|
+----------------------------------------------------------------------
+14     Avg_Starter_Experience                             0.005374
+21     Avg_Starter_Exp_OL                                 0.003536
+25     Avg_Starter_Exp_TE                                 0.003106
+30     Avg_Starter_Exp_LB                                 0.002598
+35     Avg_Roster_Experience                              0.002542
+51     Avg_Roster_Exp_OL                                  0.001682
+58     Avg_Roster_Age_QB                                  0.001434
+65     Avg_Roster_Age_TE                                  0.001312
+66     Avg_Starter_Age_LB                                 0.001300
+72     Avg_Roster_Exp_QB                                  0.001131
+
+======================================================================
+TOP 10 FEATURES: Draft Strategy (29 total)
+======================================================================
+Rank   Feature                                            Mean |SHAP|
+----------------------------------------------------------------------
+32     Prev_2Yr_Round_1_Picks                             0.002565
+87     Prev_2Yr_Round_6_Picks                             0.000913
+143    Prev_3Yr_Round_4_Picks                             0.000445
+146    Prev_3Yr_Round_7Plus_Picks                         0.000416
+150    Prev_1Yr_Round_5_Picks                             0.000379
+164    Prev_2Yr_Round_7Plus_Picks                         0.000336
+174    Prev_2Yr_Round_4_Picks                             0.000294
+207    Current_Round_1_Picks                              0.000160
+214    Prev_1Yr_Round_2_Picks                             0.000142
+222    Prev_3Yr_Round_3_Picks                             0.000098
+
+======================================================================
+TOP 7 FEATURES: Coaching Experience (7 total)
+======================================================================
+Rank   Feature                                            Mean |SHAP|
+----------------------------------------------------------------------
+120    num_yr_nfl_coor                                    0.000642
+124    num_yr_col_pos                                     0.000532
+187    num_yr_nfl_hc                                      0.000235
+274    num_times_hc                                       0.000000
+275    num_yr_col_coor                                    0.000000
+294    num_yr_nfl_pos                                     0.000000
+295    num_yr_col_hc                                      0.000000
+
+==========================================================================================
+COACHING PERFORMANCE SUBCATEGORY IMPORTANCE (sorted by Total SHAP)
+==========================================================================================
+
+Subcategory                  Total SHAP     Avg SHAP       Max Feature    Count    % Coaching
+------------------------------------------------------------------------------------------
+Coaching: HC Defense         0.034408       0.001043       0.005774       33       37.5%
+Coaching: HC Offense         0.021992       0.000666       0.005492       33       24.0%
+Coaching: DC                 0.020568       0.000623       0.003007       33       22.4%
+Coaching: OC                 0.014701       0.000445       0.002549       33       16.0%
+------------------------------------------------------------------------------------------
+TOTAL COACHING               0.091668      
+
+==========================================================================================
+COACHING PERFORMANCE SUBCATEGORY IMPORTANCE (sorted by Average SHAP)
+==========================================================================================
+
+Subcategory                  Avg SHAP       Total SHAP     Max Feature    Count    % Coaching
+------------------------------------------------------------------------------------------
+Coaching: HC Defense         0.001043       0.034408       0.005774       33       37.5%
+Coaching: HC Offense         0.000666       0.021992       0.005492       33       24.0%
+Coaching: DC                 0.000623       0.020568       0.003007       33       22.4%
+Coaching: OC                 0.000445       0.014701       0.002549       33       16.0%
+
+  Top 5 in Coaching: HC Defense:
+    Yds Rushing                                   0.005774
+    PF (Points For)                               0.003740
+    NY/A Passing                                  0.002149
+    1stD                                          0.002057
+    Yds                                           0.002016
+
+  Top 5 in Coaching: HC Offense:
+    PF (Points For)                               0.005492
+    NY/A Passing                                  0.003597
+    Pts Average Drive                             0.003061
+    RZAtt                                         0.001643
+    TD Rushing                                    0.001141
+
+  Top 5 in Coaching: DC:
+    1stPy                                         0.003007
+    RZAtt                                         0.002143
+    4D%                                           0.002102
+    Sc%                                           0.001118
+    Cmp Passing                                   0.001116
+
+  Top 5 in Coaching: OC:
+    1stD Passing                                  0.002549
+    Pen                                           0.001331
+    Yds Penalties                                 0.001165
+    4DAtt                                         0.001162
+    Y/A Rushing                                   0.001022
+Matplotlib configured with font family: Helvetica
+
+Generating category total importance chart...
+  Saved: analysis/outputs/png\shap_category_total_importance.png
+Generating category average importance chart...
+  Saved: analysis/outputs/png\shap_category_avg_importance.png
+Generating SHAP beeswarm plot (top 30 features)...
+  Saved: analysis/outputs/png\shap_beeswarm_top_features.png
+Generating SHAP bar plot (top 30 features)...
+  Saved: analysis/outputs/png\shap_bar_top_features.png
+Generating per-category top features grid...
+  Saved: analysis/outputs/png\shap_top_features_by_category.png
+Generating coaching subcategory breakdown chart...
+  Saved: analysis/outputs/png\shap_coaching_subcategory_breakdown.png
+
+Saving results...
+  Per-feature importance saved to: data/final/shap_feature_importance.csv
+  Category importance saved to: data/final/shap_category_importance.csv
+  Coaching feature importance saved to: data/final/shap_coaching_feature_importance.csv
+  Coaching subcategory importance saved to: data/final/shap_coaching_subcategory_importance.csv
+
+================================================================================
+ANALYSIS COMPLETE
+Completed at: 2026-02-07 13:12:00
+================================================================================
+
+Summary:
+  Dataset: WITHOUT AV features
+  Features analyzed: 365
+  Categories: 8
+  Train R²: 0.7886, Test R²: 0.6015
+
+  Most important category (total): Coaching Performance (21.2%)
+  Most important category (avg):   Team Performance (avg SHAP: 0.012218)
+  Top feature overall: Opp_Int_Passing_Norm (Team Performance, SHAP: 0.039885)
+
+Outputs:
+  - data/final/shap_feature_importance.csv
+  - data/final/shap_category_importance.csv
+  - data/final/shap_coaching_feature_importance.csv
+  - data/final/shap_coaching_subcategory_importance.csv
+  - analysis/outputs/png/shap_category_total_importance.png
+  - analysis/outputs/png/shap_category_avg_importance.png
+  - analysis/outputs/png/shap_beeswarm_top_features.png
+  - analysis/outputs/png/shap_bar_top_features.png
+  - analysis/outputs/png/shap_top_features_by_category.png
+  - analysis/outputs/png/shap_coaching_subcategory_breakdown.png
+  - analysis/outputs/logs/shap_analysis_log_20260207_131155.txt

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  7 FEB 2026 15:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  7 FEB 2026 16:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -949,84 +949,73 @@ Package pdftex.def Info: figures/coach_career_distributions.png  used on input
 line 234.
 (pdftex.def)             Requested size: 441.01756pt x 291.67369pt.
  [6]
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8.0> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 257.
-LaTeX Font Info:    Calculating math sizes for size <5.0> on input line 281.
+LaTeX Font Info:    Calculating math sizes for size <5.0> on input line 262.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <3.51306> on input line 281.
+(Font)              <3.51306> on input line 262.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <2.50934> on input line 281.
+(Font)              <2.50934> on input line 262.
 
-Overfull \hbox (35.62524pt too wide) in paragraph at lines 268--282
+Overfull \hbox (35.62524pt too wide) in paragraph at lines 249--263
 [][] 
  []
 
 [7 <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/coach_career_dist
 ributions.png>]
-<figures/coaching_war_persistence_scatter.png, id=272, 706.8006pt x 706.8006pt>
+<figures/coaching_war_persistence_scatter.png, id=269, 706.8006pt x 706.8006pt>
 
 File: figures/coaching_war_persistence_scatter.png Graphic file (type png)
 <use figures/coaching_war_persistence_scatter.png>
 Package pdftex.def Info: figures/coaching_war_persistence_scatter.png  used on 
-input line 294.
+input line 275.
 (pdftex.def)             Requested size: 352.81538pt x 352.81703pt.
-<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=273, 715.232
+<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=270, 715.232
 1pt x 859.5312pt>
 File: figures/coaching_regression_to_mean_survivorship_adjusted.png Graphic fil
 e (type png)
 <use figures/coaching_regression_to_mean_survivorship_adjusted.png>
 Package pdftex.def Info: figures/coaching_regression_to_mean_survivorship_adjus
-ted.png  used on input line 301.
+ted.png  used on input line 282.
 (pdftex.def)             Requested size: 418.96533pt x 503.49918pt.
- [8] [9 <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/coaching_war
-_persistence_scatter.png>] [10 <C:/Users/jonwi/Documents/Projects/Coach_WAR/lat
-ex/figures/coaching_regression_to_mean_survivorship_adjusted.png>] [11]
+ [8 <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/coaching_war_per
+sistence_scatter.png>] [9 <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/fi
+gures/coaching_regression_to_mean_survivorship_adjusted.png>]
+[10] [11]
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8.0> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 365.
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 431.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <9.5> not available
-(Font)              size <9> substituted on input line 431.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 431.
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 413--414
 []\T1/lmss/m/n/8.0 (+20) Woolner, K. (2002). VORP: Value over re-place-ment pla
 yer. \T1/lmss/m/sl/8.0 (+20) Base-ball Prospec-tus\T1/lmss/m/n/8.0 (+20) . Avai
 l-able at: 
  []
 
-[13] [14
+[12] [13
+
+] [14
 
 ] [15
 
-] [16
-
 ]
-<figures/win_pct_persistence_scatter.png, id=341, 706.8006pt x 706.8006pt>
+<figures/win_pct_persistence_scatter.png, id=330, 706.8006pt x 706.8006pt>
 File: figures/win_pct_persistence_scatter.png Graphic file (type png)
 <use figures/win_pct_persistence_scatter.png>
 Package pdftex.def Info: figures/win_pct_persistence_scatter.png  used on input
- line 543.
+ line 521.
 (pdftex.def)             Requested size: 352.81538pt x 352.81703pt.
- [17
+ [16
 
  <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/win_pct_persistence
 _scatter.png>]
-<figures/coaching_war_persistence_by_background.png, id=347, 851.3406pt x 706.8
+<figures/coaching_war_persistence_by_background.png, id=336, 851.3406pt x 706.8
 006pt>
 File: figures/coaching_war_persistence_by_background.png Graphic file (type png
 )
 <use figures/coaching_war_persistence_by_background.png>
 Package pdftex.def Info: figures/coaching_war_persistence_by_background.png  us
-ed on input line 554.
+ed on input line 532.
 (pdftex.def)             Requested size: 352.81538pt x 292.91774pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 
-566.
+544.
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmss.fd
 File: ts1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1035,7 +1024,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [18
+ [17
 
 {C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <C
 :/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/coaching_war_persisten
@@ -1054,21 +1043,18 @@ L3 programming layer <2025-12-24>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.98874pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `2026-Williamson-Jon-Portfolio-Coach-WAR.out'
  has not changed.
 (rerunfilecheck)             Checksum: 74A6CA7E88773C3A8A25C83DB9E4C8F5;5878.
  ) 
 Here is how much of TeX's memory you used:
- 18704 strings out of 467871
- 307818 string characters out of 5418376
- 760460 words of memory out of 5000000
- 46827 multiletter control sequences out of 15000+600000
- 742792 words of font info for 246 fonts, out of 8000000 for 9000
+ 18667 strings out of 467871
+ 307108 string characters out of 5418376
+ 760687 words of memory out of 5000000
+ 46799 multiletter control sequences out of 15000+600000
+ 740655 words of font info for 241 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,11n,131p,1519b,697s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,11n,131p,1692b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/pub
@@ -1088,9 +1074,9 @@ msy10.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msy7.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
 Output written on C:\Users\jonwi\Documents\Projects\Coach_WAR\latex\2026-Willia
-mson-Jon-Portfolio-Coach-WAR.pdf (18 pages, 3259486 bytes).
+mson-Jon-Portfolio-Coach-WAR.pdf (17 pages, 3256858 bytes).
 PDF statistics:
- 440 PDF objects out of 1000 (max. 8388607)
- 88 named destinations out of 1000 (max. 500000)
- 64259 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 429 PDF objects out of 1000 (max. 8388607)
+ 86 named destinations out of 1000 (max. 500000)
+ 63235 words of extra memory for PDF output out of 74296 (max. 10000000)
 
