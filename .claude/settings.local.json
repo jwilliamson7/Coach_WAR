@@ -34,7 +34,8 @@
       "WebFetch(domain:ar5iv.labs.arxiv.org)",
       "WebFetch(domain:ideas.repec.org)",
       "WebFetch(domain:journals.sagepub.com)",
-      "WebFetch(domain:link.springer.com)"
+      "WebFetch(domain:link.springer.com)",
+      "Bash(powershell:*)"
     ],
     "deny": [],
     "ask": []
