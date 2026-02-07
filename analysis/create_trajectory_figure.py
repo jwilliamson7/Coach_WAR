@@ -10,7 +10,7 @@ import numpy as np
 import argparse
 from figure_utils import configure_matplotlib_fonts, get_color_palette
 
-def create_three_coach_trajectory_figure(font_family='Helvetica'):
+def create_three_coach_trajectory_figure(font_family='serif'):
     """Create Figure 1 for the LaTeX paper."""
     # Configure matplotlib fonts
     configure_matplotlib_fonts(font_family)
@@ -100,8 +100,8 @@ def create_three_coach_trajectory_figure(font_family='Helvetica'):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Create three-coach trajectory figure')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use (default: serif)')
     args = parser.parse_args()
 
     print("="*80)

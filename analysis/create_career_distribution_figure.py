@@ -10,7 +10,7 @@ import numpy as np
 import argparse
 from figure_utils import configure_matplotlib_fonts, get_color_palette
 
-def create_career_distribution_figure(font_family='Helvetica'):
+def create_career_distribution_figure(font_family='serif'):
     """Create Figure 2 for the LaTeX paper."""
     # Configure matplotlib fonts
     configure_matplotlib_fonts(font_family)
@@ -36,17 +36,17 @@ def create_career_distribution_figure(font_family='Helvetica'):
 
     # Define quadrants for color coding
     df['Quadrant'] = 'Unknown'
-    df.loc[(df['Seasons'] >= median_seasons) & (df['Avg_WAR_Games'] >= median_war), 'Quadrant'] = 'High Quality, Long Career'
-    df.loc[(df['Seasons'] < median_seasons) & (df['Avg_WAR_Games'] >= median_war), 'Quadrant'] = 'High Quality, Short Career'
-    df.loc[(df['Seasons'] >= median_seasons) & (df['Avg_WAR_Games'] < median_war), 'Quadrant'] = 'Low Quality, Long Career'
-    df.loc[(df['Seasons'] < median_seasons) & (df['Avg_WAR_Games'] < median_war), 'Quadrant'] = 'Low Quality, Short Career'
+    df.loc[(df['Seasons'] >= median_seasons) & (df['Avg_WAR_Games'] >= median_war), 'Quadrant'] = 'Above Median WAR, Long Career'
+    df.loc[(df['Seasons'] < median_seasons) & (df['Avg_WAR_Games'] >= median_war), 'Quadrant'] = 'Above Median WAR, Short Career'
+    df.loc[(df['Seasons'] >= median_seasons) & (df['Avg_WAR_Games'] < median_war), 'Quadrant'] = 'Below Median WAR, Long Career'
+    df.loc[(df['Seasons'] < median_seasons) & (df['Avg_WAR_Games'] < median_war), 'Quadrant'] = 'Below Median WAR, Short Career'
 
     # Color mapping for quadrants
     colors = {
-        'High Quality, Long Career': colors_palette['primary'],      # Blue - efficient market
-        'High Quality, Short Career': colors_palette['secondary'],   # Purple - cut too soon
-        'Low Quality, Long Career': colors_palette['tertiary'],      # Orange - inefficient market
-        'Low Quality, Short Career': colors_palette['quaternary']    # Red - efficient market
+        'Above Median WAR, Long Career': colors_palette['primary'],
+        'Above Median WAR, Short Career': colors_palette['secondary'],
+        'Below Median WAR, Long Career': colors_palette['tertiary'],
+        'Below Median WAR, Short Career': colors_palette['quaternary']
     }
 
     # Plot points by quadrant
@@ -129,8 +129,8 @@ def create_career_distribution_figure(font_family='Helvetica'):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Create career distribution figure')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use (default: serif)')
     args = parser.parse_args()
 
     print("="*80)

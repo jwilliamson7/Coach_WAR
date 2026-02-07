@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from figure_utils import configure_matplotlib_fonts
 
-def create_2024_coaches_plot(font_family='Helvetica'):
+def create_2024_coaches_plot(font_family='serif'):
     """Create scatter plot for coaches who coached in 2024 and save as PNG."""
 
     # Configure matplotlib fonts
@@ -185,8 +185,8 @@ def create_2024_coaches_plot(font_family='Helvetica'):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Create 2024 NFL coaches WAR analysis')
-    parser.add_argument('--font', type=str, default='Helvetica',
-                       help='Font family to use (default: Helvetica)')
+    parser.add_argument('--font', type=str, default='serif',
+                       help='Font family to use (default: serif)')
     args = parser.parse_args()
 
     print("Creating 2024 NFL coaches WAR analysis as PNG...")

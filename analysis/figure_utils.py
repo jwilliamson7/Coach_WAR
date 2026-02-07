@@ -5,13 +5,13 @@ Utility functions for figure generation with consistent styling.
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
-def configure_matplotlib_fonts(font_family='Helvetica'):
+def configure_matplotlib_fonts(font_family='serif'):
     """
     Configure matplotlib to use specified font family.
 
     Args:
-        font_family: Font family to use (default: 'Helvetica')
-                    Common options: 'Helvetica', 'Arial', 'Times New Roman', 'Cambria', 'serif'
+        font_family: Font family to use (default: 'serif')
+                    Common options: 'serif', 'Arial', 'Times New Roman', 'Cambria', 'serif'
     """
     # Set font family
     if font_family.lower() == 'serif':

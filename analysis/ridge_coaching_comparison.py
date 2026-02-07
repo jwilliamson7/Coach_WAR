@@ -82,26 +82,45 @@ def calculate_replacement_level(X, team_year_info, coaching_cols, feature_cols):
     return X_replacement
 
 def coach_based_split(team_year_info, test_size=0.2, random_state=42):
-    """Split data by coaches to prevent data leakage."""
-    # Get unique coaches (assuming coach name is in Team-Year pattern or we need to load it)
-    # For simplicity, we'll do a random coach-based split
-    # This is a simplified version - the full version would need coach names
+    """Split data by coaches to prevent data leakage.
+
+    Uses the same coach-based stratification as the XGBoost analysis:
+    all seasons for a given coach are assigned entirely to train or test.
+    """
+    from sklearn.model_selection import train_test_split
 
     print("\nPerforming coach-based split...")
-    print(f"Note: Using simplified year-based split as proxy for coach-based split")
 
-    np.random.seed(random_state)
-    years = team_year_info['Year'].unique()
-    test_years = np.random.choice(years, size=int(len(years) * test_size), replace=False)
+    coach_df = pd.read_csv('data/processed/Coaching/team_year_head_coaches.csv')
 
-    train_mask = ~team_year_info['Year'].isin(test_years)
-    test_mask = team_year_info['Year'].isin(test_years)
+    stratify_df = team_year_info.reset_index(drop=True).copy()
+    stratify_df = stratify_df.merge(
+        coach_df[['Team', 'Year', 'Primary_Coach']],
+        on=['Team', 'Year'],
+        how='left'
+    )
 
-    train_idx = team_year_info[train_mask].index
-    test_idx = team_year_info[test_mask].index
+    coach_seasons = stratify_df.groupby('Primary_Coach').size()
+    print(f"Found {len(coach_seasons)} unique coaches")
 
-    print(f"Training samples: {len(train_idx)} ({100*len(train_idx)/len(team_year_info):.1f}%)")
-    print(f"Test samples: {len(test_idx)} ({100*len(test_idx)/len(team_year_info):.1f}%)")
+    unique_coaches = coach_seasons.index.tolist()
+    coaches_train, coaches_test = train_test_split(
+        unique_coaches, test_size=test_size, random_state=random_state
+    )
+
+    train_mask = stratify_df['Primary_Coach'].isin(coaches_train)
+    test_mask = stratify_df['Primary_Coach'].isin(coaches_test)
+
+    missing_coach_mask = stratify_df['Primary_Coach'].isna()
+    train_mask = train_mask | missing_coach_mask
+
+    train_idx = team_year_info.index[train_mask]
+    test_idx = team_year_info.index[test_mask]
+
+    print(f"Coach-based split:")
+    print(f"  Training coaches: {len(coaches_train)} (seasons: {train_mask.sum()})")
+    print(f"  Test coaches: {len(coaches_test)} (seasons: {test_mask.sum()})")
+    print(f"  Missing coach data: {missing_coach_mask.sum()} (assigned to train)")
 
     return train_idx, test_idx
 
