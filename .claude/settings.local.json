@@ -35,7 +35,8 @@
       "WebFetch(domain:ideas.repec.org)",
       "WebFetch(domain:journals.sagepub.com)",
       "WebFetch(domain:link.springer.com)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(texcount:*)"
     ],
     "deny": [],
     "ask": []
