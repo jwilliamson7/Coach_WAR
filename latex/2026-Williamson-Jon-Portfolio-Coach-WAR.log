@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  7 FEB 2026 17:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  28 APR 2026 17:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./latex/2026-Williamson-Jon-Portfolio-Coach-WAR.tex
-(latex/2026-Williamson-Jon-Portfolio-Coach-WAR.tex
+**./2026-Williamson-Jon-Portfolio-Coach-WAR.tex
+(2026-Williamson-Jon-Portfolio-Coach-WAR.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -39,7 +39,7 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 ))
 Package: xparse 2025-10-09 L3 Experimental document command parser
-) (C:\Users\jonwi\Documents\Projects\Coach_WAR\latex\dgruyter.sty
+) (dgruyter.sty
 Package: dgruyter 2017/09/19 v2.00 De Gruyter layout
 LaTeX Info: Redefining \numberline on input line 148.
 Applying: [2015/01/01] Nowadays obsolete fixes on input line 160.
@@ -739,56 +739,84 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count350
 )
-\c@theorem=\count351
-\c@corollary=\count352
-\c@proposition=\count353
-\c@lemma=\count354
-\c@definition=\count355
-\c@example=\count356
-\c@remark=\count357
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 25
+(C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+(C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/ulem\ulem.sty
+\UL@box=\box109
+\UL@hyphenbox=\box110
+\UL@skip=\skip89
+\UL@hook=\toks40
+\UL@height=\dimen282
+\UL@pe=\count351
+\UL@pixel=\dimen283
+\ULC@box=\box111
+Package: ulem 2019/11/18
+\ULdepth=\dimen284
+)
+\c@theorem=\count352
+\c@corollary=\count353
+\c@proposition=\count354
+\c@lemma=\count355
+\c@definition=\count356
+\c@example=\count357
+\c@remark=\count358
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 29
 .
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-(C:\Users\jonwi\Documents\Projects\Coach_WAR\latex\2026-Williamson-Jon-Portfoli
-o-Coach-WAR.aux)
+(2026-Williamson-Jon-Portfolio-Coach-WAR.aux)
 \openout1 = `2026-Williamson-Jon-Portfolio-Coach-WAR.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 25.
-LaTeX Font Info:    Trying to load font information for T3+cmr on input line 25
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 29.
+LaTeX Font Info:    Trying to load font information for T3+cmr on input line 29
 .
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/tipa\t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
 <warn.pdf, id=3, 30.1125pt x 30.1125pt>
 File: warn.pdf Graphic file (type pdf)
 <use warn.pdf>
-Package pdftex.def Info: warn.pdf  used on input line 25.
+Package pdftex.def Info: warn.pdf  used on input line 29.
 (pdftex.def)             Requested size: 5.97505pt x 5.97508pt.
 \footinsA=\insert250
-\c@footnoteA=\count358
+\c@footnoteA=\count359
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
@@ -797,17 +825,17 @@ tim
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count359
-\scratchdimen=\dimen282
-\scratchbox=\box109
-\nofMPsegments=\count360
-\nofMParguments=\count361
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count362
-\MPscratchDim=\dimen283
-\MPnumerator=\count363
-\makeMPintoPDFobject=\count364
-\everyMPtoPDFconversion=\toks41
+\scratchcounter=\count360
+\scratchdimen=\dimen285
+\scratchbox=\box112
+\nofMPsegments=\count361
+\nofMParguments=\count362
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count363
+\MPscratchDim=\dimen286
+\MPnumerator=\count364
+\makeMPintoPDFobject=\count365
+\everyMPtoPDFconversion=\toks42
 )
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -824,22 +852,19 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: sidecap package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 25.
-
-(C:\Users\jonwi\Documents\Projects\Coach_WAR\latex\2026-Williamson-Jon-Portfoli
-o-Coach-WAR.out)
-(C:\Users\jonwi\Documents\Projects\Coach_WAR\latex\2026-Williamson-Jon-Portfoli
-o-Coach-WAR.out)
+Package hyperref Info: Link coloring OFF on input line 29.
+ (2026-Williamson-Jon-Portfolio-Coach-WAR.out)
+(2026-Williamson-Jon-Portfolio-Coach-WAR.out)
 \@outlinefile=\write4
 \openout4 = `2026-Williamson-Jon-Portfolio-Coach-WAR.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 25.
-Package microtype Info: Applying patch `item' on input line 25.
-Package microtype Info: Applying patch `toc' on input line 25.
-Package microtype Info: Applying patch `eqnum' on input line 25.
-Package microtype Info: Applying patch `footnote' on input line 25.
-Package microtype Info: Applying patch `verbatim' on input line 25.
-LaTeX Info: Redefining \microtypesetup on input line 25.
+LaTeX Info: Redefining \microtypecontext on input line 29.
+Package microtype Info: Applying patch `item' on input line 29.
+Package microtype Info: Applying patch `toc' on input line 29.
+Package microtype Info: Applying patch `eqnum' on input line 29.
+Package microtype Info: Applying patch `footnote' on input line 29.
+Package microtype Info: Applying patch `verbatim' on input line 29.
+LaTeX Info: Redefining \microtypesetup on input line 29.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -856,7 +881,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (RS)
 )
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 5
-4.
+8.
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -866,35 +891,35 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
-4.
+8.
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
-4.
+8.
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )<<oml.cmap>>
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-54.
+58.
  (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )<<oms.cmap>>
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-54.
+58.
  (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9.5> on input line 54.
+(Font)              <9.5> on input line 58.
 <<omx.cmap>>
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.0> on input line 54.
+(Font)              <7.0> on input line 58.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.0> on input line 54.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
+(Font)              <5.0> on input line 58.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 58.
 
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -903,7 +928,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
 
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -920,102 +945,111 @@ nwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
 Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <C:
 /Users/jonwi/AppData/Local/Programs/MiKTeX/tex/latex/notes/warn.pdf>] [2] [3{C:
 /Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [
-4]
-LaTeX Font Info:    Calculating math sizes for size <8.0> on input line 171.
+4] [5]
+LaTeX Font Info:    Calculating math sizes for size <8.0> on input line 182.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.01495> not available
-(Font)              size <5> substituted on input line 171.
+(Font)              size <5> substituted on input line 182.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.01495> not available
-(Font)              size <5> substituted on input line 171.
+(Font)              size <5> substituted on input line 182.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.01495> not available
-(Font)              size <5> substituted on input line 171.
+(Font)              size <5> substituted on input line 182.
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8.0> on input line 171.
+(Font)              <8.0> on input line 182.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.6209> on input line 171.
+(Font)              <5.6209> on input line 182.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <4.01495> on input line 171.
-[5]
-<figures/coach_career_distributions.png, id=250, 850.1361pt x 562.2606pt>
+(Font)              <4.01495> on input line 182.
+[6]
+<figures/coach_career_distributions.png, id=263, 850.1361pt x 562.2606pt>
 File: figures/coach_career_distributions.png Graphic file (type png)
 <use figures/coach_career_distributions.png>
 Package pdftex.def Info: figures/coach_career_distributions.png  used on input 
-line 234.
+line 245.
 (pdftex.def)             Requested size: 441.01756pt x 291.67369pt.
- [6]
-LaTeX Font Info:    Calculating math sizes for size <5.0> on input line 262.
+ [7]
+LaTeX Font Info:    Calculating math sizes for size <5.0> on input line 272.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <3.51306> on input line 262.
+(Font)              <3.51306> on input line 272.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <2.50934> on input line 262.
+(Font)              <2.50934> on input line 272.
 
-Overfull \hbox (35.62524pt too wide) in paragraph at lines 249--263
+Overfull \hbox (35.62546pt too wide) in paragraph at lines 260--273
 [][] 
  []
 
-[7 <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/coach_career_dist
-ributions.png>]
-<figures/coaching_war_persistence_scatter.png, id=269, 706.8006pt x 706.8006pt>
+[8 <./figures/coach_career_distributions.png>]
+<figures/coaching_war_persistence_scatter.png, id=282, 706.8006pt x 706.8006pt>
 
 File: figures/coaching_war_persistence_scatter.png Graphic file (type png)
 <use figures/coaching_war_persistence_scatter.png>
 Package pdftex.def Info: figures/coaching_war_persistence_scatter.png  used on 
-input line 275.
+input line 285.
 (pdftex.def)             Requested size: 352.81538pt x 352.81703pt.
-<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=270, 715.232
+<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=283, 715.232
 1pt x 859.5312pt>
 File: figures/coaching_regression_to_mean_survivorship_adjusted.png Graphic fil
 e (type png)
 <use figures/coaching_regression_to_mean_survivorship_adjusted.png>
 Package pdftex.def Info: figures/coaching_regression_to_mean_survivorship_adjus
-ted.png  used on input line 282.
+ted.png  used on input line 292.
 (pdftex.def)             Requested size: 418.96533pt x 503.49918pt.
- [8 <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/coaching_war_per
-sistence_scatter.png>] [9 <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/fi
-gures/coaching_regression_to_mean_survivorship_adjusted.png>]
-[10] [11]
+ [9] [10 <./figures/coaching_war_persistence_scatter.png>] [11 <./figures/coach
+ing_regression_to_mean_survivorship_adjusted.png>] [12]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8.0> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 365.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 377.
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <9.5> not available
+(Font)              size <9> substituted on input line 382.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <9.5> not available
+(Font)              size <9> substituted on input line 382.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <9.5> not available
+(Font)              size <9> substituted on input line 382.
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 428--429
 []\T1/lmss/m/n/8.0 (+20) Woolner, K. (2002). VORP: Value over re-place-ment pla
 yer. \T1/lmss/m/sl/8.0 (+20) Base-ball Prospec-tus\T1/lmss/m/n/8.0 (+20) . Avai
 l-able at: 
  []
 
-[12] [13
+[14] [15
 
-] [14
+] [16
 
-] [15
+] [17
 
 ]
-<figures/win_pct_persistence_scatter.png, id=330, 706.8006pt x 706.8006pt>
+<figures/win_pct_persistence_scatter.png, id=348, 706.8006pt x 706.8006pt>
 File: figures/win_pct_persistence_scatter.png Graphic file (type png)
 <use figures/win_pct_persistence_scatter.png>
 Package pdftex.def Info: figures/win_pct_persistence_scatter.png  used on input
- line 521.
+ line 536.
 (pdftex.def)             Requested size: 352.81538pt x 352.81703pt.
- [16
+ [18
 
- <C:/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/win_pct_persistence
-_scatter.png>]
-<figures/coaching_war_persistence_by_background.png, id=336, 851.3406pt x 706.8
+ <./figures/win_pct_persistence_scatter.png>]
+<figures/coaching_war_persistence_by_background.png, id=354, 851.3406pt x 706.8
 006pt>
 File: figures/coaching_war_persistence_by_background.png Graphic file (type png
 )
 <use figures/coaching_war_persistence_by_background.png>
 Package pdftex.def Info: figures/coaching_war_persistence_by_background.png  us
-ed on input line 532.
+ed on input line 547.
 (pdftex.def)             Requested size: 352.81538pt x 292.91774pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 
-544.
+559.
 
 (C:\Users\jonwi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmss.fd
 File: ts1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1024,16 +1058,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [17
+ [19
 
-{C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <C
-:/Users/jonwi/Documents/Projects/Coach_WAR/latex/figures/coaching_war_persisten
-ce_by_background.png>]
+{C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <.
+/figures/coaching_war_persistence_by_background.png>]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
-
-(C:\Users\jonwi\Documents\Projects\Coach_WAR\latex\2026-Williamson-Jon-Portfoli
-o-Coach-WAR.aux)
+(2026-Williamson-Jon-Portfolio-Coach-WAR.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1045,16 +1076,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 Package rerunfilecheck Info: File `2026-Williamson-Jon-Portfolio-Coach-WAR.out'
  has not changed.
-(rerunfilecheck)             Checksum: 74A6CA7E88773C3A8A25C83DB9E4C8F5;5878.
+(rerunfilecheck)             Checksum: 46BDA1E3917093C59270834B9C63686F;6120.
  ) 
 Here is how much of TeX's memory you used:
- 18667 strings out of 467871
- 307110 string characters out of 5418376
- 760687 words of memory out of 5000000
- 46799 multiletter control sequences out of 15000+600000
- 740655 words of font info for 241 fonts, out of 8000000 for 9000
+ 19307 strings out of 467871
+ 315900 string characters out of 5418376
+ 803660 words of memory out of 5000000
+ 47375 multiletter control sequences out of 15000+600000
+ 748995 words of font info for 267 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,11n,131p,1435b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,11n,131p,2188b,672s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/pub
@@ -1067,16 +1098,17 @@ c/lm/lmr10.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /lm/lmr5.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmr7.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/
 lmr8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
+ri10.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
 ss8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
 sbx10.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msso8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msy10.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msy7.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on C:\Users\jonwi\Documents\Projects\Coach_WAR\latex\2026-Willia
-mson-Jon-Portfolio-Coach-WAR.pdf (17 pages, 3256787 bytes).
+Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (19 pages, 333013
+9 bytes).
 PDF statistics:
- 429 PDF objects out of 1000 (max. 8388607)
- 86 named destinations out of 1000 (max. 500000)
- 63235 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 451 PDF objects out of 1000 (max. 8388607)
+ 90 named destinations out of 1000 (max. 500000)
+ 66315 words of extra memory for PDF output out of 74296 (max. 10000000)
 

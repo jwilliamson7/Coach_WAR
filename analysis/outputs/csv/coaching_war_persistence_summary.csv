@@ -2,11 +2,11 @@ Metric,Value
 Sample size (consecutive seasons),1163
 Time period,1970-2023
 Unique coaches,211
-Overall correlation (r),0.2632
-R² (variance explained),0.0693
-Mean Year N WAR,0.0186
-Mean Year N+1 WAR,0.0081
-SD Year N WAR,0.1119
-SD Year N+1 WAR,0.1218
-Mean absolute change,0.1126
-Median absolute change,0.0918
+Overall correlation (r),0.2523
+R² (variance explained),0.0636
+Mean Year N WAR,0.0159
+Mean Year N+1 WAR,0.0048
+SD Year N WAR,0.1001
+SD Year N+1 WAR,0.1123
+Mean absolute change,0.1020
+Median absolute change,0.0863

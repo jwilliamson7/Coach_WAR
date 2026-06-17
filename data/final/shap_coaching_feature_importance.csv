@@ -1,133 +1,133 @@
 Feature,Mean_Abs_SHAP,Subcategory,Rank
-Yds Rushing__opp__hc_Norm,0.0057739867,Coaching: HC Defense,1
-PF (Points For)__hc_Norm,0.005491928,Coaching: HC Offense,2
-PF (Points For)__opp__hc_Norm,0.0037399465,Coaching: HC Defense,3
-NY/A Passing__hc_Norm,0.0035967133,Coaching: HC Offense,4
-Pts Average Drive__hc_Norm,0.0030611544,Coaching: HC Offense,5
-1stPy__dc_Norm,0.0030071954,Coaching: DC,6
-1stD Passing__oc_Norm,0.0025488373,Coaching: OC,7
-NY/A Passing__opp__hc_Norm,0.0021490466,Coaching: HC Defense,8
-RZAtt__dc_Norm,0.0021429001,Coaching: DC,9
-4D%__dc_Norm,0.00210234,Coaching: DC,10
-1stD__opp__hc_Norm,0.0020572464,Coaching: HC Defense,11
-Yds__opp__hc_Norm,0.0020164174,Coaching: HC Defense,12
-1stPy__opp__hc_Norm,0.0017883022,Coaching: HC Defense,13
-3DAtt__opp__hc_Norm,0.0017764042,Coaching: HC Defense,14
-TD Rushing__opp__hc_Norm,0.0017136235,Coaching: HC Defense,15
-RZAtt__hc_Norm,0.0016430162,Coaching: HC Offense,16
-Y/P__opp__hc_Norm,0.0016401245,Coaching: HC Defense,17
-TO%__opp__hc_Norm,0.0016172779,Coaching: HC Defense,18
-TO__opp__hc_Norm,0.0015665077,Coaching: HC Defense,19
-Pen__oc_Norm,0.0013306407,Coaching: OC,20
-1stD Rushing__opp__hc_Norm,0.0012303304,Coaching: HC Defense,21
-Yds Penalties__oc_Norm,0.0011652607,Coaching: OC,22
-4DAtt__oc_Norm,0.0011617754,Coaching: OC,23
-TD Rushing__hc_Norm,0.0011409794,Coaching: HC Offense,24
-Sc%__dc_Norm,0.0011180722,Coaching: DC,25
-Cmp Passing__dc_Norm,0.0011155184,Coaching: DC,26
-Y/A Rushing__oc_Norm,0.001021522,Coaching: OC,27
-Y/P__dc_Norm,0.0010193603,Coaching: DC,28
-Sc%__hc_Norm,0.0010068562,Coaching: HC Offense,29
-1stD Passing__hc_Norm,0.0009761059,Coaching: HC Offense,30
-3D%__opp__hc_Norm,0.0009422648,Coaching: HC Defense,31
-Y/P__hc_Norm,0.0008691188,Coaching: HC Offense,32
-1stD Passing__dc_Norm,0.0008503848,Coaching: DC,33
-Pts Average Drive__dc_Norm,0.0008472376,Coaching: DC,34
-Time Average Drive__oc_Norm,0.0008456489,Coaching: OC,35
-Yds Penalties__dc_Norm,0.0008398135,Coaching: DC,36
-4DAtt__dc_Norm,0.00081998494,Coaching: DC,37
-Pts Average Drive__opp__hc_Norm,0.00081069616,Coaching: HC Defense,38
-Y/A Rushing__opp__hc_Norm,0.0008037182,Coaching: HC Defense,39
-NY/A Passing__dc_Norm,0.00079979195,Coaching: DC,40
-NY/A Passing__oc_Norm,0.0007625217,Coaching: OC,41
-TD Passing__opp__hc_Norm,0.00074804615,Coaching: HC Defense,42
-TO%__oc_Norm,0.00074655394,Coaching: OC,43
-1stD Rushing__oc_Norm,0.0007098417,Coaching: OC,44
-Sc%__opp__hc_Norm,0.00068783964,Coaching: HC Defense,45
-TO%__hc_Norm,0.00066524214,Coaching: HC Offense,46
-TD Passing__dc_Norm,0.00066497,Coaching: DC,47
-#Dr__dc_Norm,0.00065270247,Coaching: DC,48
-Int Passing__dc_Norm,0.00065040856,Coaching: DC,49
-PF (Points For)__oc_Norm,0.0006460531,Coaching: OC,50
-1stPy__hc_Norm,0.0005661593,Coaching: HC Offense,51
-TO__dc_Norm,0.0005308425,Coaching: DC,52
-3DAtt__oc_Norm,0.000525995,Coaching: OC,53
-Int Passing__opp__hc_Norm,0.00051516696,Coaching: HC Defense,54
-Att Passing__opp__hc_Norm,0.00050714874,Coaching: HC Defense,55
-4D%__hc_Norm,0.0004901618,Coaching: HC Offense,56
-1stPy__oc_Norm,0.00047522812,Coaching: OC,57
-Yds__dc_Norm,0.0004715524,Coaching: DC,58
-Att Passing__hc_Norm,0.0004552479,Coaching: HC Offense,59
-3DAtt__dc_Norm,0.00044612173,Coaching: DC,60
-Yds Average Drive__opp__hc_Norm,0.00043340307,Coaching: HC Defense,61
-Yds Passing__oc_Norm,0.00043322454,Coaching: OC,62
-Yds Penalties__opp__hc_Norm,0.00040971916,Coaching: HC Defense,63
-Yds Passing__opp__hc_Norm,0.00040688133,Coaching: HC Defense,64
-PF (Points For)__dc_Norm,0.00037210365,Coaching: DC,65
-Plays Average Drive__dc_Norm,0.00036300666,Coaching: DC,66
-TD Passing__oc_Norm,0.00036085016,Coaching: OC,67
-Att Rushing__dc_Norm,0.00035396978,Coaching: DC,68
-Att Passing__dc_Norm,0.00034630197,Coaching: DC,69
-Time Average Drive__opp__hc_Norm,0.00032822497,Coaching: HC Defense,70
-Cmp Passing__hc_Norm,0.00032798943,Coaching: HC Offense,71
-RZPct__oc_Norm,0.00032181843,Coaching: OC,72
-Int Passing__oc_Norm,0.0003121095,Coaching: OC,73
-4D%__oc_Norm,0.00031107364,Coaching: OC,74
-Yds Average Drive__dc_Norm,0.00028921218,Coaching: DC,75
-3DAtt__hc_Norm,0.00028622666,Coaching: HC Offense,76
-Yds Rushing__dc_Norm,0.00027679792,Coaching: DC,77
-Cmp Passing__opp__hc_Norm,0.00026561102,Coaching: HC Defense,78
-Yds Average Drive__oc_Norm,0.0002647862,Coaching: OC,79
-1stD__oc_Norm,0.00024709516,Coaching: OC,80
-RZPct__hc_Norm,0.00024692854,Coaching: HC Offense,81
-3D%__dc_Norm,0.0002315934,Coaching: DC,82
-Int Passing__hc_Norm,0.00022922597,Coaching: HC Offense,83
-Att Rushing__oc_Norm,0.0002257971,Coaching: OC,84
-4DAtt__hc_Norm,0.00022323616,Coaching: HC Offense,85
-4D%__opp__hc_Norm,0.00020580062,Coaching: HC Defense,86
-Pen__dc_Norm,0.00020413994,Coaching: DC,87
-1stD Rushing__hc_Norm,0.00018464078,Coaching: HC Offense,88
-#Dr__hc_Norm,0.00017858758,Coaching: HC Offense,89
-RZAtt__oc_Norm,0.00015957489,Coaching: OC,90
-TO__hc_Norm,0.00014901574,Coaching: HC Offense,91
-1stD Passing__opp__hc_Norm,0.00014182935,Coaching: HC Defense,92
-Sc%__oc_Norm,0.00012498247,Coaching: OC,93
-Yds__hc_Norm,0.00011059989,Coaching: HC Offense,94
-Yds Penalties__hc_Norm,9.248045e-05,Coaching: HC Offense,95
-RZAtt__opp__hc_Norm,6.757502e-05,Coaching: HC Defense,96
-4DAtt__opp__hc_Norm,6.450728e-05,Coaching: HC Defense,97
-Time Average Drive__dc_Norm,5.166164e-05,Coaching: DC,98
-Yds__oc_Norm,0.0,Coaching: OC,99
-Y/P__oc_Norm,0.0,Coaching: OC,100
-TO__oc_Norm,0.0,Coaching: OC,101
+Yds Rushing__opp__hc_Norm,0.006562853,Coaching: HC Defense,1
+PF (Points For)__opp__hc_Norm,0.006048084,Coaching: HC Defense,2
+RZAtt__hc_Norm,0.004512023,Coaching: HC Offense,3
+PF (Points For)__hc_Norm,0.004462007,Coaching: HC Offense,4
+Sc%__hc_Norm,0.004011268,Coaching: HC Offense,5
+1stD Rushing__opp__hc_Norm,0.0033115994,Coaching: HC Defense,6
+4D%__dc_Norm,0.00322372,Coaching: DC,7
+NY/A Passing__opp__hc_Norm,0.0030636708,Coaching: HC Defense,8
+Y/A Rushing__oc_Norm,0.002865353,Coaching: OC,9
+3DAtt__opp__hc_Norm,0.0026680431,Coaching: HC Defense,10
+4DAtt__dc_Norm,0.0022306512,Coaching: DC,11
+RZAtt__dc_Norm,0.0020405245,Coaching: DC,12
+1stPy__dc_Norm,0.0020361638,Coaching: DC,13
+1stD__opp__hc_Norm,0.001666652,Coaching: HC Defense,14
+Y/A Rushing__opp__hc_Norm,0.0016585892,Coaching: HC Defense,15
+Yds__opp__hc_Norm,0.0016258886,Coaching: HC Defense,16
+NY/A Passing__hc_Norm,0.0015428935,Coaching: HC Offense,17
+Pts Average Drive__hc_Norm,0.0015380871,Coaching: HC Offense,18
+Int Passing__opp__hc_Norm,0.0013795578,Coaching: HC Defense,19
+TD Rushing__opp__hc_Norm,0.0011613779,Coaching: HC Defense,20
+Y/P__opp__hc_Norm,0.0011584644,Coaching: HC Defense,21
+1stD Passing__oc_Norm,0.0010834885,Coaching: OC,22
+Pts Average Drive__dc_Norm,0.0010728263,Coaching: DC,23
+TO__opp__hc_Norm,0.0010136729,Coaching: HC Defense,24
+4DAtt__oc_Norm,0.0009743979,Coaching: OC,25
+RZPct__oc_Norm,0.00091136905,Coaching: OC,26
+Yds Passing__opp__hc_Norm,0.00087412714,Coaching: HC Defense,27
+1stPy__hc_Norm,0.000861792,Coaching: HC Offense,28
+Y/P__dc_Norm,0.0008440998,Coaching: DC,29
+Int Passing__oc_Norm,0.0008246588,Coaching: OC,30
+Yds Passing__hc_Norm,0.0008233516,Coaching: HC Offense,31
+TO%__dc_Norm,0.0007591083,Coaching: DC,32
+Sc%__oc_Norm,0.00075068604,Coaching: OC,33
+Y/P__hc_Norm,0.0007453772,Coaching: HC Offense,34
+Y/A Rushing__dc_Norm,0.0007366087,Coaching: DC,35
+3DAtt__oc_Norm,0.0007286013,Coaching: OC,36
+Yds Penalties__hc_Norm,0.00072089577,Coaching: HC Offense,37
+Pen__oc_Norm,0.0007141216,Coaching: OC,38
+Cmp Passing__dc_Norm,0.0007114173,Coaching: DC,39
+1stPy__opp__hc_Norm,0.00070009846,Coaching: HC Defense,40
+Att Rushing__oc_Norm,0.00063672726,Coaching: OC,41
+3DAtt__dc_Norm,0.00061034976,Coaching: DC,42
+TO%__oc_Norm,0.00059854053,Coaching: OC,43
+1stPy__oc_Norm,0.00055030035,Coaching: OC,44
+#Dr__dc_Norm,0.0005305584,Coaching: DC,45
+1stD__dc_Norm,0.00050823943,Coaching: DC,46
+1stD Passing__hc_Norm,0.0005057407,Coaching: HC Offense,47
+1stD Rushing__dc_Norm,0.00049291254,Coaching: DC,48
+NY/A Passing__dc_Norm,0.00048049248,Coaching: DC,49
+Yds Penalties__dc_Norm,0.00047953302,Coaching: DC,50
+TO__dc_Norm,0.00047581282,Coaching: DC,51
+Yds__dc_Norm,0.0004724999,Coaching: DC,52
+TO%__hc_Norm,0.0004660873,Coaching: HC Offense,53
+4D%__hc_Norm,0.00045568883,Coaching: HC Offense,54
+1stD Passing__dc_Norm,0.00044213742,Coaching: DC,55
+TO__hc_Norm,0.00041732326,Coaching: HC Offense,56
+Plays Average Drive__oc_Norm,0.00041472187,Coaching: OC,57
+TD Passing__opp__hc_Norm,0.00041327422,Coaching: HC Defense,58
+Int Passing__dc_Norm,0.000406795,Coaching: DC,59
+TO%__opp__hc_Norm,0.00040086504,Coaching: HC Defense,60
+Int Passing__hc_Norm,0.0003453793,Coaching: HC Offense,61
+3D%__dc_Norm,0.00033652116,Coaching: DC,62
+TD Rushing__dc_Norm,0.00032562568,Coaching: DC,63
+Yds Average Drive__hc_Norm,0.00029721844,Coaching: HC Offense,64
+PF (Points For)__dc_Norm,0.0002919311,Coaching: DC,65
+TD Passing__hc_Norm,0.0002867119,Coaching: HC Offense,66
+RZAtt__oc_Norm,0.0002861717,Coaching: OC,67
+Time Average Drive__dc_Norm,0.0002746438,Coaching: DC,68
+Yds Penalties__opp__hc_Norm,0.00026093997,Coaching: HC Defense,69
+Plays Average Drive__opp__hc_Norm,0.00025131376,Coaching: HC Defense,70
+Att Rushing__hc_Norm,0.00024864066,Coaching: HC Offense,71
+Sc%__opp__hc_Norm,0.00023889678,Coaching: HC Defense,72
+4D%__oc_Norm,0.00023746457,Coaching: OC,73
+4DAtt__opp__hc_Norm,0.000221931,Coaching: HC Defense,74
+4D%__opp__hc_Norm,0.00021862287,Coaching: HC Defense,75
+#Dr__opp__hc_Norm,0.00021012631,Coaching: HC Defense,76
+Pen__opp__hc_Norm,0.00020638185,Coaching: HC Defense,77
+3D%__opp__hc_Norm,0.00020424453,Coaching: HC Defense,78
+Yds Average Drive__oc_Norm,0.00020237993,Coaching: OC,79
+Yds Rushing__hc_Norm,0.00016876894,Coaching: HC Offense,80
+Yds Rushing__oc_Norm,0.00016365327,Coaching: OC,81
+3D%__oc_Norm,0.00015562278,Coaching: OC,82
+Att Passing__dc_Norm,0.0001375746,Coaching: DC,83
+Y/A Rushing__hc_Norm,0.00013214737,Coaching: HC Offense,84
+4DAtt__hc_Norm,0.00012018164,Coaching: HC Offense,85
+TD Rushing__oc_Norm,9.4927746e-05,Coaching: OC,86
+Yds Passing__dc_Norm,9.321285e-05,Coaching: DC,87
+#Dr__oc_Norm,8.5161504e-05,Coaching: OC,88
+Time Average Drive__opp__hc_Norm,6.823483e-05,Coaching: HC Defense,89
+Cmp Passing__opp__hc_Norm,4.5924597e-05,Coaching: HC Defense,90
+NY/A Passing__oc_Norm,4.4364548e-05,Coaching: OC,91
+TD Passing__oc_Norm,3.9909228e-05,Coaching: OC,92
+Att Passing__hc_Norm,2.665622e-05,Coaching: HC Offense,93
+Y/P__oc_Norm,0.0,Coaching: OC,94
+Yds__oc_Norm,0.0,Coaching: OC,95
+PF (Points For)__oc_Norm,0.0,Coaching: OC,96
+TO__oc_Norm,0.0,Coaching: OC,97
+Yds Penalties__oc_Norm,0.0,Coaching: OC,98
+Pts Average Drive__oc_Norm,0.0,Coaching: OC,99
+Time Average Drive__oc_Norm,0.0,Coaching: OC,100
+Yds__hc_Norm,0.0,Coaching: HC Offense,101
 RZPct__dc_Norm,0.0,Coaching: DC,102
-1stD Rushing__dc_Norm,0.0,Coaching: DC,103
-TO%__dc_Norm,0.0,Coaching: DC,104
-Yds Passing__dc_Norm,0.0,Coaching: DC,105
-TD Rushing__dc_Norm,0.0,Coaching: DC,106
-Y/A Rushing__dc_Norm,0.0,Coaching: DC,107
-1stD__dc_Norm,0.0,Coaching: DC,108
-Yds Rushing__oc_Norm,0.0,Coaching: OC,109
-TD Rushing__oc_Norm,0.0,Coaching: OC,110
-Att Passing__oc_Norm,0.0,Coaching: OC,111
-Cmp Passing__oc_Norm,0.0,Coaching: OC,112
-Pts Average Drive__oc_Norm,0.0,Coaching: OC,113
-Plays Average Drive__oc_Norm,0.0,Coaching: OC,114
-#Dr__oc_Norm,0.0,Coaching: OC,115
-3D%__oc_Norm,0.0,Coaching: OC,116
-3D%__hc_Norm,0.0,Coaching: HC Offense,117
-Time Average Drive__hc_Norm,0.0,Coaching: HC Offense,118
-Plays Average Drive__hc_Norm,0.0,Coaching: HC Offense,119
-Yds Average Drive__hc_Norm,0.0,Coaching: HC Offense,120
-Yds Rushing__hc_Norm,0.0,Coaching: HC Offense,121
-Att Rushing__hc_Norm,0.0,Coaching: HC Offense,122
-Y/A Rushing__hc_Norm,0.0,Coaching: HC Offense,123
+Plays Average Drive__dc_Norm,0.0,Coaching: DC,103
+Yds Average Drive__dc_Norm,0.0,Coaching: DC,104
+Sc%__dc_Norm,0.0,Coaching: DC,105
+Att Rushing__dc_Norm,0.0,Coaching: DC,106
+Yds Rushing__dc_Norm,0.0,Coaching: DC,107
+Pen__dc_Norm,0.0,Coaching: DC,108
+TD Passing__dc_Norm,0.0,Coaching: DC,109
+1stD Rushing__oc_Norm,0.0,Coaching: OC,110
+Cmp Passing__oc_Norm,0.0,Coaching: OC,111
+1stD__oc_Norm,0.0,Coaching: OC,112
+Yds Passing__oc_Norm,0.0,Coaching: OC,113
+Att Passing__oc_Norm,0.0,Coaching: OC,114
+Cmp Passing__hc_Norm,0.0,Coaching: HC Offense,115
+TD Rushing__hc_Norm,0.0,Coaching: HC Offense,116
+RZPct__hc_Norm,0.0,Coaching: HC Offense,117
+3D%__hc_Norm,0.0,Coaching: HC Offense,118
+3DAtt__hc_Norm,0.0,Coaching: HC Offense,119
+Plays Average Drive__hc_Norm,0.0,Coaching: HC Offense,120
+Time Average Drive__hc_Norm,0.0,Coaching: HC Offense,121
+#Dr__hc_Norm,0.0,Coaching: HC Offense,122
+1stD Rushing__hc_Norm,0.0,Coaching: HC Offense,123
 Pen__hc_Norm,0.0,Coaching: HC Offense,124
 1stD__hc_Norm,0.0,Coaching: HC Offense,125
-TD Passing__hc_Norm,0.0,Coaching: HC Offense,126
-Yds Passing__hc_Norm,0.0,Coaching: HC Offense,127
+1stD Passing__opp__hc_Norm,0.0,Coaching: HC Defense,126
+Att Passing__opp__hc_Norm,0.0,Coaching: HC Defense,127
 Att Rushing__opp__hc_Norm,0.0,Coaching: HC Defense,128
-Plays Average Drive__opp__hc_Norm,0.0,Coaching: HC Defense,129
-#Dr__opp__hc_Norm,0.0,Coaching: HC Defense,130
-Pen__opp__hc_Norm,0.0,Coaching: HC Defense,131
+Yds Average Drive__opp__hc_Norm,0.0,Coaching: HC Defense,129
+Pts Average Drive__opp__hc_Norm,0.0,Coaching: HC Defense,130
+RZAtt__opp__hc_Norm,0.0,Coaching: HC Defense,131
 RZPct__opp__hc_Norm,0.0,Coaching: HC Defense,132

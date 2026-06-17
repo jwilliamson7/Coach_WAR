@@ -1,0 +1,61 @@
+analysis,rank,coach,avg_war_per_16,seasons,group
+Primary,1,Kevin O'Connell,2.26,3,top
+Primary,2,Gene Stallings,2.26,4,top
+Primary,3,John Ralston,2.17,5,top
+Primary,4,John Madden,2.08,9,top
+Primary,5,Don Shula,2.0,26,top
+Primary,6,Mike McDaniel,1.82,3,top
+Primary,7,Kevin Stefanski,1.69,5,top
+Primary,8,Chuck Pagano,1.62,6,top
+Primary,9,Red Miller,1.6,4,top
+Primary,10,Kyle Shanahan,1.51,8,top
+Imp test,1,Don Shula,3.54,26,top
+Imp test,2,John Madden,2.68,9,top
+Imp test,3,Mike McDaniel,2.4,3,top
+Imp test,4,Kevin O'Connell,2.18,3,top
+Imp test,5,Mike Martz,2.15,6,top
+Imp test,6,Red Miller,2.07,4,top
+Imp test,7,John Ralston,1.98,5,top
+Imp test,8,Chuck Pagano,1.87,6,top
+Imp test,9,Kyle Shanahan,1.66,8,top
+Imp test,10,Matt Nagy,1.54,4,top
+Temp test,1,Kevin O'Connell,2.85,3,top
+Temp test,2,Mike McDaniel,2.8,3,top
+Temp test,3,Kevin Stefanski,2.38,5,top
+Temp test,4,John Madden,2.33,9,top
+Temp test,5,Kyle Shanahan,2.28,8,top
+Temp test,6,Nick Sirianni,2.22,4,top
+Temp test,7,John Ralston,1.85,5,top
+Temp test,8,Mike Vrabel,1.65,6,top
+Temp test,9,Don Shula,1.57,26,top
+Temp test,10,Mike Martz,1.52,6,top
+Primary,1,Pat Shurmur,-3.32,4,bottom
+Primary,2,Steve Spagnuolo,-2.97,3,bottom
+Primary,3,Matt Eberflus,-2.9,3,bottom
+Primary,4,Hue Jackson,-2.85,4,bottom
+Primary,5,Jack Patera,-2.64,7,bottom
+Primary,6,Paul Wiggin,-2.59,3,bottom
+Primary,7,Scott Linehan,-2.59,3,bottom
+Primary,8,Rod Marinelli,-2.4,3,bottom
+Primary,9,David Shula,-2.32,5,bottom
+Primary,10,J.D. Roberts,-2.3,3,bottom
+Imp test,1,Pat Shurmur,-3.51,4,bottom
+Imp test,2,Hue Jackson,-3.12,4,bottom
+Imp test,3,Steve Spagnuolo,-3.05,3,bottom
+Imp test,4,Jack Patera,-3.02,7,bottom
+Imp test,5,Scott Linehan,-2.95,3,bottom
+Imp test,6,Kay Stephenson,-2.91,3,bottom
+Imp test,7,Matt Eberflus,-2.86,3,bottom
+Imp test,8,Rick Forzano,-2.62,3,bottom
+Imp test,9,Dave McGinnis,-2.52,3,bottom
+Imp test,10,Todd Haley,-2.2,3,bottom
+Temp test,1,Pat Shurmur,-2.85,4,bottom
+Temp test,2,Steve Spagnuolo,-2.8,3,bottom
+Temp test,3,Rod Marinelli,-2.5,3,bottom
+Temp test,4,Matt Eberflus,-2.49,3,bottom
+Temp test,5,Hue Jackson,-2.43,4,bottom
+Temp test,6,Paul Wiggin,-2.41,3,bottom
+Temp test,7,Jack Patera,-2.38,7,bottom
+Temp test,8,Scott Linehan,-2.38,3,bottom
+Temp test,9,David Shula,-2.27,5,bottom
+Temp test,10,Bruce Coslet,-2.08,8,bottom

@@ -164,6 +164,58 @@ def categorize_features(feature_names):
     return categories
 
 
+# Pipeline 2 optimal hyperparameters (from 200-iter RandomizedSearchCV, 5-fold CV)
+PIPELINE2_OPTIMAL_PARAMS = {
+    'n_estimators': 300,
+    'learning_rate': 0.05,
+    'max_depth': 2,
+    'gamma': 0,
+    'reg_alpha': 0.1,
+    'reg_lambda': 0.1,
+    'subsample': 0.7,
+    'colsample_bytree': 1.0,
+    'min_child_weight': 5,
+    'objective': 'reg:squarederror',
+    'random_state': 42,
+    'verbosity': 0,
+    'n_jobs': -1,
+}
+
+
+def train_model_full_data(X, y, random_state=42):
+    """Pipeline 2 strategy: train on all rows, no train/test split.
+
+    Uses the known-optimal hyperparameters. Returns only the model
+    plus in-sample metrics for reference (the honest validation R²
+    comes from Pipeline 1, not this in-sample fit).
+    """
+    print('\n' + '=' * 60)
+    print('PIPELINE 2 STRATEGY: TRAIN ON FULL DATASET (NO SPLIT)')
+    print('=' * 60)
+    print(f'Training on {X.shape[0]} rows × {X.shape[1]} features')
+    print('Hyperparameters (fixed at Pipeline 2 optima):')
+    for k, v in PIPELINE2_OPTIMAL_PARAMS.items():
+        if k not in ('objective', 'random_state', 'verbosity', 'n_jobs'):
+            print(f'  {k}: {v}')
+
+    params = dict(PIPELINE2_OPTIMAL_PARAMS)
+    params['random_state'] = random_state
+    model = xgb.XGBRegressor(**params)
+    model.fit(X, y)
+
+    y_pred = model.predict(X)
+    in_sample = {
+        'r2': r2_score(y, y_pred),
+        'rmse': float(np.sqrt(mean_squared_error(y, y_pred))),
+        'mae': mean_absolute_error(y, y_pred),
+    }
+    print(f'\nIn-sample fit (NOT generalization metric):')
+    print(f"  R²:   {in_sample['r2']:.4f}")
+    print(f"  RMSE: {in_sample['rmse']:.4f}")
+    print('Honest test R^2 ~ 0.43, RMSE ~ 0.155 from Pipeline 1 (split-then-impute)')
+    return model, in_sample
+
+
 def train_model(X, y, team_year_info, use_tuning=True, cv_folds=5, n_iter=50,
                 test_size=0.2, random_state=42):
     """Train XGBoost model with coach-based stratification."""
@@ -714,6 +766,9 @@ def main():
                         help='Number of top features to display in plots (default: 30)')
     parser.add_argument('--font', type=str, default='serif',
                         help='Font family for plots (default: serif)')
+    parser.add_argument('--full-data', action='store_true',
+                        help='Pipeline 2 strategy: train on all rows with fixed '
+                             'optimal hyperparameters, no train/test split')
     args = parser.parse_args()
 
     # Create log file
@@ -748,13 +803,22 @@ def main():
         categories = categorize_features(list(X.columns))
 
         # Step 3: Train model
-        print("\nTraining XGBoost model...")
-        use_tuning = not args.no_tuning
-        model, X_train, X_test, y_train, y_test, train_metrics, test_metrics = train_model(
-            X, y, team_year_info,
-            use_tuning=use_tuning, cv_folds=args.cv_folds,
-            n_iter=args.n_iter, random_state=args.random_state
-        )
+        if args.full_data:
+            print("\nTraining XGBoost model (Pipeline 2 strategy: full data)...")
+            model, in_sample = train_model_full_data(
+                X, y, random_state=args.random_state
+            )
+            train_metrics = in_sample
+            test_metrics = {'r2': float('nan'), 'rmse': float('nan'),
+                            'mae': float('nan')}
+        else:
+            print("\nTraining XGBoost model...")
+            use_tuning = not args.no_tuning
+            model, X_train, X_test, y_train, y_test, train_metrics, test_metrics = train_model(
+                X, y, team_year_info,
+                use_tuning=use_tuning, cv_folds=args.cv_folds,
+                n_iter=args.n_iter, random_state=args.random_state
+            )
 
         # Step 4: Compute SHAP values on full dataset
         shap_values, explainer = compute_shap_values(model, X)
@@ -785,7 +849,12 @@ def main():
         print(f"  Dataset: {dataset_type}")
         print(f"  Features analyzed: {len(X.columns)}")
         print(f"  Categories: {len(category_df)}")
-        print(f"  Train R²: {train_metrics['r2']:.4f}, Test R²: {test_metrics['r2']:.4f}")
+        if args.full_data:
+            print(f"  In-sample R^2: {train_metrics['r2']:.4f} "
+                  "(honest validation R^2 ~ 0.43 from Pipeline 1)")
+        else:
+            print(f"  Train R^2: {train_metrics['r2']:.4f}, "
+                  f"Test R^2: {test_metrics['r2']:.4f}")
         print(f"\n  Most important category (total): {category_df.iloc[0]['Category']} ({category_df.iloc[0]['Pct_Total_Importance']:.1f}%)")
         cat_by_avg = category_df.sort_values('Avg_SHAP', ascending=False)
         print(f"  Most important category (avg):   {cat_by_avg.iloc[0]['Category']} (avg SHAP: {cat_by_avg.iloc[0]['Avg_SHAP']:.6f})")
