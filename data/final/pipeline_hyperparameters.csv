@@ -1,0 +1,2 @@
+note,n_estimators,learning_rate,max_depth,gamma,reg_alpha,reg_lambda,subsample,colsample_bytree,min_child_weight,objective,random_state
+"Fixed optimal hyperparameters used by both pipelines (from 200-iter RandomizedSearchCV, 5-fold CV).",300,0.05,2,0,0.1,0.1,0.7,1.0,5,reg:squarederror,42

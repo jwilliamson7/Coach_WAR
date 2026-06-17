@@ -2,6 +2,15 @@
 XGBoost Coaching Impact Analysis Script
 Compares XGBoost predictions using actual coach features versus replacement-level (average) coach features.
 This quantifies the impact of individual coaching characteristics on team performance.
+
+DEPRECATED as a standalone entry point: this script imputes the full dataset
+before the train/test split (the imputation-leakage issue from reviewer concern
+#4) and trains on ~82% of rows. It is superseded by the two-pipeline design:
+  * analysis/xgboost_imputation_leakage_test.py  (Pipeline 1 — validation)
+  * analysis/xgboost_war_estimation.py           (Pipeline 2 — estimation;
+    writes the canonical data/final/*.csv used by the paper)
+Its functions are still imported by those pipelines. Running its main() requires
+the explicit --run-deprecated flag (see the guard in main()).
 """
 
 import pandas as pd
@@ -733,7 +742,39 @@ def main():
                        help='Number of iterations for RandomizedSearchCV (default: 50)')
     parser.add_argument('--random-state', type=int, default=42,
                        help='Random state for reproducibility (default: 42)')
+    parser.add_argument('--run-deprecated', action='store_true',
+                       help='Acknowledge that this is the superseded pre-leakage-fix '
+                            'pipeline and run anyway (overwrites the canonical '
+                            'data/final/*.csv produced by Pipeline 2).')
     args = parser.parse_args()
+
+    # --- Deprecation guard -------------------------------------------------
+    # This script imputes the FULL dataset and then splits into train/test
+    # (training on ~82% of rows), the methodology flagged for imputation
+    # leakage in reviewer concern #4. It has been replaced by a two-pipeline
+    # design and is kept only for legacy reproduction. Running it would
+    # overwrite the canonical data/final/*.csv that the paper depends on.
+    # NOTE: the guard lives inside main() so the module's functions remain
+    # importable by the replacement pipelines.
+    if not args.run_deprecated:
+        print('=' * 80)
+        print('DEPRECATED ENTRY POINT — not run')
+        print('=' * 80)
+        print(
+            'This script uses the superseded methodology (full-data SVD\n'
+            'imputation followed by a train/test split, model trained on ~82%\n'
+            'of rows). It has been replaced by the leakage-corrected pipelines:\n'
+            '  * Validation : analysis/xgboost_imputation_leakage_test.py\n'
+            '                 (split-then-impute; honest test R^2 ~ 0.43)\n'
+            '  * Estimation : analysis/xgboost_war_estimation.py\n'
+            '                 (full-data refit; writes the canonical\n'
+            '                  data/final/*.csv consumed by the paper)\n\n'
+            'Running this script would OVERWRITE those canonical files with\n'
+            'pre-fix numbers. To reproduce the legacy results anyway, re-run\n'
+            'with --run-deprecated.'
+        )
+        sys.exit(1)
+    # -----------------------------------------------------------------------
     
     # Create log file with timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

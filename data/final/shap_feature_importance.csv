@@ -1,366 +1,366 @@
 Feature,Mean_Abs_SHAP,Category,Rank
-Opp_Int_Passing_Norm,0.0398853,Team Performance,1
-ReservesIR/PUP/NFI/SUSP_Pct,0.03915522,Salary Cap,2
-Team_Int_Passing_Norm,0.03323469,Team Performance,3
-Active53-Man_Pct,0.029776096,Salary Cap,4
-QB_Avg_Games_Missed_Pct,0.025357772,Injury/Availability,5
-SoS,0.009768406,Team Performance,6
-OL_Players_Count,0.008281997,Injury/Availability,7
-RB_Pct,0.0075950874,Salary Cap,8
-OL_Max_Games_Missed_Pct,0.006532722,Injury/Availability,9
-S_Max_Games_Missed_Pct,0.0062820753,Injury/Availability,10
-Yds Rushing__opp__hc_Norm,0.0057739867,Coaching Performance,11
-OL_Avg_Games_Missed_Pct,0.0056803185,Injury/Availability,12
-PF (Points For)__hc_Norm,0.005491928,Coaching Performance,13
-Avg_Starter_Experience,0.0053741736,Player Age & Experience,14
-WR_Avg_Games_Missed_Pct,0.005177904,Injury/Availability,15
-QB_Retention_Rate_Pct,0.004716498,Roster Turnover,16
-TE_New_Player_Rate_Pct,0.0038673766,Roster Turnover,17
-PF (Points For)__opp__hc_Norm,0.0037399465,Coaching Performance,18
-Cap SpaceAll_Pct,0.0036161256,Salary Cap,19
-NY/A Passing__hc_Norm,0.0035967133,Coaching Performance,20
-Avg_Starter_Exp_OL,0.0035361743,Player Age & Experience,21
-OL_Min_Games_Missed_Pct,0.0035243763,Injury/Availability,22
-LB_New_Player_Rate_Pct,0.003337882,Roster Turnover,23
-S_Avg_Games_Missed_Pct,0.0032728014,Injury/Availability,24
-Avg_Starter_Exp_TE,0.003105916,Player Age & Experience,25
-Pts Average Drive__hc_Norm,0.0030611544,Coaching Performance,26
-1stPy__dc_Norm,0.0030071954,Coaching Performance,27
-P_Pct,0.0029010787,Salary Cap,28
-TE_Max_Games_Missed_Pct,0.0026694096,Injury/Availability,29
-Avg_Starter_Exp_LB,0.0025978275,Player Age & Experience,30
-WR_New_Player_Rate_Pct_crosstab,0.0025799207,Roster Turnover,31
-Prev_2Yr_Round_1_Picks,0.0025652237,Draft Strategy,32
-S_Min_Games_Missed_Pct,0.0025549761,Injury/Availability,33
-1stD Passing__oc_Norm,0.0025488373,Coaching Performance,34
-Avg_Roster_Experience,0.0025422657,Player Age & Experience,35
-CB_Min_Games_Missed_Pct,0.0025393388,Injury/Availability,36
-Total CapAllocations_Pct,0.0024922502,Salary Cap,37
-WR_Pct,0.0024416915,Salary Cap,38
-DL_Max_Games_Missed_Pct,0.0023002096,Injury/Availability,39
-QB_Players_New,0.0022303783,Roster Turnover,40
-TE_Players_Count,0.0021960041,Injury/Availability,41
-NY/A Passing__opp__hc_Norm,0.0021490466,Coaching Performance,42
-RZAtt__dc_Norm,0.0021429001,Coaching Performance,43
-4D%__dc_Norm,0.00210234,Coaching Performance,44
-1stD__opp__hc_Norm,0.0020572464,Coaching Performance,45
-Yds__opp__hc_Norm,0.0020164174,Coaching Performance,46
-1stPy__opp__hc_Norm,0.0017883022,Coaching Performance,47
-3DAtt__opp__hc_Norm,0.0017764042,Coaching Performance,48
-Opp_Yds_Penalties_Norm,0.0017751822,Team Performance,49
-TD Rushing__opp__hc_Norm,0.0017136235,Coaching Performance,50
-Avg_Roster_Exp_OL,0.0016820682,Player Age & Experience,51
-RZAtt__hc_Norm,0.0016430162,Coaching Performance,52
-Y/P__opp__hc_Norm,0.0016401245,Coaching Performance,53
-TO%__opp__hc_Norm,0.0016172779,Coaching Performance,54
-RB_Net_Change,0.0016033981,Roster Turnover,55
-TO__opp__hc_Norm,0.0015665077,Coaching Performance,56
-WR_Retention_Rate_Pct_crosstab,0.0015061602,Roster Turnover,57
-Avg_Roster_Age_QB,0.0014337894,Player Age & Experience,58
-QB_New_Player_Rate_Pct,0.0014317583,Roster Turnover,59
-WR_Max_Games_Missed_Pct,0.0014002032,Injury/Availability,60
-DL_Avg_Games_Missed_Pct,0.0013851883,Injury/Availability,61
-QB_Players_Departed,0.0013816281,Roster Turnover,62
-S_Players_Count,0.0013411539,Injury/Availability,63
-Pen__oc_Norm,0.0013306407,Coaching Performance,64
-Avg_Roster_Age_TE,0.0013122667,Player Age & Experience,65
-Avg_Starter_Age_LB,0.0013003346,Player Age & Experience,66
-QB_Players_Retained,0.0012888596,Roster Turnover,67
-1stD Rushing__opp__hc_Norm,0.0012303304,Coaching Performance,68
-Yds Penalties__oc_Norm,0.0011652607,Coaching Performance,69
-4DAtt__oc_Norm,0.0011617754,Coaching Performance,70
-TD Rushing__hc_Norm,0.0011409794,Coaching Performance,71
-Avg_Roster_Exp_QB,0.0011305822,Player Age & Experience,72
-Sc%__dc_Norm,0.0011180722,Coaching Performance,73
-Cmp Passing__dc_Norm,0.0011155184,Coaching Performance,74
-WR_Players_New,0.0010959927,Roster Turnover,75
-Avg_Starter_Exp_QB,0.0010530719,Player Age & Experience,76
-Y/A Rushing__oc_Norm,0.001021522,Coaching Performance,77
-Y/P__dc_Norm,0.0010193603,Coaching Performance,78
-Sc%__hc_Norm,0.0010068562,Coaching Performance,79
-LB_Players_New,0.000998603,Roster Turnover,80
-Avg_Roster_Age_DL,0.000991272,Player Age & Experience,81
-1stD Passing__hc_Norm,0.0009761059,Coaching Performance,82
-LB_Net_Change,0.00096496585,Roster Turnover,83
-Avg_Roster_Age_LB,0.0009645446,Player Age & Experience,84
-Avg_Starter_Age_CB,0.00095499,Player Age & Experience,85
-3D%__opp__hc_Norm,0.0009422648,Coaching Performance,86
-Prev_2Yr_Round_6_Picks,0.00091257796,Draft Strategy,87
-K_Pct,0.00088227226,Salary Cap,88
-Y/P__hc_Norm,0.0008691188,Coaching Performance,89
-LB_New_Player_Rate_Pct_crosstab,0.00086105766,Roster Turnover,90
-1stD Passing__dc_Norm,0.0008503848,Coaching Performance,91
-Pts Average Drive__dc_Norm,0.0008472376,Coaching Performance,92
-Time Average Drive__oc_Norm,0.0008456489,Coaching Performance,93
-Yds Penalties__dc_Norm,0.0008398135,Coaching Performance,94
-4DAtt__dc_Norm,0.00081998494,Coaching Performance,95
-Pts Average Drive__opp__hc_Norm,0.00081069616,Coaching Performance,96
-Avg_Starter_Age_TE,0.0008043236,Player Age & Experience,97
-Y/A Rushing__opp__hc_Norm,0.0008037182,Coaching Performance,98
-NY/A Passing__dc_Norm,0.00079979195,Coaching Performance,99
-DL_Players_Departed,0.00077227573,Roster Turnover,100
-NY/A Passing__oc_Norm,0.0007625217,Coaching Performance,101
-Avg_Roster_Age,0.00075234834,Player Age & Experience,102
-TD Passing__opp__hc_Norm,0.00074804615,Coaching Performance,103
-TO%__oc_Norm,0.00074655394,Coaching Performance,104
-WR_Min_Games_Missed_Pct,0.00074224075,Injury/Availability,105
-TE_Departure_Rate_Pct,0.0007418745,Roster Turnover,106
-RB_Max_Games_Missed_Pct,0.00072524144,Injury/Availability,107
-1stD Rushing__oc_Norm,0.0007098417,Coaching Performance,108
-LB_Avg_Games_Missed_Pct,0.00069872476,Injury/Availability,109
-WR_Players_Count,0.0006984206,Injury/Availability,110
-Sc%__opp__hc_Norm,0.00068783964,Coaching Performance,111
-CB_Net_Change,0.00068249064,Roster Turnover,112
-Opp_Pen_Norm,0.0006822821,Team Performance,113
-CB_Avg_Games_Missed_Pct,0.00067363493,Injury/Availability,114
-TO%__hc_Norm,0.00066524214,Coaching Performance,115
-TD Passing__dc_Norm,0.00066497,Coaching Performance,116
-#Dr__dc_Norm,0.00065270247,Coaching Performance,117
-Int Passing__dc_Norm,0.00065040856,Coaching Performance,118
-PF (Points For)__oc_Norm,0.0006460531,Coaching Performance,119
-num_yr_nfl_coor,0.00064210757,Coaching Experience,120
-CB_Players_New,0.00062237715,Roster Turnover,121
-Avg_Roster_Age_WR,0.0005712034,Player Age & Experience,122
-1stPy__hc_Norm,0.0005661593,Coaching Performance,123
-num_yr_col_pos,0.00053168123,Coaching Experience,124
-TO__dc_Norm,0.0005308425,Coaching Performance,125
-SEC_Pct,0.0005273028,Salary Cap,126
-3DAtt__oc_Norm,0.000525995,Coaching Performance,127
-TE_Avg_Games_Missed_Pct,0.00052117265,Injury/Availability,128
-CB_New_Player_Rate_Pct,0.0005156322,Roster Turnover,129
-Int Passing__opp__hc_Norm,0.00051516696,Coaching Performance,130
-DL_Min_Games_Missed_Pct,0.0005079013,Injury/Availability,131
-Att Passing__opp__hc_Norm,0.00050714874,Coaching Performance,132
-QB_Retention_Rate_Pct_crosstab,0.000494668,Roster Turnover,133
-4D%__hc_Norm,0.0004901618,Coaching Performance,134
-Avg_Starter_Age_RB,0.00048656372,Player Age & Experience,135
-1stPy__oc_Norm,0.00047522812,Coaching Performance,136
-Yds__dc_Norm,0.0004715524,Coaching Performance,137
-RB_Players_New,0.00047048792,Roster Turnover,138
-Att Passing__hc_Norm,0.0004552479,Coaching Performance,139
-Avg_Roster_Age_CB,0.0004529804,Player Age & Experience,140
-CB_Players_Departed,0.00045279443,Roster Turnover,141
-3DAtt__dc_Norm,0.00044612173,Coaching Performance,142
-Prev_3Yr_Round_4_Picks,0.00044471363,Draft Strategy,143
-Yds Average Drive__opp__hc_Norm,0.00043340307,Coaching Performance,144
-Yds Passing__oc_Norm,0.00043322454,Coaching Performance,145
-Prev_3Yr_Round_7Plus_Picks,0.00041639866,Draft Strategy,146
-Yds Penalties__opp__hc_Norm,0.00040971916,Coaching Performance,147
-Yds Passing__opp__hc_Norm,0.00040688133,Coaching Performance,148
-Avg_Roster_Age_S,0.00039137265,Player Age & Experience,149
-Prev_1Yr_Round_5_Picks,0.00037932466,Draft Strategy,150
-PF (Points For)__dc_Norm,0.00037210365,Coaching Performance,151
-Avg_Roster_Exp_RB,0.00036530494,Player Age & Experience,152
-Plays Average Drive__dc_Norm,0.00036300666,Coaching Performance,153
-TD Passing__oc_Norm,0.00036085016,Coaching Performance,154
-Avg_Roster_Exp_LB,0.0003565732,Player Age & Experience,155
-RB_Min_Games_Missed_Pct,0.00035518454,Injury/Availability,156
-Att Rushing__dc_Norm,0.00035396978,Coaching Performance,157
-Total_Games_In_Season,0.0003524637,Injury/Availability,158
-TE_Departure_Rate_Pct_crosstab,0.0003516983,Roster Turnover,159
-LB_Retention_Rate_Pct_crosstab,0.0003512523,Roster Turnover,160
-WR_New_Player_Rate_Pct,0.0003503422,Roster Turnover,161
-Att Passing__dc_Norm,0.00034630197,Coaching Performance,162
-SPT_Pct,0.00034434441,Salary Cap,163
-Prev_2Yr_Round_7Plus_Picks,0.00033598294,Draft Strategy,164
-DL_Players_New,0.00033042196,Roster Turnover,165
-Time Average Drive__opp__hc_Norm,0.00032822497,Coaching Performance,166
-Cmp Passing__hc_Norm,0.00032798943,Coaching Performance,167
-S_New_Player_Rate_Pct,0.0003235128,Roster Turnover,168
-RZPct__oc_Norm,0.00032181843,Coaching Performance,169
-Avg_Roster_Exp_CB,0.00031843095,Player Age & Experience,170
-Int Passing__oc_Norm,0.0003121095,Coaching Performance,171
-4D%__oc_Norm,0.00031107364,Coaching Performance,172
-DL_Players_Count,0.00030344835,Injury/Availability,173
-Prev_2Yr_Round_4_Picks,0.00029397206,Draft Strategy,174
-Yds Average Drive__dc_Norm,0.00028921218,Coaching Performance,175
-Avg_Starter_Age_S,0.0002869621,Player Age & Experience,176
-3DAtt__hc_Norm,0.00028622666,Coaching Performance,177
-Avg_Starter_Age_QB,0.00028584513,Player Age & Experience,178
-StdDev_Starter_Experience,0.00028540165,Player Age & Experience,179
-Avg_Starter_Exp_RB,0.0002802054,Player Age & Experience,180
-Yds Rushing__dc_Norm,0.00027679792,Coaching Performance,181
-Cmp Passing__opp__hc_Norm,0.00026561102,Coaching Performance,182
-Yds Average Drive__oc_Norm,0.0002647862,Coaching Performance,183
-CB_Players_Count,0.00025874472,Injury/Availability,184
-1stD__oc_Norm,0.00024709516,Coaching Performance,185
-RZPct__hc_Norm,0.00024692854,Coaching Performance,186
-num_yr_nfl_hc,0.00023520108,Coaching Experience,187
-3D%__dc_Norm,0.0002315934,Coaching Performance,188
-Int Passing__hc_Norm,0.00022922597,Coaching Performance,189
-Att Rushing__oc_Norm,0.0002257971,Coaching Performance,190
-4DAtt__hc_Norm,0.00022323616,Coaching Performance,191
-CB_Retention_Rate_Pct_crosstab,0.00021034566,Roster Turnover,192
-4D%__opp__hc_Norm,0.00020580062,Coaching Performance,193
-Avg_Starter_Exp_WR,0.00020505697,Player Age & Experience,194
-Pen__dc_Norm,0.00020413994,Coaching Performance,195
-LS_Pct,0.0001889106,Salary Cap,196
-1stD Rushing__hc_Norm,0.00018464078,Coaching Performance,197
-QB_Pct,0.00018408292,Salary Cap,198
-Team_Yds_Penalties_Norm,0.00018080733,Team Performance,199
-OL_Retention_Rate_Pct_crosstab,0.0001788841,Roster Turnover,200
-#Dr__hc_Norm,0.00017858758,Coaching Performance,201
-RB_Avg_Games_Missed_Pct,0.00017750748,Injury/Availability,202
-OL_Net_Change,0.00017522513,Roster Turnover,203
-RB_New_Player_Rate_Pct,0.00017036851,Roster Turnover,204
-StdDev_Roster_Age,0.0001680091,Player Age & Experience,205
-Avg_Starter_Age_WR,0.0001660587,Player Age & Experience,206
-Current_Round_1_Picks,0.00015981782,Draft Strategy,207
-RZAtt__oc_Norm,0.00015957489,Coaching Performance,208
-TO__hc_Norm,0.00014901574,Coaching Performance,209
-S_Net_Change,0.00014887362,Roster Turnover,210
-RB_New_Player_Rate_Pct_crosstab,0.00014434652,Roster Turnover,211
-LB_Players_Count,0.00014325058,Injury/Availability,212
-1stD Passing__opp__hc_Norm,0.00014182935,Coaching Performance,213
-Prev_1Yr_Round_2_Picks,0.00014170271,Draft Strategy,214
-WR_Net_Change,0.00013090037,Roster Turnover,215
-Sc%__oc_Norm,0.00012498247,Coaching Performance,216
-RB_Players_Count,0.000120574405,Injury/Availability,217
-DeadCap_Pct,0.00011578851,Salary Cap,218
-Yds__hc_Norm,0.00011059989,Coaching Performance,219
-OL_New_Player_Rate_Pct,0.00010287417,Roster Turnover,220
-OL_Pct,0.00010039307,Salary Cap,221
-Prev_3Yr_Round_3_Picks,9.837482e-05,Draft Strategy,222
-Avg_Roster_Exp_WR,9.562554e-05,Player Age & Experience,223
-Yds Penalties__hc_Norm,9.248045e-05,Coaching Performance,224
-Current_Round_5_Picks,9.157803e-05,Draft Strategy,225
-TE_Players_Retained,8.6096414e-05,Roster Turnover,226
-RB_Retention_Rate_Pct_crosstab,7.0958435e-05,Roster Turnover,227
-RZAtt__opp__hc_Norm,6.757502e-05,Coaching Performance,228
-4DAtt__opp__hc_Norm,6.450728e-05,Coaching Performance,229
-Time Average Drive__dc_Norm,5.166164e-05,Coaching Performance,230
-StdDev_Roster_Experience,4.926987e-05,Player Age & Experience,231
-DL_Net_Change,4.359936e-05,Roster Turnover,232
-Def_Pct,2.8504954e-05,Salary Cap,233
-Off_Pct,0.0,Salary Cap,234
-LB_Pct,0.0,Salary Cap,235
-QB_Net_Change,0.0,Roster Turnover,236
-DL_Pct,0.0,Salary Cap,237
-Current_Round_2_Picks,0.0,Draft Strategy,238
-Team_Pen_Norm,0.0,Team Performance,239
-Avg_Roster_Exp_S,0.0,Player Age & Experience,240
-Avg_Starter_Exp_S,0.0,Player Age & Experience,241
-Avg_Roster_Exp_DL,0.0,Player Age & Experience,242
-Avg_Starter_Exp_CB,0.0,Player Age & Experience,243
-Avg_Starter_Exp_DL,0.0,Player Age & Experience,244
-Avg_Starter_Age_DL,0.0,Player Age & Experience,245
-TE_Pct,0.0,Salary Cap,246
-Avg_Roster_Age_OL,0.0,Player Age & Experience,247
-Avg_Starter_Age_OL,0.0,Player Age & Experience,248
-Avg_Roster_Exp_TE,0.0,Player Age & Experience,249
-#Dr__opp__hc_Norm,0.0,Coaching Performance,250
-Plays Average Drive__opp__hc_Norm,0.0,Coaching Performance,251
-Pen__opp__hc_Norm,0.0,Coaching Performance,252
-Att Rushing__opp__hc_Norm,0.0,Coaching Performance,253
-QB_Departure_Rate_Pct,0.0,Roster Turnover,254
-WR_Players_Departed,0.0,Roster Turnover,255
-WR_Retention_Rate_Pct,0.0,Roster Turnover,256
-WR_Departure_Rate_Pct,0.0,Roster Turnover,257
-WR_Players_Retained,0.0,Roster Turnover,258
-RB_Players_Departed,0.0,Roster Turnover,259
-RB_Retention_Rate_Pct,0.0,Roster Turnover,260
-RB_Departure_Rate_Pct,0.0,Roster Turnover,261
-RB_Players_Retained,0.0,Roster Turnover,262
-Prev_3Yr_Round_1_Picks,0.0,Draft Strategy,263
-Prev_2Yr_Round_5_Picks,0.0,Draft Strategy,264
-Prev_2Yr_Round_3_Picks,0.0,Draft Strategy,265
-Prev_3Yr_Round_2_Picks,0.0,Draft Strategy,266
-Prev_1Yr_Round_6_Picks,0.0,Draft Strategy,267
-Prev_1Yr_Round_4_Picks,0.0,Draft Strategy,268
-Current_Round_4_Picks,0.0,Draft Strategy,269
-Avg_Roster_Age_RB,0.0,Player Age & Experience,270
-CB_Max_Games_Missed_Pct,0.0,Injury/Availability,271
-Avg_Starter_Age,0.0,Player Age & Experience,272
-StdDev_Starter_Age,0.0,Player Age & Experience,273
-num_times_hc,0.0,Coaching Experience,274
-num_yr_col_coor,0.0,Coaching Experience,275
-S_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,276
-CB_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,277
-QB_Players_Count,0.0,Injury/Availability,278
-QB_Min_Games_Missed_Pct,0.0,Injury/Availability,279
-TE_Min_Games_Missed_Pct,0.0,Injury/Availability,280
-LB_Max_Games_Missed_Pct,0.0,Injury/Availability,281
-LB_Min_Games_Missed_Pct,0.0,Injury/Availability,282
-QB_Max_Games_Missed_Pct,0.0,Injury/Availability,283
-S_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,284
-S_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,285
-TO__oc_Norm,0.0,Coaching Performance,286
-Y/P__oc_Norm,0.0,Coaching Performance,287
-Yds__oc_Norm,0.0,Coaching Performance,288
+Opp_Int_Passing_Norm,0.037491824,Team Performance,1
+ReservesIR/PUP/NFI/SUSP_Pct,0.035359778,Salary Cap,2
+Team_Int_Passing_Norm,0.03436132,Team Performance,3
+Active53-Man_Pct,0.02974259,Salary Cap,4
+QB_Avg_Games_Missed_Pct,0.024980105,Injury/Availability,5
+OL_Players_Count,0.010434946,Injury/Availability,6
+OL_Max_Games_Missed_Pct,0.00985229,Injury/Availability,7
+SoS,0.009704026,Team Performance,8
+S_Max_Games_Missed_Pct,0.0080625145,Injury/Availability,9
+Yds Rushing__opp__hc_Norm,0.006562853,Coaching Performance,10
+Avg_Roster_Experience,0.0063456437,Player Age & Experience,11
+TE_New_Player_Rate_Pct,0.006244657,Roster Turnover,12
+PF (Points For)__opp__hc_Norm,0.006048084,Coaching Performance,13
+WR_Avg_Games_Missed_Pct,0.0057326523,Injury/Availability,14
+P_Pct,0.005454089,Salary Cap,15
+QB_Retention_Rate_Pct,0.0053188438,Roster Turnover,16
+RB_Pct,0.004739608,Salary Cap,17
+RZAtt__hc_Norm,0.004512023,Coaching Performance,18
+PF (Points For)__hc_Norm,0.004462007,Coaching Performance,19
+Sc%__hc_Norm,0.004011268,Coaching Performance,20
+Avg_Starter_Experience,0.003755831,Player Age & Experience,21
+TE_Players_Count,0.0036519717,Injury/Availability,22
+OL_Min_Games_Missed_Pct,0.003466056,Injury/Availability,23
+WR_Max_Games_Missed_Pct,0.003383993,Injury/Availability,24
+1stD Rushing__opp__hc_Norm,0.0033115994,Coaching Performance,25
+4D%__dc_Norm,0.00322372,Coaching Performance,26
+Avg_Starter_Exp_TE,0.0031792198,Player Age & Experience,27
+NY/A Passing__opp__hc_Norm,0.0030636708,Coaching Performance,28
+Y/A Rushing__oc_Norm,0.002865353,Coaching Performance,29
+S_Avg_Games_Missed_Pct,0.0028216569,Injury/Availability,30
+OL_Avg_Games_Missed_Pct,0.0026710678,Injury/Availability,31
+3DAtt__opp__hc_Norm,0.0026680431,Coaching Performance,32
+WR_New_Player_Rate_Pct_crosstab,0.0026267257,Roster Turnover,33
+DL_Max_Games_Missed_Pct,0.0026237378,Injury/Availability,34
+Avg_Starter_Exp_QB,0.002434612,Player Age & Experience,35
+4DAtt__dc_Norm,0.0022306512,Coaching Performance,36
+Cap SpaceAll_Pct,0.0020412365,Salary Cap,37
+RZAtt__dc_Norm,0.0020405245,Coaching Performance,38
+1stPy__dc_Norm,0.0020361638,Coaching Performance,39
+Avg_Roster_Age_QB,0.0020327617,Player Age & Experience,40
+LB_Players_New,0.0017079479,Roster Turnover,41
+1stD__opp__hc_Norm,0.001666652,Coaching Performance,42
+Y/A Rushing__opp__hc_Norm,0.0016585892,Coaching Performance,43
+Yds__opp__hc_Norm,0.0016258886,Coaching Performance,44
+Avg_Starter_Exp_LB,0.0016165626,Player Age & Experience,45
+Avg_Roster_Exp_QB,0.0016050305,Player Age & Experience,46
+S_New_Player_Rate_Pct,0.0015700547,Roster Turnover,47
+NY/A Passing__hc_Norm,0.0015428935,Coaching Performance,48
+Pts Average Drive__hc_Norm,0.0015380871,Coaching Performance,49
+CB_Min_Games_Missed_Pct,0.0015316451,Injury/Availability,50
+Avg_Starter_Age_QB,0.0015085869,Player Age & Experience,51
+QB_Players_New,0.0015074004,Roster Turnover,52
+LB_Net_Change,0.0014411815,Roster Turnover,53
+QB_New_Player_Rate_Pct,0.0014275454,Roster Turnover,54
+Avg_Starter_Exp_OL,0.0014181098,Player Age & Experience,55
+Int Passing__opp__hc_Norm,0.0013795578,Coaching Performance,56
+QB_Players_Departed,0.0012958521,Roster Turnover,57
+WR_Players_Count,0.0012691995,Injury/Availability,58
+WR_Players_New,0.0012324208,Roster Turnover,59
+WR_Pct,0.0012257574,Salary Cap,60
+Avg_Starter_Age_LB,0.0012064326,Player Age & Experience,61
+CB_Avg_Games_Missed_Pct,0.0011991084,Injury/Availability,62
+RB_Avg_Games_Missed_Pct,0.0011920177,Injury/Availability,63
+TD Rushing__opp__hc_Norm,0.0011613779,Coaching Performance,64
+Y/P__opp__hc_Norm,0.0011584644,Coaching Performance,65
+LB_New_Player_Rate_Pct,0.001148888,Roster Turnover,66
+Avg_Roster_Age_LB,0.0010893603,Player Age & Experience,67
+1stD Passing__oc_Norm,0.0010834885,Coaching Performance,68
+WR_Retention_Rate_Pct_crosstab,0.0010772345,Roster Turnover,69
+Pts Average Drive__dc_Norm,0.0010728263,Coaching Performance,70
+K_Pct,0.0010688985,Salary Cap,71
+Total CapAllocations_Pct,0.0010621842,Salary Cap,72
+TO__opp__hc_Norm,0.0010136729,Coaching Performance,73
+Avg_Roster_Exp_CB,0.0009855668,Player Age & Experience,74
+TE_Max_Games_Missed_Pct,0.0009837361,Injury/Availability,75
+4DAtt__oc_Norm,0.0009743979,Coaching Performance,76
+CB_Players_New,0.0009708127,Roster Turnover,77
+QB_Pct,0.0009461442,Salary Cap,78
+RZPct__oc_Norm,0.00091136905,Coaching Performance,79
+Yds Passing__opp__hc_Norm,0.00087412714,Coaching Performance,80
+DeadCap_Pct,0.0008700773,Salary Cap,81
+1stPy__hc_Norm,0.000861792,Coaching Performance,82
+Avg_Starter_Age_S,0.00084456464,Player Age & Experience,83
+Y/P__dc_Norm,0.0008440998,Coaching Performance,84
+Int Passing__oc_Norm,0.0008246588,Coaching Performance,85
+Yds Passing__hc_Norm,0.0008233516,Coaching Performance,86
+SPT_Pct,0.00079178915,Salary Cap,87
+TO%__dc_Norm,0.0007591083,Coaching Performance,88
+OL_Pct,0.00075534394,Salary Cap,89
+Prev_2Yr_Round_7Plus_Picks,0.0007508988,Draft Strategy,90
+Sc%__oc_Norm,0.00075068604,Coaching Performance,91
+Y/P__hc_Norm,0.0007453772,Coaching Performance,92
+Prev_2Yr_Round_6_Picks,0.00074400223,Draft Strategy,93
+Y/A Rushing__dc_Norm,0.0007366087,Coaching Performance,94
+Avg_Roster_Exp_OL,0.00072998146,Player Age & Experience,95
+3DAtt__oc_Norm,0.0007286013,Coaching Performance,96
+Yds Penalties__hc_Norm,0.00072089577,Coaching Performance,97
+Pen__oc_Norm,0.0007141216,Coaching Performance,98
+Cmp Passing__dc_Norm,0.0007114173,Coaching Performance,99
+1stPy__opp__hc_Norm,0.00070009846,Coaching Performance,100
+CB_New_Player_Rate_Pct,0.0006922922,Roster Turnover,101
+S_Players_Retained,0.0006868558,Roster Turnover,102
+Avg_Starter_Exp_RB,0.0006644232,Player Age & Experience,103
+Opp_Pen_Norm,0.0006445639,Team Performance,104
+Att Rushing__oc_Norm,0.00063672726,Coaching Performance,105
+RB_Max_Games_Missed_Pct,0.00063596707,Injury/Availability,106
+TE_Players_Retained,0.00063467753,Roster Turnover,107
+3DAtt__dc_Norm,0.00061034976,Coaching Performance,108
+RB_Net_Change,0.0006014369,Roster Turnover,109
+TO%__oc_Norm,0.00059854053,Coaching Performance,110
+num_times_hc,0.00057873764,Coaching Experience,111
+LB_Max_Games_Missed_Pct,0.0005773491,Injury/Availability,112
+DL_New_Player_Rate_Pct,0.00055543747,Roster Turnover,113
+Avg_Starter_Exp_CB,0.000553339,Player Age & Experience,114
+1stPy__oc_Norm,0.00055030035,Coaching Performance,115
+DL_Players_Count,0.00054749893,Injury/Availability,116
+Prev_3Yr_Round_7Plus_Picks,0.00053316576,Draft Strategy,117
+#Dr__dc_Norm,0.0005305584,Coaching Performance,118
+QB_Players_Retained,0.0005168858,Roster Turnover,119
+Avg_Starter_Age_TE,0.0005161518,Player Age & Experience,120
+1stD__dc_Norm,0.00050823943,Coaching Performance,121
+Avg_Starter_Age_OL,0.00050699693,Player Age & Experience,122
+1stD Passing__hc_Norm,0.0005057407,Coaching Performance,123
+RB_Players_New,0.00049908453,Roster Turnover,124
+S_Players_Count,0.0004968274,Injury/Availability,125
+1stD Rushing__dc_Norm,0.00049291254,Coaching Performance,126
+LB_New_Player_Rate_Pct_crosstab,0.0004853973,Roster Turnover,127
+NY/A Passing__dc_Norm,0.00048049248,Coaching Performance,128
+Yds Penalties__dc_Norm,0.00047953302,Coaching Performance,129
+TO__dc_Norm,0.00047581282,Coaching Performance,130
+Yds__dc_Norm,0.0004724999,Coaching Performance,131
+TO%__hc_Norm,0.0004660873,Coaching Performance,132
+DL_Avg_Games_Missed_Pct,0.00046380606,Injury/Availability,133
+Opp_Yds_Penalties_Norm,0.00045856347,Team Performance,134
+4D%__hc_Norm,0.00045568883,Coaching Performance,135
+1stD Passing__dc_Norm,0.00044213742,Coaching Performance,136
+DL_Net_Change,0.00043820354,Roster Turnover,137
+DL_Players_New,0.0004365622,Roster Turnover,138
+Prev_1Yr_Round_7Plus_Picks,0.00043327114,Draft Strategy,139
+WR_Min_Games_Missed_Pct,0.00043274468,Injury/Availability,140
+TO__hc_Norm,0.00041732326,Coaching Performance,141
+Plays Average Drive__oc_Norm,0.00041472187,Coaching Performance,142
+TD Passing__opp__hc_Norm,0.00041327422,Coaching Performance,143
+Int Passing__dc_Norm,0.000406795,Coaching Performance,144
+CB_Players_Count,0.00040476964,Injury/Availability,145
+S_Players_New,0.0004019278,Roster Turnover,146
+TO%__opp__hc_Norm,0.00040086504,Coaching Performance,147
+Current_Round_2_Picks,0.0003961606,Draft Strategy,148
+Avg_Starter_Age_RB,0.00039430283,Player Age & Experience,149
+Avg_Roster_Exp_S,0.00038072446,Player Age & Experience,150
+SEC_Pct,0.00037008885,Salary Cap,151
+TE_Avg_Games_Missed_Pct,0.000347746,Injury/Availability,152
+Avg_Roster_Age_CB,0.00034681213,Player Age & Experience,153
+Int Passing__hc_Norm,0.0003453793,Coaching Performance,154
+num_yr_col_pos,0.00034486107,Coaching Experience,155
+Avg_Roster_Age_WR,0.00034411412,Player Age & Experience,156
+OL_Players_Departed,0.0003433597,Roster Turnover,157
+3D%__dc_Norm,0.00033652116,Coaching Performance,158
+DL_Players_Departed,0.00033352958,Roster Turnover,159
+num_yr_col_coor,0.00033072906,Coaching Experience,160
+TD Rushing__dc_Norm,0.00032562568,Coaching Performance,161
+Team_Pen_Norm,0.0003188719,Team Performance,162
+OL_Net_Change,0.00031136075,Roster Turnover,163
+DL_Retention_Rate_Pct,0.0003061425,Roster Turnover,164
+Avg_Starter_Exp_S,0.00030474993,Player Age & Experience,165
+LB_Avg_Games_Missed_Pct,0.00030167005,Injury/Availability,166
+RB_Min_Games_Missed_Pct,0.00029974576,Injury/Availability,167
+Yds Average Drive__hc_Norm,0.00029721844,Coaching Performance,168
+LB_Retention_Rate_Pct,0.00029540548,Roster Turnover,169
+PF (Points For)__dc_Norm,0.0002919311,Coaching Performance,170
+S_Min_Games_Missed_Pct,0.00029071711,Injury/Availability,171
+TD Passing__hc_Norm,0.0002867119,Coaching Performance,172
+RZAtt__oc_Norm,0.0002861717,Coaching Performance,173
+Avg_Roster_Exp_RB,0.00028010833,Player Age & Experience,174
+CB_Retention_Rate_Pct,0.00027604625,Roster Turnover,175
+Time Average Drive__dc_Norm,0.0002746438,Coaching Performance,176
+Avg_Roster_Age_TE,0.00027076536,Player Age & Experience,177
+num_yr_nfl_hc,0.00026688023,Coaching Experience,178
+Avg_Roster_Age,0.00026123892,Player Age & Experience,179
+Yds Penalties__opp__hc_Norm,0.00026093997,Coaching Performance,180
+OL_Retention_Rate_Pct_crosstab,0.00025586248,Roster Turnover,181
+Plays Average Drive__opp__hc_Norm,0.00025131376,Coaching Performance,182
+Att Rushing__hc_Norm,0.00024864066,Coaching Performance,183
+Current_Round_5_Picks,0.00024572338,Draft Strategy,184
+Avg_Starter_Age_CB,0.00024344293,Player Age & Experience,185
+TE_Departure_Rate_Pct,0.000242526,Roster Turnover,186
+Sc%__opp__hc_Norm,0.00023889678,Coaching Performance,187
+4D%__oc_Norm,0.00023746457,Coaching Performance,188
+WR_Net_Change,0.0002370064,Roster Turnover,189
+num_yr_nfl_pos,0.00023638106,Coaching Experience,190
+Avg_Roster_Exp_DL,0.00022933717,Player Age & Experience,191
+4DAtt__opp__hc_Norm,0.000221931,Coaching Performance,192
+RB_New_Player_Rate_Pct,0.00022108047,Roster Turnover,193
+4D%__opp__hc_Norm,0.00021862287,Coaching Performance,194
+Avg_Roster_Age_S,0.00021433867,Player Age & Experience,195
+#Dr__opp__hc_Norm,0.00021012631,Coaching Performance,196
+Pen__opp__hc_Norm,0.00020638185,Coaching Performance,197
+3D%__opp__hc_Norm,0.00020424453,Coaching Performance,198
+Yds Average Drive__oc_Norm,0.00020237993,Coaching Performance,199
+WR_New_Player_Rate_Pct,0.00019726288,Roster Turnover,200
+Avg_Roster_Exp_LB,0.00018772115,Player Age & Experience,201
+Yds Rushing__hc_Norm,0.00016876894,Coaching Performance,202
+Yds Rushing__oc_Norm,0.00016365327,Coaching Performance,203
+3D%__oc_Norm,0.00015562278,Coaching Performance,204
+Prev_1Yr_Round_1_Picks,0.0001452673,Draft Strategy,205
+Att Passing__dc_Norm,0.0001375746,Coaching Performance,206
+Y/A Rushing__hc_Norm,0.00013214737,Coaching Performance,207
+Prev_2Yr_Round_5_Picks,0.00012495993,Draft Strategy,208
+StdDev_Starter_Experience,0.00012374054,Player Age & Experience,209
+4DAtt__hc_Norm,0.00012018164,Coaching Performance,210
+Prev_2Yr_Round_2_Picks,0.000100285615,Draft Strategy,211
+TD Rushing__oc_Norm,9.4927746e-05,Coaching Performance,212
+Yds Passing__dc_Norm,9.321285e-05,Coaching Performance,213
+S_Players_Departed,8.856446e-05,Roster Turnover,214
+#Dr__oc_Norm,8.5161504e-05,Coaching Performance,215
+LB_Pct,7.933763e-05,Salary Cap,216
+Avg_Starter_Age_WR,7.513239e-05,Player Age & Experience,217
+OL_New_Player_Rate_Pct,7.356608e-05,Roster Turnover,218
+Avg_Roster_Age_RB,7.3543924e-05,Player Age & Experience,219
+TE_Min_Games_Missed_Pct,6.8864436e-05,Injury/Availability,220
+Time Average Drive__opp__hc_Norm,6.823483e-05,Coaching Performance,221
+CB_Players_Retained,6.8026035e-05,Roster Turnover,222
+Cmp Passing__opp__hc_Norm,4.5924597e-05,Coaching Performance,223
+NY/A Passing__oc_Norm,4.4364548e-05,Coaching Performance,224
+TD Passing__oc_Norm,3.9909228e-05,Coaching Performance,225
+Att Passing__hc_Norm,2.665622e-05,Coaching Performance,226
+Pts Average Drive__opp__hc_Norm,0.0,Coaching Performance,227
+Yds Average Drive__opp__hc_Norm,0.0,Coaching Performance,228
+1stD Passing__opp__hc_Norm,0.0,Coaching Performance,229
+1stD Rushing__hc_Norm,0.0,Coaching Performance,230
+Pen__hc_Norm,0.0,Coaching Performance,231
+Time Average Drive__hc_Norm,0.0,Coaching Performance,232
+#Dr__hc_Norm,0.0,Coaching Performance,233
+Att Passing__opp__hc_Norm,0.0,Coaching Performance,234
+DL_Pct,0.0,Salary Cap,235
+Att Rushing__opp__hc_Norm,0.0,Coaching Performance,236
+Cmp Passing__hc_Norm,0.0,Coaching Performance,237
+StdDev_Roster_Age,0.0,Player Age & Experience,238
+StdDev_Starter_Age,0.0,Player Age & Experience,239
+Avg_Starter_Age,0.0,Player Age & Experience,240
+CB_Max_Games_Missed_Pct,0.0,Injury/Availability,241
+Current_Round_4_Picks,0.0,Draft Strategy,242
+Current_Round_6_Picks,0.0,Draft Strategy,243
+Current_Round_3_Picks,0.0,Draft Strategy,244
+Current_Round_1_Picks,0.0,Draft Strategy,245
+Avg_Starter_Age_DL,0.0,Player Age & Experience,246
+Team_Yds_Penalties_Norm,0.0,Team Performance,247
+Avg_Starter_Exp_DL,0.0,Player Age & Experience,248
+Avg_Roster_Age_DL,0.0,Player Age & Experience,249
+Avg_Roster_Age_OL,0.0,Player Age & Experience,250
+3DAtt__hc_Norm,0.0,Coaching Performance,251
+3D%__hc_Norm,0.0,Coaching Performance,252
+TE_Pct,0.0,Salary Cap,253
+TE_Retention_Rate_Pct,0.0,Roster Turnover,254
+TD Rushing__hc_Norm,0.0,Coaching Performance,255
+1stD__hc_Norm,0.0,Coaching Performance,256
+Plays Average Drive__hc_Norm,0.0,Coaching Performance,257
+Prev_2Yr_Round_3_Picks,0.0,Draft Strategy,258
+Prev_2Yr_Round_4_Picks,0.0,Draft Strategy,259
+Prev_3Yr_Round_5_Picks,0.0,Draft Strategy,260
+Avg_Roster_Exp_WR,0.0,Player Age & Experience,261
+Current_Round_7Plus_Picks,0.0,Draft Strategy,262
+Prev_1Yr_Round_2_Picks,0.0,Draft Strategy,263
+Prev_3Yr_Round_1_Picks,0.0,Draft Strategy,264
+Prev_3Yr_Round_2_Picks,0.0,Draft Strategy,265
+Prev_3Yr_Round_3_Picks,0.0,Draft Strategy,266
+Prev_3Yr_Round_4_Picks,0.0,Draft Strategy,267
+Avg_Roster_Exp_TE,0.0,Player Age & Experience,268
+Avg_Starter_Exp_WR,0.0,Player Age & Experience,269
+Total_Games_In_Season,0.0,Injury/Availability,270
+S_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,271
+S_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,272
+Yds__oc_Norm,0.0,Coaching Performance,273
+PF (Points For)__oc_Norm,0.0,Coaching Performance,274
+num_yr_nfl_coor,0.0,Coaching Experience,275
+num_yr_col_hc,0.0,Coaching Experience,276
+Prev_4Yr_Round_1_Picks,0.0,Draft Strategy,277
+Prev_3Yr_Round_6_Picks,0.0,Draft Strategy,278
+LB_Min_Games_Missed_Pct,0.0,Injury/Availability,279
+LB_Players_Count,0.0,Injury/Availability,280
+QB_Max_Games_Missed_Pct,0.0,Injury/Availability,281
+RB_Players_Count,0.0,Injury/Availability,282
+DL_Min_Games_Missed_Pct,0.0,Injury/Availability,283
+QB_Players_Count,0.0,Injury/Availability,284
+QB_Min_Games_Missed_Pct,0.0,Injury/Availability,285
+Att Passing__oc_Norm,0.0,Coaching Performance,286
+Yds Passing__oc_Norm,0.0,Coaching Performance,287
+1stD__oc_Norm,0.0,Coaching Performance,288
 Cmp Passing__oc_Norm,0.0,Coaching Performance,289
-Prev_2Yr_Round_2_Picks,0.0,Draft Strategy,290
-Prev_3Yr_Round_5_Picks,0.0,Draft Strategy,291
-Prev_3Yr_Round_6_Picks,0.0,Draft Strategy,292
-Prev_4Yr_Round_1_Picks,0.0,Draft Strategy,293
-num_yr_nfl_pos,0.0,Coaching Experience,294
-num_yr_col_hc,0.0,Coaching Experience,295
-Prev_1Yr_Round_7Plus_Picks,0.0,Draft Strategy,296
-Current_Round_3_Picks,0.0,Draft Strategy,297
-Current_Round_6_Picks,0.0,Draft Strategy,298
-Current_Round_7Plus_Picks,0.0,Draft Strategy,299
-Prev_1Yr_Round_1_Picks,0.0,Draft Strategy,300
-Prev_1Yr_Round_3_Picks,0.0,Draft Strategy,301
-S_Departure_Rate_Pct,0.0,Roster Turnover,302
-S_Retention_Rate_Pct,0.0,Roster Turnover,303
-S_Players_New,0.0,Roster Turnover,304
-S_Players_Departed,0.0,Roster Turnover,305
-3D%__oc_Norm,0.0,Coaching Performance,306
-S_Players_Retained,0.0,Roster Turnover,307
-Plays Average Drive__oc_Norm,0.0,Coaching Performance,308
-Pts Average Drive__oc_Norm,0.0,Coaching Performance,309
-Att Passing__oc_Norm,0.0,Coaching Performance,310
-Yds Rushing__oc_Norm,0.0,Coaching Performance,311
-#Dr__oc_Norm,0.0,Coaching Performance,312
-TD Rushing__oc_Norm,0.0,Coaching Performance,313
-RB_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,314
-WR_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,315
-QB_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,316
-QB_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,317
-1stD__dc_Norm,0.0,Coaching Performance,318
-CB_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,319
-Y/A Rushing__dc_Norm,0.0,Coaching Performance,320
-Yds Passing__dc_Norm,0.0,Coaching Performance,321
-1stD Rushing__dc_Norm,0.0,Coaching Performance,322
-TO%__dc_Norm,0.0,Coaching Performance,323
-TE_Players_Departed,0.0,Roster Turnover,324
-TD Rushing__dc_Norm,0.0,Coaching Performance,325
-OL_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,326
-OL_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,327
-DL_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,328
-DL_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,329
-DL_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,330
+TO__oc_Norm,0.0,Coaching Performance,290
+Y/P__oc_Norm,0.0,Coaching Performance,291
+Yds Penalties__oc_Norm,0.0,Coaching Performance,292
+1stD Rushing__oc_Norm,0.0,Coaching Performance,293
+Pts Average Drive__oc_Norm,0.0,Coaching Performance,294
+Time Average Drive__oc_Norm,0.0,Coaching Performance,295
+Prev_1Yr_Round_4_Picks,0.0,Draft Strategy,296
+Prev_1Yr_Round_3_Picks,0.0,Draft Strategy,297
+Prev_1Yr_Round_5_Picks,0.0,Draft Strategy,298
+Prev_1Yr_Round_6_Picks,0.0,Draft Strategy,299
+Prev_2Yr_Round_1_Picks,0.0,Draft Strategy,300
+StdDev_Roster_Experience,0.0,Player Age & Experience,301
+QB_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,302
+QB_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,303
+QB_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,304
+S_Net_Change,0.0,Roster Turnover,305
+S_Departure_Rate_Pct,0.0,Roster Turnover,306
+S_Retention_Rate_Pct,0.0,Roster Turnover,307
+RB_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,308
+RB_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,309
+OL_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,310
+DL_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,311
+DL_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,312
+DL_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,313
+TE_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,314
+TE_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,315
+RB_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,316
+WR_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,317
+CB_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,318
+CB_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,319
+S_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,320
+CB_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,321
+TD Passing__dc_Norm,0.0,Coaching Performance,322
+Att Rushing__dc_Norm,0.0,Coaching Performance,323
+Yds Rushing__dc_Norm,0.0,Coaching Performance,324
+Pen__dc_Norm,0.0,Coaching Performance,325
+Sc%__dc_Norm,0.0,Coaching Performance,326
+Plays Average Drive__dc_Norm,0.0,Coaching Performance,327
+Yds Average Drive__dc_Norm,0.0,Coaching Performance,328
+RZPct__dc_Norm,0.0,Coaching Performance,329
+LB_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,330
 LB_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,331
-TE_Retention_Rate_Pct_crosstab,0.0,Roster Turnover,332
-TE_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,333
-OL_Departure_Rate_Pct,0.0,Roster Turnover,334
-OL_Retention_Rate_Pct,0.0,Roster Turnover,335
-OL_Players_New,0.0,Roster Turnover,336
-OL_Players_Departed,0.0,Roster Turnover,337
-TE_Net_Change,0.0,Roster Turnover,338
-OL_Players_Retained,0.0,Roster Turnover,339
-TE_Retention_Rate_Pct,0.0,Roster Turnover,340
-TE_Players_New,0.0,Roster Turnover,341
-LB_Players_Departed,0.0,Roster Turnover,342
-LB_Players_Retained,0.0,Roster Turnover,343
-LB_Retention_Rate_Pct,0.0,Roster Turnover,344
-LB_Departure_Rate_Pct,0.0,Roster Turnover,345
-DL_Departure_Rate_Pct,0.0,Roster Turnover,346
-DL_New_Player_Rate_Pct,0.0,Roster Turnover,347
-DL_Retention_Rate_Pct,0.0,Roster Turnover,348
+TE_New_Player_Rate_Pct_crosstab,0.0,Roster Turnover,332
+OL_Departure_Rate_Pct_crosstab,0.0,Roster Turnover,333
+OL_Players_New,0.0,Roster Turnover,334
+OL_Players_Retained,0.0,Roster Turnover,335
+TE_Net_Change,0.0,Roster Turnover,336
+RZAtt__opp__hc_Norm,0.0,Coaching Performance,337
+DL_Departure_Rate_Pct,0.0,Roster Turnover,338
+LB_Players_Retained,0.0,Roster Turnover,339
+OL_Departure_Rate_Pct,0.0,Roster Turnover,340
+OL_Retention_Rate_Pct,0.0,Roster Turnover,341
+LB_Departure_Rate_Pct,0.0,Roster Turnover,342
+CB_Players_Departed,0.0,Roster Turnover,343
+CB_Departure_Rate_Pct,0.0,Roster Turnover,344
+CB_Net_Change,0.0,Roster Turnover,345
+Yds__hc_Norm,0.0,Coaching Performance,346
+LS_Pct,0.0,Salary Cap,347
+LB_Players_Departed,0.0,Roster Turnover,348
 DL_Players_Retained,0.0,Roster Turnover,349
-CB_Departure_Rate_Pct,0.0,Roster Turnover,350
-RZPct__dc_Norm,0.0,Coaching Performance,351
-CB_Players_Retained,0.0,Roster Turnover,352
-CB_Retention_Rate_Pct,0.0,Roster Turnover,353
-Att Rushing__hc_Norm,0.0,Coaching Performance,354
-1stD__hc_Norm,0.0,Coaching Performance,355
-TD Passing__hc_Norm,0.0,Coaching Performance,356
-Yds Passing__hc_Norm,0.0,Coaching Performance,357
-Pen__hc_Norm,0.0,Coaching Performance,358
-Y/A Rushing__hc_Norm,0.0,Coaching Performance,359
-Yds Rushing__hc_Norm,0.0,Coaching Performance,360
-Time Average Drive__hc_Norm,0.0,Coaching Performance,361
-3D%__hc_Norm,0.0,Coaching Performance,362
-Yds Average Drive__hc_Norm,0.0,Coaching Performance,363
-Plays Average Drive__hc_Norm,0.0,Coaching Performance,364
+Def_Pct,0.0,Salary Cap,350
+Off_Pct,0.0,Salary Cap,351
+QB_Net_Change,0.0,Roster Turnover,352
+QB_Departure_Rate_Pct,0.0,Roster Turnover,353
+RB_Players_Departed,0.0,Roster Turnover,354
+RB_Retention_Rate_Pct,0.0,Roster Turnover,355
+RB_Departure_Rate_Pct,0.0,Roster Turnover,356
+RB_Players_Retained,0.0,Roster Turnover,357
+WR_Players_Retained,0.0,Roster Turnover,358
+WR_Players_Departed,0.0,Roster Turnover,359
+WR_Retention_Rate_Pct,0.0,Roster Turnover,360
+WR_Departure_Rate_Pct,0.0,Roster Turnover,361
+TE_Players_Departed,0.0,Roster Turnover,362
+TE_Players_New,0.0,Roster Turnover,363
+RZPct__hc_Norm,0.0,Coaching Performance,364
 RZPct__opp__hc_Norm,0.0,Coaching Performance,365

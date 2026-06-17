@@ -1,0 +1,42 @@
+================================================================================
+SHAP FEATURE IMPORTANCE ANALYSIS
+Started at: 2026-04-28 17:17:09
+Using dataset WITHOUT AV features
+Hyperparameter tuning: ENABLED (50 iterations, 5 CV folds)
+Log file: analysis/outputs/logs/shap_analysis_log_20260428_171709.txt
+================================================================================
+Loading data...
+Excluded 22 AV features
+Data shape: (1637, 365)
+Target shape: (1637,)
+
+Feature categorization (365 features):
+  Coaching Experience: 7
+  Coaching Performance: 132
+  Draft Strategy: 29
+  Injury/Availability: 37
+  Player Age & Experience: 44
+  Roster Turnover: 90
+  Salary Cap: 19
+  Team Performance: 7
+
+Training XGBoost model (Pipeline 2 strategy: full data)...
+
+============================================================
+PIPELINE 2 STRATEGY: TRAIN ON FULL DATASET (NO SPLIT)
+============================================================
+Training on 1637 rows × 365 features
+Hyperparameters (fixed at Pipeline 2 optima):
+  n_estimators: 300
+  learning_rate: 0.05
+  max_depth: 2
+  gamma: 0
+  reg_alpha: 0.1
+  reg_lambda: 0.1
+  subsample: 0.7
+  colsample_bytree: 1.0
+  min_child_weight: 5
+
+In-sample fit (NOT generalization metric):
+  R²:   0.7688
+  RMSE: 0.0952

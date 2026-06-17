@@ -1,0 +1,14 @@
+
+# Supermemory local container config (personal tag — do not commit)
+.claude/.supermemory-claude/
+
+# Python bytecode cache
+__pycache__/
+*.pyc
+
+# Pre-leakage-fix output backups (pre-fix versions are preserved in git history)
+data/final/_pre_leakage_fix/
+analysis/outputs/_csv_pre_leakage_fix/
+
+# MS Office lock/owner files
+~$*

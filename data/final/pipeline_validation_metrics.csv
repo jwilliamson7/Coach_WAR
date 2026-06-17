@@ -1,0 +1,6 @@
+pipeline,description,subset,n,r2,rmse,rmse_wins_per_16game_season,data_file
+Pipeline 1 (validation),"Split-then-impute, random coach 80/20",train,1338,0.7851,0.091,1.4553,coaching_impact_analysis_imputation_test.csv
+Pipeline 1 (validation),"Split-then-impute, random coach 80/20",test,299,0.4299,0.1552,2.4833,coaching_impact_analysis_imputation_test.csv
+Pipeline 2 (estimation),"Full-data SVD impute, train on all rows (in-sample)",full (in-sample),1637,0.7688,0.0952,1.523,coaching_impact_analysis_pipeline2.csv
+Combined leakage test,"Split-then-impute, chronological cutoff=2014",train (year<=2014),1317,0.7772,0.0937,1.4999,coaching_impact_analysis_temporal_test.csv
+Combined leakage test,"Split-then-impute, chronological cutoff=2014",test (year>2014),320,0.4426,0.1458,2.3325,coaching_impact_analysis_temporal_test.csv
