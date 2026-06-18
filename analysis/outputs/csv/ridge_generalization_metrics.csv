@@ -1,0 +1,2 @@
+model,basis,n_train,n_test,best_alpha,cv_r2,train_r2,train_rmse,test_r2,test_rmse,test_rmse_wins_per_16game_season,xgboost_pipeline1_test_r2
+"Ridge (CV-tuned, leakage-free)","split-then-impute, coach-based 80/20, 365 feats (AV excluded)",1338,299,100.0,0.6364066817257286,0.7478553038222764,0.09853350461320785,0.14655221293896203,0.1899001622624132,3.0384025961986114,0.4299
