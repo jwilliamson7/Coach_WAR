@@ -10,5 +10,7 @@ __pycache__/
 data/final/_pre_leakage_fix/
 analysis/outputs/_csv_pre_leakage_fix/
 
-# MS Office lock/owner files
+# MS Office lock/owner files and temp files
 ~$*
+~WRL*.tmp
+*.tmp
