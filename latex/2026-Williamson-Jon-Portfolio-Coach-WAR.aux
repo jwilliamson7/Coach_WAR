@@ -11,7 +11,6 @@
 \@writefile{toc}{\contentsline {author}{}{1}{Doc-Start}}
 \@writefile{toc}{\contentsline {chapter}{Coach WAR: A Counterfactual Approach to Evaluating NFL Head Coach Impact in the Modern Era}{1}{section*.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Literature Review}{1}{section.2}\protected@file@percent }
 \citation{palmer1984,smith2008,woolner2002}
 \citation{baumer2015}
 \citation{brill2024}
@@ -20,9 +19,9 @@
 \citation{lock2014}
 \citation{lopez2020}
 \citation{deshpande2016}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Literature Review}{2}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{2}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data Sources and Feature Engineering}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The Counterfactual Framework}{2}{subsection.3.2}\protected@file@percent }
 \citation{palmer1984,woolner2002,baumer2015}
 \citation{yurko2019}
 \citation{berri2006,deshpande2016}
@@ -30,6 +29,7 @@
 \citation{chen2016}
 \citation{lock2014}
 \citation{brand2002}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The Counterfactual Framework}{3}{subsection.3.2}\protected@file@percent }
 \newlabel{eq:replacement}{{1}{3}{The Counterfactual Framework}{equation.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Model Specification}{3}{subsection.3.3}\protected@file@percent }
 \newlabel{eq:xgboost}{{2}{3}{Model Specification}{equation.2}{}}
@@ -40,49 +40,51 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Single-Season Precision}{4}{subsubsection.3.5.1}\protected@file@percent }
 \newlabel{sec:single_season}{{3.5.1}{4}{Single-Season Precision}{subsubsection.3.5.1}{}}
 \newlabel{eq:model_se}{{4}{4}{Single-Season Precision}{equation.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}Career WAR Intervals}{4}{subsubsection.3.5.2}\protected@file@percent }
-\newlabel{eq:career_ci}{{5}{4}{Career WAR Intervals}{equation.5}{}}
-\citation{benjamini1995}
-\citation{wasserstein2016}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}Career WAR Intervals}{5}{subsubsection.3.5.2}\protected@file@percent }
+\newlabel{eq:career_ci}{{5}{5}{Career WAR Intervals}{equation.5}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.3}Decade Comparisons}{5}{subsubsection.3.5.3}\protected@file@percent }
 \newlabel{eq:welch_ci}{{6}{5}{Decade Comparisons}{equation.6}{}}
 \newlabel{eq:welch_df}{{7}{5}{Decade Comparisons}{equation.7}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.4}Persistence Analysis}{5}{subsubsection.3.5.4}\protected@file@percent }
 \newlabel{eq:fisher_z}{{8}{5}{Persistence Analysis}{equation.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.5}Multiple Testing Adjustment}{5}{subsubsection.3.5.5}\protected@file@percent }
-\newlabel{sec:multiple_testing}{{3.5.5}{5}{Multiple Testing Adjustment}{subsubsection.3.5.5}{}}
+\citation{benjamini1995}
+\citation{wasserstein2016}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.5}Multiple Testing Adjustment}{6}{subsubsection.3.5.5}\protected@file@percent }
+\newlabel{sec:multiple_testing}{{3.5.5}{6}{Multiple Testing Adjustment}{subsubsection.3.5.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Results}{6}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Football Context and Career Leaders}{6}{subsection.4.1}\protected@file@percent }
-\citation{hadley2000}
 \@writefile{lot}{\contentsline {table}{\numberline {Tab. 1}{\ignorespaces Top 15 Coaches by Average WAR per Season (minimum 3 seasons). Confidence intervals are computed from the $t$-distribution applied to each coach's individual-season WAR values (Equation~\ref {eq:career_ci}). \textcolor {red}{Intervals are marginal 95\% CIs intended for descriptive ranking; they are not adjusted for the implicit family of pairwise comparisons among coaches and should not be used for hypothesis testing between named coaches. Values reflect Pipeline 2 estimates (full-data refit).}}}{7}{table.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{tab:top_coaches}{{1}{7}{Top 15 Coaches by Average WAR per Season (minimum 3 seasons). Confidence intervals are computed from the $t$-distribution applied to each coach's individual-season WAR values (Equation~\ref {eq:career_ci}). \rev {Intervals are marginal 95\% CIs intended for descriptive ranking; they are not adjusted for the implicit family of pairwise comparisons among coaches and should not be used for hypothesis testing between named coaches. Values reflect Pipeline 2 estimates (full-data refit).}}{table.caption.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {Tab. 2}{\ignorespaces Bottom 15 Coaches by Average WAR per Season (minimum 3 seasons). Confidence intervals are computed as in Table~\ref {tab:top_coaches}. \textcolor {red}{Intervals are marginal 95\% CIs intended for descriptive ranking; they are not adjusted for the implicit family of pairwise comparisons among coaches and should not be used for hypothesis testing between named coaches. Values reflect Pipeline 2 estimates (full-data refit).}}}{7}{table.caption.3}\protected@file@percent }
 \newlabel{tab:bottom_coaches}{{2}{7}{Bottom 15 Coaches by Average WAR per Season (minimum 3 seasons). Confidence intervals are computed as in Table~\ref {tab:top_coaches}. \rev {Intervals are marginal 95\% CIs intended for descriptive ranking; they are not adjusted for the implicit family of pairwise comparisons among coaches and should not be used for hypothesis testing between named coaches. Values reflect Pipeline 2 estimates (full-data refit).}}{table.caption.3}{}}
+\citation{hadley2000}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Coach WAR in Aggregate}{8}{subsection.4.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {Fig. 1}{\ignorespaces Coach WAR Career Distributions. Coaches with two or fewer seasons are excluded.}}{8}{figure.caption.4}\protected@file@percent }
 \newlabel{fig:career_distributions}{{1}{8}{Coach WAR Career Distributions. Coaches with two or fewer seasons are excluded}{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Offensive versus Defensive Coaches}{8}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Offensive versus Defensive Coaches}{9}{subsection.4.3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {Tab. 3}{\ignorespaces Mann-Whitney U Test comparing Coaching Backgrounds by Decade. 95\% CIs are Welch's $t$-intervals on the difference in means (Offensive $-$ Defensive).}}{9}{table.caption.5}\protected@file@percent }
 \newlabel{tab:background_decade_stats}{{3}{9}{Mann-Whitney U Test comparing Coaching Backgrounds by Decade. 95\% CIs are Welch's $t$-intervals on the difference in means (Offensive $-$ Defensive)}{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}WAR Persistence and Scheme Obsolescence}{9}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}\textcolor {red}{\sout {WAR Persistence and Scheme Obsolescence}}\textcolor {red}{Year-to-Year Persistence of Coaching WAR}}{9}{subsection.4.4}\protected@file@percent }
+\citation{mccracken2001}
 \@writefile{lof}{\contentsline {figure}{\numberline {Fig. 2}{\ignorespaces Coach WAR in Year N+1 vs. Year N (persistence)}}{10}{figure.caption.6}\protected@file@percent }
 \newlabel{fig:war_persistence}{{2}{10}{Coach WAR in Year N+1 vs. Year N (persistence)}{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Limitations and the ``Franchise Quarterback Effect''}{10}{subsection.4.5}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {Fig. 3}{\ignorespaces Regression to the mean by WAR quintile. Top panel: mean WAR in Year N (blue) and Year N+1 (orange) for each quintile. Bottom panel: mean change in WAR from Year N to Year N+1. Bottom-quintile Year N+1 values apply a 10th percentile penalty for coaches terminated mid-season.}}{11}{figure.caption.7}\protected@file@percent }
 \newlabel{fig:war_quintiles}{{3}{11}{Regression to the mean by WAR quintile. Top panel: mean WAR in Year N (blue) and Year N+1 (orange) for each quintile. Bottom panel: mean change in WAR from Year N to Year N+1. Bottom-quintile Year N+1 values apply a 10th percentile penalty for coaches terminated mid-season}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Limitations and the ``Franchise Quarterback Effect''}{12}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:limitations}{{4.5}{12}{Limitations and the ``Franchise Quarterback Effect''}{subsection.4.5}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {Tab. 4}{\ignorespaces Top 10 Single-Season WAR Instances. Model residual standard error: $\pm $2.5 wins per season. \textcolor {red}{Values reflect Pipeline 2 estimates (full-data refit).}}}{12}{table.caption.8}\protected@file@percent }
 \newlabel{tab:top_single_season}{{4}{12}{Top 10 Single-Season WAR Instances. Model residual standard error: $\pm $2.5 wins per season. \rev {Values reflect Pipeline 2 estimates (full-data refit).}}{table.caption.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {Tab. 5}{\ignorespaces Bottom 10 Single-Season WAR Instances. Model residual standard error: $\pm $2.5 wins per season. Asterisk (*) denotes mid-season termination. \textcolor {red}{Values reflect Pipeline 2 estimates (full-data refit).}}}{12}{table.caption.9}\protected@file@percent }
-\newlabel{tab:bottom_single_season}{{5}{12}{Bottom 10 Single-Season WAR Instances. Model residual standard error: $\pm $2.5 wins per season. Asterisk (*) denotes mid-season termination. \rev {Values reflect Pipeline 2 estimates (full-data refit).}}{table.caption.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {Tab. 5}{\ignorespaces Bottom 10 Single-Season WAR Instances. Model residual standard error: $\pm $2.5 wins per season. Asterisk (*) denotes mid-season termination. \textcolor {red}{Values reflect Pipeline 2 estimates (full-data refit).}}}{13}{table.caption.9}\protected@file@percent }
+\newlabel{tab:bottom_single_season}{{5}{13}{Bottom 10 Single-Season WAR Instances. Model residual standard error: $\pm $2.5 wins per season. Asterisk (*) denotes mid-season termination. \rev {Values reflect Pipeline 2 estimates (full-data refit).}}{table.caption.9}{}}
 \citation{yurko2019}
 \bibcite{appelman2013}{{1}{2013}{{Appelman and Cameron}}{{}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Practical Applications}{13}{subsection.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{13}{section.5}\protected@file@percent }
 \bibcite{baseballref_war}{{2}{n.d.}{{Baseball-Reference.com}}{{}}}
 \bibcite{baumer2015}{{3}{2015}{{Baumer et al.}}{{}}}
 \bibcite{benjamini1995}{{4}{1995}{{Benjamini and Hochberg}}{{}}}
 \bibcite{berri2006}{{5}{2006}{{Berri et al.}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Practical Applications}{14}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{14}{section.5}\protected@file@percent }
 \bibcite{brand2002}{{6}{2002}{{Brand}}{{}}}
 \bibcite{brill2024}{{7}{2024}{{Brill and Wyner}}{{}}}
 \bibcite{chen2016}{{8}{2016}{{Chen and Guestrin}}{{}}}
@@ -91,30 +93,31 @@
 \bibcite{hadley2000}{{11}{2000}{{Hadley et al.}}{{}}}
 \bibcite{lock2014}{{12}{2014}{{Lock and Nettleton}}{{}}}
 \bibcite{lopez2020}{{13}{2020}{{Lopez}}{{}}}
-\bibcite{palmer1984}{{14}{1984}{{Palmer and Thorn}}{{}}}
-\bibcite{sabin2021}{{15}{2021}{{Sabin}}{{}}}
-\bibcite{smith2008}{{16}{2008}{{Smith}}{{}}}
-\bibcite{wasserstein2016}{{17}{2016}{{Wasserstein and Lazar}}{{}}}
-\bibcite{woolner2002}{{18}{2002}{{Woolner}}{{}}}
-\bibcite{yurko2019}{{19}{2019}{{Yurko et al.}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Feature Count Across Categories}{15}{appendix.A}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {Tab. 6}{\ignorespaces Feature Count Across Categories}}{15}{table.caption.12}\protected@file@percent }
-\newlabel{tab:feature_counts}{{6}{15}{Feature Count Across Categories}{table.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {B}Selected Hyperparameters for the Final Model}{16}{appendix.B}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {Tab. 7}{\ignorespaces Selected Hyperparameters for the Final Model}}{16}{table.caption.13}\protected@file@percent }
-\newlabel{tab:hyperparameters}{{7}{16}{Selected Hyperparameters for the Final Model}{table.caption.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {C}Feature Importance Ranking of Top 20 Features}{17}{appendix.C}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {Tab. 8}{\ignorespaces Feature Importance Ranking of Top 20 Features}}{17}{table.caption.14}\protected@file@percent }
-\newlabel{tab:feature_importance}{{8}{17}{Feature Importance Ranking of Top 20 Features}{table.caption.14}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {D}Win Percentage Persistence}{18}{appendix.D}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {Fig. 4}{\ignorespaces Coach Win Percentage in Year N+1 vs. Year N}}{18}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:winpct_persistence}{{4}{18}{Coach Win Percentage in Year N+1 vs. Year N}{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {E}WAR Persistence by Coach Background}{19}{appendix.E}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {Fig. 5}{\ignorespaces Coach WAR in Year N+1 vs. Year N by Coach Background}}{19}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:war_persistence_background}{{5}{19}{Coach WAR in Year N+1 vs. Year N by Coach Background}{figure.caption.16}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {Tab. 9}{\ignorespaces Coaching WAR Persistence by Background and Time Horizon}}{19}{table.caption.17}\protected@file@percent }
-\newlabel{tab:war_multiyear_persistence}{{9}{19}{Coaching WAR Persistence by Background and Time Horizon}{table.caption.17}{}}
-\newlabel{LastPage}{{E}{19}{WAR Persistence by Coach Background}{page.19}{}}
-\gdef\lastpage@lastpage{19}
-\gdef\lastpage@lastpageHy{19}
-\gdef \@abspage@last{19}
+\bibcite{mccracken2001}{{14}{2001}{{McCracken}}{{}}}
+\bibcite{palmer1984}{{15}{1984}{{Palmer and Thorn}}{{}}}
+\bibcite{sabin2021}{{16}{2021}{{Sabin}}{{}}}
+\bibcite{smith2008}{{17}{2008}{{Smith}}{{}}}
+\bibcite{wasserstein2016}{{18}{2016}{{Wasserstein and Lazar}}{{}}}
+\bibcite{woolner2002}{{19}{2002}{{Woolner}}{{}}}
+\bibcite{yurko2019}{{20}{2019}{{Yurko et al.}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Feature Count Across Categories}{16}{appendix.A}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {Tab. 6}{\ignorespaces Feature Count Across Categories}}{16}{table.caption.12}\protected@file@percent }
+\newlabel{tab:feature_counts}{{6}{16}{Feature Count Across Categories}{table.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Selected Hyperparameters for the Final Model}{17}{appendix.B}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {Tab. 7}{\ignorespaces Selected Hyperparameters for the Final Model}}{17}{table.caption.13}\protected@file@percent }
+\newlabel{tab:hyperparameters}{{7}{17}{Selected Hyperparameters for the Final Model}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Feature Importance Ranking of Top 20 Features}{18}{appendix.C}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {Tab. 8}{\ignorespaces Feature Importance Ranking of Top 20 Features}}{18}{table.caption.14}\protected@file@percent }
+\newlabel{tab:feature_importance}{{8}{18}{Feature Importance Ranking of Top 20 Features}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Win Percentage Persistence}{19}{appendix.D}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {Fig. 4}{\ignorespaces Coach Win Percentage in Year N+1 vs. Year N}}{19}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:winpct_persistence}{{4}{19}{Coach Win Percentage in Year N+1 vs. Year N}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {E}WAR Persistence by Coach Background}{20}{appendix.E}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {Fig. 5}{\ignorespaces Coach WAR in Year N+1 vs. Year N by Coach Background}}{20}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:war_persistence_background}{{5}{20}{Coach WAR in Year N+1 vs. Year N by Coach Background}{figure.caption.16}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {Tab. 9}{\ignorespaces Coaching WAR Persistence by Background and Time Horizon}}{20}{table.caption.17}\protected@file@percent }
+\newlabel{tab:war_multiyear_persistence}{{9}{20}{Coaching WAR Persistence by Background and Time Horizon}{table.caption.17}{}}
+\newlabel{LastPage}{{E}{20}{WAR Persistence by Coach Background}{page.20}{}}
+\gdef\lastpage@lastpage{20}
+\gdef\lastpage@lastpageHy{20}
+\gdef \@abspage@last{20}
