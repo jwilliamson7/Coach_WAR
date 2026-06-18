@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  18 JUN 2026 14:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  18 JUN 2026 14:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -973,7 +973,6 @@ File: figures/coach_career_distributions.png Graphic file (type png)
 Package pdftex.def Info: figures/coach_career_distributions.png  used on input 
 line 249.
 (pdftex.def)             Requested size: 441.01756pt x 291.67369pt.
- [8 <./figures/coach_career_distributions.png>]
 LaTeX Font Info:    Calculating math sizes for size <5.0> on input line 276.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <3.51306> on input line 276.
@@ -984,18 +983,19 @@ Overfull \hbox (35.62546pt too wide) in paragraph at lines 264--277
 [][] 
  []
 
+[8 <./figures/coach_career_distributions.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\sout' on input line 283.
 
-<figures/coaching_war_persistence_scatter.png, id=282, 706.8006pt x 706.8006pt>
+<figures/coaching_war_persistence_scatter.png, id=283, 706.8006pt x 706.8006pt>
 
 File: figures/coaching_war_persistence_scatter.png Graphic file (type png)
 <use figures/coaching_war_persistence_scatter.png>
 Package pdftex.def Info: figures/coaching_war_persistence_scatter.png  used on 
 input line 289.
 (pdftex.def)             Requested size: 352.81538pt x 352.81703pt.
-<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=283, 715.232
+<figures/coaching_regression_to_mean_survivorship_adjusted.png, id=284, 715.232
 1pt x 859.5312pt>
 File: figures/coaching_regression_to_mean_survivorship_adjusted.png Graphic fil
 e (type png)
@@ -1010,15 +1010,15 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8.0> not available
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 399.
+(Font)              size <9> substituted on input line 417.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <9.5> not available
-(Font)              size <9> substituted on input line 399.
+(Font)              size <9> substituted on input line 417.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 399.
+(Font)              size <9> substituted on input line 417.
 
 [14]
 Underfull \hbox (badness 10000) in paragraph at lines 439--440
@@ -1084,11 +1084,11 @@ Package rerunfilecheck Info: File `2026-Williamson-Jon-Portfolio-Coach-WAR.out'
 Here is how much of TeX's memory you used:
  19309 strings out of 467871
  315961 string characters out of 5418376
- 793785 words of memory out of 5000000
+ 800785 words of memory out of 5000000
  47379 multiletter control sequences out of 15000+600000
  748829 words of font info for 265 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,11n,131p,2890b,678s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,11n,131p,2890b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/pub
@@ -1108,8 +1108,8 @@ msso8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msy10.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msy7.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (20 pages, 334170
-7 bytes).
+Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (20 pages, 334125
+5 bytes).
 PDF statistics:
  460 PDF objects out of 1000 (max. 8388607)
  92 named destinations out of 1000 (max. 500000)
