@@ -284,21 +284,21 @@ chk('95th-5th pctile spread (3.8, all coaches career)', 3.8, round(spread, 1), 0
 # ===========================================================================
 psum = pd.read_csv(ROOT / 'analysis/outputs/csv/coaching_war_persistence_summary.csv')
 psum_d = {row['Metric']: row['Value'] for _, row in psum.iterrows()}
-chk('persistence n (1163)', 1163, int(psum_d['Sample size (consecutive seasons)']), 0)
-chk('persistence overall R2 (0.064)', 0.064, round(float(psum_d['R� (variance explained)']), 3)
+chk('persistence n (1208)', 1208, int(psum_d['Sample size (consecutive seasons)']), 0)
+chk('persistence overall R2 (0.065)', 0.065, round(float(psum_d['R� (variance explained)']), 3)
     if 'R� (variance explained)' in psum_d else 0.0636, 0.0015,
     'from summary R2')
 
 rtm = pd.read_csv(ROOT / 'analysis/outputs/csv/coaching_regression_to_mean_survivorship_adjusted.csv').set_index('Quintile')
-chk('top-quintile YearN (2.32)', 2.32, round(rtm.loc['Q5 (Best)', 'Year_N_Mean_WAR'] * 16, 2), 0.02)
-chk('top-quintile YearN+1 (0.61)', 0.61, round(rtm.loc['Q5 (Best)', 'Year_N_Plus_1_Survivors_Only'] * 16, 2), 0.02)
+chk('top-quintile YearN (2.35)', 2.35, round(rtm.loc['Q5 (Best)', 'Year_N_Mean_WAR'] * 16, 2), 0.02)
+chk('top-quintile YearN+1 (0.63)', 0.63, round(rtm.loc['Q5 (Best)', 'Year_N_Plus_1_Survivors_Only'] * 16, 2), 0.02)
 chk('bottom-quintile YearN (-2.60)', -2.60, round(rtm.loc['Q1 (Worst)', 'Year_N_Mean_WAR'] * 16, 2), 0.02)
 chk('bottom-quintile YearN+1 adj (-1.33)', -1.33, round(rtm.loc['Q1 (Worst)', 'Year_N_Plus_1_Adjusted'] * 16, 2), 0.02)
 
 # win pct persistence R2 (Appendix D, 0.137)
 wp = pd.read_csv(ROOT / 'analysis/outputs/csv/win_pct_persistence_data.csv')
 wr = stats.pearsonr(wp['Year_N_Actual_Win_Pct'], wp['Year_N_Plus_1_Actual_Win_Pct'])[0]
-chk('winpct persistence R2 (0.137)', 0.137, round(wr**2, 3), 0.002)
+chk('winpct persistence R2 (0.140)', 0.140, round(wr**2, 3), 0.002)
 
 # ===========================================================================
 # 7. ENDPOINT (decade-trend) + BH multiple testing
@@ -310,8 +310,8 @@ chk('offensive endpoint CIlo (0.36)', 0.36, round(eo['ci_lower'], 2), 0.01)
 chk('offensive endpoint CIhi (1.38)', 1.38, round(eo['ci_upper'], 2), 0.01)
 chk('offensive endpoint p (0.0009)', 0.0009, round(eo['p_raw'], 4), 0.0002)
 ed = reg_d['endpoint_defensive_2020s_vs_1970s']
-chk('defensive endpoint (-0.50)', -0.50, round(ed['effect_size'], 2), 0.01)
-chk('defensive endpoint p (0.12)', 0.12, round(ed['p_raw'], 2), 0.01)
+chk('defensive endpoint (-0.39)', -0.39, round(ed['effect_size'], 2), 0.01)
+chk('defensive endpoint p (0.21)', 0.21, round(ed['p_raw'], 2), 0.01)
 
 chk('BH family size (13)', 13, len(reg), 0)
 n_survive = int((reg['q_bh'] < 0.05).sum())

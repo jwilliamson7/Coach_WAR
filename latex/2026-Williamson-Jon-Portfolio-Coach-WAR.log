@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  18 JUN 2026 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.26)  1 JUL 2026 12:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -979,7 +979,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <2.50934> on input line 276.
 
-Overfull \hbox (35.62546pt too wide) in paragraph at lines 264--277
+Overfull \hbox (35.62503pt too wide) in paragraph at lines 264--277
 [][] 
  []
 
@@ -1082,11 +1082,11 @@ Package rerunfilecheck Info: File `2026-Williamson-Jon-Portfolio-Coach-WAR.out'
 (rerunfilecheck)             Checksum: 1A7DE8CB4D30C5BD1F9E0B70392F0D1A;6332.
  ) 
 Here is how much of TeX's memory you used:
- 19309 strings out of 467871
- 315961 string characters out of 5418376
+ 19307 strings out of 467871
+ 315941 string characters out of 5418376
  800785 words of memory out of 5000000
  47379 multiletter control sequences out of 15000+600000
- 748829 words of font info for 265 fonts, out of 8000000 for 9000
+ 748746 words of font info for 264 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,11n,131p,2890b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
@@ -1108,8 +1108,8 @@ msso8.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msy10.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msy7.pfb><C:/Users/jonwi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (20 pages, 334125
-5 bytes).
+Output written on 2026-Williamson-Jon-Portfolio-Coach-WAR.pdf (20 pages, 340252
+6 bytes).
 PDF statistics:
  460 PDF objects out of 1000 (max. 8388607)
  92 named destinations out of 1000 (max. 500000)
