@@ -73,6 +73,8 @@ Coach_WAR/
         └── png/               # Heatmap visualizations
 ```
 
+**Papers (`latex/`)**: `latex/ssac/` is the active SSAC27 abstract (Football track); `latex/archive/jqas/` holds the archived JQAS manuscript and submission materials (rejected Oct 2026). See `latex/README.md`.
+
 ## Key Components
 
 ### Data Sources

@@ -82,7 +82,7 @@ def regenerate_all_figures(font='serif'):
     if failures == 0:
         print("\nAll figures generated successfully!")
         print(f"\nFigures with font '{font}' are ready in:")
-        print("  - latex/figures/")
+        print("  - latex/archive/jqas/figures/")
         print("  - analysis/outputs/png/")
     else:
         print(f"\nWARNING: {failures} script(s) failed. Check output above.")
