@@ -24,7 +24,8 @@ def r1(x):
     return float(Decimal(repr(float(x))).quantize(Decimal('0.1'), ROUND_HALF_UP))
 
 ROOT = Path(__file__).resolve().parent.parent
-TEX = ROOT / 'latex' / '2026-Williamson-Jon-Portfolio-Coach-WAR.tex'
+PAPER_DIR = ROOT / 'latex' / 'archive' / 'jqas'  # JQAS manuscript (archived Oct 2026)
+TEX = PAPER_DIR / '2026-Williamson-Jon-Portfolio-Coach-WAR.tex'
 
 results = []  # (status, label, paper, source, note)
 
@@ -354,7 +355,7 @@ for minS in (1, 3):
 # ===========================================================================
 figs = re.findall(r'\\includegraphics\[[^\]]*\]\{([^}]+)\}', TEXT)
 for f in figs:
-    p = (ROOT / 'latex' / f)
+    p = (PAPER_DIR / f)
     chk(f'figure exists: {f}', True, p.exists(), 0)
 
 # ===========================================================================

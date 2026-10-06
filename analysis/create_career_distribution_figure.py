@@ -121,7 +121,7 @@ def create_career_distribution_figure(font_family='serif'):
     plt.tight_layout()
 
     # Save figure
-    output_path = 'latex/figures/coach_career_distributions.png'
+    output_path = 'latex/archive/jqas/figures/coach_career_distributions.png'
     plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"\nFigure saved to: {output_path}")
 

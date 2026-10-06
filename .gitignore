@@ -14,3 +14,14 @@ analysis/outputs/_csv_pre_leakage_fix/
 ~$*
 ~WRL*.tmp
 *.tmp
+
+# LaTeX build artifacts
+*.aux
+*.idx
+*.ilg
+*.ind
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+latex/**/*.log

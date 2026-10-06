@@ -92,7 +92,7 @@ def create_three_coach_trajectory_figure(font_family='serif'):
     plt.tight_layout()
 
     # Save figure
-    output_path = 'latex/figures/coach_trajectories_oconnell_shula_eberflus.png'
+    output_path = 'latex/archive/jqas/figures/coach_trajectories_oconnell_shula_eberflus.png'
     plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"\nFigure saved to: {output_path}")
 
