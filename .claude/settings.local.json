@@ -36,7 +36,9 @@
       "WebFetch(domain:journals.sagepub.com)",
       "WebFetch(domain:link.springer.com)",
       "Bash(powershell:*)",
-      "Bash(texcount:*)"
+      "Bash(texcount:*)",
+      "Bash(echo \"pass1 EXIT: $?\")",
+      "Bash(echo \"pass2 EXIT: $?\")"
     ],
     "deny": [],
     "ask": []
